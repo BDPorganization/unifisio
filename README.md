@@ -5,6 +5,7 @@ ferramentas previstas
 - visual studio code
 - pgAdmin
 - sourcetree
+- boostrap
 
 linguagens 
 - html
