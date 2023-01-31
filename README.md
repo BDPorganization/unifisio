@@ -1,19 +1,19 @@
 # unifisio
 
-ferramentas previstas
+Ferramentas previstas
 - github
 - visual studio code
 - pgAdmin
 - sourcetree
 
-linguagens 
+Linguagens 
 - html
 - css
 - javascript
 - php
 - postgress
 
-telas previstas
+Telas previstas
 - tela inicial
 - tela de cada sala
 - tela de horários
@@ -21,4 +21,3 @@ telas previstas
 - tela de pagamento
 - tela de confirmação
 - tela de marketing
-
