@@ -5,7 +5,6 @@ ferramentas previstas
 - visual studio code
 - pgAdmin
 - sourcetree
-- boostrap
 
 linguagens 
 - html
@@ -23,6 +22,3 @@ telas previstas
 - tela de confirmação
 - tela de marketing
 
-proposta de valor
-- divulgação do médico no site
-- trabalho com medias sociais

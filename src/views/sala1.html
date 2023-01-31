@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TELA INICIAL</title>
+
+    <!-- Nunito -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- Css externo -->
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="navbar-brand div-nav">
+            <img src="../public/imagens/.jpg" alt="logo">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <div class="collapse navbar-collapse navbar-brand" id="barraNavegacao">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="">Coworking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Especialidades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Contato</a>
+                </li>
+            </ul>
+        </div>
+        <a href="src/views/login.php" class="btn-login btn" type="button">
+            <i class="fa fa-user"></i> Login
+        </a>
+    </nav>
+
+    <section>
+        <div class="salas">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../public/imagens/sala1/imagem1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../public/imagens/sala1/imagem1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../public/imagens/sala1/imagem1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="informacao-sala">
+                <div>
+                    <h2>Sala comfort</h2>
+                    <p>A sala comfort é preenchida com estofados de alta qualidade tanto para o médico quanto para o paciente, o ambiente climatizado e iluminado naturalmente contribuem para o conforto das duas partes.</p>
+                </div>
+                <div class="calendario-div">
+                    <div id='calendar'></div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <footer class="footer">
+        <div class="div-footer">
+            <div>
+                <img src="/public/static/imagens/athenas-preto-branco.png">
+            </div>
+            
+            <div class="icon-footer">
+                <a href="https://github.com/deborabuzatto" target="_blank">
+                    <i class="fa fa-github hover-opacity"></i>
+                </a>
+                <a href="" target="_blank">
+                    <i class="fa fa-linkedin hover-opacity"></i>
+                </a>
+                <a href="" target="_blank">
+                    <i class="fa fa-whatsapp hover-opacity"></i>
+                </a>
+                <a href="" target="_blank">
+                    <i class="fa fa-google hover-opacity"></i>
+                </a>
+            </div>
+            <div>
+                <a href="https://goo.gl/maps/zGGbKuK77NsXjuFe6" target="_blank">
+                    Unifisio Saúde & Bem Estar<br>
+                    R. Aristóbulo Barbosa Leão 500 Shopping Victoria Mall - <br>
+                    Mata da Praia, Vitória - ES, 29060-010
+                </a>
+            </div>
+        <div>
+    </footer>
+
+    
+
+    <script src='/package/index.global.js'></script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            initialDate: '2023-01-07',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title'
+            }
+        });
+        calendar.render();
+        });
+    
+    </script>
+    <!-- Script FontAwesome -->
+    <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
+
+    <!-- Script Boostrap-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+</body>
+</html>
