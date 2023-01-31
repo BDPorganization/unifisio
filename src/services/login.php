@@ -17,7 +17,7 @@
                 header("Location: ../views/menu.php");
             }else{
                 $_SESSION['nao_autenticado'] = true;
-                header("Location: ../views/index.php");
+                header("Location: ../../index.php");
                 exit();
             }
         }

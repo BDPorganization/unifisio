@@ -1,32 +1,23 @@
-<?php 
-	session_start();
-	if (isset($_SESSION['medico']) {
-		session_destroy();
-	}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TELA INICIAL</title>
-
+    <link rel="shortcut icon" href="/public/imagens/logo_png.png" type="image/x-icon"/>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
-
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
     <!-- Css externo -->
     <link rel="stylesheet" href="../public/css/style.css">
+    <title>Home - Unifisio</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="navbar-brand div-nav">
-            <img src="../public/imagens/logo_png.png" alt="logo">
+            <img src="../public/imagens/logo_png.png" alt="LOGO_UNIFISIO">
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
             <i class="fa-solid fa-bars-staggered"></i>
@@ -44,7 +35,7 @@
                 </li>
             </ul>
         </div>
-        <a href="./login.html" class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
             <i class="fa fa-user"></i> Login
         </a>
     </nav>
@@ -131,74 +122,38 @@
     </section>
 
     <!-- Modal -->
-    <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-lg" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
-            <!-- <button type="button" style="width: 20px;padding-left: 1650px;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
            
             <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
                 <div style="width: 50%; padding: 15px;">
-                    <form action="\loginDB" method="POST">
+                    <form method="POST" action="/src/services/login.php">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email: </label>
-                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Senha: </label>
-                            <input type="password" class="form-control" id="password">
+                            <label for="senha" class="form-label">Senha: </label>
+                            <input type="password" class="form-control" id="senha" name="senha">
                         </div>
-                        <button type="submit" class="btn btn-light w-100 mt-2">Entrar</button>
+                        <button type="submit" class="btn btn-light w-100 mt-2" name="btn-login">Entrar</button>
                     </form>
                     <button type="button" class="btn btn-danger w-100 mt-3"><i style="padding-right: 30px" class="fa-brands fa-google"></i>Acesse com Google</button>
                     <a href="" class="btn btn-danger w-100 mt-3">Cadastrar-me</a>
                 </div>
                 <div style="width: 50%; height: 100%;">
-                    <img style="width: 100%;height: 100%;" src="../public/imagens/sala3/1.jpg" alt="imagem sala">
+                    <img style="width: 100%;height: 100%;" src="../public/imagens/sala3/1.jpg" alt="IMAGEM-SALA">
                 </div>
-               
             </div>
-            
         </div>
         </div>
     </div>
-
-    <footer class="footer">
-        <div class="div-footer">
-            <div>
-                <img src="../public/imagens/logo_png.png" alt="logo">
-            </div>
-            
-            <div class="icon-footer">
-                <a href="https://github.com/deborabuzatto" target="_blank">
-                    <i class="fa fa-github hover-opacity"></i>
-                </a>
-                <a href="" target="_blank">
-                    <i class="fa fa-linkedin hover-opacity"></i>
-                </a>
-                <a href="" target="_blank">
-                    <i class="fa fa-whatsapp hover-opacity"></i>
-                </a>
-                <a href="" target="_blank">
-                    <i class="fa fa-google hover-opacity"></i>
-                </a>
-            </div>
-            <div>
-                <a href="https://goo.gl/maps/6XHN11Q8mgpEdLSu7" target="_blank">
-                    Unifisio Saúde & Bem Estar<br>
-                    R. Aristóbulo Barbosa Leão 500<br>
-                    Shopping Victoria Mall - <br>
-                    Mata da Praia, Vitória - ES, 29060-010
-                </a>
-            </div>
-        </div>
-    </footer>
-
     
+    <?php include '/src/components/footer.php'; ?>
 
-    
     <!-- Script FontAwesome -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
-
     <!-- Script Boostrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>

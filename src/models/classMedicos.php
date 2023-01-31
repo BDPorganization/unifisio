@@ -1,5 +1,6 @@
 <?php
-    require_once 'classCrud.php';
+
+    require_once 'classConexao.php';
 
     class Medicos {
         protected $table = 'medicos';
