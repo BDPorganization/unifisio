@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/public/imagens/logo_png.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
@@ -17,16 +17,47 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="navbar-brand div-nav">
-            <img src="../public/imagens/logo_png.png" alt="LOGO_UNIFISIO">
+            <img src="../public/img/logoSimples_png.png" alt="LOGO_UNIFISIO">
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
             <i class="fa-solid fa-bars-staggered"></i>
         </button>
-        <div class="collapse navbar-collapse navbar-brand" id="barraNavegacao">
+        <div class="collapse navbar-collapse" id="barraNavegacao">
             <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="">Coworking</a>
-                </li>
+            <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Salas
+                    </a>
+                    <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
+                        <div>
+                            <a class="dropdown-item" href="#">
+                                <img src="./public/img/sala3/1.jpg"  width="100px" alt="consultório 1">
+                                <p>Consultório 1</p>
+                                <p style="font-size: 12px; width: 30%;">
+                                    Ideal para você que busca otimização <br> de pequenos espaços e salas aconchegantes.
+                                </p>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="dropdown-item" href="#">
+                                <img src="./public/img/sala2/1.jpg"  width="100px" alt="consultório 1">
+                                <p>Consultório 2</p>
+                                <p style="font-size: 12px; width: 30%;">
+                                    Conte com mais espaço e área de circulação,<br> ideal para fazer medições e pesagens.
+                                </p>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="dropdown-item"href="#">
+                                <img src="./public/img/sala1/imagem1.jpg"  width="100px" alt="consultório 1">
+                                <p>Studio de Pilates</p>
+                                <p style="font-size: 12px; width: 30%;">
+                                    Encontre um studio com ótimos equipamentos <br> para usar com até três pacientes simultâneos
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <li class="nav-item">
                     <a class="nav-link" href="">Especialidades</a>
                 </li>
@@ -121,35 +152,74 @@
         
     </section>
 
-    <!-- Modal -->
-    <div class="modal fade modal-lg" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content">
-           
-            <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
-                <div style="width: 50%; padding: 15px;">
-                    <form method="POST" action="/src/services/login.php">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email: </label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        <!-- Modal -->
+        <div class="modal fade modal-lg" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                    <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
+                        <div style="width: 50%; padding: 15px;">
+                            <form method="POST" action="/src/services/login.php">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email: </label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="senha" class="form-label">Senha: </label>
+                                    <input type="password" class="form-control" id="senha" name="senha">
+                                </div>
+                                <button type="submit" class="btn btn-light w-100 mt-2" name="btn-login">Entrar</button>
+                            </form>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="btn btn-primary w-100 mt-3">Cadastrar-me</a>
+
+                            <button type="button" class="btn btn-danger w-100 mt-3"><i style="padding-right: 30px" class="fa-brands fa-google"></i>Acesse com Google</button>
                         </div>
-                        <div class="mb-3">
-                            <label for="senha" class="form-label">Senha: </label>
-                            <input type="password" class="form-control" id="senha" name="senha">
+                        <div style="width: 50%; height: 100%;">
+                            <img style="width: 100%;height: 100%;" src="../public/img/sala3/1.jpg" alt="IMAGEM-SALA">
                         </div>
-                        <button type="submit" class="btn btn-light w-100 mt-2" name="btn-login">Entrar</button>
-                    </form>
-                    <button type="button" class="btn btn-danger w-100 mt-3"><i style="padding-right: 30px" class="fa-brands fa-google"></i>Acesse com Google</button>
-                    <a href="" class="btn btn-danger w-100 mt-3">Cadastrar-me</a>
-                </div>
-                <div style="width: 50%; height: 100%;">
-                    <img style="width: 100%;height: 100%;" src="../public/imagens/sala3/1.jpg" alt="IMAGEM-SALA">
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade modal-lg" id="cadastro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Faça seu cadastro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome completo: </label>
+                            <input type="email" class="form-control" id="nome" name="nome">
+                        </div>
+                        <div class="mb-3">
+                            <label for="especialidade" class="form-label">Especialidade: </label>
+                            <input type="email" class="form-control" id="especialidade" name="especialidade">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail: </label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="d-flex w-100 mb-3">
+                            <div style="width: 49%; margin-right: 2%;">
+                                <label for="senha" class="form-label">Senha: </label>
+                                <input type="password" class="form-control" id="senha" name="senha">
+                            </div>
+                            <div style="width: 49%">
+                                <label for="confirma" class="form-label">Confirme sua Senha: </label>
+                                <input type="password" class="form-control" id="confirma" name="confirma">
+                            </div>
+                        </div>
+                        <div class="d-flex w-100 justify-content-end">
+                            <button type="button" class="btn btn-primary">Confirmar</button>
+                            <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    
+        
     <?php include '/src/components/footer.php'; ?>
 
     <!-- Script FontAwesome -->

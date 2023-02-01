@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="div-footer">
         <div>
-            <img src="../../public/imagens/logo_png.png" alt="logo">
+            <img src="../../public/img/logo_png.png" alt="logo">
         </div>
         
         <div class="icon-footer">

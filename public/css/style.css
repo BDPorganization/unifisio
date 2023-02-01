@@ -12,6 +12,9 @@ body{
     width: 6%;
     padding: 5px 0px 0px 20px;
 }
+.dropdown-menu.show {
+    display: flex;
+}
 .div-nav img{
     width: 90px;
     height: 70px;
@@ -134,7 +137,7 @@ body{
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
-    background-image: url('../imagens/sala3/1.jpg');
+    background-image: url('../img/sala3/1.jpg');
 }
 .text-coworking{
     width: 45%;
@@ -178,7 +181,7 @@ body{
     background-size: contain;
     background-position: left;
     background-repeat: no-repeat;
-    background-image: url('../imagens/doutor_index.png');
+    background-image: url('../img/doutor_index.png');
 }
 .div-informacoes{
     width: 80%;
@@ -201,7 +204,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     justify-content: space-evenly;
-    background-image: url('../imagens/fundo.jpg');
+    background-image: url('../img/fundo.jpg');
 }
 .div-descontos > div{
     width: 35%;
