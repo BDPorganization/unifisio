@@ -46,5 +46,17 @@
 
             return $stmt->fetch();
         }
+
+        public function cadastro() {
+            $sql = "INSERT INTO medicos (especialidade, email, nome, senha) VALUES (:especialidade, :email, :nome, :senha)";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(":especialidade", $this->especialidade);
+            $stmt->bindParam(":email", $this->email);
+            $stmt->bindParam(":nome", $this->nome);
+            $stmt->bindParam(":senha", $this->senha);
+            $stmt->execute();
+
+            return $stmt->fetch();
+        }
     }
 ?>
