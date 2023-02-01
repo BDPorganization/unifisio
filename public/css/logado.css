@@ -1,0 +1,28 @@
+/*index*/
+.div-inicial{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    color:rgb(1, 5, 106);
+    background-color: #ffffff;
+}
+.div-inicial h1{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0px;
+}
+.div-inicial div{
+    width: 80%;
+    font-size: 20px;
+    padding: 40px 0px;
+}
+
+.div-inicial div img{
+    width: 500px;
+    height: 300px;
+}
+.orientacoes p{
+    font-size: 18px;
+}
