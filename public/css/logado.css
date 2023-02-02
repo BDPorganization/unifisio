@@ -1,3 +1,82 @@
+/*padrão*/
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;;
+}
+
+/*navbar*/
+.div-nav{
+    width: 6%;
+    padding: 5px 0px 0px 20px;
+}
+.dropdown-menu.show {
+    display: flex;
+}
+.div-nav img{
+    width: 90px;
+    height: 70px;
+    margin-left: 50px;
+    margin-bottom: 5px;
+}
+.button img{
+    width: 80px;
+    height: 60px;
+    margin-left: 50px;
+}
+.navbar{
+    --bs-navbar-padding-y: 0rem;
+}
+.navbar-nav{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+.navbar-nav a{
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 10px;
+}
+.navbar-nav a:hover {
+    text-decoration: none;
+    color: #01056a;
+    opacity: 0.8;
+    font-size: 18px;
+}
+.navbar{
+    border-bottom: 0.16em solid #01056a;
+    font-weight: 400;
+}
+.navbar a{
+    font-weight: 400;
+}
+.navbar-toggler{
+    margin-left: 80px;
+    margin-right: 380px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+.btn-login{
+    border: 1px solid #01056a;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: 60px;
+    width: 150px;
+}
+.btn-login:hover{
+    border: 1px solid #01056a;
+}
+.btn-login:focus{
+    border: 1px solid #01056a;
+}
+
 /*index*/
 .div-inicial{
     width: 100%;
@@ -13,16 +92,32 @@
     text-align: center;
     padding: 30px 0px;
 }
-.div-inicial div{
-    width: 80%;
-    font-size: 20px;
-    padding: 40px 0px;
+.div-inicial h4{
+    width: 100%;
+    text-align: start;
+    padding: 5px 0px;
 }
-
 .div-inicial div img{
     width: 500px;
     height: 300px;
 }
-.orientacoes p{
+.sala-alugada{
+    border: 2px solid red;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.sala-alugada div{
+    width: 40%;
+    text-align: start;
+    border: 2px solid red;
+}
+.orientacoes{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
     font-size: 18px;
+    padding: 40px 0px;
 }
