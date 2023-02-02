@@ -102,16 +102,36 @@ body{
     height: 300px;
 }
 .sala-alugada{
-    border: 2px solid red;
     width: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.sala-alugada div{
-    width: 40%;
+.sala-alugada > div{
+    width: 50%;
     text-align: start;
-    border: 2px solid red;
+}
+.horarios-alugados{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin-top: 10px;
+}
+.sala-alugada p{
+    padding: 10px 20px;
+    margin: 5px;
+    text-align: center;
+    background-color: rgb(224, 224, 224);
+}
+.sala-alugada p:hover{
+    padding: 10px 20px;
+    margin: 5px;
+    text-align: start;
+    background-color: rgb(235, 235, 235);
+}
+.sala-alugada li{
+    font-size: 16px;
+    color: rgb(187, 187, 187);
 }
 .orientacoes{
     width: 80%;

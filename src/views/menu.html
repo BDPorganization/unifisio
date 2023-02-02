@@ -13,6 +13,28 @@
     <!-- Css externo -->
     <link rel="stylesheet" href="../../public/css/logado.css">
     <title>Minhas locações - Unifisio</title>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+    <script src='fullcalendar/dist/index.global.js'></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar')
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            timeZone: 'UTF-8',
+            events: [
+                {
+                id: 'a',
+                title: '4 disponiveis',
+                start: '2023-02-02'
+                }
+            ]
+        })
+        calendar.render();
+        console.log(calendar.getEvents());
+      })
+
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-white">
@@ -69,28 +91,34 @@
    
     <section>
         <div class="div-inicial">
-            <h1>Bem vindo!</h1>
             <div class="sala-alugada">
                 <div>
                     <h4>Você reservou o consultório 1</h4>
                     <img src='../../public/img/sala3/1.jpg' alt=''>
                 </div>
                 <div>
-                    <a href="cancelar.php" class="btn btn-primary"><i class="fa-solid fa-ban"></i> Cancelar aluguel</a>
-                    <a href="cancelar.php" class="btn btn-danger"><i class="fa-solid fa-file-pdf"></i> Dowload Contrato</a>
+                    <h4>Horários reservados</h4>
+                    <div class="horarios-alugados">
+                        <p>16:00</p>
+                        <p>17:00</p>
+                        <p>18:00</p>
+                    </div>
+                    <div>
+                        <h5 class="text-danger mt-3">Orientações</h5>
+                        <ul class="mb-5">
+                            <li>Chegue dez minutos antes que seu paciente para assegurar a limpeza do local.</li>
+                            <li>Ao sair, garanta que a sala foi entregue nas mesmas condições que você recebeu.</li>
+                            <li>Você será responsabilizado caso algum material seja danificado por você, então caso encontre <br>um objeto com mal funcionamento, tire uma foto e anexe na seção correta desse site.</li>
+                        </ul>
+                        
+                    </div>
+                    <a href="cancelar.php" class="btn btn-danger"><i class="fa-solid fa-ban"></i> Cancelar aluguel</a>
+                    <a href="cancelar.php" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> Dowload Contrato</a>
                 </div>
-            </div>
-            <div class="orientacoes">
-                <h4>Orientações</h4>
-                <ul>
-                    <li>Chegue dez minutos antes que seu paciente para assegurar a limpeza do local.</li>
-                    <li>Ao sair, garanta que a sala foi entregue nas mesmas condições que você recebeu.</li>
-                    <li>Você será responsabilizado caso algum material seja danificado por você, <br> então caso encontre um objeto com mal funcionamento, tire uma foto e anexe na seção correta desse site.</li>
-                </ul>
-                
             </div>
         </div>
     </section>
+    <div id='calendar' class="w-50 h-50"></div>
 
     <!-- Script FontAwesome -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
