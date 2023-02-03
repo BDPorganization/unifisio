@@ -141,3 +141,33 @@ body{
     font-size: 18px;
     padding: 40px 0px;
 }
+
+
+.fc .fc-daygrid-day-top {
+    display: flex;
+    flex-direction: row-reverse;
+    border: 0.2px solid #4f4f4f;
+    margin: auto;
+    text-align: center;
+    border-radius: 190px;
+    width: 32px;
+}
+.fc-theme-standard td, .fc-theme-standard th {
+    border: 0px solid var(--fc-border-color) !important;
+    height: 20px;
+}
+.externo{
+    width: 450px;
+    height: 550px;
+    overflow: hidden;
+}
+a {
+    color: #01056a;
+    text-decoration: none;
+}
+.fc .fc-toolbar-title {
+    font-size: 1.5em;
+    margin: 0;
+    color:rgb(1, 5, 106);
+    font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;
+}
