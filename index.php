@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
+    <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
@@ -170,7 +171,21 @@
                                 <button type="submit" class="btn btn-light w-100 mt-2" name="btn-login">Entrar</button>
                             </form>
                             <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="btn btn-primary w-100 mt-3">Cadastrar-me</a>
-
+                            <div class="googleAuth"> 
+                                <div id="g_id_onload"
+                                    data-client_id="245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com"
+                                    data-login_uri="http://localhost/src/services/redirect.php"
+                                    data-context="use">
+                                </div>  
+                                <div class="g_id_signin"
+                                    data-type="standard"
+                                    data-size="large"
+                                    data-theme="outline"
+                                    data-text="sign_in_with"
+                                    data-shape="rectangular"
+                                    data-logo_alignment="left">
+                                </div>
+                            </div>
                             <button type="button" class="btn btn-danger w-100 mt-3"><i style="padding-right: 30px" class="fa-brands fa-google"></i>Acesse com Google</button>
                         </div>
                         <div style="width: 50%; height: 100%;">
