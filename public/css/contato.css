@@ -1,0 +1,30 @@
+@import '../css/style.css';
+
+.div-contato{width: 100%;height: 90vh;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
+.div-contato-interna{width: 90%;height: 70vh;display: flex;flex-wrap: wrap;align-items: center;justify-content: space-around;box-shadow:  0.2em 0.2em 1em 1em rgb(241, 241, 241);}
+.div-contato-interna div{width: 50%; color:rgb(200, 200, 200);font-size: 20px;font-family: nunito;}
+.img-contato img{width: 60%;height: 60%;}
+.div-contato-interna i{color:#009de0;padding-right: 5px;}
+.div-contato-interna a{color:rgb(200, 200, 200);text-decoration: none;}
+.imagem-logo-contato{width: 100%;height: 10vh;text-align: center;}
+.imagem-logo-contato img{width: 20%;}
+.div-links-contato{padding-left: 100px;}
+.border-img{border-right: 1px solid rgb(216, 216, 216);}
+
+@media screen and (min-width: 600px) and (max-width: 980px) {
+	.div-contato-interna div{width: 49%; font-size: 18px;}
+    .div-contato-interna{height: 65vh; justify-content: center;}
+    .imagem-logo-contato img{width: 50%;}
+    .div-links-contato{padding-left: 20px;}
+    .img-contato img{width: 100%;height: 100%; padding-left: 20px;}
+    .border-img{border-right: none}
+}
+
+@media screen and (max-width: 600px) {
+    .div-contato-interna div{width: 60%; font-size: 14px;}
+    .div-contato-interna{height: 65vh; justify-content: center;}
+    .imagem-logo-contato img{width: 40%;}
+    .div-links-contato{padding-left: 0px;}
+    .img-contato img{width: 100%;height: 100%;}
+    .border-img{border-right: none}
+}

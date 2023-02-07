@@ -1,0 +1,28 @@
+@import '../css/style.css';
+@import '../css/logado.css';
+.div-consultorios{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.div-inicial-consultorios{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 100px 0px;
+    justify-content: space-between;
+}
+.div-inicial-consultorios > div{
+    width: 50%;
+    text-align: center;
+}
+.div-inicial-consultorios div img{
+    width: 80%;
+    height: 90%;
+    margin: 5% 0px;
+}
+.formulario-sala{
+    width: 100%;
+}

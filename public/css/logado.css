@@ -157,8 +157,9 @@ body{
     height: 20px;
 }
 .externo{
-    width: 450px;
-    height: 550px;
+    width: 60%;
+    height: 500px;
+    margin: auto;
     overflow: hidden;
 }
 a {
@@ -171,3 +172,4 @@ a {
     color:rgb(1, 5, 106);
     font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;
 }
+

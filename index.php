@@ -1,76 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
-    <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async defer></script>
-    <!-- Nunito -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
-    <!-- Boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <?php include '/src/components/importLinks.php'; ?>  
+
     <!-- Css externo -->
     <link rel="stylesheet" href="../public/css/style.css">
     <title>Home - Unifisio</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-white">
-        <div class="navbar-brand div-nav">
-            <img src="../public/img/logoSimples_png.png" alt="LOGO_UNIFISIO">
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
-            <i class="fa-solid fa-bars-staggered"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="barraNavegacao">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-            <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Salas
-                    </a>
-                    <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
-                        <div>
-                            <a class="dropdown-item" href="#">
-                                <img src="./public/img/sala3/1.jpg"  width="100px" alt="consultório 1">
-                                <p>Consultório 1</p>
-                                <p style="font-size: 12px; width: 30%;">
-                                    Ideal para você que busca otimização <br> de pequenos espaços e salas aconchegantes.
-                                </p>
-                            </a>
-                        </div>
-                        <div>
-                            <a class="dropdown-item" href="#">
-                                <img src="./public/img/sala2/1.jpg"  width="100px" alt="consultório 1">
-                                <p>Consultório 2</p>
-                                <p style="font-size: 12px; width: 30%;">
-                                    Conte com mais espaço e área de circulação,<br> ideal para fazer medições e pesagens.
-                                </p>
-                            </a>
-                        </div>
-                        <div>
-                            <a class="dropdown-item"href="#">
-                                <img src="./public/img/sala1/imagem1.jpg"  width="100px" alt="consultório 1">
-                                <p>Studio de Pilates</p>
-                                <p style="font-size: 12px; width: 30%;">
-                                    Encontre um studio com ótimos equipamentos <br> para usar com até três pacientes simultâneos
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Especialidades</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Contato</a>
-                </li>
-            </ul>
-        </div>
-        <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
-            <i class="fa fa-user"></i> Login
-        </a>
-    </nav>
+    <?php include '/src/components/navindex.php'; ?>  
 
     <section>
 

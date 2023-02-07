@@ -48,7 +48,7 @@ body{
     font-size: 18px;
 }
 .navbar{
-    border-bottom: 0.16em solid #01056a;
+    border-bottom: 0.5px solid rgb(200, 200, 200);
     font-weight: 400;
 }
 .navbar a{
@@ -267,12 +267,60 @@ body{
 }
 
 
-
-
-
-
-
-
+/*DIV ESPECIALIDADES*/
+.div-inicial-especialidades{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+.div-inicial-especialidades h2{
+    width: 100%;
+    color: #01056a;
+}
+li{
+    list-style-type: none;
+}
+.div-especialidades, .div-cartoes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.div-especialidades h2{
+    width: 100%;
+    margin: 70px 0px;
+    font-size: 36px;
+    text-align: center;
+}
+.lista-especialidades{
+    width: 25%;
+    text-align: center;
+    font-size: 26px;
+    color: #4f4f4f;
+}
+.lista-especialidades i{
+    font-size: 20px;
+    color: #01056a;
+}
+.div-cartoes h2{
+    width: 100%;
+    padding-top: 150px;
+    font-size: 36px;
+    text-align: center;
+}
+.div-cartoes img{
+    width: 250px; 
+    height: 150px;
+    margin: 40px;
+}
+.div-cartoes div{
+    width: 80%;
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-evenly; 
+    padding: 100px;
+}
 
 
 
