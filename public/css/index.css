@@ -1,0 +1,26 @@
+@import url('../css/style.css');
+
+.pagina-inicial{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.pagina-inicial > h1{
+    color: #009de0;
+    font-weight: 700;
+    font-size: 48px;
+}
+.pagina-inicial > div{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.imagem-shopping{
+    width: 20%;
+    height: 20%;
+    margin: 20px 0px;
+}
