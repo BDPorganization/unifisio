@@ -2,6 +2,7 @@
 
 .pagina-inicial{
     width: 100%;
+    padding-bottom: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,4 +24,31 @@
     width: 20%;
     height: 20%;
     margin: 20px 0px;
+}
+.div-explicacao{
+    width: 100%;
+    padding: 50px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f3f3;
+}
+
+.div-explicacao  div{
+    width: 51%;
+    padding: 40px;
+    margin: 50px 0px;
+    background-color: #fff;
+}
+
+.div-explicacao h1{
+    font-weight: 700;
+    color: #f05e22;
+}
+
+.div-explicacao p{
+    text-align: justify;
+    font-weight: 500;
+    font-family: nunito;
 }

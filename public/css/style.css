@@ -110,7 +110,9 @@ body{
 }
 .h1{
     width: 100%;
-    color: #009de0;
+    color: #01056a;
+    
+    font-weight: 700;
     text-align: center;
     margin-bottom: 100px;
     text-shadow: rgb(30, 0, 255) 5em 5em 5em;
@@ -239,10 +241,33 @@ body{
     flex-wrap: wrap;
     text-align: start;
     width: 100%;
-    padding: 80px 0px;
-    color: #009de0;
+    padding: 100px 0px;
+    color: #01056a;
 }
-
+.div-localizacao-titulo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #01056a;
+    margin-bottom: 50px;
+}
+.div-localizacao-titulo h1{
+    font-weight: 700;
+    width: 30%;
+}
+.div-localizacao-titulo button{
+    padding: 20px 35px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #01056a;
+}
+.div-localizacao-titulo > div{
+    width: 40%;
+    text-align: end;
+}
 .div-localizacao p{
     font-size: 18px;
     margin: 12px 0px;
@@ -251,7 +276,7 @@ body{
 .div-localizacao p i{
     font-size: 20px;
     margin: 12px 0px;
-    color:#009de0;
+    color:#01056a;
     margin-right: 10px;
 }
 
@@ -366,7 +391,7 @@ li{
 
 /*footer*/
 .footer{
-    background-color: #e3f1f9;
+    background-color: #f3f3f3;
     display: flex;
     justify-content: center;
     padding: 80px 0px 50px 0px;
