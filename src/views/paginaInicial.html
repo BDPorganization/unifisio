@@ -13,7 +13,7 @@
 
     <!-- Css externo -->
     <link rel="stylesheet" href="../../public/css/index.css">
-    <title>Contato - Unifisio</title>
+    <title>Home - Unifisio</title>
 </head>
 <body>
     
@@ -79,10 +79,11 @@
     <section>
         <div class="pagina-inicial">
             <div>
-                <img class="imagem-shopping" src="../../public/img/logo_png.png" alt="">
+                <img class="imagem-logo-index" src="../../public/img/logo_png.png" alt="">
             </div>
-            <div style="height: 75vh;">
-                <div id="carouselExampleSlidesOnly" class="carousel slide h-100" data-bs-ride="carousel" style="width: 74%;">
+            <div class="carrosel-index">
+                <div id="carouselExampleSlidesOnly" class="carousel slide h-100" data-bs-ride="carousel" 
+                style="width: 74%;">
                     <div class="carousel-inner h-100">
                         <div class="carousel-item active h-100">
                             <img src="../../public/img/shopping.jpg" class="d-block w-100 h-100" alt="...">
@@ -95,31 +96,54 @@
         <div class="div-explicacao">
             <div>
                 <h1>01 - O que é Coworking na área da saúde?</h1>
-                <p>É um serviço onde você alugará um consultório médico apenas por algumas horas quando tiver pacientes agendados, dessa forma, você não precisa pagar uma mensalidade inteira para atender algumas vezes. Seu consultório já será limpo e climatizado e não precisar montar um escritório do zero.
+                <p>É um serviço onde você alugará um consultório médico apenas por algumas horas quando tiver pacientes agendados, dessa forma, você não precisa pagar uma mensalidade inteira para atender algumas vezes. Seu consultório já será limpo e climatizado e não precisará montar um ambiente do zero.
                 </p>
             </div>
             <div>
                 <h1>02 - Tenho perfil para usar coworking?</h1>
-                <p>Se você precisa de um bom consultório, por um valor acessível e sem lidar com preocupações externas, o coworking Unifíso é ideal pra você. Além disso, vale ressaltar que os consultórios e studios são para profissionais voltados para a área da saúde, que não utilizem equipamentos de grande porte. </p>
+                <p>Se você precisa de um bom consultório, por um valor acessível e sem lidar com preocupações externas, o coworking Unifíso é ideal pra você. Além disso, vale ressaltar que os consultórios e studios são para profissionais voltados para a área da saúde, que não utilizam equipamentos de grande porte. </p>
 
             </div>
             <div>
                 <h1>03 - E se não houver muitos pacientes?</h1>
-                <p>Não se preocupe! Na Unifísio você pode alugar um ótimo consultório por apenas uma ou duas horas e assim suprir suas necessidades de atendimento, pagando apenas pelas horas que foram utilizadas.</p>
+                <p>Não se preocupe! Na Unifísio você pode alugar um ótimo consultório por apenas uma ou duas horas e assim suprir suas necessidades de atendimento, pagando apenas pelas horas que foram utilizadas, economizando gastos com refrigeração, iluminação e limpeza.</p>
             </div>
         </div>
 
         <div class="div-localizacao">
             <div class="div-localizacao-titulo">
                 <h1>Localização - Unifísio</h1>
-                <div><button>Agendar visita</button></div>
+                <div><button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Agendar visita</button></div>
             </div>
+
+            <div class="collapse w-100" id="collapseExample" style="justify-content: center; margin-bottom: 50px;">
+                <div class="card card-body m-auto" style="width: 60%;">
+                    <form>
+                        <div class="row">
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">Nome completo: </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">Celular: </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Mensagem: </label>
+                            <textarea type="password" class="form-control" id="exampleInputPassword1"></textarea>
+                        </div>
+                        <p class="text-danger">As visitas são agendadas sempre aos sábados de manhã. Entraremos em contato para confirmar a data e o horário.</p>
+                        <button type="submit" class="btn btn-primary ml-auto mr-0">Enviar pedido</button>
+                    </form>
+                </div>
+            </div>
+
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.5001640255646!2d-40.29536494919331!3d-20.279554286342226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb8199e4c8c17db%3A0xee5b59535434cd97!2sUnifisio%20Sa%C3%BAde%20%26%20Bem%20Estar!5e0!3m2!1spt-BR!2sbr!4v1671653564524!5m2!1spt-BR!2sbr" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-            <div>
+            <div class="localizacao-texto">
                 <h1 style="font-weight: 700;">Estamos em Vitória.</h1>
                 <div>
-                    
                     <p><i class="fa-solid fa-store"></i> Shopping Victoria Mall - Mata da Praia.</p>
                     <p><i class="fa-solid fa-car"></i> Estacionamento gratuito para você e seus pacientes.</p>
                     <p><i class="fa-solid fa-person-walking"></i> Local movimentado e com seguranças 24hrs.</p>

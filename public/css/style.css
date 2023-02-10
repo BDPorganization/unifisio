@@ -156,13 +156,6 @@ body{
 .text-coworking p{
     font-size: 17px;
 }
-.div-coworking div button{
-    font-size: 18px;
-    margin-top: 15px;
-    font-weight: 600;
-    margin-left: 50%;
-    padding: 5px 20px;
-}
 .div-informacoes-empresa{
     height: 70vh;
     width: 100%;
@@ -234,51 +227,7 @@ body{
     font-weight: 600;
 }
 
-.div-localizacao{
-    background-color: #fff;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    text-align: start;
-    width: 100%;
-    padding: 100px 0px;
-    color: #01056a;
-}
-.div-localizacao-titulo{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    color: #01056a;
-    margin-bottom: 50px;
-}
-.div-localizacao-titulo h1{
-    font-weight: 700;
-    width: 30%;
-}
-.div-localizacao-titulo button{
-    padding: 20px 35px;
-    border: none;
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
-    background-color: #01056a;
-}
-.div-localizacao-titulo > div{
-    width: 40%;
-    text-align: end;
-}
-.div-localizacao p{
-    font-size: 18px;
-    margin: 12px 0px;
-    color:rgb(79, 79, 79, 0.7);
-}
-.div-localizacao p i{
-    font-size: 20px;
-    margin: 12px 0px;
-    color:#01056a;
-    margin-right: 10px;
-}
+
 
 /*login*/
 .div-externa-login{
@@ -418,7 +367,7 @@ li{
     font-size: 12px;
 }
 .footer img{
-    width: 100px;
+    width: 150px;
     height: 100px;
 }
 

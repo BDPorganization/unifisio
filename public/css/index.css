@@ -1,54 +1,44 @@
 @import url('../css/style.css');
 
-.pagina-inicial{
-    width: 100%;
-    padding-bottom: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.pagina-inicial > h1{
-    color: #009de0;
-    font-weight: 700;
-    font-size: 48px;
-}
-.pagina-inicial > div{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-.imagem-shopping{
-    width: 20%;
-    height: 20%;
-    margin: 20px 0px;
-}
-.div-explicacao{
-    width: 100%;
-    padding: 50px 0px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    background-color: #f3f3f3;
+.pagina-inicial{ width: 100%;padding-bottom: 100px;display: flex;justify-content: center;align-items: center;flex-wrap: wrap;}
+.pagina-inicial > h1{color: #009de0;font-weight: 700;font-size: 48px;}
+.pagina-inicial > div{width: 100%;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
+.imagem-logo-index{width: 20%;height: 20%;margin: 20px 0px;}
+.div-explicacao{width: 100%;padding: 50px 0px;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;background-color: #f3f3f3;}
+.div-explicacao div{width: 60%;padding: 60px 80px;margin: 30px 0px;background-color: #fff;}
+.div-explicacao h1{font-weight: 700;color: #f05e22; font-size: 36px;}
+.div-explicacao p{text-align: justify;font-weight: 500;font-family: nunito;}
+.div-localizacao{background-color:#fff;display:flex;justify-content:space-evenly;flex-wrap:wrap;width:100%;padding:100px 0px;color:#01056a;}
+.div-localizacao-titulo{width: 100%;display: flex;justify-content: center;flex-wrap: wrap;color: #01056a;margin-bottom: 70px;}
+.div-localizacao-titulo h1{font-weight: 700;width: 30%;}
+.div-localizacao-titulo button{padding: 20px 35px;border: none;font-size: 18px;font-weight: 600;color: #fff;background-color: #01056a;}
+.div-localizacao-titulo > div{width: 40%;text-align: end;}
+.div-localizacao p{font-size: 18px;margin: 12px 0px;color:rgb(79, 79, 79, 0.7);}
+.div-localizacao p i{font-size: 20px;margin: 12px 0px;color:#01056a;margin-right: 10px;}
+.carrosel-index{width: 75%;}
+
+@media screen and (min-width: 600px) and (max-width: 1020px) {
+    .imagem-logo-index{width: 35%;height: 5%;margin: 20px 0px;}
+    .div-explicacao{padding: 10px 0px;}
+    .div-explicacao h1{font-weight: 700;font-size: 24px;}
+    .div-explicacao div{width: 90%;padding: 40px;margin: 30px 0px;}
+    .div-localizacao-titulo h1{font-weight: 700;width: 56%; margin: 0px 15px;}
+    .div-localizacao-titulo button{padding: 10px 25px;font-size: 16px;}
+    .div-localizacao-titulo > div{width: 35%;text-align: end;padding: 0px 15px;}
+    .carrosel-index{width: 85%;}
+    iframe{margin: 0px 20px 20px 20px;}
 }
 
-.div-explicacao  div{
-    width: 51%;
-    padding: 40px;
-    margin: 50px 0px;
-    background-color: #fff;
-}
-
-.div-explicacao h1{
-    font-weight: 700;
-    color: #f05e22;
-}
-
-.div-explicacao p{
-    text-align: justify;
-    font-weight: 500;
-    font-family: nunito;
+@media screen and (max-width: 600px) {
+    .imagem-logo-index{width: 38%;height: 5%;margin: 20px 0px;}
+    .pagina-inicial{padding-bottom: 60px;}
+    .div-explicacao{background-color: #01056a;}
+    .div-explicacao h1{font-weight: 700;color: #f05e22;font-size: 22px;}
+    .div-explicacao div{width: 90%;padding: 40px;margin: 30px 0px;background-color: #fff;}
+    .div-localizacao-titulo h1{font-weight: 700;width: 56%; margin: 0px 15px; font-size: 26px;}
+    .div-localizacao-titulo button{padding: 10px 15px;font-size: 16px;}
+    .div-localizacao-titulo > div{width: 35%;text-align: end;padding: 0px 12px;}
+    .carrosel-index{width: 100%; height: 25vh;}
+    .localizacao-texto{margin-left: 20px;}
+    iframe{margin: 0px 20px 20px 20px;}
 }
