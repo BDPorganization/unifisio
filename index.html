@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
-    <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
     <!-- Css externo -->
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/index.css">
     <title>Home - Unifisio</title>
 </head>
 <body>
+    
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="navbar-brand div-nav">
             <img src="./public/img/logoSimples_png.png" alt="LOGO_UNIFISIO">
@@ -25,9 +26,18 @@
         </button>
         <div class="collapse navbar-collapse" id="barraNavegacao">
             <ul class="navbar-nav mb-2 mb-lg-0">
-            <div class="nav-item dropdown">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./src/views/coworking.html">Coworking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./src/views/contato.html">Contato</a>
+                </li>
+                <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Salas
+                        Salas
                     </a>
                     <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
                         <div>
@@ -59,12 +69,6 @@
                         </div>
                     </div>
                 </div>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Especialidades</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Contato</a>
-                </li>
             </ul>
         </div>
         <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
@@ -73,165 +77,96 @@
     </nav>
 
     <section>
+        <div class="pagina-inicial">
+            <div>
+                <img class="imagem-logo-index" src="./public/img/logo_png.png" alt="">
+            </div>
+            <div class="carrosel-index">
+                <div id="carouselExampleSlidesOnly" class="carousel slide h-100" data-bs-ride="carousel" 
+                style="width: 74%;">
+                    <div class="carousel-inner h-100">
+                        <div class="carousel-item active h-100">
+                            <img src="./public/img/shopping.jpg" class="d-block w-100 h-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <!-- #f3f3f3 -->
+        <div class="div-explicacao">
+            <div>
+                <h1>01 - O que é Coworking na área da saúde?</h1>
+                <p>É um serviço onde você alugará um consultório médico apenas por algumas horas quando tiver pacientes agendados, dessa forma, você não precisa pagar uma mensalidade inteira para atender algumas vezes. Seu consultório já será limpo e climatizado e não precisará montar um ambiente do zero.
+                </p>
+            </div>
+            <div>
+                <h1>02 - Tenho perfil para usar coworking?</h1>
+                <p>Se você precisa de um bom consultório, por um valor acessível e sem lidar com preocupações externas, o coworking Unifíso é ideal pra você. Além disso, vale ressaltar que os consultórios e studios são para profissionais voltados para a área da saúde, que não utilizam equipamentos de grande porte. </p>
 
-        <div class="div-inicial">
-            <h1>Experimente o Coworking dos seus sonhos!</h1>
-            <div>
-                <i class="fa-solid fa-graduation-cap"></i>
-                <p>Ideal para você que acabou de se formar na área da saúde</p>
             </div>
             <div>
-                <i class="fa-solid fa-hand-holding-dollar"></i>
-                <p>Você economiza dinheiro em relação ao aluguel mensal</p>
-            </div>
-            <div>
-                <i class="fa-solid fa-stethoscope"></i>
-                <p>Fique livre da preocupação de equipar um consultório</p>
-            </div>
-        </div>
-        
-        <div class="div-coworking">
-            <div>
-                <div class="text-coworking">
-                    <h3 class="mb-3">O que é Coworking?</h3>
-                    <p>Coworking consiste no aluguel de salas feito a partir da sua necessidade. Assim, é possível alugar salas organizadas, limpas e equipadas por algumas horas e principalmente, por um valor que cabe no seu bolso.</p>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="div-informacoes-empresa">
-            <div>
-                <div class="div-informacoes">
-                    <h1>Por que escolher a Unifísio?</h1>
-                    <h5>A Unifísio possui credibilidade e bastante tempo neste mercado. As salas são bem equipadas e localizadas, estando em ambientes seguros e de fácil acesso. Além disso, todas as reservas são asseguradas por contratos e documentos oficiais.</h5>
-                    <button type="button" class="btn btn-warning btn-lg">Saber mais <i class="fa-solid fa-arrow-right"></i></button>
-                </div>
+                <h1>03 - E se não houver muitos pacientes?</h1>
+                <p>Não se preocupe! Na Unifísio você pode alugar um ótimo consultório por apenas uma ou duas horas e assim suprir suas necessidades de atendimento, pagando apenas pelas horas que foram utilizadas, economizando gastos com refrigeração, iluminação e limpeza.</p>
             </div>
         </div>
 
-        <div class="div-descontos">
-            <div>
-                <h1 style="text-shadow: rgb(255, 255, 255) 0.1em 0.01em 0em;">Descontos e Benefícios</h1>
-                <h5>Na Unifísio você encontra descontos para te auxiliar a ingressar no mercado de trabalho com o máximo de flexibilidade em valores e horários, possibilitando que você e seus pacientes tenham todo o processo de atendimento personalizado</h5>
+        <div class="div-localizacao">
+            <div class="div-localizacao-titulo">
+                <h1>Localização - Unifísio</h1>
+                <div><button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Agendar visita</button></div>
             </div>
-            <div class="card-descontos">
-                <div>
-                    <h2>8% de Desconto</h2>
-                    <h5>Ao indicar um amigo.</h5>
-                    <i class="fa-regular fa-handshake"></i>
+
+            <div class="collapse w-100" id="collapseExample" style="justify-content: center; margin-bottom: 50px;">
+                <div class="card card-body m-auto" style="width: 60%;">
+                    <form>
+                        <div class="row">
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">Nome completo: </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">Celular: </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Mensagem: </label>
+                            <textarea type="password" class="form-control" id="exampleInputPassword1"></textarea>
+                        </div>
+                        <p class="text-danger">As visitas são agendadas sempre aos sábados de manhã. Entraremos em contato para confirmar a data e o horário.</p>
+                        <button type="submit" class="btn btn-primary ml-auto mr-0">Enviar pedido</button>
+                    </form>
                 </div>
-                <div style="height: 100%;">
-                    <h2>12% de Desconto</h2>
-                    <h5>Ao alugar 20hrs ou mais.</h5>
-                    <i class="fa-regular fa-clock"></i>
-                </div>
+            </div>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.5001640255646!2d-40.29536494919331!3d-20.279554286342226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb8199e4c8c17db%3A0xee5b59535434cd97!2sUnifisio%20Sa%C3%BAde%20%26%20Bem%20Estar!5e0!3m2!1spt-BR!2sbr!4v1671653564524!5m2!1spt-BR!2sbr" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <div class="localizacao-texto">
+                <h1 style="font-weight: 700;">Estamos em Vitória.</h1>
                 <div>
-                    <h2>5% de Desconto</h2>
-                    <h5>Ao seguir as redes sociais da Unifísio.</h5>
-                    <i class="fa-regular fa-heart"></i>
+                    <p><i class="fa-solid fa-store"></i> Shopping Victoria Mall - Mata da Praia.</p>
+                    <p><i class="fa-solid fa-car"></i> Estacionamento gratuito para você e seus pacientes.</p>
+                    <p><i class="fa-solid fa-person-walking"></i> Local movimentado e com seguranças 24hrs.</p>
+                    <p><i class="fa-solid fa-trash-arrow-up"></i>O prédio possui descarte de lixo hospitalar.</p>
+                    <p><i class="fa-solid fa-user-doctor"></i> Fique próximo de outros consultórios e profissionais.</p>
                 </div>
             </div>
         </div>
+        
     </section>
 
-        <!-- Modal -->
-        <div class="modal fade modal-lg" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content">
-                    <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
-                        <div style="width: 50%; padding: 15px;">
-                            <form method="POST" action="/loginDB">
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email: </label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="senha" class="form-label">Senha: </label>
-                                    <input type="password" class="form-control" id="senha" name="senha">
-                                </div>
-                                <button type="submit" class="btn btn-light w-100 mt-2" name="btn-login">Entrar</button>
-                            </form>
-                            <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="btn btn-primary w-100 mt-3">Cadastrar-me</a>
-                            <div class="googleAuth"> 
-                                <div id="g_id_onload"
-                                    data-client_id="245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com"
-                                    data-login_uri="http://localhost:3000/loginGoogle"
-                                    data-context="use">
-                                </div>
-                                <div class="g_id_signin"
-                                    data-type="standard"
-                                    data-size="large"
-                                    data-theme="outline"
-                                    data-text="sign_in_with"
-                                    data-shape="rectangular"
-                                    data-logo_alignment="left">
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-danger w-100 mt-3"><i style="padding-right: 30px" class="fa-brands fa-google"></i>Acesse com Google</button>
-                        </div>
-                        <div style="width: 50%; height: 100%;">
-                            <img style="width: 100%;height: 100%;" src="../public/img/sala3/1.jpg" alt="IMAGEM-SALA">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade modal-lg" id="cadastro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Faça seu cadastro</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form method="POST" action="/cadastro">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome completo: </label>
-                            <input type="text" class="form-control" id="nome" name="nome">
-                        </div>
-                        <div class="mb-3">
-                            <label for="especialidade" class="form-label">Especialidade: </label>
-                            <input type="text" class="form-control" id="especialidade" name="especialidade">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">E-mail: </label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-                        <div class="d-flex w-100 mb-3">
-                            <div style="width: 49%; margin-right: 2%;">
-                                <label for="senha" class="form-label">Senha: </label>
-                                <input type="password" class="form-control" id="senha" name="senha">
-                            </div>
-                            <div style="width: 49%">
-                                <label for="confirma" class="form-label">Confirme sua Senha: </label>
-                                <input type="password" class="form-control" id="confSenha" name="confSenha">
-                            </div>
-                        </div>
-                        <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
-                        </form>
-                        <div class="d-flex w-100 justify-content-end">
-                            <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
-                            <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
     <footer class="footer">
         <div class="div-footer">
             <div>
-                <img src="../../public/img/logo_png.png" alt="logo">
+                <img src="./public/img/logo_png.png" alt="logo">
             </div>
             
             <div class="icon-footer">
-                <a href="https://github.com/deborabuzatto" target="_blank">
-                    <i class="fa fa-github hover-opacity"></i>
+                <a href="" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
                 </a>
                 <a href="" target="_blank">
-                    <i class="fa fa-linkedin hover-opacity"></i>
+                    <i class="fa-brands fa-facebook"></i>
                 </a>
                 <a href="" target="_blank">
                     <i class="fa fa-whatsapp hover-opacity"></i>
@@ -253,6 +188,7 @@
 
     <!-- Script FontAwesome -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
+
     <!-- Script Boostrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
