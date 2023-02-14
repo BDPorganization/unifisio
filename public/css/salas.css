@@ -1,0 +1,26 @@
+@import './style.css';
+
+.div-salas-img1, .div-salas-inicio1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #D7CEC7;
+}
+.div-salas-img1 div{
+    width: 220px;
+    height: 200px;
+    margin: 5px;
+}
+.div-salas-img1 div img{
+    width: 100%;
+    height: 100%;
+}
+.div-salas-inicio1{
+    width: 100%;
+    height: 80vh;
+    background-image: url('../img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
