@@ -1,26 +1,136 @@
 @import './style.css';
-
-.div-salas-img1, .div-salas-inicio1{
+/* #D7CEC7 */
+.div-salas-img1{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    background-color: #D7CEC7;
 }
-.div-salas-img1 div{
-    width: 220px;
-    height: 200px;
-    margin: 5px;
+.div-salas-img1 h1{
+    margin: 50px 0px;
+    font-weight: 700;color: #f05e22; font-size: 36px;
 }
-.div-salas-img1 div img{
+.div-imagem-grande{
+    width: 35%;
+}
+.div-imagem-grande div img{
+    width: 700px;
+    height: 750px;
+}
+.div-imagens-pequenas{
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.div-imagens-pequenas div{
+    width:40%;
+    height:50%;
+    margin: 15px 15px 0px 10px;
+}
+.div-imagens-pequenas div img{
+    width: 320px;
+    height: 370px;
+}
+/* Div-salas*/
+.div-externa-card{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 70px;
+    background-color: #f3f3f3;
+}
+
+.div-externa-card h1{
+    margin: 50px 0px;
+    font-weight: 700;
+    color: #f05e22;
+    font-size: 36px;
+}
+.div-externa-card > div{
+    width: 60%;
+    padding: 30px 50px;
+    margin: 30px 0px;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.div-externa-card .carousel{
+    width: 30%;
+    height:100% !important;
+}
+.carousel-item{
+    width: 100%;
+    height: 100%;
+} 
+.div-externa-card .carousel-item img{
     width: 100%;
     height: 100%;
 }
-.div-salas-inicio1{
-    width: 100%;
-    height: 80vh;
-    background-image: url('../img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+.carousel-indicators {
+    top: 100%;
 }
+
+.texto-salas{   
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    width: 50%;
+}
+
+.texto-salas h3{   
+    font-weight: 700;
+    color: #01056a;
+}
+
+.botao-alugar{
+    align-self: end;
+    width: 18%;
+    padding-bottom: 20px;
+}
+.botao-alugar button{
+    padding: 10px 10px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #01056a;
+}
+
+
+
+.fc .fc-daygrid-day-top {
+    display: flex;
+    flex-direction: row-reverse;
+    border: 0.2px solid #4f4f4f;
+    margin: auto;
+    text-align: center;
+    border-radius: 190px;
+    width: 32px;
+}
+.fc-theme-standard td, .fc-theme-standard th {
+    border: 0px solid var(--fc-border-color) !important;
+    height: 20px;
+}
+.externo{
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+}
+a {
+    color: #01056a;
+    text-decoration: none;
+}
+.fc .fc-toolbar-title {
+    font-size: 1.5em;
+    margin: 0;
+    color:rgb(1, 5, 106);
+    font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;
+}
+

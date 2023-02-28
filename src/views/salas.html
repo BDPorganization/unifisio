@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
+    <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Nunito -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- Css externo -->
+    <link rel="stylesheet" href="../../public/css/salas.css">
+    <title>Home - Unifisio</title>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+    <script src='fullcalendar/dist/index.global.js'></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar')
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            timeZone: 'UTF-8'
+        })
+        calendar.render();
+        console.log(calendar.getEvents());
+      })
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white">
+        <div class="navbar-brand div-nav">
+            <img src="../../public/img/logoSimples_png.png" alt="LOGO_UNIFISIO">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="barraNavegacao">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../src/views/coworking.html">Coworking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../src/views/contato.html">Contato</a>
+                </li>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Salas
+                    </a>
+                    <div class="dropdown-menu p-2" aria-labelledby="navbarDropdown">
+                        <div>
+                            <a class="dropdown-item" href="#">
+                                <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg"  width="100px" alt="consultório 1">
+                                <p>Consultório 1</p>
+                                <p style="font-size: 12px; width: 30%;">
+                                    Ideal para você que busca otimização <br> de pequenos espaços e salas aconchegantes.
+                                </p>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="dropdown-item" href="#">
+                                <img src="../../public/img/sala2/1.jpg"  width="100px" alt="consultório 1">
+                                <p>Consultório 2</p>
+                                <p style="font-size: 12px; width: 30%;">
+                                    Conte com mais espaço e área de circulação,<br> ideal para fazer medições e pesagens.
+                                </p>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="dropdown-item"href="#">
+                                <img src="../../public/img/sala1/imagem1.jpg"  width="100px" alt="consultório 1">
+                                <p>Studio de Pilates</p>
+                                <p style="font-size: 12px; width: 30%;">
+                                    Encontre um studio com ótimos equipamentos <br> para usar com até três pacientes simultâneos
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="fa fa-user"></i> Login
+        </a>
+    </nav>
+
+    <section>
+        <div class="div-salas-img1">
+            <div class="w-100 text-center"><h1>Conheça nossas acomodações</h1></div>
+            <div class="div-imagem-grande">
+                <div>
+                    <img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 19.00.07.jpeg" alt="">
+                </div>
+            </div>
+            <div class="div-imagens-pequenas">
+                <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.37.jpeg" alt=""></div>
+                <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.31.jpeg" alt=""></div>
+                <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.30.jpeg" alt=""></div>
+                <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.30.jpeg" alt=""></div>
+            </div>
+        </div>
+
+        <div class="div-externa-card">
+            <h1 class="w-100 text-center">Consultórios e Studios</h1>
+            <div>
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
+                    </div>
+                    <div class="carousel-inner h-100">
+                      <div class="carousel-item active" data-bs-interval="2000">
+                        <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg" class="d-block">
+                      </div>
+                      <div class="carousel-item" data-bs-interval="2000">
+                        <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg" class="d-block">
+                        
+                      </div>
+                      <div class="carousel-item" data-bs-interval="2000">
+                        <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg" class="d-block ">
+                      </div>
+                    </div>
+                </div>
+                <div class="texto-salas">
+                    <h3 class="w-100">Consultório 1</h3>
+                    <div class="w-50">
+                        <p>Ar-condicionado</p>
+                        <p>Lixeira hospitalar</p>
+                        <p>Água limpa e corrente</p>
+                    </div>
+                    <div class="w-50">
+                        <p>Ar-condicionado</p>
+                        <p>Lixeira hospitalar</p>
+                        <p>Água limpa e corrente</p>
+                    </div>
+                </div>
+                <div class="botao-alugar" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <h1>R$ 27,90</h1>
+                    <button>Alugar Agora!</button>
+                </div>
+
+
+                <div class="collapse w-100 mt-5" id="collapseExample" style="justify-content: center; margin-bottom: 50px;">
+                    <div class="card card-body m-auto">
+                        <form>
+                            <div class="row h-75 mb-5">
+                                <h4 style="color: #01056a">Escolha a data</h4>
+                                <div class="mb-3 col-sm-6">
+                                    <div id='calendar' class="externo"></div>
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <label for="exampleInputEmail1" class="form-label">Selecione horários</label>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px; margin: 3px; width: 80px;">16:30</div>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <textarea type="password" class="form-control" placeholder="Atenção: Os horários só serão reservados após o pagamento, clique em avançar para garantir sua sala."></textarea>
+                            </div>
+                        </form>
+                            <div class="w-100 text-end" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                <button class="btn ml-auto mr-0 text-white" style="background-color: #01056a;">Avançar 
+                                    <i class="fa-solid fa-angles-right"></i>
+                                </button>
+                            </div>
+                            <div class="collapse w-100 mt-5" id="collapseExample2" style="justify-content: center; margin-bottom: 50px;">
+                                <form>
+                                <h4 style="color: #01056a">Preencha seus dados</h4>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-12">
+                                        <label for="nome" class="form-label">Nome completo:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">CPF:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">Data de nascimento:</label>
+                                        <input type="date" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">Endereço:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-2">
+                                        <label for="nome" class="form-label">n°:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label for="nome" class="form-label">CEP:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">CRN:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">Forma de pagamento:</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option value="1">Pix</option>
+                                            <option value="2">Cartão de crédito</option>
+                                            <option value="3">Boleto Bancário</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                </form>
+                                <div class="w-100 text-end">
+                                    <button class="btn ml-auto mr-0 text-white" style="background-color: #01056a;" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">Avançar 
+                                        <i class="fa-solid fa-angles-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="collapse w-100" id="collapseExample3" style="justify-content: center; margin-bottom: 50px;">
+                                <h4 style="color: #01056a" class="mb-3">Efetue o pagamento</h4>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-5 offset-2" style="color: #01056a; font-size: 20px;">
+                                        <div class="text-center w-50"><p>QR CODE <i class="fa-brands fa-pix"></i></p></div>
+                                        <img src="../../public/img/QRCODEPIX.jpg" alt="QRCODE PIX">
+                                    </div>
+                                    <div class="mb-3 col-sm-3" style="color: #01056a; font-size: 24px;">
+                                        <label for="copia-cola">Copia e cola</label>
+                                        <textarea type="text" class="form-control mt-4" style="height: 180px; width: 330px;">00020126330014br.gov.bcb.pix011118816014717520400005303986540527.905802BR5924DEBORA CRISTINA DE SOUZA6007VITORIA62070503***6304B7FE</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
+                    </div>
+                    <div class="carousel-inner h-100">
+                      <div class="carousel-item active" data-bs-interval="2000">
+                        <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg" class="d-block">
+                      </div>
+                      <div class="carousel-item" data-bs-interval="2000">
+                        <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg" class="d-block">
+                        
+                      </div>
+                      <div class="carousel-item" data-bs-interval="2000">
+                        <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg" class="d-block ">
+                      </div>
+                    </div>
+                </div>
+                <div class="texto-salas">
+                    <h3 class="w-100">Consultório 2</h3>
+                    <div class="w-50">
+                        <p>Ar-condicionado</p>
+                        <p>Lixeira hospitalar</p>
+                        <p>Água limpa e corrente</p>
+                    </div>
+                    <div class="w-50">
+                        <p>Ar-condicionado</p>
+                        <p>Lixeira hospitalar</p>
+                        <p>Água limpa e corrente</p>
+                    </div>
+                </div>
+                <div class="botao-alugar" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <h1>R$ 28,90</h1>
+                    <button>Alugar Agora!</button>
+                </div>
+                <div class="collapse w-100 mt-5" id="collapseExample" style="justify-content: center; margin-bottom: 50px;">
+                    <div class="card card-body m-auto">
+                        <form>
+                            <div class="row h-75 mb-5">
+                                <h4 style="color: #01056a">Escolha a data</h4>
+                                <div class="mb-3 col-sm-6">
+                                    <label for="exampleInputEmail1" class="form-label">Aqui haverá um calendário</label>
+                                    <input type="text" class="form-control h-100 mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <label for="exampleInputEmail1" class="form-label">Selecione horários</label>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px; margin: 3px; width: 80px;">16:30</div>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <textarea type="password" class="form-control" placeholder="Atenção: Os horários só serão reservados após o pagamento, clique em avançar para garantir sua sala."></textarea>
+                            </div>
+                        </form>
+                            <div class="w-100 text-end" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                <button class="btn ml-auto mr-0 text-white" style="background-color: #01056a;">Avançar 
+                                    <i class="fa-solid fa-angles-right"></i>
+                                </button>
+                            </div>
+                            <div class="collapse w-100 mt-5" id="collapseExample2" style="justify-content: center; margin-bottom: 50px;">
+                                <form>
+                                <h4 style="color: #01056a">Preencha seus dados</h4>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-12">
+                                        <label for="nome" class="form-label">Nome completo:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">CPF:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">Data de nascimento:</label>
+                                        <input type="date" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">Endereço:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-2">
+                                        <label for="nome" class="form-label">n°:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label for="nome" class="form-label">CEP:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">CRN:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">Forma de pagamento:</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option value="1">Pix</option>
+                                            <option value="2">Cartão de crédito</option>
+                                            <option value="3">Boleto Bancário</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                </form>
+                                <div class="w-100 text-end">
+                                    <button class="btn ml-auto mr-0 text-white" style="background-color: #01056a;" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">Avançar 
+                                        <i class="fa-solid fa-angles-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="collapse w-100" id="collapseExample3" style="justify-content: center; margin-bottom: 50px;">
+                                <h4 style="color: #01056a" class="mb-3">Efetue o pagamento</h4>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-5 offset-2" style="color: #01056a; font-size: 20px;">
+                                        <div class="text-center w-50"><p>QR CODE <i class="fa-brands fa-pix"></i></p></div>
+                                        <img src="../../public/img/QRCODEPIX.jpg" alt="QRCODE PIX">
+                                    </div>
+                                    <div class="mb-3 col-sm-3" style="color: #01056a; font-size: 24px;">
+                                        <label for="copia-cola">Copia e cola</label>
+                                        <textarea type="text" class="form-control mt-4" style="height: 180px; width: 330px;">00020126330014br.gov.bcb.pix011118816014717520400005303986540527.905802BR5924DEBORA CRISTINA DE SOUZA6007VITORIA62070503***6304B7FE</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
+                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
+                    </div>
+                    <div class="carousel-inner h-100">
+                      <div class="carousel-item active" data-bs-interval="2000">
+                        <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg" class="d-block">
+                      </div>
+                      <div class="carousel-item" data-bs-interval="2000">
+                        <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg" class="d-block">
+                        
+                      </div>
+                      <div class="carousel-item" data-bs-interval="2000">
+                        <img src="../../public/img/consultorio1/acbd4dba-9a9f-46b4-80da-c200aceb5d17.jpg" class="d-block ">
+                      </div>
+                    </div>
+                </div>
+                <div class="texto-salas">
+                    <h3 class="w-100">Pilates e fisioterapia</h3>
+                    <div class="w-50">
+                        <p>Ar-condicionado</p>
+                        <p>Lixeira hospitalar</p>
+                        <p>Água limpa e corrente</p>
+                    </div>
+                    <div class="w-50">
+                        <p>Ar-condicionado</p>
+                        <p>Lixeira hospitalar</p>
+                        <p>Água limpa e corrente</p>
+                    </div>
+                </div>
+                <div class="botao-alugar" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <h1>R$ 32,90</h1>
+                    <button>Alugar Agora!</button>
+                </div>
+                <div class="collapse w-100 mt-5" id="collapseExample" style="justify-content: center; margin-bottom: 50px;">
+                    <div class="card card-body m-auto">
+                        <form>
+                            <div class="row h-75 mb-5">
+                                <h4 style="color: #01056a">Escolha a data</h4>
+                                <div class="mb-3 col-sm-6">
+                                    <label for="exampleInputEmail1" class="form-label">Aqui haverá um calendário</label>
+                                    <input type="text" class="form-control h-100 mb-3" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <label for="exampleInputEmail1" class="form-label">Selecione horários</label>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px; margin: 3px; width: 80px;">16:30</div>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <textarea type="password" class="form-control" placeholder="Atenção: Os horários só serão reservados após o pagamento, clique em avançar para garantir sua sala."></textarea>
+                            </div>
+                        </form>
+                            <div class="w-100 text-end" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                <button class="btn ml-auto mr-0 text-white" style="background-color: #01056a;">Avançar 
+                                    <i class="fa-solid fa-angles-right"></i>
+                                </button>
+                            </div>
+                            <div class="collapse w-100 mt-5" id="collapseExample2" style="justify-content: center; margin-bottom: 50px;">
+                                <form>
+                                <h4 style="color: #01056a">Preencha seus dados</h4>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-12">
+                                        <label for="nome" class="form-label">Nome completo:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">CPF:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">Data de nascimento:</label>
+                                        <input type="date" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">Endereço:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-2">
+                                        <label for="nome" class="form-label">n°:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label for="nome" class="form-label">CEP:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">CRN:</label>
+                                        <input type="text" class="form-control" id="nome">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="nome" class="form-label">Forma de pagamento:</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option value="1">Pix</option>
+                                            <option value="2">Cartão de crédito</option>
+                                            <option value="3">Boleto Bancário</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                </form>
+                                <div class="w-100 text-end">
+                                    <button class="btn ml-auto mr-0 text-white" style="background-color: #01056a;" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">Avançar 
+                                        <i class="fa-solid fa-angles-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="collapse w-100" id="collapseExample3" style="justify-content: center; margin-bottom: 50px;">
+                                <h4 style="color: #01056a" class="mb-3">Efetue o pagamento</h4>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-5 offset-2" style="color: #01056a; font-size: 20px;">
+                                        <div class="text-center w-50"><p>QR CODE <i class="fa-brands fa-pix"></i></p></div>
+                                        <img src="../../public/img/QRCODEPIX.jpg" alt="QRCODE PIX">
+                                    </div>
+                                    <div class="mb-3 col-sm-3" style="color: #01056a; font-size: 24px;">
+                                        <label for="copia-cola">Copia e cola</label>
+                                        <textarea type="text" class="form-control mt-4" style="height: 180px; width: 330px;">00020126330014br.gov.bcb.pix011118816014717520400005303986540527.905802BR5924DEBORA CRISTINA DE SOUZA6007VITORIA62070503***6304B7FE</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="div-footer">
+            <div>
+                <img src="../../public/img/logo_png.png" alt="logo">
+            </div>
+            
+            <div class="icon-footer">
+                <a href="https://github.com/deborabuzatto" target="_blank">
+                    <i class="fa fa-github hover-opacity"></i>
+                </a>
+                <a href="" target="_blank">
+                    <i class="fa fa-linkedin hover-opacity"></i>
+                </a>
+                <a href="" target="_blank">
+                    <i class="fa fa-whatsapp hover-opacity"></i>
+                </a>
+                <a href="" target="_blank">
+                    <i class="fa fa-google hover-opacity"></i>
+                </a>
+            </div>
+            <div>
+                <a href="https://goo.gl/maps/6XHN11Q8mgpEdLSu7" target="_blank">
+                    Unifisio Saúde & Bem Estar<br>
+                    R. Aristóbulo Barbosa Leão 500<br>
+                    Shopping Victoria Mall - <br>
+                    Mata da Praia, Vitória - ES, 29060-010
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script FontAwesome -->
+    <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
+    <!-- Script Boostrap-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+</body>
+</html>
