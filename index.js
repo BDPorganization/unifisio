@@ -12,6 +12,11 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', routes);
+app.use(session({   
+    secret: '2c44-4d44-wppq38s',
+    resave: true,
+    saveUninitialized: true
+}));
 
 app.get('/', (req, res) => {
     res.render('index');

@@ -63,3 +63,15 @@ module.exports.cadastro = async (req, res) => {
         return err;   
     }
 };
+
+module.exports.verificaLogin = async (req, res) => {
+    try{
+        if(req.session.logado > 0){
+            let logado = true;
+        }else{
+            let logado = false;
+        }
+    }catch(err) {
+        return res.send('Ocorreu um erro na autenticação');
+    }
+};
