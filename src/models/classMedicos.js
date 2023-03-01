@@ -14,7 +14,6 @@ async function cadastro(cadastroUser){
     return await client.query(sql, values);
 }
 
-
 module.exports = { 
     login,
     cadastro
