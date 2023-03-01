@@ -8,7 +8,7 @@ module.exports.loginGoogle = async (req, res) => {
 
     (await googleAuth(token, client_id)).getUserData()
     .then(resultado => { 
-        return res.status(200).render('menu');
+        return res.status(200).render('salas');
     })
     .catch((err) => {
         return res.status(500).send('Erro ao logar com conta Google');
@@ -25,7 +25,8 @@ module.exports.login = async (req, res) => {
         dbMedicos.login(loginUser)
         .then(resultado => {
             if (resultado.rowCount > 0) {
-                return res.status(200).render('menu');
+                req.session.user = resultado.rows[0].pk_medicos;
+                return res.status(200).render('salas', { sessaoAtiva: req.session.user });
             }else {
                 return res.status(500).send('Usuário ou senha inválidos!');
             }
@@ -66,11 +67,10 @@ module.exports.cadastro = async (req, res) => {
 
 module.exports.verificaLogin = async (req, res) => {
     try{
-        if(req.session.logado > 0){
-            let logado = true;
-        }else{
-            let logado = false;
-        }
+        let logado = req.session.user > 0 ? true : false;
+        res.status(200).json({
+			autenticado: logado,
+		});
     }catch(err) {
         return res.send('Ocorreu um erro na autenticação');
     }

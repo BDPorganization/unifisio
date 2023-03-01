@@ -148,29 +148,28 @@
 
                 <div class="collapse w-100 mt-5" id="collapseExample" style="justify-content: center; margin-bottom: 50px;">
                     <div class="card card-body m-auto">
-                        <form>
-                            <div class="row h-75 mb-5">
-                                <h4 style="color: #01056a">Escolha a data</h4>
-                                <div class="mb-3 col-sm-6">
-                                    <div id='calendar' class="externo"></div>
-                                </div>
-                                <div class="mb-3 col-sm-6">
-                                    <label for="exampleInputEmail1" class="form-label">Selecione horários</label>
-                                    <div style="background-color: #f3f3f3; padding: 3px 15px; margin: 3px; width: 80px;">16:30</div>
-                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
-                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
-                                    <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
-                                </div>
+                        <div class="row h-75 mb-5">
+                            <h4 style="color: #01056a">Escolha a data</h4>
+                            <div class="mb-3 col-sm-6">
+                                <div id='calendar' class="externo"></div>
                             </div>
-                            <div class="mb-3">
-                                <textarea type="password" class="form-control" placeholder="Atenção: Os horários só serão reservados após o pagamento, clique em avançar para garantir sua sala."></textarea>
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">Selecione horários</label>
+                                <div style="background-color: #f3f3f3; padding: 3px 15px; margin: 3px; width: 80px;">16:30</div>
+                                <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                                <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
                             </div>
-                        </form>
-                            <div class="w-100 text-end" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-                                <button class="btn ml-auto mr-0 text-white" style="background-color: #01056a;">Avançar 
-                                    <i class="fa-solid fa-angles-right"></i>
-                                </button>
-                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <textarea type="password" class="form-control" placeholder="Atenção: Os horários só serão reservados após o pagamento, clique em avançar para garantir sua sala."></textarea>
+                        </div>
+                        <div class="w-100 text-end" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                            <button id="avancar1" class="btn ml-auto mr-0 text-white" style="background-color: #01056a;">Avançar 
+                                <i class="fa-solid fa-angles-right"></i>
+                            </button>
+                        </div>
+                            
                             <div class="collapse w-100 mt-5" id="collapseExample2" style="justify-content: center; margin-bottom: 50px;">
                                 <form>
                                 <h4 style="color: #01056a">Preencha seus dados</h4>
@@ -531,10 +530,13 @@
         </div>
     </footer>
 
+
     <!-- Script FontAwesome -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
     <!-- Script Boostrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+    <script src="/public/services/avancar1.js"></script>
 </body>
 </html>

@@ -3,7 +3,8 @@ const app = express();
 const port = process.env.port || 3000;
 const path = require('path');
 const bodyParser = require("body-parser");
-const routes = require('./src/routes/routes.js')
+const session = require('express-session');
+const routes = require('./src/routes/routes.js');
 
 app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, '/src/views'));
@@ -11,12 +12,12 @@ app.set('view engine', 'html');
 app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/', routes);
-app.use(session({   
-    secret: '2c44-4d44-wppq38s',
+app.use(session({
+    secret: '2C44-4D44-WppQ38S',
     resave: true,
     saveUninitialized: true
 }));
+app.use('/', routes);
 
 app.get('/', (req, res) => {
     res.render('index');
