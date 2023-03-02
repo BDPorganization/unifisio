@@ -1,4 +1,5 @@
 const botao_avancar = document.getElementById("avancar1");
+const modalLogin = document.getElementById('loginModal');
 
 botao_avancar.addEventListener("click", function() {
     fetch('/verificarLogin', {
@@ -8,13 +9,18 @@ botao_avancar.addEventListener("click", function() {
         return response.json();
     })
     .then((resultado) => {
-        console.log(resultado);
-        if (resultado === true) {
+        console.log(resultado['autenticado']);
+        if(resultado['autenticado'] === true){
             console.log('exibir div');
-            // exibir div
-        }else {
-            console.log('abre modal login');
-            // abre modal login
+        }else{
+            abreModal()
+            console.log('faça login');
         }
     })
 });
+
+function abreModal() {
+    modalLogin.modal({
+      show: true
+    });
+}
