@@ -8,7 +8,8 @@ module.exports.loginGoogle = async (req, res) => {
 
     (await googleAuth(token, client_id)).getUserData()
     .then(resultado => { 
-        return res.status(200).render('salas');
+        req.session.user = resultado.rows[0].pk_medicos;
+        return res.status(200).render('salas', { sessaoAtiva: req.session.user });
     })
     .catch((err) => {
         return res.status(500).send('Erro ao logar com conta Google');
@@ -73,5 +74,31 @@ module.exports.verificaLogin = async (req, res) => {
 		});
     }catch(err) {
         return res.send('Ocorreu um erro na autenticação');
+    }
+};
+
+module.exports.preencherDados = async (req, res) => {
+    try {
+        let dadosUser = {
+            nome: req.body.nome,
+            cpf: req.body.cpf,
+            data_nascimento: req.body.data_nascimento,
+            rua: req.body.rua,
+            numero: req.body.numero,
+            cep: req.body.cep,
+            codigo_medico: req.body.codigo_medico
+        }
+
+        dbMedicos.preencher_dados(dadosUser)
+        .then(() => {
+            return res.status(200).json({
+                statusDados: preenchido,
+            });
+        })
+        .catch((err) => {
+            return res.status(500).send(`Ocorreu um erro ao preencher dados do usuário, ${err}`);
+        });
+    }catch(err) {
+        return err;   
     }
 };

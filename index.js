@@ -20,7 +20,7 @@ app.use(session({
 app.use('/', routes);
 
 app.get('/', (req, res) => {
-    res.render('salas');
+    res.render('teste');
 });
 
 app.listen(port, (req, res) => {

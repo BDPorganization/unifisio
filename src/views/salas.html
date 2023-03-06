@@ -164,13 +164,13 @@
                         <div class="mb-3">
                             <textarea type="password" class="form-control" placeholder="Atenção: Os horários só serão reservados após o pagamento, clique em avançar para garantir sua sala."></textarea>
                         </div>
-                        <div class="w-100 text-end" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                        <div class="w-100 text-end" aria-controls="collapseExample2">
                             <button id="avancar1" class="btn ml-auto mr-0 text-white" style="background-color: #01056a;">Avançar 
                                 <i class="fa-solid fa-angles-right"></i>
                             </button>
                         </div>
                             
-                            <div class="collapse w-100 mt-5" id="collapseExample2" style="justify-content: center; margin-bottom: 50px;">
+                            <div class="collapse w-100 mt-5" id="collapseExample2" style="display:none; justify-content: center; margin-bottom: 50px;">
                                 <form>
                                 <h4 style="color: #01056a">Preencha seus dados</h4>
                                 <div class="row">
@@ -431,52 +431,54 @@
                                 </button>
                             </div>
                             <div class="collapse w-100 mt-5" id="collapseExample2" style="justify-content: center; margin-bottom: 50px;">
-                                <form>
-                                <h4 style="color: #01056a">Preencha seus dados</h4>
-                                <div class="row">
-                                    <div class="mb-3 col-sm-12">
-                                        <label for="nome" class="form-label">Nome completo:</label>
-                                        <input type="text" class="form-control" id="nome">
+                                <form method="POST" action="/dadosPessoais">
+                                    <h4 style="color: #01056a">Preencha seus dados</h4>
+                                    <div class="row">
+                                        <div class="mb-3 col-sm-12">
+                                            <label for="nome" class="form-label">Nome completo:</label>
+                                            <input type="text" class="form-control" id="nome">
+                                        </div>
+                                        <div class="mb-3 col-sm-6">
+                                            <label for="nome" class="form-label">CPF:</label>
+                                            <input type="text" class="form-control" id="cpf">
+                                        </div>
+                                        <div class="mb-3 col-sm-6">
+                                            <label for="nome" class="form-label">Data de nascimento:</label>
+                                            <input type="date" class="form-control" id="data_nascimento">
+                                        </div>
+                                        <div class="mb-3 col-sm-6">
+                                            <label for="nome" class="form-label">Endereço:</label>
+                                            <input type="text" class="form-control" id="endereco">
+                                        </div>
+                                        <div class="mb-3 col-sm-2">
+                                            <label for="nome" class="form-label">n°:</label>
+                                            <input type="text" class="form-control" id="numero">
+                                        </div>
+                                        <div class="mb-3 col-sm-4">
+                                            <label for="nome" class="form-label">CEP:</label>
+                                            <input type="text" class="form-control" id="cep">
+                                        </div>
+                                        <div class="mb-3 col-sm-6">
+                                            <label for="nome" class="form-label">CRN:</label>
+                                            <input type="text" class="form-control" id="crn">
+                                        </div>
+                                        <input type="hidden" id="codigo_medico">
+                                        <div class="mb-3 col-sm-6">
+                                            <label for="nome" class="form-label">Forma de pagamento:</label>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option value="1">Pix</option>
+                                                <option value="2">Cartão de crédito</option>
+                                                <option value="3">Boleto Bancário</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="nome" class="form-label">CPF:</label>
-                                        <input type="text" class="form-control" id="nome">
+                                    <div class="w-100 text-end">
+                                        <button type="submit" class="btn ml-auto mr-0 text-white" style="background-color: #01056a;">Avançar 
+                                            <i class="fa-solid fa-angles-right"></i>
+                                        </button>
                                     </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="nome" class="form-label">Data de nascimento:</label>
-                                        <input type="date" class="form-control" id="nome">
-                                    </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="nome" class="form-label">Endereço:</label>
-                                        <input type="text" class="form-control" id="nome">
-                                    </div>
-                                    <div class="mb-3 col-sm-2">
-                                        <label for="nome" class="form-label">n°:</label>
-                                        <input type="text" class="form-control" id="nome">
-                                    </div>
-                                    <div class="mb-3 col-sm-4">
-                                        <label for="nome" class="form-label">CEP:</label>
-                                        <input type="text" class="form-control" id="nome">
-                                    </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="nome" class="form-label">CRN:</label>
-                                        <input type="text" class="form-control" id="nome">
-                                    </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="nome" class="form-label">Forma de pagamento:</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option value="1">Pix</option>
-                                            <option value="2">Cartão de crédito</option>
-                                            <option value="3">Boleto Bancário</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 </form>
-                                <div class="w-100 text-end">
-                                    <button class="btn ml-auto mr-0 text-white" style="background-color: #01056a;" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">Avançar 
-                                        <i class="fa-solid fa-angles-right"></i>
-                                    </button>
-                                </div>
+                                
                             </div>
                             
                             <div class="collapse w-100" id="collapseExample3" style="justify-content: center; margin-bottom: 50px;">
