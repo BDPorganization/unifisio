@@ -5,8 +5,8 @@ const btnQuant = document.getElementById("quantity");
 btnCheck.addEventListener("click", ()=> {
   const dadosPagamento = {
     quantity: document.getElementById("quantity").value,
-    description: document.getElementById("product-description").innerHTML,
-    price: document.getElementById("unit-price").innerHTML
+    description: document.getElementById("product-description").value,
+    price: document.getElementById("unit-price").value
   };
 
   console.log(dadosPagamento)
