@@ -6,6 +6,7 @@
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    background-color: #f3f3f3;
 }
 .div-salas-img1 h1{
     margin: 50px 0px;
@@ -54,7 +55,7 @@
     width: 60%;
     padding: 30px 50px;
     margin: 30px 0px;
-    background-color: #fff;
+    background-color: #f3f3f3;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -133,4 +134,18 @@ a {
     color:rgb(1, 5, 106);
     font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;
 }
-
+.div-comodidades{
+    width: 80%; 
+    margin:auto; 
+    display: flex; 
+    justify-content: center;
+}
+.comodidades{
+    width: 170px;
+    height: 90px; 
+    margin: 20px; 
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
