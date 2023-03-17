@@ -70,6 +70,9 @@
     width: 90%;
     height:100% !important;
 }
+.carousel:hover{
+    filter: grayscale(100%);
+}
 .carousel-item{
     width: 100%;
     height: 100%;
