@@ -8,8 +8,8 @@ module.exports.loginGoogle = async (req, res) => {
 
     (await googleAuth(token, client_id)).getUserData()
     .then(resultado => { 
-        req.session.user = resultado.rows[0].pk_medicos;
-        return res.status(200).render('salas', { sessaoAtiva: req.session.user });
+        // req.session.user = resultado.rows[0].pk_medicos;
+        return res.status(200).render('salas');
     })
     .catch((err) => {
         return res.status(500).send('Erro ao logar com conta Google');
@@ -27,7 +27,7 @@ module.exports.login = async (req, res) => {
         .then(resultado => {
             if (resultado.rowCount > 0) {
                 req.session.user = resultado.rows[0].pk_medicos;
-                return res.status(200).render('salas', { sessaoAtiva: req.session.user });
+                return res.status(200).render('salas');
             }else {
                 return res.status(500).send('Usuário ou senha inválidos!');
             }

@@ -8,4 +8,20 @@ router.post("/cadastro", cadastro);
 router.post("/verificarLogin", verificaLogin);
 router.post("/pagamento", pagar);
 
+router.get("/index", (req, res) => {
+    res.render('index');
+});
+
+router.get("/coworking", (req, res) => {
+    res.render('coworking');
+});
+
+router.get("/salas", (req, res) => {
+    res.render('salas');
+});
+
+router.get("/contato", (req, res) => {
+    res.render('contato');
+});
+
 module.exports = router;
