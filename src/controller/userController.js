@@ -8,11 +8,27 @@ module.exports.loginGoogle = async (req, res) => {
 
     (await googleAuth(token, client_id)).getUserData()
     .then(resultado => { 
-        // req.session.user = resultado.rows[0].pk_medicos;
-        return res.status(200).render('salas');
+        let checaUser = {
+            nome: resultado.name,
+            email: resultado.email,
+        }
+
+        dbMedicos.checaMedico(checaUser)
+        .then((resultado) => {
+            if (resultado.rowCount > 0) {
+                req.session.user = resultado.rows[0].pk_medicos;
+                return res.status(200).render('coworking');
+            }else {
+                dbMedicos.cadastro(checaUser)
+                .then((resposta) => {
+                    req.session.user = resposta.rows[0].pk_medicos;
+                    return res.status(201).render('coworking');
+                })
+            }
+        })
     })
     .catch((err) => {
-        return res.status(500).send('Erro ao logar com conta Google');
+        return res.status(500).send(`Erro ao logar com conta Google, ${err}`);
     });
 };
 
@@ -27,7 +43,7 @@ module.exports.login = async (req, res) => {
         .then(resultado => {
             if (resultado.rowCount > 0) {
                 req.session.user = resultado.rows[0].pk_medicos;
-                return res.status(200).render('salas');
+                return res.status(200).render('coworking');
             }else {
                 return res.status(500).send('Usuário ou senha inválidos!');
             }
@@ -69,9 +85,17 @@ module.exports.cadastro = async (req, res) => {
 module.exports.verificaLogin = async (req, res) => {
     try{
         let logado = req.session.user > 0 ? true : false;
-        res.status(200).json({
-			autenticado: logado,
-		});
+        let checaPkUser = {
+            pk_medicos: req.session.user
+        }
+
+        dbMedicos.checaPkMedico(checaPkUser)
+        .then((resultado) => {
+            res.status(200).json({
+                autenticado: logado,
+                nome: resultado.rows[0].nome
+            });
+        })
     }catch(err) {
         return res.send('Ocorreu um erro na autenticação');
     }
@@ -79,7 +103,7 @@ module.exports.verificaLogin = async (req, res) => {
 
 module.exports.preencherDados = async (req, res) => {
     try {
-        let dadosUser = {
+        let      = {
             nome: req.body.nome,
             cpf: req.body.cpf,
             data_nascimento: req.body.data_nascimento,
@@ -92,7 +116,7 @@ module.exports.preencherDados = async (req, res) => {
         dbMedicos.preencher_dados(dadosUser)
         .then(() => {
             return res.status(200).json({
-                statusDados: preenchido,
+                statusDados: 'preenchido',
             });
         })
         .catch((err) => {
