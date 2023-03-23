@@ -189,44 +189,6 @@ body{
     margin-left: 70%;
     padding: 5px 20px;
 }
-.div-descontos{
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    color: #01056a;
-    padding: 30px 0px;
-    align-items: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    justify-content: space-evenly;
-    background-image: url('../img/fundo.jpg');
-}
-.div-descontos > div{
-    width: 35%;
-}
-.card-descontos{
-    width: 100%;
-    height: 60%;
-    display: flex;
-    align-items: end;
-    justify-content: space-evenly;
-}
-.card-descontos div { 
-    width: 30%;
-    height: 90%;
-    padding: 30px 10px;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    border-top: 4px solid #004d9b;
-}
-.card-descontos div h5{ 
-    padding: 16px 0px;
-}
-.card-descontos div i{ 
-    font-size: 48px;
-    font-weight: 600;
-}
-
 
 
 /*login*/
@@ -240,61 +202,6 @@ body{
     background-color: #ffffff;
 }
 
-
-/*DIV ESPECIALIDADES*/
-.div-inicial-especialidades{
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-}
-.div-inicial-especialidades h2{
-    width: 100%;
-    color: #01056a;
-}
-li{
-    list-style-type: none;
-}
-.div-especialidades, .div-cartoes{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.div-especialidades h2{
-    width: 100%;
-    margin: 70px 0px;
-    font-size: 36px;
-    text-align: center;
-}
-.lista-especialidades{
-    width: 25%;
-    text-align: center;
-    font-size: 26px;
-    color: #4f4f4f;
-}
-.lista-especialidades i{
-    font-size: 20px;
-    color: #01056a;
-}
-.div-cartoes h2{
-    width: 100%;
-    padding-top: 150px;
-    font-size: 36px;
-    text-align: center;
-}
-.div-cartoes img{
-    width: 250px; 
-    height: 150px;
-    margin: 40px;
-}
-.div-cartoes div{
-    width: 80%;
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: space-evenly; 
-    padding: 100px;
-}
 
 /*footer*/
 .footer{
@@ -342,4 +249,32 @@ li{
     font-size: 25px;
     letter-spacing: 20px;
     text-decoration: none;
+}
+
+.div-externa-duvidas{
+    text-align: center;
+}
+.div-externa-duvidas h1{
+    width: 100%;
+    margin: 50px 0px;
+    color:#01056a;
+}
+.div-externa-duvidas button{
+    margin: 20px 0px 5px 0px;
+    color:#01056a;
+    font-family: nunito;
+    font-size: 24px;
+}
+.accordion{
+    margin-bottom: 100px!important;
+    text-align: start;
+    font-family: nunito;
+    font-size: 18px;
+}
+.accordion-button:not(.collapsed) {
+    color:#01056a; 
+    background-color: transparent;
+}
+.accordion-button:focus {
+    box-shadow: none;
 }

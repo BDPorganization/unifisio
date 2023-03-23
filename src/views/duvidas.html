@@ -5,18 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
+    <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
     <!-- Css externo -->
-    <link rel="stylesheet" href="../../public/css/contato.css">
-    <title>Contato - Unifisio</title>
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <title>Home - Unifisio</title>
 </head>
 <body>
-    
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="navbar-brand div-nav">
             <img src="../../public/img/logoSimples_png.png" alt="LOGO_UNIFISIO">
@@ -37,33 +36,57 @@
         </a>
     </nav>
 
-    <section>
-        <div class="div-contato">
-            <div class="div-contato-interna">
-                <div class="img-contato text-center mt-3 border-img">
-                    <img src="../../public/img/foto_ambiente/externo_longe.jpeg">
+    <section class="div-externa-duvidas">
+        <h1>Dúvidas frequentes</h1>
+        <div class="accordion accordion-flush w-50 m-auto " id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        O que é Coworking?
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">Coworking consiste no aluguel de salas feito a partir da sua necessidade. Assim, é possível alugar salas organizadas, limpas e equipadas por algumas horas e principalmente, por um valor que cabe no seu bolso.</div>
                 </div>
-                <div class="div-links-contato">
-                    <p>
-                        <i class="fa-regular fa-envelope"></i>
-                        <a href="https://www.google.com/intl/pt-BR/gmail/about/">Email: unifisiocoworking@gmail.com</a>
-                    </p>
-                    <p>
-                        <i class="fa-solid fa-phone"></i>
-                        <a href="tel:21 3245-1379">Telefone: 21 3245-1379</a>
-                    </p>
-                    <p>
-                        <i class="fa-brands fa-instagram"></i> 
-                        <a href="https://www.instagram.com/unifisiovix/">Instagram: UnifisioVix</a>
-                    </p>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Por que escolher a Unifísio?
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">A Unifísio possui credibilidade e bastante tempo neste mercado. As salas são bem equipadas e localizadas, estando em ambientes seguros e de fácil acesso. Além disso, todas as reservas são asseguradas por contratos e documentos oficiais.</div>
                 </div>
-                <div class="imagem-logo-contato">
-                    <img src="../../public/img/logo_png.png">
+            </div>
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Quais beníficios em adotar o Coworking?
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Ideal para você que acabou de se formar na área da saúde, 
+                        você estará economizando dinheiro em relação ao aluguel mensal, ficando livre da preocupação de equipar todo um consultório.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Posso agendar uma visita antes de alugar?
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        Sim, você pode! Vá para a <a href="/index">página inicial</a> > clique em agendar visita
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="div-whatsapp">
-            <a style="color: #fff;font-size: 48px;" href="https://wa.me/5527999203727"><i class="fa-brands fa-whatsapp"></i></a></div>
     </section>
 
     <!-- Modal -->
@@ -150,10 +173,41 @@
             </div>
         </div>
     </div>
+        
+        
+    <footer class="footer">
+        <div class="div-footer">
+            <div>
+                <img src="../../public/img/logo_png.png" alt="logo">
+            </div>
+            
+            <div class="icon-footer">
+                <a href="https://github.com/deborabuzatto" target="_blank">
+                    <i class="fa fa-github hover-opacity"></i>
+                </a>
+                <a href="" target="_blank">
+                    <i class="fa fa-linkedin hover-opacity"></i>
+                </a>
+                <a href="" target="_blank">
+                    <i class="fa fa-whatsapp hover-opacity"></i>
+                </a>
+                <a href="" target="_blank">
+                    <i class="fa fa-google hover-opacity"></i>
+                </a>
+            </div>
+            <div>
+                <a href="https://goo.gl/maps/6XHN11Q8mgpEdLSu7" target="_blank">
+                    Unifisio Saúde & Bem Estar<br>
+                    R. Aristóbulo Barbosa Leão 500<br>
+                    Shopping Victoria Mall - <br>
+                    Mata da Praia, Vitória - ES, 29060-010
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Script FontAwesome -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
-
     <!-- Script Boostrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>

@@ -26,6 +26,8 @@
         const calendarEl = document.getElementById('calendar')
         const calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
+            locale: 'pt-br',
+            eventDisplay: 'background',
             timeZone: 'UTF-8'
         })
         calendar.render();
@@ -45,7 +47,7 @@
     <div class="collapse navbar-collapse" id="barraNavegacao">
         <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/coworking">Coworking</a></li> 
+            <li class="nav-item"><a class="nav-link" href="/duvidas">Duvidas</a></li> 
             <li class="nav-item"><a class="nav-link" href="/salas">Salas</a></li>
             <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
         </ul>
@@ -56,11 +58,12 @@
 </nav>
 
 <section>
+    <!-- <div id='calendar' class="externo"></div> -->
     <div class="div-salas-imagens">
         <h1 class="titulo-imagens">Conheça nossas acomodações</h1>
         <div class="div-interna-imagens">
             <div class="div-imagem-grande">
-                <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 19.00.07.jpeg" alt=""></div>
+                <div><img src="../../public/img/imagem-grande-unifísio.png" alt=""></div>
             </div>
             <div class="div-imagens-pequenas">
                 <div><img src="../../public/img/foto_ambiente/externo_longe.jpeg" alt=""></div>
@@ -71,80 +74,79 @@
         </div>
     </div>
     <div class="div-externa-card">
-        <h1 class="titulo-imagens">Salas Disponíveis</h1>
-        <div id="consultorio-1">
-            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
+        <div class="w-100">
+            <div class="card text-center">
+                <img src="../../public/img/foto_ambiente/externo_longe.jpeg" class="card-img-top" style="height: 300px;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Consultório 1</h5>
+                    <hr style="color: #a4a4a4">
+                    <div class="d-flex text-start mb-5 mt-5 info-salas-card">
+                        <div class="w-50">
+                            <p><i class="fa-solid fa-wifi"></i> Wi-fi</p>
+                            <p><i class="fa-solid fa-snowflake"></i> Ar-condionado</p>
+                            <p><i class="fa-solid fa-square-parking"></i> Estacionamento</p>
+                        </div>
+                        <div class="w-50">
+                            <p><i class="fa-solid fa-restroom"></i> Banheiro</p>
+                            <p><i class="fa-solid fa-faucet-drip"></i> Água corrente</p>
+                            <p><i class="fa-solid fa-trash"></i> Lixeira hospitalar</p>
+                        </div>
+                    </div>
+                    <a href="#" class="link-salas">Mais informações <i class="fa-solid fa-arrow-up"></i></a>
                 </div>
-                <div class="carousel-inner h-100">
-                    <div class="carousel-item active" data-bs-interval="5000"><img src="../../public/img/consultorio1/leito.jpg" class="d-block"></div>
-                    <div class="carousel-item" data-bs-interval="5000"><img src="../../public/img/consultorio1/leito.jpg" class="d-block"></div>
-                    <div class="carousel-item" data-bs-interval="5000"><img src="../../public/img/consultorio1/leito.jpg" class="d-block"></div>
+            </div>
+            <div class="card text-center" style="width: 24rem;">
+                <img src="../../public/img/consultorio1/f8569240-1c45-47a7-8942-1c87bbefcb01.jpg" class="card-img-top" style="height: 300px;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Consultório 2</h5>
+                    <hr style="color: #a4a4a4">
+                    <div class="d-flex text-start mb-5 mt-5 info-salas-card">
+                        <div class="w-50">
+                            <p><i class="fa-solid fa-wifi"></i> Wi-fi</p>
+                            <p><i class="fa-solid fa-snowflake"></i> Ar-condionado</p>
+                            <p><i class="fa-solid fa-square-parking"></i> Estacionamento</p>
+                        </div>
+                        <div class="w-50">
+                            <p><i class="fa-solid fa-restroom"></i> Banheiro</p>
+                            <p><i class="fa-solid fa-faucet-drip"></i> Água corrente</p>
+                            <p><i class="fa-solid fa-trash"></i> Lixeira hospitalar</p>
+                        </div>
+                    </div>
+                    <a href="#" class="link-salas">Mais informações <i class="fa-solid fa-arrow-up"></i></a>
                 </div>
-                <!-- </div>
+            </div>
+            <div class="card text-center" style="width: 24rem;">
+                <img src="../../public/img/consultorio3/3fb5322f-0fb6-4c2f-8700-da064bb12605.jpg" class="card-img-top" style="height: 300px;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Studio Pilates</h5>
+                    <hr style="color: #a4a4a4">
+                    <div class="d-flex text-start mb-5 mt-5 info-salas-card">
+                        <div class="w-50">
+                            <p><i class="fa-solid fa-wifi"></i> Wi-fi</p>
+                            <p><i class="fa-solid fa-snowflake"></i> Ar-condionado</p>
+                            <p><i class="fa-solid fa-square-parking"></i> Estacionamento</p>
+                        </div>
+                        <div class="w-50">
+                            <p><i class="fa-solid fa-dumbbell"></i> 100% Equipada</p>
+                            <p><i class="fa-solid fa-users"></i> Até 4 pacientes</p>
+                            <p><i class="fa-solid fa-flag"></i> Andar exclusivo</p>
+                        </div>
+                    </div>
+                    <a href="#" class="link-salas">Mais informações <i class="fa-solid fa-arrow-up"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- </div>
             <div class="botao-alugar" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 <h1>R$ 27,90</h1>
                 <button>Alugar Agora!</button>
-            </div> -->
-            </div>
-        </div>
-        <div id="consultorio-1">
-            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
-                </div>
-                <div class="carousel-inner h-100">
-                    <div class="carousel-item active" data-bs-interval="5000"><img src="../../public/img/consultorio1/leito.jpg" class="d-block"></div>
-                    <div class="carousel-item" data-bs-interval="5000"><img src="../../public/img/consultorio1/leito.jpg" class="d-block"></div>
-                    <div class="carousel-item" data-bs-interval="5000"><img src="../../public/img/consultorio1/leito.jpg" class="d-block"></div>
-                </div>
-            </div>
-        </div>
-        <div id="consultorio-1">
-            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
-                </div>
-                <div class="carousel-inner h-100">
-                    <div class="carousel-item active" data-bs-interval="5000"><img src="../../public/img/consultorio1/leito.jpg" class="d-block"></div>
-                    <div class="carousel-item" data-bs-interval="5000"><img src="../../public/img/consultorio1/leito.jpg" class="d-block"></div>
-                    <div class="carousel-item" data-bs-interval="5000"><img src="../../public/img/consultorio1/leito.jpg" class="d-block"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="div-salas-imagens">
-        <h1 class="titulo-imagens">Comodidades Inclusas</h1>
-        <div class="div-comodidades">
-            <div class="comodidades">
-                <i class="fa-solid fa-square-parking"></i>
-                <p class="pt-2">Estacionamento</p>
-            </div>
-            <div class="comodidades">
-                <i class="fa-solid fa-star-of-life"></i>
-                <p class="pt-2">Ar-condicionado</p>
-            </div>
-            <div class="comodidades">
-                <i class="fa-solid fa-trash"></i>
-                <p class="pt-2">Lixo hospitalar</p>
-            </div>
-            <div class="comodidades">
-                <i class="fa-solid fa-faucet-drip"></i>
-                <p class="pt-2">Água limpa e corrente</p>
-            </div>
-        </div>
+        </div> -->
     </div>
 </section>
 
 
-    <div class="div-externa-card">
+    <!-- <div class="div-externa-card">
 
             <div class="collapse w-100 mt-5" id="collapseExample" style="justify-content: center; margin-bottom: 50px;">
                 <div class="card card-body m-auto">
@@ -211,7 +213,7 @@
                             <!-- <button class="btn ml-auto mr-0 text-white" style="background-color: #01056a;" id="checkout">Avançar 
                                 <i class="fa-solid fa-angles-right"></i>
                             </button> -->
-                        </div>
+                        <!-- </div>
                         <div id="sumario" class="col-md-6 col-lg-4">
                             <div class="summary">
                                 <button class="btn btn-primary btn-lg btn-block" id="checkout">Finalizar</button>
@@ -225,7 +227,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <footer class="footer" style="background-color: rgb(101, 115, 125);">
         <div class="div-footer">

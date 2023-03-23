@@ -12,8 +12,8 @@ router.get("/index", (req, res) => {
     res.render('index');
 });
 
-router.get("/coworking", (req, res) => {
-    res.render('coworking');
+router.get("/duvidas", (req, res) => {
+    res.render('duvidas');
 });
 
 router.get("/salas", (req, res) => {
