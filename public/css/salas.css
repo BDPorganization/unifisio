@@ -49,47 +49,70 @@
 /* Div-salas*/
 .div-externa-card{
   width: 100%;
-  height: 80vh;
   display: flex;
   flex-wrap: wrap;
   margin: 100px 0px;
+  padding: 100px 0px;
   align-items: center;
   background-color: #ffffff;
   justify-content: space-evenly;
-  background-image: url(../../public/img/imagem-grande-unifísio.png);
-  background-repeat: no-repeat;
 }
 
 .div-externa-card > div{
-    width: 20%;
-    height: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0px 20px;
-    justify-content: end;
+  width: 20%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 20px;
+  justify-content: center;
 }
 
 .card{
   width: 24rem;
-  height: 40rem;
-  margin-left: 80px;
-  box-shadow:  5px 5px 100px 5px #f3f3f3;
+  height: 30rem;
+  margin-left: 50px;
+  border-radius: 0px;
 }
 
 .div-externa-card .carousel{
-    width: 90%;
-    height:100% !important;
+  width: 90%;
+  height:100% !important;
 }
+
+.div-externa-text{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 100px 0px;
+  padding: 100px 0px;
+  align-items: center;
+  background-color: #ffffff;
+  justify-content: space-evenly;
+}
+.div-externa-text > div{
+  width: 70%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 20px;
+  justify-content: center;
+}
+.div-externa-text p, .div-externa-text button {
+  font-family: nunito;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .carousel:hover{
-    filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 .carousel-item{
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 } 
 .div-externa-card .carousel-item img{
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 .carousel-indicators {
     top: 100%;
@@ -291,7 +314,7 @@ a {
   margin-right: 10px;
 }
 .link-salas{
-  color:rgb(199, 63, 104);
+  color:#fff;
   font-family: nunito;
   font-size: 16px;
   font-weight: 600;
