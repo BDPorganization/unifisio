@@ -158,8 +158,10 @@ a {
     color: rgb(67, 83, 96);
 }
 
-
-
+.modal-body {
+  display: flex;
+  justify-content: center!important;
+}
 
 /* Estilo padrão para o FullCalendar */
 #calendar {
