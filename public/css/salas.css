@@ -24,23 +24,25 @@
     margin: 0px auto 60px auto;
 }
 .div-imagem-grande{
-    width: 32%;
+    width: 28%;
 }
 .div-imagem-grande div img{
     width: 100%;
     height: 100%;
 }
 .div-imagens-pequenas{
-    width: 50%;
+    width: 10%;
+    height: 30rem;
+    padding-top: 40px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 .div-imagens-pequenas div{
-    width: 40%;
-    height: 300px;
-    margin: 5px 15px 0px 0px;
+    width: 100%;
+    height: 190px;
+    margin: 3px 15px 0px 3px;
 }
 .div-imagens-pequenas div img{
     width: 100%;
@@ -49,47 +51,70 @@
 /* Div-salas*/
 .div-externa-card{
   width: 100%;
-  height: 80vh;
   display: flex;
   flex-wrap: wrap;
   margin: 100px 0px;
+  padding: 100px 0px;
   align-items: center;
   background-color: #ffffff;
   justify-content: space-evenly;
-  background-image: url(../../public/img/imagem-grande-unifísio.png);
-  background-repeat: no-repeat;
 }
 
 .div-externa-card > div{
-    width: 20%;
-    height: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0px 20px;
-    justify-content: end;
+  width: 20%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 20px;
+  justify-content: center;
 }
 
 .card{
   width: 24rem;
-  height: 40rem;
-  margin-left: 80px;
-  box-shadow:  5px 5px 100px 5px #f3f3f3;
+  height: 30rem;
+  margin-left: 50px;
+  border-radius: 0px;
 }
 
 .div-externa-card .carousel{
-    width: 90%;
-    height:100% !important;
+  width: 90%;
+  height:100% !important;
 }
+
+.div-externa-text{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 100px 0px;
+  padding: 100px 0px;
+  align-items: center;
+  background-color: #ffffff;
+  justify-content: space-evenly;
+}
+.div-externa-text > div{
+  width: 70%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 20px;
+  justify-content: center;
+}
+.div-externa-text p, .div-externa-text button {
+  font-family: nunito;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .carousel:hover{
-    filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 .carousel-item{
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 } 
 .div-externa-card .carousel-item img{
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 .carousel-indicators {
     top: 100%;
@@ -287,6 +312,10 @@ a {
   font-family: nunito;
   font-size: 16px;
   font-weight: 700;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: 50px auto;
 }
 .info-salas-card i{
   color:rgb(199, 63, 104);
