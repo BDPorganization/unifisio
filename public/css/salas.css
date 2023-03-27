@@ -24,23 +24,25 @@
     margin: 0px auto 60px auto;
 }
 .div-imagem-grande{
-    width: 32%;
+    width: 28%;
 }
 .div-imagem-grande div img{
     width: 100%;
     height: 100%;
 }
 .div-imagens-pequenas{
-    width: 50%;
+    width: 10%;
+    height: 30rem;
+    padding-top: 40px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 .div-imagens-pequenas div{
-    width: 40%;
-    height: 300px;
-    margin: 5px 15px 0px 0px;
+    width: 100%;
+    height: 190px;
+    margin: 3px 15px 0px 3px;
 }
 .div-imagens-pequenas div img{
     width: 100%;
@@ -310,13 +312,17 @@ a {
   font-family: nunito;
   font-size: 16px;
   font-weight: 700;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: 50px auto;
 }
 .info-salas-card i{
   color:rgb(199, 63, 104);
   margin-right: 10px;
 }
 .link-salas{
-  color:#fff;
+  color:rgb(199, 63, 104);
   font-family: nunito;
   font-size: 16px;
   font-weight: 600;
