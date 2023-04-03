@@ -85,7 +85,6 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: 100px 0px;
   padding: 100px 0px;
   align-items: center;
   background-color: #ffffff;
@@ -203,7 +202,7 @@ a {
   margin: 50px auto;
 }
 .info-salas-card i{
-  color:rgb(199, 63, 104);
+  color:#f05e22;
   margin-right: 10px;
 }
 .link-salas{

@@ -16,8 +16,8 @@ router.get("/duvidas", (req, res) => {
     res.render('duvidas');
 });
 
-router.get("/salas", (req, res) => {
-    res.render('salas');
+router.get("/info", (req, res) => {
+    res.render('informacoes');
 });
 
 router.get("/contato", (req, res) => {
