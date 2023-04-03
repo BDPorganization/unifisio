@@ -58,7 +58,6 @@
 </nav>
 
 <section>
-    
     <div class="div-externa-text">
         <div class="w-100">
             <div class="div-imagem-grande">
@@ -95,22 +94,23 @@
     </div>
 </section>
 
-<!-- Modal -->
-<div  class="collapse" id="collapseExample">
-    <div class="row h-75 mb-5">
-        <h4 style="color: #01056a">Escolha a data</h4>
-        <div class="mb-3 col-sm-3">
-            <input type="date">
-        </div>
-        <div class="mb-3 col-sm-3">
-            <label for="exampleInputEmail1" class="form-label">Selecione horários</label>
-            <div style="background-color: #f3f3f3; padding: 3px 15px; margin: 3px; width: 80px;">16:30</div>
-            <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
-            <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
-            <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+    <!-- Modal -->
+    <div  class="collapse" id="collapseExample">
+        <div class="row h-75 mb-5">
+            <h4 style="color: #01056a">Escolha a data</h4>
+            <div class="mb-3 col-sm-3">
+                <input type="date" id="dateTime" name="dia">
+                <input type="hidden" id="pk_sala" name="pk_sala" value="1">
+            </div>
+            <div class="mb-3 col-sm-3">
+                <label for="exampleInputEmail1" class="form-label">Selecione horários</label>
+                <div style="background-color: #f3f3f3; padding: 3px 15px; margin: 3px; width: 80px;">16:30</div>
+                <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+                <div style="background-color: #f3f3f3; padding: 3px 15px;margin: 3px; width: 80px;">16:30</div>
+            </div>
         </div>
     </div>
-</div>
 
 
     <footer class="footer" style="background-color: #d7d7d7;">
@@ -235,6 +235,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
-    <script src="/public/services/avancar1.js"></script>
+    <script src="/public/services/selectSalas.js"></script>
 </body>
 </html>
