@@ -51,7 +51,6 @@ module.exports.login = async (req, res) => {
         .catch((err) => {
             return res.status(500).send(`Erro ao realizar login, ${err}`);
         });
-
     }catch(err) {
         return res.send('Ocorreu um erro na autenticação');
     }

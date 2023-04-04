@@ -127,11 +127,23 @@ input[type=checkbox]::after{
   background-color: #f05e22;
 }
 
+input[type="checkbox"] {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 
+input[type="checkbox"]:checked + span {
+  background-color: #008CBA;
+}
 
-
-
-
-
-
-
+input[type="checkbox"] span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
