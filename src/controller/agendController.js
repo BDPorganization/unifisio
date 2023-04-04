@@ -7,13 +7,13 @@ module.exports.selectHours = async (req, res) => {
             dia: dateNew,
             pk_sala: sala
         }
-        console.log(data);
 
         dbAgenda.returnHours(data)
         .then(resultado => {
-            if (resultado) {
-                console.log(resultado);
-                return res.status(200).render('coworking');
+            if (resultado.rowCount > 0) {
+                res.status(200).json({
+                    datas: resultado.rows
+                });
             }else {
                 return res.status(500).send('Não existem horários disponíveis!');
             }
