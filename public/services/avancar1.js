@@ -1,7 +1,6 @@
-const botao_avancar = document.getElementById("avancar1");
+const botao_avancar = document.getElementById("avancar");
 const modalLogin = document.getElementById('loginModal');
-const avancar1 = document.getElementById('collapseExample2');
-const codigo_medico = document.getElementById('codigo_medico');
+const avancar1 = document.getElementById('formDadosPessoais');
 
 botao_avancar.addEventListener("click", function() {
     fetch('/verificarLogin', {
@@ -14,7 +13,6 @@ botao_avancar.addEventListener("click", function() {
         console.log(resultado['autenticado']);
         if(resultado['autenticado'] === true){
             avancar1.style.display = 'flex';
-            codigo_medico.value = resultado['value'];
         }else{
             abrirModal(modalLogin);
         }

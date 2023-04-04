@@ -20,6 +20,8 @@ date.addEventListener("change", function() {
 
 function createCheckboxesFromJSON(jsonData) {
     const container = document.getElementById('containerId');
+    const p = document.getElementById('label-hora');
+    p.innerHTML = 'Selecione algum horário';
 
     for (let i = 0; i < jsonData.length; i++) {
       const checkbox = document.createElement('input');
@@ -28,9 +30,9 @@ function createCheckboxesFromJSON(jsonData) {
       checkbox.type = 'checkbox';
       checkbox.name = jsonData[i].horario_disponivel;
       label.appendChild(document.createTextNode(jsonData[i].horario_disponivel));
+      label.style.margin = '3px';
       container.appendChild(checkbox);
       container.appendChild(label);
-      container.appendChild(document.createElement('br'));
     }
   }
   

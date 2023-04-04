@@ -91,8 +91,7 @@ module.exports.verificaLogin = async (req, res) => {
         dbMedicos.checaPkMedico(checaPkUser)
         .then((resultado) => {
             res.status(200).json({
-                autenticado: logado,
-                nome: resultado.rows[0].nome
+                autenticado: logado
             });
         })
     }catch(err) {

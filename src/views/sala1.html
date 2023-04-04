@@ -57,7 +57,6 @@
     </a>
 </nav>
 
-<section>
     <div class="div-externa-text">
         <div class="w-100">
             <div class="div-imagem-grande">
@@ -92,25 +91,58 @@
             </div>
         </div>
     </div>
-</section>
 
     <!-- Modal -->
-    <div  class="collapse" id="collapseExample" style="border: 2px solid #01056a; border-radius: 10px">
+    <div  class="collapse w-50 m-auto p-5" id="collapseExample" style="border: 2px solid #01056a; border-radius: 10px">
         <div class="row h-75 mb-5">
-            <h4 class="mb-3" style="color: #01056a">Você está iniciando sua compra</h4>
+            <h4 class="mb-3 w-100" style="color: #01056a">Você está iniciando sua compra</h4>
             <div class="mb-3 col-sm-6">
                 <label for="data_escolhida" class="form-label w-100">Selecione uma data</label>
-                <input type="date" id="dateTime" name="dia">
+                <input type="date" id="dateTime" name="dia" class="form-control">
                 <input type="hidden" id="pk_sala" name="pk_sala" value="1">
             </div>
-            <div class="mb-3 col-sm-3">
-                <label for="exampleInputEmail1" class="form-label">Selecione horários</label>
-                <div id="containerId"></div>
+            <div class="mb-3 col-sm-6">
+                <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
+                <div id="containerId" class="d-flex flex-wrap"></div>
             </div>
+            <button id="avancar" type="button" class="btn btn-primary btn-cadastro w-25" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">Avançar</button>
+        </div>
+        <div id="formDadosPessoais" class="row h-75 mb-5 d-none">
+            <form method="POST" action="/cadastro">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome completo: </label>
+                        <input type="text" class="form-control" id="nome" name="nome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="especialidade" class="form-label">Atividade: </label>
+                        <input type="text" class="form-control" id="especialidade" name="especialidade">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail: </label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="d-flex w-100 mb-3">
+                        <div style="width: 49%; margin-right: 2%;">
+                            <label for="senha" class="form-label">Senha: </label>
+                            <input type="password" class="form-control" id="senha" name="senha">
+                        </div>
+                        <div style="width: 49%">
+                            <label for="confirma" class="form-label">Confirme sua Senha: </label>
+                            <input type="password" class="form-control" id="confSenha" name="confSenha">
+                        </div>
+                    </div>
+                    <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
+                </form>
+                <div class="d-flex w-100 justify-content-end">
+                    <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
+                    <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">Avançar</button>
         </div>
     </div>
-
-
+    
 <footer class="footer" style="background-color: #d7d7d7;">
     <div class="div-footer">
         <div>
@@ -234,5 +266,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
     <script src="/public/services/selectSalas.js"></script>
+    <script src="/public/services/avancar1.js"></script>
 </body>
 </html>
