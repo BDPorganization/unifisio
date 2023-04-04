@@ -1,28 +1,4 @@
 @import './style.css';
-/* #D7CEC7 */
-.div-salas-imagens{
-    width: 100%;
-    padding: 60px 0px;
-    color: #01056a;
-    background-color: #f3f3f3;
-}
-.div-interna-imagens{
-    width: 80%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 80px 80px;
-    align-items: center;
-    background-color: #fff;
-    justify-content: space-evenly;
-}
-.titulo-imagens{
-    width: 80%;
-    color: rgb(67, 83, 96);
-    font-size: 36px;
-    font-family: nunito;
-    margin: 0px auto 60px auto;
-}
 .div-imagem-grande{
     width: 28%;
 }
@@ -48,39 +24,6 @@
     width: 100%;
     height: 100%;
 }
-/* Div-salas*/
-.div-externa-card{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 100px 0px;
-  padding: 100px 0px;
-  align-items: center;
-  background-color: #ffffff;
-  justify-content: space-evenly;
-}
-
-.div-externa-card > div{
-  width: 20%;
-  height: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0px 20px;
-  justify-content: center;
-}
-
-.card{
-  width: 24rem;
-  height: 30rem;
-  margin-left: 50px;
-  border-radius: 0px;
-}
-
-.div-externa-card .carousel{
-  width: 90%;
-  height:100% !important;
-}
-
 .div-externa-text{
   width: 100%;
   display: flex;
@@ -102,21 +45,6 @@
   font-family: nunito;
   font-size: 16px;
   font-weight: 700;
-}
-
-.carousel:hover{
-  filter: grayscale(100%);
-}
-.carousel-item{
-  width: 100%;
-  height: 100%;
-} 
-.div-externa-card .carousel-item img{
-  width: 100%;
-  height: 100%;
-}
-.carousel-indicators {
-    top: 100%;
 }
 
 .div-texto{
@@ -181,17 +109,6 @@ a {
     font-family: nunito;
     color: rgb(67, 83, 96);
 }
-
-.modal-body {
-  display: flex;
-  justify-content: center!important;
-}
-
-.card-title{
-  font-family: nunito;
-  font-size: 16px;
-  font-weight: 700;
-}
 .info-salas-card{
   font-family: nunito;
   font-size: 16px;
@@ -205,12 +122,9 @@ a {
   color:#f05e22;
   margin-right: 10px;
 }
-.link-salas{
-  color:rgb(199, 63, 104);
-  font-family: nunito;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
+
+input[type=checkbox]::after{
+  background-color: #f05e22;
 }
 
 input[type="checkbox"] {
