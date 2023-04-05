@@ -107,7 +107,7 @@ module.exports.verificaLogin = async (req, res) => {
 
 module.exports.preencherDados = async (req, res) => {
     try {
-        let      = {
+        let = {
             nome: req.body.nome,
             cpf: req.body.cpf,
             data_nascimento: req.body.data_nascimento,

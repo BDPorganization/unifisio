@@ -21,7 +21,7 @@ date.addEventListener("change", function() {
 function createCheckboxesFromJSON(jsonData) {
     const container = document.getElementById('containerId');
     const p = document.getElementById('label-hora');
-    p.innerHTML = 'Selecione algum horário';
+    p.innerHTML = 'Selecione seu horário:';
 
     for (let i = 0; i < jsonData.length; i++) {
       const checkbox = document.createElement('input');
