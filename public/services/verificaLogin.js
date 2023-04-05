@@ -8,8 +8,6 @@ window.addEventListener("load", () =>{
     .then((resultado) => {
         if(resultado['autenticado'] === true){
             document.getElementById('nomeUsuario').innerText = resultado.nome;
-        }else {
-            return Error('Erro ao carregar nome do usuário!');
         }
     })
 });

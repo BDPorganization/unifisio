@@ -1,13 +1,22 @@
 const { Pool } = require('pg');
 
-async function connect() {    
-    const pool = new Pool({
-        connectionString: 'postgres://jobijsbg:OfFLfleDzTcILnIyjWGVnChZ9tkZ3cSI@babar.db.elephantsql.com:5432/jobijsbg'
-    });
-    console.log("Criou pool de conexões no PostgreSQL!");
-    global.connection = pool;
+const pool = new Pool({
+  connectionString: 'postgres://jobijsbg:OfFLfleDzTcILnIyjWGVnChZ9tkZ3cSI@babar.db.elephantsql.com:5432/jobijsbg',
+  max: 10
+});
 
-    return pool.connect();
+console.log("Criou pool de conexões no PostgreSQL!");
+
+async function connect() {    
+  const client = await pool.connect();
+  // console.log(`Conexão aberta. Total de conexões: ${pool.totalCount}, Conexões inativas: ${pool.idleCount}`);
+
+  const release = client.release.bind(client);
+  client.release = () => {
+    // console.log(`Conexão liberada. Total de conexões: ${pool.totalCount}, Conexões inativas: ${pool.idleCount}`);
+    release();
+  };
+  return client;
 }
 
 module.exports = { connect };

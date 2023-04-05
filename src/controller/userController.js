@@ -17,18 +17,18 @@ module.exports.loginGoogle = async (req, res) => {
         .then((resultado) => {
             if (resultado.rowCount > 0) {
                 req.session.user = resultado.rows[0].pk_medicos;
-                return res.status(200).render('coworking');
+                return res.status(200).redirect(req.headers.referer);
             }else {
                 dbMedicos.cadastro(checaUser)
                 .then((resposta) => {
                     req.session.user = resposta.rows[0].pk_medicos;
-                    return res.status(201).render('coworking');
+                    return res.status(201).redirect(req.headers.referer);
                 })
             }
         })
     })
     .catch((err) => {
-        return res.status(500).send(`Erro ao logar com conta Google, ${err}`);
+        return res.status(404).send(`Erro ao logar com conta Google, ${err}`);
     });
 };
 
@@ -43,16 +43,16 @@ module.exports.login = async (req, res) => {
         .then(resultado => {
             if (resultado.rowCount > 0) {
                 req.session.user = resultado.rows[0].pk_medicos;
-                return res.status(200).render('coworking');
+                return res.status(200).redirect(req.headers.referer);
             }else {
                 return res.status(500).send('Usuário ou senha inválidos!');
             }
         })
         .catch((err) => {
-            return res.status(500).send(`Erro ao realizar login, ${err}`);
+            return res.status(404).send(`Erro ao realizar login, ${err}`);
         });
     }catch(err) {
-        return res.send('Ocorreu um erro na autenticação');
+        return res.status(401).send('Ocorreu um erro na autenticação');
     }
 };
 
@@ -91,9 +91,15 @@ module.exports.verificaLogin = async (req, res) => {
         dbMedicos.checaPkMedico(checaPkUser)
         .then((resultado) => {
             res.status(200).json({
-                autenticado: logado
+                autenticado: logado,
+                nome: resultado.rows[0].nome
             });
         })
+        .catch((err) => {
+            res.status(204).json({
+                autenticado: logado
+            })
+        });
     }catch(err) {
         return res.send('Ocorreu um erro na autenticação');
     }
