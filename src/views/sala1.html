@@ -52,7 +52,7 @@
             <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
         </ul>
     </div>
-    <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
+    <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal" id="nomeUsuario">
         <i class="fa fa-user"></i> Login
     </a>
 </nav>
@@ -69,12 +69,12 @@
             </div>
             <div style="width: 40%; padding: 100px 0px 0px 100px;">
                 <p style="color: #f05e22; font-weight: 100; text-align: center;">Sobre a acomodação</p>
-                <p style="text-align: center; font-size: 26px; margin-bottom: 30px;color: #01056a">Consultório 1</p>
+                <p style="text-align: center; font-size: 26px; margin-bottom: 30px;color: #01056a">Sala Comfort</p>
                 <p style="font-weight: 100;">A sala foi equipada para receber pacientes de qualquer faixa etária, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id augue in massa fermentum efficitur. Ut ut interdum lacus. Aliquam interdum, mauris eget ultrices malesuada, lectus sem consequat elit, vel efficitur lorem nulla quis urna.</p>
                 <div class="info-salas-card">
                     <div class="w-50">
                         <p><i class="fa-solid fa-wifi"></i> Wi-fi</p>
-                        <p><i class="fa-solid fa-snowflake"></i> Ar-condionado</p>
+                        <p><i class="fa-solid fa-snowflake"></i> Ar-condicionado</p>
                         <p><i class="fa-solid fa-square-parking"></i> Estacionamento</p>
                     </div>
                     <div class="w-50">
@@ -207,10 +207,23 @@
                                 data-logo_alignment="left">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-danger w-100 mt-3"><i style="padding-right: 30px" class="fa-brands fa-google"></i>Acesse com Google</button>
                     </div>
                     <div style="width: 50%; height: 100%;">
                         <img style="width: 100%;height: 100%;" src="../../public/img/sala3/1.jpg" alt="IMAGEM-SALA">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade modal-lg" id="logadoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+                <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
+                    <div style="width: 100%; padding: 15px;">
+                        <form method="POST" action="/desconectar">
+                            <button type="submit" class="btn btn-light w-100 mt-2">Desconectar</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -267,5 +280,6 @@
 
     <script src="/public/services/selectSalas.js"></script>
     <script src="/public/services/avancar1.js"></script>
+    <script src="/public/services/verificaLogin.js"></script>
 </body>
 </html>

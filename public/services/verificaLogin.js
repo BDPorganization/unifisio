@@ -7,7 +7,11 @@ window.addEventListener("load", () =>{
     })
     .then((resultado) => {
         if(resultado['autenticado'] === true){
-            document.getElementById('nomeUsuario').innerText = resultado.nome;
+            const linkLogin = document.getElementById('nomeUsuario');
+            // const dataBsTarget = linkLogin.dataset.bsTarget;
+            
+            linkLogin.setAttribute('data-bs-target', '#logadoModal');
+            linkLogin.innerText = resultado.nome;
         }
     })
 });

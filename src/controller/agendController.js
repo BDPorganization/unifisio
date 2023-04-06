@@ -14,13 +14,15 @@ module.exports.selectHours = async (req, res) => {
                     datas: resultado.rows
                 });
             }else {
-                return res.status(500).send('Não existem horários disponíveis!');
+                return res.status(204).json({ 
+                    horas: false 
+                });
             }
         })
         .catch((err) => {
-            return res.status(500).send(`Erro ao realizar a consulta dos horários disponíveis, ${err}`);
+            return res.status(404).send(`Erro ao realizar a consulta dos horários disponíveis, ${err}`);
         });
     }catch(err) {
-        return res.send('Ocorreu um erro na consulta de horários');
+        return res.status(400).send('Ocorreu um erro na consulta de horários');
     }
 };

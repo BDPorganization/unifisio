@@ -13,6 +13,9 @@ date.addEventListener("change", function() {
         return response.json();
     })
     .then((resultado) => {
+        if (resultado.horas == false) {
+            console.log('Nenhum horário encontrado para o dia selecionado');
+        }
         createCheckboxesFromJSON(resultado.datas);
     })
 });
@@ -21,12 +24,13 @@ date.addEventListener("change", function() {
 function createCheckboxesFromJSON(jsonData) {
     const container = document.getElementById('containerId');
     const p = document.getElementById('label-hora');
+  
+    container.innerHTML = '';
     p.innerHTML = 'Selecione seu horário:';
-
     for (let i = 0; i < jsonData.length; i++) {
       const checkbox = document.createElement('input');
       const label = document.createElement('label');
-
+  
       checkbox.type = 'checkbox';
       checkbox.name = jsonData[i].horario_disponivel;
       label.appendChild(document.createTextNode(jsonData[i].horario_disponivel));
@@ -35,4 +39,5 @@ function createCheckboxesFromJSON(jsonData) {
       container.appendChild(label);
     }
   }
+  
   

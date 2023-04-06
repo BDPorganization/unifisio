@@ -10,10 +10,9 @@ botao_avancar.addEventListener("click", function() {
         return response.json();
     })
     .then((resultado) => {
-        console.log(resultado['autenticado']);
         if(resultado['autenticado'] === true){
             avancar1.style.display = 'flex';
-        }else{
+        }else {
             abrirModal(modalLogin);
         }
     })

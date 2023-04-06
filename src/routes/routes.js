@@ -1,4 +1,4 @@
-const { login, loginGoogle, cadastro, verificaLogin, preencherDados } = require("../controller/userController.js");
+const { login, loginGoogle, cadastro, verificaLogin, preencherDados, desconectar } = require("../controller/userController.js");
 const { pagar } = require("../controller/pagController.js");
 const { selectHours } = require("../controller/agendController.js");
 const router = require("express").Router();
@@ -9,6 +9,7 @@ router.post("/cadastro", cadastro);
 router.post("/verificarLogin", verificaLogin);
 router.post("/pagamento", pagar);
 router.post("/filtroData", selectHours);
+router.post("/desconectar", desconectar);
 
 
 router.get("/index", (req, res) => {

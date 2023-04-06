@@ -90,18 +90,22 @@ module.exports.verificaLogin = async (req, res) => {
 
         dbMedicos.checaPkMedico(checaPkUser)
         .then((resultado) => {
-            res.status(200).json({
-                autenticado: logado,
-                nome: resultado.rows[0].nome
-            });
+            if (logado == true) {
+                res.status(200).json({
+                    autenticado: logado,
+                    nome: resultado.rows[0].nome
+                });
+            }else {
+                res.status(203).json({
+                    autenticado: logado,
+                });
+            }
         })
         .catch((err) => {
-            res.status(204).json({
-                autenticado: logado
-            })
-        });
+            return res.send(`Ocorreu um erro na verificação, ${err}`);
+        })
     }catch(err) {
-        return res.send('Ocorreu um erro na autenticação');
+        return res.send('Ocorreu um erro na verificação');
     }
 };
 
@@ -126,6 +130,20 @@ module.exports.preencherDados = async (req, res) => {
         .catch((err) => {
             return res.status(500).send(`Ocorreu um erro ao preencher dados do usuário, ${err}`);
         });
+    }catch(err) {
+        return err;   
+    }
+};
+
+module.exports.desconectar = async (req, res) => {
+    try {
+        req.session.destroy((err) => {
+            if (err) {
+                return err;
+            }else {
+                res.redirect('/index');
+            }
+          });
     }catch(err) {
         return err;   
     }
