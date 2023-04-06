@@ -13,27 +13,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- Css externo -->
     <link rel="stylesheet" href="../../public/css/salas.css">
-    <title>Home - Unifisio</title>
+    <title>Sala Com Leito Que Permite Mobilidade do Profissional - Unifisio</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script src="/public/services/app.js" defer></script>
-
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
-    <script src='fullcalendar/dist/index.global.js'></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const calendarEl = document.getElementById('calendar')
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'pt-br',
-            eventDisplay: 'background',
-            timeZone: 'UTF-8'
-        })
-        calendar.render();
-        console.log(calendar.getEvents());
-      })
-    </script>
 </head>
 <body>
 
@@ -60,12 +44,12 @@
     <div class="div-externa-text">
         <div class="w-100">
             <div class="div-imagem-grande">
-                <div><img src="../../public/img/imagem-grande-unifísio.png" alt=""></div>
+                <div><img src="../../public/img/consultorio1/140ba167-d447-4f86-97e6-17e5bfe4dab5.jpg" alt=""></div>
             </div>
             <div class="div-imagens-pequenas">
-                <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.31.jpeg" alt=""></div>
-                <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.30.jpeg" alt=""></div>
-                <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.30.jpeg" alt=""></div>
+                <div><img src="../../public/img/consultorio1/leito.jpg" alt=""></div>
+                <div><img src="../../public/img/consultorio1/002136c1-501b-48ee-a57e-758e9113442f.jpg" alt=""></div>
+                <div><img src="../../public/img/consultorio1/8febed64-08ff-4f67-a925-1e28edf0fd3f.jpg" alt=""></div>
             </div>
             <div style="width: 40%; padding: 100px 0px 0px 100px;">
                 <p style="color: #f05e22; font-weight: 100; text-align: center;">Sobre a acomodação</p>
@@ -105,7 +89,7 @@
                 <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
                 <div id="containerId" class="d-flex flex-wrap"></div>
             </div>
-            <button id="avancar" type="button" class="btn btn-primary btn-cadastro w-25" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">Avançar</button>
+            <button id="avancar" type="button" class="btn btn-primary btn-cadastro w-25" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
         <div id="formDadosPessoais" class="row h-75 mb-5 d-none">
             <form method="POST" action="/cadastro">
@@ -139,7 +123,7 @@
                     <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
-            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">Avançar</button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
     

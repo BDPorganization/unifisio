@@ -105,15 +105,15 @@
     flex-wrap: wrap;
     padding: 150px 0px;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .opcoes-salas > div{
     width: 25%;
     border: none;
 }
 .card-body1{
-    width: 28rem;
-    height: 25rem;
+    width: 22rem;
+    height: 27rem;
     flex: 0 0 0!important;
     margin: auto;
     border: 1px solid rgba(0, 0, 0, 0.175);

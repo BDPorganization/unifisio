@@ -18,6 +18,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script src="/public/services/app.js" defer></script>
+
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 
 <body>
@@ -43,7 +45,7 @@
     
 <div class="inicio-tela-salas">
     <div style="margin-left: 150px;">
-        <img src="../../public/img/foto_ambiente/7029155.jpg" alt="" class="w-100 h-100">
+        <img src="../../public/img/7029155.jpg" alt="" class="w-100 h-100">
     </div>
     <div>
         <div class="card card-inicio">
@@ -52,7 +54,7 @@
                 <p class="color-laranja" style="font-weight: 560;">Coworking Unifísio</p>
                 <p class="card-text mt-4 text-start">A Unifísio conhece os desafios de começar no mercado de trabalho, por isso simplificamos sua busca por consultórios, você terá acesso a uma sala equipada e preparada para que seus pacientes sejam atendidos com conforto e qualidade.</p>
                
-                <div class="w-100 text-center"><a href="#" class="mt-4 btn">Quero fazer parte <i class="fa-solid fa-arrow-down"></i></a></div>
+                <div class="w-100 text-center"><a href="#opcoes-salas" class="mt-4 btn">Quero fazer parte<i class="fa-solid fa-arrow-down"></i></a></div>
             </div>
         </div>
     </div>
@@ -68,45 +70,45 @@
     </div>
 </div>
 
-<div class="opcoes-salas">
+<div class="opcoes-salas" id="opcoes-salas">
     <h1>Conheça nossas unidades</h1>
     <div class="card">
         <div class="card-body card-body1">
             <h3 class="color-blue" style="font-weight: 700;">Sala Comfort</h3>
             <p class="color-laranja" style="font-weight: 560;">Conforto</p>
-            <div style="height: 200px;">
-                <img src="../../public/img/consultorio1/a1c746fc-2294-46d0-ac7f-4fd32374c856.jpg" alt="" class="w-100 h-100">
+            <div style="height: 250px;">
+                <img src="../../public/img/consultorio1/8febed64-08ff-4f67-a925-1e28edf0fd3f.jpg" alt="" class="w-100 h-100">
             </div>
             
-            <div class="w-100 text-center"><a href="#" class="mt-4 mb-4 btn">Saber mais <i class="fa-solid fa-arrow-down"></i></a></div>
+            <div class="w-100 text-center"><a id="btnComprar1" href="/salas/salaComfort" class="mt-4 mb-4 btn">R$ 27,90</a></div>
         </div>
     </div>
     <div class="card">
         <div class="card-body card-body1">
             <h3 class="color-blue" style="font-weight: 700;">Sala Premium</h3>
             <p class="color-laranja" style="font-weight: 560;">Espaço</p>
-            <div style="height: 200px;">
-                <img src="../../public/img/consultorio1/a1c746fc-2294-46d0-ac7f-4fd32374c856.jpg" alt="" class="w-100 h-100">
+            <div style="height: 250px;">
+                <img src="../../public/img/consultorio2/9b881eb1-2833-4ee5-854b-089043b61202.jpg" alt="" class="w-100 h-100">
             </div>
             
-            <div class="w-100 text-center"><a href="#" class="mt-4 mb-4 btn">Saber mais <i class="fa-solid fa-arrow-down"></i></a></div>
+            <div class="w-100 text-center"><a id="btnComprar2" href="/salas/salaPremium" class="mt-4 mb-4 btn">R$ 28,90</a></div>
         </div>
     </div>
     <div class="card">
         <div class="card-body card-body1">
             <h3 class="color-blue" style="font-weight: 700;">Studio de fisioterapia</h3>
             <p class="color-laranja" style="font-weight: 560;">Completo</p>
-            <div style="height: 200px;">
-                <img src="../../public/img/consultorio1/a1c746fc-2294-46d0-ac7f-4fd32374c856.jpg" alt="" class="w-100 h-100">
+            <div style="height: 250px;">
+                <img src="../../public/img/consultorio3/97ac5d49-4c9f-4db0-9ad1-773d7cc87daf.jpg" alt="" class="w-100 h-100">
             </div>
-            <div class="w-100 text-center"><a href="#" class="mt-4 mb-4 btn">Saber mais <i class="fa-solid fa-arrow-down"></i></a></div>
+            <div class="w-100 text-center"><a id="btnComprar3" href="/salas/studioPilates" class="mt-4 mb-4 btn">R$ 37,90</a></div>
         </div>
     </div>
 </div>
 
 <div class="texto-como-funciona">  
     <div class="w-25 h-100">
-        <img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 19.00.07.jpeg" class="w-100 h-100" alt="">
+        <img src="../../public/img/foto_ambiente/cafeeescada.jpeg" class="w-100 h-100" alt="">
     </div>
     <div>
         <h1 class="w-100 text-start color-blue">O que te oferecemos?</h1>
@@ -253,6 +255,51 @@
         </div>
     </div>
 </div>
+
+<script>
+	$(function(){
+		$("#btnComprar1").hover(
+			function(){
+				//Ao posicionar o cursor sobre a div
+				$(this).html('comprar');
+                $(this).css('background', 'white');
+			},
+            function(){
+				//Ao posicionar o cursor sobre a div
+				$(this).html('R$ 27,90');
+                $(this).css('background', '#f05e22');
+			}
+		);
+	});
+    $(function(){
+		$("#btnComprar2").hover(
+			function(){
+				//Ao posicionar o cursor sobre a div
+				$(this).html('comprar');
+                $(this).css('background', 'white');
+			},
+            function(){
+				//Ao posicionar o cursor sobre a div
+				$(this).html('R$ 28,90');
+                $(this).css('background', '#f05e22');
+			}
+		);
+	});
+    $(function(){
+		$("#btnComprar3").hover(
+			function(){
+				//Ao posicionar o cursor sobre a div
+				$(this).html('comprar');
+                $(this).css('background', 'white');
+			},
+            function(){
+				//Ao posicionar o cursor sobre a div
+				$(this).html('R$ 37,90');
+                $(this).css('background', '#f05e22');
+			}
+		);
+	});
+</script>
 
 <!-- Script FontAwesome -->
 <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>

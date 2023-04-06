@@ -20,12 +20,23 @@ router.get("/duvidas", (req, res) => {
     res.render('duvidas');
 });
 
-router.get("/info", (req, res) => {
-    res.render('informacoes');
+router.get("/salas", (req, res) => {
+    res.render('salas');
 });
 
 router.get("/contato", (req, res) => {
     res.render('contato');
 });
 
+router.get("/salas/salaComfort", (req, res) => {
+    res.render('sala1');
+});
+
+router.get("/salas/salaPremium", (req, res) => {
+    res.render('sala2');
+});
+
+router.get("/salas/studioFisioterapia", (req, res) => {
+    res.render('sala3');
+});
 module.exports = router;
