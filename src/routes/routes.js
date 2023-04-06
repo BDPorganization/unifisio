@@ -1,4 +1,4 @@
-const { login, loginGoogle, cadastro, verificaLogin, preencherDados, desconectar } = require("../controller/userController.js");
+const { login, loginGoogle, cadastro, verificaLogin, desconectar } = require("../controller/userController.js");
 const { pagar } = require("../controller/pagController.js");
 const { selectHours } = require("../controller/agendController.js");
 const router = require("express").Router();
