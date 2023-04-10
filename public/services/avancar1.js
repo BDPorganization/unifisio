@@ -11,7 +11,16 @@ botao_avancar.addEventListener("click", function() {
     })
     .then((resultado) => {
         if(resultado['autenticado'] === true){
-            avancar1.style.display = 'flex';
+            // avancar1.style.display = 'flex';
+            fetch('/checarDados', {
+                method: "POST"
+            })
+            .then((response) =>{
+                return response.json();
+            })
+            .then((dados) => {
+                console.log(dados.dados);
+            })
         }else {
             abrirModal(modalLogin);
         }

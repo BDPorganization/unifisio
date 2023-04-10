@@ -38,6 +38,4 @@ function createCheckboxesFromJSON(jsonData) {
       container.appendChild(checkbox);
       container.appendChild(label);
     }
-  }
-  
-  
+}

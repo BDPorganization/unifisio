@@ -14,6 +14,21 @@ async function returnHours(data) {
     }
 }
 
+async function checaDados(checaDado) {
+    const client = await database.connect();
+    
+    try {
+        const sql = 'select * from dados_pessoais where fk_medicos_pk_medicos = $1';
+        const values = [checaDado.pk_medicos];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = { 
-    returnHours
+    returnHours,
+    checaDados
 }; 

@@ -1,6 +1,6 @@
 const { login, loginGoogle, cadastro, verificaLogin, desconectar } = require("../controller/userController.js");
 const { pagar } = require("../controller/pagController.js");
-const { selectHours } = require("../controller/agendController.js");
+const { selectHours, checaDados } = require("../controller/agendController.js");
 const router = require("express").Router();
 
 router.post("/loginGoogle", loginGoogle);
@@ -10,6 +10,7 @@ router.post("/verificarLogin", verificaLogin);
 router.post("/pagamento", pagar);
 router.post("/filtroData", selectHours);
 router.post("/desconectar", desconectar);
+router.post("/checarDados", checaDados);
 
 
 router.get("/index", (req, res) => {
@@ -39,4 +40,5 @@ router.get("/salas/salaPremium", (req, res) => {
 router.get("/salas/studioFisioterapia", (req, res) => {
     res.render('sala3');
 });
+
 module.exports = router;
