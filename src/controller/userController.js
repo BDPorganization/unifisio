@@ -77,7 +77,7 @@ module.exports.cadastro = async (req, res) => {
             return res.status(401).send('As senhas não coincidem!');
         }
     }catch(err) {
-        return err;   
+        return res.status(400).send('Ocorreu um erro no cadastro do usuário');  
     }
 };
 
@@ -105,33 +105,34 @@ module.exports.verificaLogin = async (req, res) => {
             return res.send(`Ocorreu um erro na verificação, ${err}`);
         })
     }catch(err) {
-        return res.send('Ocorreu um erro na verificação');
-    }
+        return res.status(400).send('Ocorreu um erro na verificação do login');
+     }
 };
 
 module.exports.preencherDados = async (req, res) => {
     try {
-        let = {
+        let parsedDate = new Date(req.body.data_nascimento);
+        let dadosUser = {
             nome: req.body.nome,
             cpf: req.body.cpf,
-            data_nascimento: req.body.data_nascimento,
+            data_nascimento: parsedDate,
             rua: req.body.rua,
             numero: req.body.numero,
             cep: req.body.cep,
-            codigo_medico: req.body.codigo_medico
+            codigo_medico: req.session.user
         }
 
         dbMedicos.preencher_dados(dadosUser)
         .then(() => {
             return res.status(200).json({
-                statusDados: 'preenchido',
+                statusDados: "preenchido",
             });
         })
         .catch((err) => {
             return res.status(500).send(`Ocorreu um erro ao preencher dados do usuário, ${err}`);
         });
     }catch(err) {
-        return err;   
+        return res.status(400).send('Ocorreu um erro ao completar a ficha do usuário');
     }
 };
 
@@ -145,6 +146,6 @@ module.exports.desconectar = async (req, res) => {
             }
           });
     }catch(err) {
-        return err;   
+        return res.status(401).send('Ocorreu um erro ao desconectar');
     }
 };
