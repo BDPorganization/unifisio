@@ -34,8 +34,8 @@ async function preencher_dados(dadosUser){
     const client = await database.connect();
 
     try {
-        const sql = 'INSERT INTO dados_pessoais (nome_completo, cpf, data_nascimento, rua, numero_casa, cep, fk_medicos_pk_medicos) VALUES ($1, $2, $3, $4, $5, $6, $7);';
-        const values = [dadosUser.nome, dadosUser.cpf, dadosUser.data_nascimento, dadosUser.rua, dadosUser.numero, dataUser.cep, dataUser.codigo_medico];
+        const sql = 'INSERT INTO dados_pessoais (nome_completo, cpf, data_nascimento, rua, numero_casa, cep, fk_medicos_pk_medicos) VALUES ($1, $2, DATE($3), $4, $5, $6, $7);';
+        const values = [dadosUser.nome, dadosUser.cpf, dadosUser.data_nascimento, dadosUser.rua, dadosUser.numero, dadosUser.cep, dadosUser.codigo_medico];
         return await client.query(sql, values);
     } catch (err) {
         return err;
