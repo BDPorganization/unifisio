@@ -18,7 +18,9 @@ botao_avancar.addEventListener("click", () => {
                 return response.json();
             })
             .then((dados) => {
-                exibirFormDados(dados);
+                if (dados.dados == true){
+                    exibirFormDados();
+                }
             })
         }else {
             abrirModal(modalLogin);
@@ -31,18 +33,13 @@ function abrirModal(element) {
     element.style.display = "flex";
 }
 
-function exibirFormDados(dados){
+function exibirFormDados(){
     var inputdate = document.getElementById('dateTime').value;
 
     if (inputdate == ''){
         alert('Escolha uma data para continuar');
     }else {
-        if (dados.dados == true){
-            let form = document.getElementById('formDadosPessoais');
-
-            form.style.display = 'flex';
-        }else {
-            console.log('Você já preencheu seus dados! Deseja altera-los?');
-        }
+        let form = document.getElementById('formDadosPessoais');
+        form.style.display = 'flex';
     }
 }

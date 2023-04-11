@@ -147,3 +147,18 @@ input[type="checkbox"] span {
   vertical-align: middle;
   margin-left: 10px;
 }
+
+.btn-navegacao{
+  background-color: #01056a;
+  border-radius: 100px;
+  width: 60px;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: 0px;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+}
+.btn-navegacao:hover{
+  background-color: #c6c8ff;
+}
