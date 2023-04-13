@@ -10,7 +10,7 @@ async function login(loginUser) {
     } catch (err) {
         return err;
     } finally {
-        client.release()
+        client.release();
     }
 
 }
@@ -60,24 +60,9 @@ async function checaMedico(checaUser) {
 
 }
 
-async function checaPkMedico(checaPkUser) {
-    const client = await database.connect();
-
-    try {
-        const sql = 'SELECT nome FROM medicos WHERE pk_medicos = $1';
-        const values = [checaPkUser.pk_medicos];
-        return await client.query(sql, values);
-    } catch (err) {
-        return err;
-    } finally {
-        client.release();
-    }
-}
-
 module.exports = { 
     login,
     cadastro,
     preencher_dados,
-    checaMedico,
-    checaPkMedico
+    checaMedico
 }; 

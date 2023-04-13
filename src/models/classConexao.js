@@ -9,11 +9,8 @@ console.log("Criou pool de conexões no PostgreSQL!");
 
 async function connect() {    
   const client = await pool.connect();
-  // console.log(`Conexão aberta. Total de conexões: ${pool.totalCount}, Conexões inativas: ${pool.idleCount}`);
-
   const release = client.release.bind(client);
   client.release = () => {
-    // console.log(`Conexão liberada. Total de conexões: ${pool.totalCount}, Conexões inativas: ${pool.idleCount}`);
     release();
   };
   return client;

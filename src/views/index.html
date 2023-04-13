@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async defer></script>
+    <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async></script>
+    <script src="/public/services/verificaLogin.js" async></script>
     <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -152,7 +153,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="height: 400px; width: 100%;">
-                    <form method="POST" action="/loginDB">
+                    <form id="form-login">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email: </label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
@@ -161,7 +162,7 @@
                             <label for="senha" class="form-label">Senha: </label>
                             <input type="password" class="form-control" id="senha" name="senha" required>
                         </div>
-                        <button type="submit" class="btn btn-light w-100 mt-2" name="btn-login">ENTRAR</button>
+                        <button type="submit" class="btn btn-light w-100 mt-2" name="btn-login" id="btnLogin">ENTRAR</button>
                     </form>
                     <div class="googleAuth"> 
                         <div id="g_id_onload"
@@ -195,7 +196,10 @@
                 <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
                     <div style="width: 100%; padding: 15px;">
                         <form method="POST" action="/desconectar">
-                            <button type="submit" class="btn btn-light w-100 mt-2">Desconectar</button>
+                            <button type="submit" class="btn btn-secondary w-100 mt-2">Desconectar</button>
+                        </form>
+                        <form id="form-apagarConta">
+                            <button type="submit" class="btn btn-danger w-100 mt-2">Apagar conta</button>
                         </form>
                     </div>
                 </div>
@@ -210,36 +214,32 @@
                     <h5 class="modal-title">Faça seu cadastro</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="/cadastro">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome completo: </label>
-                        <input type="text" class="form-control" id="nome" name="nome">
-                    </div>
-                    <div class="mb-3">
-                        <label for="especialidade" class="form-label">Especialidade: </label>
-                        <input type="text" class="form-control" id="especialidade" name="especialidade">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail: </label>
-                        <input type="email" class="form-control" id="email" name="email">
-                    </div>
-                    <div class="d-flex w-100 mb-3">
-                        <div style="width: 49%; margin-right: 2%;">
-                            <label for="senha" class="form-label">Senha: </label>
-                            <input type="password" class="form-control" id="senha" name="senha">
+                <form id="form-cadastro">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nomeCompleto" class="form-label">Nome completo: </label>
+                            <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto">
                         </div>
-                        <div style="width: 49%">
-                            <label for="confirma" class="form-label">Confirme sua Senha: </label>
-                            <input type="password" class="form-control" id="confSenha" name="confSenha">
+                        <div class="mb-3">
+                            <label for="especialidade" class="form-label">Especialidade: </label>
+                            <input type="text" class="form-control" id="especialidade" name="especialidade">
                         </div>
-                    </div>
-                    <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
+                        <div class="mb-3">
+                            <label for="emailCadastro" class="form-label">E-mail: </label>
+                            <input type="email" class="form-control" id="emailCadastro" name="emailCadastro">
+                        </div>
+                        <div class="d-flex w-100 mb-3">
+                            <div style="width: 49%; margin-right: 2%;">
+                                <label for="senhaCadastro" class="form-label">Senha: </label>
+                                <input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro">
+                            </div>
+                            <div style="width: 49%">
+                                <label for="confirma" class="form-label">Confirme sua Senha: </label>
+                                <input type="password" class="form-control" id="confSenha" name="confSenha">
+                            </div>
+                        </div>
+                        <button name="btn-cadastro" type="submit" class="btn btn-primary btn-cadastro">Cadastrar</button>
                     </form>
-                    <div class="d-flex w-100 justify-content-end">
-                        <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
-                        <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -247,11 +247,10 @@
 
     <!-- Script FontAwesome -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
-
     <!-- Script Boostrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-
-    <script src="/public/services/verificaLogin.js"></script>
+    <!-- SCRIPT JS-->
+    <script src="/public/services/acoesBanco.js"></script>
 </body>
 </html>

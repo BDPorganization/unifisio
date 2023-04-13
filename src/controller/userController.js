@@ -16,94 +16,96 @@ module.exports.loginGoogle = async (req, res) => {
         dbMedicos.checaMedico(checaUser)
         .then((resultado) => {
             if (resultado.rowCount > 0) {
-                req.session.user = resultado.rows[0].pk_medicos;
+                let dadosUser = {
+                    pk_medicos: resultado.rows[0].pk_medicos,
+                    nome_user: resultado.rows[0].nome
+                };
+
+                req.session.user = dadosUser;
                 return res.status(200).redirect(req.headers.referer);
             }else {
                 dbMedicos.cadastro(checaUser)
                 .then((resposta) => {
-                    req.session.user = resposta.rows[0].pk_medicos;
+                    let dadosUser = {
+                        pk_medicos: resposta.rows[0].pk_medicos,
+                        nome_user: resposta.rows[0].nome
+                    };
+    
+                    req.session.user = dadosUser;
                     return res.status(201).redirect(req.headers.referer);
                 })
             }
         })
     })
     .catch((err) => {
-        return res.status(404).send(`Erro ao logar com conta Google, ${err}`);
+        return res.status(500).send(`Erro ao logar com conta Google, ${err}`);
     });
 };
 
 module.exports.login = async (req, res) => {
     try{
+        let { emailLogin, senhaLogin } = req.body
         let loginUser = {
-            email: req.body.email,
-            senha: md5(req.body.senha)
-        }
+            email: emailLogin,
+            senha: md5(senhaLogin)
+        };
 
         dbMedicos.login(loginUser)
         .then(resultado => {
             if (resultado.rowCount > 0) {
-                req.session.user = resultado.rows[0].pk_medicos;
-                return res.status(200).redirect(req.headers.referer);
+                let dadosUser = {
+                    pk_medicos: resultado.rows[0].pk_medicos,
+                    nome_user: resultado.rows[0].nome
+                };
+
+                req.session.user = dadosUser;
+                return res.status(200).json({ autorizado: true });
             }else {
-                return res.status(500).send('Usuário ou senha inválidos!');
+                return res.status(404).json({ autorizado: false });
             }
         })
         .catch((err) => {
-            return res.status(404).send(`Erro ao realizar login, ${err}`);
+            return res.status(500).json({ autorizado: false });
         });
     }catch(err) {
-        return res.status(401).send('Ocorreu um erro na autenticação');
+        return res.status(400).json({ autorizado: false });
     }
 };
 
 module.exports.cadastro = async (req, res) => {
     try {
+        let { emailCadastro, senhaCadastro, especialidade, nomeCompleto } = req.body
         let cadastroUser = {
-            especialidade: req.body.especialidade,
-            nome: req.body.nome,
-            email: req.body.email,
-            senha: md5(req.body.senha)
+            especialidade: especialidade,
+            nome: nomeCompleto,
+            email: emailCadastro,
+            senha: md5(senhaCadastro)
         }
 
-        if (req.body.senha == req.body.confSenha) {
-            dbMedicos.cadastro(cadastroUser)
-            .then(() => {
-                return res.status(200).render('index');
-            })
-            .catch((err) => {
-                return res.status(500).send(`Ocorreu um erro ao cadastrar o usuário, ${err}`);
-            });
-        }else {
-            return res.status(401).send('As senhas não coincidem!');
-        }
+        dbMedicos.cadastro(cadastroUser)
+        .then(() => {
+            return res.status(201).json({ cadastrado: true });
+        })
+        .catch((err) => {
+            return res.status(500).json({ cadastrado: false });
+        });
     }catch(err) {
-        return res.status(400).send('Ocorreu um erro no cadastro do usuário');  
+        return res.status(400).json({ cadastrado: false });  
     }
 };
 
 module.exports.verificaLogin = async (req, res) => {
     try{
-        let logado = req.session.user > 0 ? true : false;
-        let checaPkUser = {
-            pk_medicos: req.session.user
+        if (req.session.user) {
+            res.status(200).json({
+                autenticado: true,
+                nome: req.session.user.nome_user
+            });
+        }else {
+            res.status(203).json({
+                autenticado: false,
+            });
         }
-
-        dbMedicos.checaPkMedico(checaPkUser)
-        .then((resultado) => {
-            if (logado == true) {
-                res.status(200).json({
-                    autenticado: logado,
-                    nome: resultado.rows[0].nome
-                });
-            }else {
-                res.status(203).json({
-                    autenticado: logado,
-                });
-            }
-        })
-        .catch((err) => {
-            return res.send(`Ocorreu um erro na verificação, ${err}`);
-        })
     }catch(err) {
         return res.status(400).send('Ocorreu um erro na verificação do login');
      }
@@ -142,7 +144,7 @@ module.exports.desconectar = async (req, res) => {
             if (err) {
                 return err;
             }else {
-                res.redirect('/index');
+                res.status(308).redirect('/index');
             }
           });
     }catch(err) {

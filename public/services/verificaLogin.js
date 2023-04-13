@@ -6,12 +6,12 @@ window.addEventListener("load", () =>{
         return response.json();
     })
     .then((resultado) => {
-        if(resultado['autenticado'] === true){
+        if(resultado['autenticado'] == true){
             const linkLogin = document.getElementById('nomeUsuario');
-            // const dataBsTarget = linkLogin.dataset.bsTarget;
+            let nomeUser = resultado.nome.split(" ");
             
             linkLogin.setAttribute('data-bs-target', '#logadoModal');
-            linkLogin.innerText = resultado.nome;
+            linkLogin.innerText = nomeUser[0];
         }
     })
 });

@@ -40,6 +40,7 @@ function exibirFormDados(){
         alert('Escolha uma data para continuar');
     }else {
         let form = document.getElementById('formDadosPessoais');
+        
         form.style.display = 'flex';
     }
 }

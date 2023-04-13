@@ -28,7 +28,6 @@ module.exports.pagar = async (req, res) => {
 		});
 	})
     .catch((err) => {
-		console.log(err);
-		res.status(500).send("Erro ao criar pagamento");
+		res.status(500).send(`Erro ao criar pagamento, ${err}`);
 	});
 };
