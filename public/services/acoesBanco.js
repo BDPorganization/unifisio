@@ -81,16 +81,9 @@ const formApagarConta = document.getElementById('form-apagarConta');
 formCadastro.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
-    const emailCadastro = formData.get('emailCadastro');
-    const senhaCadastro = formData.get('senhaCadastro');
-    const especialidade = formData.get('especialidade');
-    const nomeCompleto = formData.get('nomeCompleto');
-    const confSenha = formData.get('confSenha');
-
     try {
         if (senhaCadastro == confSenha) {
-            const response = await fetch('/cadastro', {
+            const response = await fetch('/apagar', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
