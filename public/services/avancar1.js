@@ -1,4 +1,4 @@
-const botao_avancar = document.getElementById("avancar");
+const botao_avancar = document.getElementById('avancar');
 const modalLogin = document.getElementById('loginModal');
 const avancar1 = document.getElementById('formDadosPessoais');
 
@@ -30,7 +30,7 @@ botao_avancar.addEventListener("click", () => {
 
 function abrirModal(element) {
     element.classList.add("show");
-    element.style.display = "flex";
+    element.style.display = "block";
 }
 
 function exibirFormDados(){

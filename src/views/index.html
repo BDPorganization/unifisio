@@ -30,6 +30,7 @@
                 <li class="nav-item"><a class="nav-link" href="/duvidas">Duvidas</a></li> 
                 <li class="nav-item"><a class="nav-link" href="/salas">Salas</a></li>
                 <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
+                  
                 <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal" id="nomeUsuario">
                     <i class="fa fa-user"></i> Login
                 </a>
@@ -144,12 +145,12 @@
     </footer>
 
     
-    <!-- Modal -->
+    <!-- Modal Login-->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
                 <div class="modal-header w-100 text-center">
-                    <h5 class="modal-title color-blue">Acessar minha conta</h5>
+                    <h5 class="modal-title">Acessar minha conta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="height: 400px; width: 100%;">
@@ -162,51 +163,58 @@
                             <label for="senha" class="form-label">Senha: </label>
                             <input type="password" class="form-control" id="senha" name="senha" required>
                         </div>
-                        <button type="submit" class="btn btn-light w-100 mt-2" name="btn-login" id="btnLogin">ENTRAR</button>
+                        <center>
+                            <button type="submit" class="btn btn-secondary w-50 mt-5 mb-2" name="btn-login" id="btnLogin">Acessar</button>
+                        </center>
                     </form>
-                    <div class="googleAuth"> 
-                        <div id="g_id_onload"
-                            data-client_id="245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com"
-                            data-login_uri="http://localhost:3000/loginGoogle"
-                            data-context="use">
+                    <center>
+                        <div class="googleAuth w-50"> 
+                            <div id="g_id_onload"
+                                data-client_id="245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com"
+                                data-login_uri="http://localhost:3000/loginGoogle"
+                                data-context="use">
+                            </div>
+                            <div class="g_id_signin"
+                                data-type="standard"
+                                data-size="large"
+                                data-theme="outline"
+                                data-text="sign_in_with"
+                                data-shape="rectangular"
+                                data-logo_alignment="left">
+                                <i class="fa-brands fa-google"></i>
+                            </div>
                         </div>
-                        <div class="g_id_signin"
-                            data-type="standard"
-                            data-size="large"
-                            data-theme="outline"
-                            data-text="sign_in_with"
-                            data-shape="rectangular"
-                            data-logo_alignment="left">
-                            <i class="fa-brands fa-google"></i>
-                        </div>
-                    </div>
-
-                    
+                    </center>
                     <div class="w-100 text-center mt-2 mb-2">
-                        <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="mt-3">Cadastrar-me</a>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="btn btn-link w-50 mt-2" style="color: #f05e22;">Cadastrar-me</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal Logout-->
     <div class="modal fade modal-lg" id="logadoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
                 <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
                     <div style="width: 100%; padding: 15px;">
-                        <form method="POST" action="/desconectar">
-                            <button type="submit" class="btn btn-secondary w-100 mt-2">Desconectar</button>
-                        </form>
-                        <form id="form-apagarConta">
-                            <button type="submit" class="btn btn-danger w-100 mt-2">Apagar conta</button>
-                        </form>
+                        <center>
+                            <form method="POST" action="/desconectar">
+                                <button type="submit" class="btn btn-secondary w-50 mt-2">Desconectar</button>
+                            </form>
+                            <form method="POST" action="/aluguel">
+                                <button type="submit" class="btn btn-success w-50 mt-2">Meus aluguéis</button>
+                            </form>
+                            <form id="form-apagarConta">
+                                <button type="submit" class="btn btn-danger w-50 mt-2">Apagar conta</button>
+                            </form>
+                        </center>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal Cadastro-->
     <div class="modal fade modal-lg" id="cadastro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
@@ -238,7 +246,9 @@
                                 <input type="password" class="form-control" id="confSenha" name="confSenha">
                             </div>
                         </div>
-                        <button name="btn-cadastro" type="submit" class="btn btn-primary btn-cadastro">Cadastrar</button>
+                        <center>
+                            <button name="btn-cadastro" type="submit" class="btn btn-secondary btn-cadastro w-50 mt-3">Cadastrar</button>
+                        </center>
                     </form>
                 </div>
             </div>

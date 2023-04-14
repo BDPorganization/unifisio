@@ -17,17 +17,9 @@ formLogin.addEventListener("submit", async (event) => {
             body: JSON.stringify({ emailLogin, senhaLogin })
         });
 
-        if (response.ok) {
-            location.reload();
-        }
-
-        else if (response.status == 404) {
-            alert("Usuário não cadastrado!");
-        }
-
-        else if (response.status == 400 || response.status == 500) {
-            alert("Ocorreu um erro na autenticação, por favor tente mais tarde!");
-        }
+        response.status == 200 ? location.reload() :
+        response.status == 404 ? alert("Usuário não cadastrado!") :
+        alert("Ocorreu um erro no login, por favor tente mais tarde!")
     }catch(err) {
         return err
     }
@@ -47,65 +39,54 @@ formCadastro.addEventListener("submit", async (event) => {
     const confSenha = formData.get('confSenha');
 
     try {
-        if (senhaCadastro == confSenha) {
-            const response = await fetch('/cadastro', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ emailCadastro, senhaCadastro, especialidade, nomeCompleto })
-            });
-    
-            if (response.status == 201) {
-                location.reload();
-            }
-    
-            else if (response.status == 404) {
-                alert("Usuário já cadastrado!");
-            }
-    
-            else if (response.status == 400 || response.status == 500) {
-                alert("Ocorreu um erro no cadastro, por favor tente mais tarde!");
-            }
-        }else {
-            alert("As senhas não coincidem!")
-        }
+        const response = await fetch('/cadastro', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ emailCadastro, senhaCadastro, especialidade, nomeCompleto, confSenha })
+        });
+
+        response.status == 201 ? location.reload() :
+        response.status == 409 ? alert("As senhas não coincidem!") :
+        response.status == 302 ? alert("Usuário já cadastrado!") : 
+        alert("Ocorreu um erro no cadastro, por favor tente mais tarde!")
     }catch(err) {
         return err
     }
 });
 
 // Apagar conta form-apagarConta
-const formApagarConta = document.getElementById('form-apagarConta');
+// const formApagarConta = document.getElementById('form-apagarConta');
 
-formCadastro.addEventListener("submit", async (event) => {
-    event.preventDefault();
+// formCadastro.addEventListener("submit", async (event) => {
+//     event.preventDefault();
 
-    try {
-        if (senhaCadastro == confSenha) {
-            const response = await fetch('/apagar', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ emailCadastro, senhaCadastro, especialidade, nomeCompleto })
-            });
+//     try {
+//         if (senhaCadastro == confSenha) {
+//             const response = await fetch('/apagar', {
+//                 method: 'POST',
+//                 headers: {
+//                   'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify({ emailCadastro, senhaCadastro, especialidade, nomeCompleto })
+//             });
     
-            if (response.status == 201) {
-                location.reload();
-            }
+//             if (response.status == 201) {
+//                 location.reload();
+//             }
     
-            else if (response.status == 404) {
-                alert("Usuário já cadastrado!");
-            }
+//             else if (response.status == 404) {
+//                 alert("Usuário já cadastrado!");
+//             }
     
-            else if (response.status == 400 || response.status == 500) {
-                alert("Ocorreu um erro no cadastro, por favor tente mais tarde!");
-            }
-        }else {
-            alert("As senhas não coincidem!")
-        }
-    }catch(err) {
-        return err
-    }
-});
+//             else if (response.status == 400 || response.status == 500) {
+//                 alert("Ocorreu um erro no cadastro, por favor tente mais tarde!");
+//             }
+//         }else {
+//             alert("As senhas não coincidem!")
+//         }
+//     }catch(err) {
+//         return err
+//     }
+// });
