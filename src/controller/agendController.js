@@ -37,11 +37,11 @@ module.exports.checaDados = async (req, res) => {
         .then((resultado) => {
             if(resultado.rowCount > 0) {
                 return res.status(200).json({
-                    dados: false
+                    dados: true
                 });
             }else {
                 return res.status(204).json({
-                    dados: true
+                    dados: false
                 });
             }
         })

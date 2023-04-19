@@ -1,6 +1,5 @@
 const mercadopago = new MercadoPago('TEST-60d51c1b-102c-484b-af6f-b3e31d929e39', { locale: 'pt-BR' });
 const btnCheck = document.getElementById("checkout");
-const btnQuant = document.getElementById("quantity");
 
 if (btnCheck) {
   btnCheck.addEventListener("click", ()=> {

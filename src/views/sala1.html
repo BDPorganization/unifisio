@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
     <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async></script>
     <script src="/public/services/verificaLogin.js" async></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script type="text/javascript" src="/public/services/avancar1.js" defer></script>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
@@ -53,7 +55,9 @@
             </div>
             <div style="width: 40%; padding: 100px 0px 0px 100px;">
                 <p style="color: #f05e22; font-weight: 100; text-align: center;">Sobre a acomodação</p>
-                <p style="text-align: center; font-size: 26px; margin-bottom: 30px;color: #01056a">Sala Comfort</p>
+                <p style="text-align: center; font-size: 26px; margin-bottom: 30px;color: #01056a" id="product-description">Sala Comfort</p>
+                <input type="hidden" value="27.90" id="unit-price">
+                <input type="hidden" value="1" id="quantity">
                 <p style="font-weight: 100;">A sala foi equipada para receber pacientes de qualquer faixa etária, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id augue in massa fermentum efficitur. Ut ut interdum lacus. Aliquam interdum, mauris eget ultrices malesuada, lectus sem consequat elit, vel efficitur lorem nulla quis urna.</p>
                 <div class="info-salas-card">
                     <div class="w-50">
@@ -75,6 +79,7 @@
             </div>
         </div>
     </div>
+    <div id="button-checkout"></div>
 
     <!-- Modal -->
     <div  class="collapse w-50 m-auto p-5" id="collapseExample" style="border: 2px solid #01056a; border-radius: 10px">
@@ -123,7 +128,6 @@
                         <label for="numero" class="form-label">Numero: </label>
                         <input type="text" class="form-control" id="numero" name="numero" required>
                     </div>
-                    <!-- <input type="hidden" name="codigo_medico" value="1"> -->
                     <button 
                         name="btn-cadastro" 
                         type="submit" 
@@ -280,6 +284,5 @@
     <!-- SCRIPT JS-->
     <script src="/public/services/acoesBanco.js"></script>
     <script src="/public/services/selectSalas.js"></script>
-    <script src="/public/services/avancar1.js"></script>
 </body>
 </html>

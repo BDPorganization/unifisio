@@ -142,9 +142,8 @@ module.exports.preencherDados = async (req, res) => {
             rua: req.body.rua,
             numero: req.body.numero,
             cep: req.body.cep,
-            codigo_medico: req.session.user
+            codigo_medico: req.session.user.pk_medicos
         }
-
         dbMedicos.preencher_dados(dadosUser)
         .then(() => {
             return res.status(200).json({
