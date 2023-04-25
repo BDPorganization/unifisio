@@ -1,4 +1,5 @@
-const botao_avancar = document.getElementById("avancar");
+const mercadopg = new MercadoPago('TEST-60d51c1b-102c-484b-af6f-b3e31d929e39', { locale: 'pt-BR' });
+const botao_avancar = document.getElementById('avancar');
 const modalLogin = document.getElementById('loginModal');
 const avancar1 = document.getElementById('formDadosPessoais');
 
@@ -10,16 +11,36 @@ botao_avancar.addEventListener("click", () => {
         return response.json();
     })
     .then((resultado) => {
-        if(resultado['autenticado'] === true){
+        if(resultado.autenticado == true){
             fetch('/checarDados', {
                 method: "POST"
             })
             .then((response) =>{
-                return response.json();
-            })
-            .then((dados) => {
-                if (dados.dados == true){
+                if (response.status == 204){
                     exibirFormDados();
+                }else {
+                    let dadosPagamento = {
+                        quantity: document.getElementById("quantity").value,
+                        description: document.getElementById("product-description").innerHTML,
+                        price: document.getElementById("unit-price").value
+                    };
+   
+                    fetch("/pagamento", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(dadosPagamento),
+                    })
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((pagamento) => {
+                        createCheckoutButton(pagamento.id);
+                    })
+                    .catch((err) => {
+                        alert(`Ocorreu um erro inesperado!, ${err}`);
+                    });
                 }
             })
         }else {
@@ -30,7 +51,7 @@ botao_avancar.addEventListener("click", () => {
 
 function abrirModal(element) {
     element.classList.add("show");
-    element.style.display = "flex";
+    element.style.display = "block";
 }
 
 function exibirFormDados(){
@@ -43,4 +64,15 @@ function exibirFormDados(){
         
         form.style.display = 'flex';
     }
+}
+  
+function createCheckoutButton(pagamentoId) {
+    mercadopg.checkout({
+        preference: {
+            id: pagamentoId
+        },
+        render: {
+            container: '#button-checkout', 
+        }
+    });
 }

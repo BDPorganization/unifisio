@@ -49,8 +49,23 @@ async function checaMedico(checaUser) {
     const client = await database.connect();
 
     try {
-        const sql = 'SELECT * FROM medicos WHERE nome = $1 AND email = $2';
+        const sql = 'SELECT * FROM medicos WHERE nome = $1 AND email = $2'
         const values = [checaUser.nome, checaUser.email];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+
+}
+
+async function checaPkMedico(checaPkUser) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'SELECT * FROM medicos WHERE pk_medicos = $1'
+        const values = [checaPkUser.pk_medicos];
         return await client.query(sql, values);
     } catch (err) {
         return err;
@@ -64,5 +79,6 @@ module.exports = {
     login,
     cadastro,
     preencher_dados,
-    checaMedico
+    checaMedico,
+    checaPkMedico
 }; 

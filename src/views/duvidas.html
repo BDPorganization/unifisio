@@ -90,25 +90,30 @@
         </div>
     </section>
 
-    <!-- Modal -->
-    <div class="modal fade modal-lg" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Login-->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
-                <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
-                    <div style="width: 50%; padding: 15px;">
-                        <form method="POST" action="/loginDB">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email: </label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
-                            </div>
-                            <div class="mb-3">
-                                <label for="senha" class="form-label">Senha: </label>
-                                <input type="password" class="form-control" id="senha" name="senha">
-                            </div>
-                            <button type="submit" class="btn btn-light w-100 mt-2" name="btn-login">Entrar</button>
-                        </form>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="btn btn-primary w-100 mt-3">Cadastrar-me</a>
-                        <div class="googleAuth"> 
+                <div class="modal-header w-100 text-center">
+                    <h5 class="modal-title color-blue">Acessar minha conta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="height: 400px; width: 100%;">
+                    <form id="form-login">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email: </label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha: </label>
+                            <input type="password" class="form-control" id="senha" name="senha" required>
+                        </div>
+                        <center>
+                            <button type="submit" class="btn btn-secondary w-50 mt-5 mb-2" name="btn-login" id="btnLogin">Acessar</button>
+                        </center>
+                    </form>
+                    <center>
+                        <div class="googleAuth w-50"> 
                             <div id="g_id_onload"
                                 data-client_id="245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com"
                                 data-login_uri="http://localhost:3000/loginGoogle"
@@ -121,32 +126,37 @@
                                 data-text="sign_in_with"
                                 data-shape="rectangular"
                                 data-logo_alignment="left">
+                                <i class="fa-brands fa-google"></i>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-danger w-100 mt-3"><i style="padding-right: 30px" class="fa-brands fa-google"></i>Acesse com Google</button>
-                    </div>
-                    <div style="width: 50%; height: 100%;">
-                        <img style="width: 100%;height: 100%;" src="../../public/img/sala3/1.jpg" alt="IMAGEM-SALA">
+                    </center>
+                    <div class="w-100 text-center mt-2 mb-2">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="btn btn-link w-50 mt-2" style="color: #f05e22;">Cadastrar-me</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal Logout-->
     <div class="modal fade modal-lg" id="logadoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
                 <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
                     <div style="width: 100%; padding: 15px;">
-                        <form method="POST" action="/desconectar">
-                            <button type="submit" class="btn btn-light w-100 mt-2">Desconectar</button>
-                        </form>
+                        <center>
+                            <form method="POST" action="/desconectar">
+                                <button type="submit" class="btn btn-secondary w-50 mt-2">Desconectar</button>
+                            </form>
+                            <form id="form-apagarConta">
+                                <button type="submit" class="btn btn-danger w-50 mt-2">Apagar conta</button>
+                            </form>
+                        </center>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal Cadastro-->
     <div class="modal fade modal-lg" id="cadastro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
@@ -154,36 +164,34 @@
                     <h5 class="modal-title">Faça seu cadastro</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="/cadastro">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome completo: </label>
-                        <input type="text" class="form-control" id="nome" name="nome">
-                    </div>
-                    <div class="mb-3">
-                        <label for="especialidade" class="form-label">Especialidade: </label>
-                        <input type="text" class="form-control" id="especialidade" name="especialidade">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail: </label>
-                        <input type="email" class="form-control" id="email" name="email">
-                    </div>
-                    <div class="d-flex w-100 mb-3">
-                        <div style="width: 49%; margin-right: 2%;">
-                            <label for="senha" class="form-label">Senha: </label>
-                            <input type="password" class="form-control" id="senha" name="senha">
+                <form id="form-cadastro">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nomeCompleto" class="form-label">Nome completo: </label>
+                            <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto">
                         </div>
-                        <div style="width: 49%">
-                            <label for="confirma" class="form-label">Confirme sua Senha: </label>
-                            <input type="password" class="form-control" id="confSenha" name="confSenha">
+                        <div class="mb-3">
+                            <label for="especialidade" class="form-label">Especialidade: </label>
+                            <input type="text" class="form-control" id="especialidade" name="especialidade">
                         </div>
-                    </div>
-                    <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
+                        <div class="mb-3">
+                            <label for="emailCadastro" class="form-label">E-mail: </label>
+                            <input type="email" class="form-control" id="emailCadastro" name="emailCadastro">
+                        </div>
+                        <div class="d-flex w-100 mb-3">
+                            <div style="width: 49%; margin-right: 2%;">
+                                <label for="senhaCadastro" class="form-label">Senha: </label>
+                                <input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro">
+                            </div>
+                            <div style="width: 49%">
+                                <label for="confirma" class="form-label">Confirme sua Senha: </label>
+                                <input type="password" class="form-control" id="confSenha" name="confSenha">
+                            </div>
+                        </div>
+                        <center>
+                            <button name="btn-cadastro" type="submit" class="btn btn-secondary btn-cadastro w-50 mt-3">Cadastrar</button>
+                        </center>
                     </form>
-                    <div class="d-flex w-100 justify-content-end">
-                        <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
-                        <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -226,5 +234,7 @@
     <!-- Script Boostrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <!-- SCRIPT JS-->
+    <script src="/public/services/acoesBanco.js"></script>
 </body>
 </html>

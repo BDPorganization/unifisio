@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require("body-parser");
 const session = require('express-session');
 const routes = require('./src/routes/routes.js');
+const routesPag = require('./src/routes/routePag.js');
 
 app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, '/src/views'));
@@ -17,10 +18,10 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-app.use('/', routes);
+app.use('/', routes, routesPag);
 
 app.get('/', (req, res) => {
-    res.render('sala1');
+    res.render('index');
 });
 
 app.listen(port, (req, res) => {
