@@ -1,164 +1,49 @@
 @import './style.css';
-.div-imagem-grande{
-    width: 28%;
-}
-.div-imagem-grande div img{
-    width: 100%;
-    height: 100%;
-}
-.div-imagens-pequenas{
-    width: 10%;
-    height: 30rem;
-    padding-top: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-.div-imagens-pequenas div{
-    width: 100%;
-    height: 190px;
-    margin: 3px 15px 0px 3px;
-}
-.div-imagens-pequenas div img{
-    width: 100%;
-    height: 100%;
-}
-.div-externa-text{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 100px 0px;
-  align-items: center;
-  background-color: #ffffff;
-  justify-content: space-evenly;
-}
-.div-externa-text > div{
-  width: 70%;
-  height: 50%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0px 20px;
-  justify-content: center;
-}
-.div-externa-text p, .div-externa-text button {
-  font-family: nunito;
-  font-size: 16px;
-  font-weight: 700;
+.div-externa-text{width: 100%;padding: 100px 0px;}
+.div-interna-text{width: 80%;display: flex;flex-wrap: wrap;justify-content: space-evenly; margin: auto;}
+.div-imagens-sala{width: 50%;padding: 100px 0px;display: flex;justify-content:center}
+.div-texto-sala{width: 40%; padding: 100px 0px;}
+.div-imagem-grande{width: 470px; height: 100%;}
+.div-imagem-grande-st{width: 470px; height: 80%;}
+.div-imagem-grande div img{width: 100%;height: 100%;}
+.div-imagens-pequenas{width: 200px;height: 100%;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
+.div-imagens-pequenas div{width: 100%;height: 32%;margin: 2px 5px;}
+.div-imagens-pequenas div img{width: 100%;height: 100%;}
+.info-salas-card{font-family: nunito;font-size: 16px;font-weight: 700;display: flex;width: 80%;justify-content: space-between;margin: 50px auto;flex-wrap: wrap;}
+.info-salas-card i{color:#f05e22;margin-right: 10px;}
+.btn-navegacao{background-color:#01056a;border-radius: 100px;width:60px;padding: 15px;margin:0px auto 0px 0px;color: #fff;font-size: 18px; border:none;}
+.btn-navegacao:hover{background-color: #c6c8ff;}
+.iniciar-compra{border: none; background-color: #01056a; border-radius: 50px;width: 40%; padding: 10px 10px; color: #fff; font-weight: 400; font-size: 20px;}
+.acessar-politica{border-color:#01056a; background-color: #fff; border-radius: 50px; width: 40%; padding: 10px 10px; color: #01056a; font-weight: 700; font-size: 16px;}
+ 
+a {color: #01056a;text-decoration: none;}
+input[type=checkbox]::after{background-color: #f05e22;}
+input[type="checkbox"] {display: inline-block;background-color: #4CAF50;color: #fff;border: none;padding: 10px 20px;font-size: 16px;text-transform: uppercase;cursor: pointer;}
+input[type="checkbox"]:checked + span {background-color: #008CBA;}
+input[type="checkbox"] span {display: inline-block;vertical-align: middle;margin-left: 10px;}
+
+@media screen and (min-width: 1375px) and (max-width: 1450px){
+  .div-imagem-grande{width: 400px; height: 100%;}
+  .div-imagem-grande div img{width: 100%;height: 100%;}
+  .div-imagens-pequenas{width: 150px;height: 100%;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
+  .div-imagens-pequenas div{width: 100%;height: 32%;margin: 2px 5px;}
+  .div-imagens-pequenas div img{width: 100%;height: 100%;}
 }
 
-.div-texto{
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 80px 80px;
-    align-items: center;
-    justify-content: space-evenly;
+@media screen and (min-width: 600px) and (max-width: 1375px) {
+  .div-externa-text{padding: 50px 0px;}
+  .div-imagens-sala{margin: 0px 100px;}
+  .div-texto-sala{width: 90%;padding: 10px 0px 50px 0px;text-align: justify;}
+  .info-salas-card{ width: 100%; font-size: 14px;}
+  .iniciar-compra{width: 70%;}
+  .acessar-politica{width: 70%; margin-top: 10px;}
 }
 
-.texto-salas{   
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    padding-left: 20px;
-    width: 50%;
-}
-
-.texto-salas h3{   
-    font-weight: 700;
-    color: #01056a;
-}
-
-.botao-alugar{
-    align-self: end;
-    width: 18%;
-    padding-bottom: 20px;
-}
-.botao-alugar button{
-    padding: 10px 10px;
-    border: none;
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
-    background-color: #01056a;
-}
-
-.externo{
-    height: 500px;
-    margin: auto;
-    overflow: hidden;
-}
-a {
-    color: #01056a;
-    text-decoration: none;
-}
-.div-comodidades{
-    width: 80%; 
-    margin:auto; 
-    display: flex; 
-    justify-content: center;
-    background-color: #fff;
-}
-.comodidades{
-    width: 170px;
-    height: 90px; 
-    margin: 20px; 
-    padding: 10px 10px;
-    border-radius: 10px;
-    background-color: #f3f3f3;
-    font-family: nunito;
-    color: rgb(67, 83, 96);
-}
-.info-salas-card{
-  font-family: nunito;
-  font-size: 16px;
-  font-weight: 700;
-  display: flex;
-  width: 80%;
-  justify-content: space-between;
-  margin: 50px auto;
-}
-.info-salas-card i{
-  color:#f05e22;
-  margin-right: 10px;
-}
-
-input[type=checkbox]::after{
-  background-color: #f05e22;
-}
-
-input[type="checkbox"] {
-  display: inline-block;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-input[type="checkbox"]:checked + span {
-  background-color: #008CBA;
-}
-
-input[type="checkbox"] span {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 10px;
-}
-
-.btn-navegacao{
-  background-color: #01056a;
-  border-radius: 100px;
-  width: 60px;
-  padding: 15px;
-  margin-left: auto;
-  margin-right: 0px;
-  color: #fff;
-  font-size: 18px;
-  border: none;
-}
-.btn-navegacao:hover{
-  background-color: #c6c8ff;
+@media screen and (max-width: 600px) {
+  .div-externa-text{padding: 10px 0px;}
+  .div-imagens-sala{width: 90%;}
+  .div-texto-sala{width: 90%;padding: 10px 0px 50px 0px;text-align: justify;}
+  .info-salas-card{ width: 100%; font-size: 14px;}
+  .iniciar-compra{width: 100%;}
+  .acessar-politica{width: 100%; margin-top: 10px;}
 }

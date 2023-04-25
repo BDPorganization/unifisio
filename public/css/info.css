@@ -2,69 +2,55 @@
 
 /* Informações Sobre as Salas*/
 .inicio-tela-salas{display: flex;justify-content: space-evenly;align-items: center;flex-wrap: wrap;width: 100%;padding: 20px 0px;}
-.inicio-tela-salas > div{width: 45%;height: 100%;}
+.div-card-inicio{width: 45%;height: 100%;}
+.m-left{margin-left: 150px;width: 45%;height: 100%;}
 .card-inicio{width: 30rem;height: 20rem;border-radius: 20px; margin: 100px auto 0px 170px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
 .card-body a{width: 80%;color: #fff;font-size: 18px;font-weight: 700;background-color: #f05e22;}
-.card-salas-info{display: flex;justify-content: space-evenly;align-items: center;flex-wrap: wrap;background-color: #fff;padding: 160px 100px;font-weight: 400;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-.card-salas-info div {width: 22%;padding: 20px 15px;background-color: #f7f7f7;}
-.card-salas-info div img {width: 100%;height: 230px;margin: auto;background-color: #fff;}
-.card-salas-info div a {color: #fff;font-size: 18px;font-weight: 700;border-radius: 2px;letter-spacing: 1px;background-color: #f05e22;}
-.card-salas-info h5{font-size: 26px;font-weight: 700;margin-bottom: 90px;text-transform: uppercase;}
-.card-salas-info h4{font-weight: 700;font-size: 23px;color: #f05e22;}
-.texto-como-funciona{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 60vh;
-    padding: 120px 100px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f7f7;
+.texto-como-funciona{display: flex;justify-content: space-evenly;flex-wrap: wrap;width: 100%;height: 60vh;padding: 120px 100px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background-color: #f7f7f7;}
+.texto-como-funciona > div{width: 40%;height: 100%;}
+.texto-como-funciona div h1{font-weight: 700;font-size: 26px;margin: 30px 0px;text-transform: uppercase;}
+.texto-como-funciona div p{width: 80%;font-size: 20px;}
+.texto-como-funciona div i{color: #f05e22;}
+.opcoes-salas{width: 100%;display: flex;flex-wrap: wrap;padding: 150px 0px;align-items: center;justify-content: center;}
+.opcoes-salas > div{width: 25%;border: none;}
+.card-body1{width: 22rem;height: 27rem;flex: 0 0 0!important;margin: auto;border: 1px solid rgba(0, 0, 0, 0.175);border-radius: 20px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+.opcoes-salas h1{font-size: 26px;font-weight: 700;margin: 30px 0px 70px 0px;text-transform: uppercase;color: #f05e22;text-align: center;width: 100%;}
+.margin-5{margin-top: 50px;}
+
+@media screen and (min-width: 1200px) and (max-width: 1500px) {
+    .inicio-tela-salas{justify-content: center; padding:0px 200px}
+    .m-left{margin-left: 0px;width: 55%;}
+    .div-card-inicio{width: 40%;}
+    .card-inicio{width: 27rem;height: 20rem;margin: 30px auto 50px 100px;}
+    .texto-como-funciona > div{width: 50%;height: 100%;}
+    .texto-como-funciona{padding: 70px 20px; height: 80vh;}
+    .opcoes-salas{padding: 80px 0px;justify-content: space-evenly}
+    .margin-5{margin-top: 0px;}
 }
-.texto-como-funciona > div{
-    width: 40%;
-    height: 100%;
+@media screen and (min-width: 850px) and (max-width: 1200px) {
+    .inicio-tela-salas{justify-content: center; padding:0px 200px}
+    .m-left{margin-left: 0px;width: 55%;display: none;}
+    .div-card-inicio{width: 40%;}
+    .card-inicio{width: 27rem;height: 20rem;margin: 30px auto 50px 100px;}
+    .texto-como-funciona > div{width: 50%;height: 100%;}
+    .texto-como-funciona{padding: 70px 20px; height: 80vh;}
+    .opcoes-salas{padding: 80px 0px;justify-content: center}
+    .opcoes-salas > div{width:25%; margin:0px 5px}
+    .margin-5{margin-top: 0px;}
+    .card-body1{width: 15rem;height: 30rem;}
 }
-.texto-como-funciona div h1{
-    font-weight: 700;
-    font-size: 26px;
-    margin: 30px 0px;
-    text-transform: uppercase;
-}
-.texto-como-funciona div p{
-    width: 80%;
-    font-size: 20px;
-}
-.texto-como-funciona div i{
-    color: #f05e22;
-}
-.opcoes-salas{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 150px 0px;
-    align-items: center;
-    justify-content: center;
-}
-.opcoes-salas > div{
-    width: 25%;
-    border: none;
-}
-.card-body1{
-    width: 22rem;
-    height: 27rem;
-    flex: 0 0 0!important;
-    margin: auto;
-    border: 1px solid rgba(0, 0, 0, 0.175);
-    border-radius: 20px; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.opcoes-salas h1{
-    font-size: 26px;
-    font-weight: 700;
-    margin: 30px 0px 70px 0px;
-    text-transform: uppercase;
-    color: #f05e22;
-    text-align: center;
-    width: 100%;
+
+@media screen and (max-width: 850px) {
+    .inicio-tela-salas{justify-content: center; padding:0px}
+    .m-left{display: none;}
+    .div-card-inicio{width: 90%}
+    .card-inicio{width: 100%;height: 100%;margin: 30px 0px;}
+    .texto-como-funciona > div{width: 100%;height: 100%; margin: 0px 20px;}
+    .texto-como-funciona{padding: 70px 0px; height: 100%;}
+    .texto-como-funciona div p{width: 96%;font-size: 16px;text-align: justify;margin-bottom: 50px;}
+    .opcoes-salas{padding: 80px 0px;justify-content: center}
+    .opcoes-salas > div{width:90%; margin: 10px 10px}
+    .margin-5{margin-top: 0px;}
+    .order1{order: 1;}
+    .order2{display: none;}
 }

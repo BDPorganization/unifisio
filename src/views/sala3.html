@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
+    <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async></script>
+    <script src="/public/services/verificaLogin.js" async></script>
+    <!-- Nunito -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- Css externo -->
+    <link rel="stylesheet" href="../../public/css/salas.css">
+    <title>Sala Espaçosa e Confortável - Unifisio</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="/public/services/app.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg mb-0">
+        <div class="navbar-brand div-nav">
+            <img src="../../public/img/logoSimples_png.png" alt="LOGO_UNIFISIO">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="barraNavegacao">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/duvidas">Duvidas</a></li> 
+                <li class="nav-item"><a class="nav-link" href="/salas">Salas</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
+                <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal" id="nomeUsuario">
+                    <i class="fa fa-user"></i> Login
+                </a>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="div-externa-text">
+        <div class="div-interna-text">
+            <div class="div-imagens-sala">
+                <div class="div-imagem-grande-st">
+                    <div><img id="imagem-grande" src="../../public/img/consultorio3/7e16793c-07f4-4ffa-abc9-18d6621745d0.jpg" alt=""></div>
+                </div>
+                <div class="div-imagens-pequenas">
+                    <div><img id="img-2" src="../../public/img/consultorio3/3597b589-b788-44a8-8dfa-e98f87f96af5.jpg" alt=""></div>
+                    <div><img id="img-3" src="../../public/img/consultorio3/66b7ab8a-8d98-45a0-97b8-765f245958c6.jpg" alt=""></div>
+                    <div><img id="img-4" src="../../public/img/consultorio3/1882d1ab-89bf-455f-acd4-b3279c20de2b.jpg" alt=""></div>
+                </div>
+            </div>
+            
+            <div class="div-texto-sala">
+                <p style="color: #f05e22; font-weight: 100; text-align: center;">Sobre a acomodação</p>
+                <p style="text-align: center; font-size: 26px; margin-bottom: 30px;color: #01056a" id="product-description">Studio de Pilates e fisioterapia</p>
+                <input type="hidden" value="27.90" id="unit-price">
+                <input type="hidden" value="1" id="quantity">
+                <p style="font-weight: 100; font-family: nunito;">A sala foi equipada para receber pacientes de qualquer faixa etária, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id augue in massa fermentum efficitur. Ut ut interdum lacus. Aliquam interdum, mauris eget ultrices malesuada, lectus sem consequat elit, vel efficitur lorem nulla quis urna.</p>
+                <div class="info-salas-card">
+                    <div class="w-50">
+                        <p><i class="fa-solid fa-wifi"></i> Wi-fi</p>
+                        <p><i class="fa-solid fa-snowflake"></i> Ar-condicionado</p>
+                        <p><i class="fa-solid fa-square-parking"></i> Estacionamento</p>
+                    </div>
+                    <div class="w-50">
+                        <p><i class="fa-solid fa-restroom"></i> Banheiro</p>
+                        <p><i class="fa-solid fa-faucet-drip"></i> Água corrente</p>
+                        <p><i class="fa-solid fa-trash"></i> Lixeira hospitalar</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap justify-content-evenly">
+                    <button class="iniciar-compra" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Iniciar compra</button>
+
+                    <button class="acessar-politica">Acesse a política de conduta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div  class="collapse w-50 m-auto p-5" id="collapseExample" style="border: 2px solid #01056a; border-radius: 10px">
+        <div class="row h-75 mb-5">
+            <h4 class="mb-3 w-100" style="color: #01056a">Você está iniciando sua compra</h4>
+            <div class="mb-3 col-sm-6">
+                <label for="data_escolhida" class="form-label w-100">Selecione uma data</label>
+                <input type="date" id="dateTime" name="dia" class="form-control">
+                <input type="hidden" id="pk_sala" name="pk_sala" value="1">
+            </div>
+            <div class="mb-3 col-sm-6">
+                <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
+                <div id="containerId" class="d-flex flex-wrap"></div>
+            </div>
+            <button id="avancar" type="button" class="btn btn-primary btn-cadastro w-25" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div id="formDadosPessoais" class="row h-75 mb-5">
+            <form method="POST" action="/cadastro">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome completo: </label>
+                        <input type="text" class="form-control" id="nome" name="nome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="especialidade" class="form-label">Atividade: </label>
+                        <input type="text" class="form-control" id="especialidade" name="especialidade">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail: </label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="d-flex w-100 mb-3">
+                        <div style="width: 49%; margin-right: 2%;">
+                            <label for="senha" class="form-label">Senha: </label>
+                            <input type="password" class="form-control" id="senha" name="senha">
+                        </div>
+                        <div style="width: 49%">
+                            <label for="confirma" class="form-label">Confirme sua Senha: </label>
+                            <input type="password" class="form-control" id="confSenha" name="confSenha">
+                        </div>
+                    </div>
+                    <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
+                </form>
+                <div class="d-flex w-100 justify-content-end">
+                    <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
+                    <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+    
+<footer class="footer" style="background-color: #d7d7d7;">
+    <div class="div-footer">
+        <div>
+            <img src="../../public/img/logo_png.png" alt="logo">
+        </div>
+        
+        <div class="icon-footer">
+            <a href="https://github.com/deborabuzatto" target="_blank">
+                <i class="fa fa-github hover-opacity"></i>
+            </a>
+            <a href="" target="_blank">
+                <i class="fa fa-linkedin hover-opacity"></i>
+            </a>
+            <a href="" target="_blank">
+                <i class="fa fa-whatsapp hover-opacity"></i>
+            </a>
+            <a href="" target="_blank">
+                <i class="fa fa-google hover-opacity"></i>
+            </a>
+        </div>
+        <div>
+            <a href="https://goo.gl/maps/6XHN11Q8mgpEdLSu7" target="_blank">
+                Unifisio Saúde & Bem Estar<br>
+                R. Aristóbulo Barbosa Leão 500<br>
+                Shopping Victoria Mall - <br>
+                Mata da Praia, Vitória - ES, 29060-010
+            </a>
+        </div>
+    </div>
+</footer>
+
+    <!-- Modal Login-->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+                <div class="modal-header w-100 text-center">
+                    <h5 class="modal-title color-blue">Acessar minha conta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="height: 400px; width: 100%;">
+                    <form id="form-login">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email: </label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha: </label>
+                            <input type="password" class="form-control" id="senha" name="senha" required>
+                        </div>
+                        <center>
+                            <button type="submit" class="btn btn-secondary w-50 mt-5 mb-2" name="btn-login" id="btnLogin">Acessar</button>
+                        </center>
+                    </form>
+                    <center>
+                        <div class="googleAuth w-50"> 
+                            <div id="g_id_onload"
+                                data-client_id="245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com"
+                                data-login_uri="http://localhost:3000/loginGoogle"
+                                data-context="use">
+                            </div>
+                            <div class="g_id_signin"
+                                data-type="standard"
+                                data-size="large"
+                                data-theme="outline"
+                                data-text="sign_in_with"
+                                data-shape="rectangular"
+                                data-logo_alignment="left">
+                                <i class="fa-brands fa-google"></i>
+                            </div>
+                        </div>
+                    </center>
+                    <div class="w-100 text-center mt-2 mb-2">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="btn btn-link w-50 mt-2" style="color: #f05e22;">Cadastrar-me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Logout-->
+    <div class="modal fade modal-lg" id="logadoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+                <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
+                    <div style="width: 100%; padding: 15px;">
+                        <center>
+                            <form method="POST" action="/desconectar">
+                                <button type="submit" class="btn btn-secondary w-50 mt-2">Desconectar</button>
+                            </form>
+                            <form id="form-apagarConta">
+                                <button type="submit" class="btn btn-danger w-50 mt-2">Apagar conta</button>
+                            </form>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Cadastro-->
+    <div class="modal fade modal-lg" id="cadastro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Faça seu cadastro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="form-cadastro">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nomeCompleto" class="form-label">Nome completo: </label>
+                            <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto">
+                        </div>
+                        <div class="mb-3">
+                            <label for="especialidade" class="form-label">Especialidade: </label>
+                            <input type="text" class="form-control" id="especialidade" name="especialidade">
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailCadastro" class="form-label">E-mail: </label>
+                            <input type="email" class="form-control" id="emailCadastro" name="emailCadastro">
+                        </div>
+                        <div class="d-flex w-100 mb-3">
+                            <div style="width: 49%; margin-right: 2%;">
+                                <label for="senhaCadastro" class="form-label">Senha: </label>
+                                <input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro">
+                            </div>
+                            <div style="width: 49%">
+                                <label for="confirma" class="form-label">Confirme sua Senha: </label>
+                                <input type="password" class="form-control" id="confSenha" name="confSenha">
+                            </div>
+                        </div>
+                        <center>
+                            <button name="btn-cadastro" type="submit" class="btn btn-secondary btn-cadastro w-50 mt-3">Cadastrar</button>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script FontAwesome -->
+    <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
+    <!-- Script Boostrap-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <!-- SCRIPT JS-->
+    <script src="/public/services/acoesBanco.js"></script>
+    <script src="/public/services/selectSalas.js"></script>
+    <script src="/public/services/avancar1.js"></script>
+</body>
+</html>
