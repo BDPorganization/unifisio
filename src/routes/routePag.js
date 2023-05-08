@@ -21,17 +21,16 @@ mp.post("/pagamento", (req, res) => {
 			}
 		],
 		back_urls: {
-			"success": "#",
-			"failure": "#",
-			"pending": "#"
+			"success": "http://localhost:3000/pagAprovado/",
+			"failure": "http://localhost:3000/pagReprovado/",
+			"pending": "http://localhost:3000/pagPendente/"
 		},
 		auto_return: "approved",
 	};
-    console.log(payment)
-
+    
 	mercadopago.preferences.create(payment)
 	.then((response) => {
-		res.status(201).json({ id: response.body.id })
+		res.status(201).json({ id: response.body.id });
 	})
     .catch((err) => {
 		res.status(500).send(err);
