@@ -20,25 +20,7 @@
     <title>Home - Unifisio</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-            <a class="navbar-brand div-nav" href="#"><img src="./public/img/logo_png.png" alt="LOGO_UNIFISIO"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="/index">Home</a>
-                    <a class="nav-link" href="/salas">Salas</a>
-                    <a class="nav-link" href="/duvidas">Dúvidas</a>
-                    
-                    <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal" id="nomeUsuario">
-                        <i class="fa fa-user"></i> Login
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <%- include('./includes/nav.html'); %>
 
     <section>
         <div class="div-inicial-index">
@@ -105,125 +87,15 @@
                         Acessar pelo Google</a></div>
                 </div>
             </div>
-            <div style="text-align: center;font-family: 'poppins'; padding-bottom: 10px;">
-                <p> © Produzido por Code Overshadow - 2023</p>
+            <div style="text-align: center; font-family: 'poppins'; font-weight: 550 ;padding-bottom: 10px;">
+                <p>© Produzido por Code Overshadow - 2023</p>
             </div>
         </div>
     </section>
 
-    
-    <!-- Modal Login-->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content">
-                <div class="modal-header w-100 text-center">
-                    <h5 class="modal-title">Acessar minha conta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" style="height: 400px; width: 100%;">
-                    <form method="POST" action="/loginDB">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email: </label>
-                            <input type="email" class="form-control" id="email" name="emailLogin" placeholder="name@example.com" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="senha" class="form-label">Senha: </label>
-                            <input type="password" class="form-control" id="senha" name="senhaLogin" required>
-                        </div>
-                        <center>
-                            <button type="submit" class="btn btn-secondary w-50 mt-5 mb-2" name="btn-login" id="btnLogin">Acessar</button>
-                        </center>
-                    </form>
-                    <center>
-                        <div class="googleAuth w-50"> 
-                            <div id="g_id_onload"
-                                data-client_id="245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com"
-                                data-login_uri="http://localhost:3000/loginGoogle"
-                                data-context="use">
-                            </div>
-                            <div class="g_id_signin"
-                                data-type="standard"
-                                data-size="large"
-                                data-theme="outline"
-                                data-text="sign_in_with"
-                                data-shape="rectangular"
-                                data-logo_alignment="left">
-                                <i class="fa-brands fa-google"></i>
-                            </div>
-                        </div>
-                    </center>
-                    <div class="w-100 text-center mt-2 mb-2">
-                        <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="btn btn-link w-50 mt-2" style="color: #f05e22;">Cadastrar-me</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Logout-->
-    <div class="modal fade modal-lg" id="logadoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content">
-                <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
-                    <div style="width: 100%; padding: 15px;">
-                        <center>
-                            <form method="POST" action="/desconectar">
-                                <button type="submit" class="btn btn-secondary w-50 mt-2">Desconectar</button>
-                            </form>
-                            <form method="POST" action="/aluguel">
-                                <button type="submit" class="btn btn-success w-50 mt-2">Meus aluguéis</button>
-                            </form>
-                            <form id="form-apagarConta">
-                                <button type="submit" class="btn btn-danger w-50 mt-2">Apagar conta</button>
-                            </form>
-                        </center>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Cadastro-->
-    <div class="modal fade modal-lg" id="cadastro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Faça seu cadastro</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="POST" action="/cadastro">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome completo: </label>
-                        <input type="text" class="form-control" id="nome" name="nome">
-                    </div>
-                    <div class="mb-3">
-                        <label for="especialidade" class="form-label">Especialidade: </label>
-                        <input type="text" class="form-control" id="especialidade" name="especialidade">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail: </label>
-                        <input type="email" class="form-control" id="email" name="email">
-                    </div>
-                    <div class="d-flex w-100 mb-3">
-                        <div style="width: 49%; margin-right: 2%;">
-                            <label for="senha" class="form-label">Senha: </label>
-                            <input type="password" class="form-control" id="senha" name="senha">
-                        </div>
-                        <div style="width: 49%">
-                            <label for="confirma" class="form-label">Confirme sua Senha: </label>
-                            <input type="password" class="form-control" id="confSenha" name="confSenha">
-                        </div>
-                        <center>
-                            <button name="btn-cadastro" type="submit" class="btn btn-secondary btn-cadastro w-50 mt-3">Cadastrar</button>
-                        </center>
-                    </form>
-                    <div class="d-flex w-100 justify-content-end">
-                        <button name="btn-cadastro" type="type" class="btn btn-primary btn-cadastro">Confirmar</button>
-                        <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%- include('./includes/modalLogin.html'); %>
+    <%- include('./includes/modalLogout.html'); %>
+    <%- include('./includes/modalCadastro.html'); %>
 
     <!-- Script FontAwesome -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
