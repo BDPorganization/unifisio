@@ -8,140 +8,109 @@
     <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300&family=Poppins:wght@200;800&display=swap" rel="stylesheet">
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- Css externo -->
-    <link rel="stylesheet" href="./public/css/index.css">
+    <link rel="stylesheet" href="../../public/css/index.css">
     <title>Home - Unifisio</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg mb-0">
-        <div class="navbar-brand div-nav">
-            <img src="../../public/img/logoSimples_png.png" alt="LOGO_UNIFISIO">
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
-            <i class="fa-solid fa-bars-staggered"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="barraNavegacao">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/duvidas">Duvidas</a></li> 
-                <li class="nav-item"><a class="nav-link" href="/salas">Salas</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
-                  
-                <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal" id="nomeUsuario">
-                    <i class="fa fa-user"></i> Login
-                </a>
-            </ul>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand div-nav" href="#"><img src="./public/img/logo_png.png" alt="LOGO_UNIFISIO"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/index">Home</a>
+                    <a class="nav-link" href="/duvidas">Duvidas</a>
+                    <a class="nav-link" href="/salas">Salas</a>
+                    <a class="nav-link" href="/contato">Contato</a>
+                    
+                    <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal" id="nomeUsuario">
+                        <i class="fa fa-user"></i> Login
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 
     <section>
-        <div class="pagina-inicial">
+        <div class="div-inicial-index">
             <div>
-                <img class="imagem-logo-index" src="./public/img/logo_png.png" alt="">
+                <h4 class="titulo">Conheça nossos serviços de coworking</h4>
+                <p>É um serviço onde você alugará um consultório médico apenas por algumas horas quando tiver pacientes agendados, dessa forma, você não precisa pagar uma mensalidade inteira para atender algumas vezes. Seu consultório já será limpo e climatizado e não precisará montar um ambiente do zero.</p>
+                <p>É um serviço onde você alugará um consultório médico apenas por algumas horas quando tiver pacientes agendados, dessa forma, você não precisa pagar uma mensalidade inteira para atender algumas vezes. Seu consultório já será limpo e climatizado e não precisará montar um ambiente do zero.</p>
+            </div> 
+            <div class="w-40">
+                <img src="../../public/img/colagemIndex.png" alt="" width="100%" height="100%" style="border-radius: 5px;"> 
             </div>
-            <div class="carrosel-index">
-                <div id="carouselExampleSlidesOnly" class="carousel slide h-100" data-bs-ride="carousel" 
-                style="width: 74%;">
-                    <div class="carousel-inner h-100">
-                        <div class="carousel-item active h-100">
-                            <img src="./public/img/shopping.jpg" class="d-block w-100 h-100" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>    
-        </div>
-        <!-- #f3f3f3 -->
-        <div class="div-explicacao">
-            <div>
-                <h1>01 - O que é Coworking na área da saúde?</h1>
-                <p>É um serviço onde você alugará um consultório médico apenas por algumas horas quando tiver pacientes agendados, dessa forma, você não precisa pagar uma mensalidade inteira para atender algumas vezes. Seu consultório já será limpo e climatizado e não precisará montar um ambiente do zero.
-                </p>
-            </div>
-            <div>
-                <h1>02 - Tenho perfil para usar coworking?</h1>
-                <p>Se você precisa de um bom consultório, por um valor acessível e sem lidar com preocupações externas, o coworking Unifíso é ideal pra você. Além disso, vale ressaltar que os consultórios e studios são para profissionais voltados para a área da saúde, que não utilizam equipamentos de grande porte. </p>
-
-            </div>
-            <div>
-                <h1>03 - E se não houver muitos pacientes?</h1>
-                <p>Não se preocupe! Na Unifísio você pode alugar um ótimo consultório por apenas uma ou duas horas e assim suprir suas necessidades de atendimento, pagando apenas pelas horas que foram utilizadas, economizando gastos com refrigeração, iluminação e limpeza.</p>
-            </div>
-        </div>
-
-        <div class="div-imagens-externas">
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.31.jpeg" alt=""></div>
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 19.00.07.jpeg" alt=""></div>
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.30.jpeg" alt=""></div>
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.31.jpeg" alt=""></div>
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 19.00.07.jpeg" alt=""></div>
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.30.jpeg" alt=""></div>
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.31.jpeg" alt=""></div>
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 19.00.07.jpeg" alt=""></div>
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 19.00.07.jpeg" alt=""></div>
-            <div><img src="../../public/img/foto_ambiente/WhatsApp Image 2023-02-09 at 13.40.30.jpeg" alt=""></div>
         </div>
 
         <div class="div-localizacao">
-            <div class="div-localizacao-titulo">
-                <h1>Localização - Unifísio</h1>
-                <div><a type="button" href="https://wa.me/5527999203727">Agendar visita</a></div>
-            </div>
+            <div>
+                <div class="iframe">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.5001640255646!2d-40.29536494919331!3d-20.279554286342226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb8199e4c8c17db%3A0xee5b59535434cd97!2sUnifisio%20Sa%C3%BAde%20%26%20Bem%20Estar!5e0!3m2!1spt-BR!2sbr!4v1671653564524!5m2!1spt-BR!2sbr" style="border:0; margin:0px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
 
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.5001640255646!2d-40.29536494919331!3d-20.279554286342226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb8199e4c8c17db%3A0xee5b59535434cd97!2sUnifisio%20Sa%C3%BAde%20%26%20Bem%20Estar!5e0!3m2!1spt-BR!2sbr!4v1671653564524!5m2!1spt-BR!2sbr" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-            <div class="localizacao-texto">
-                <h1 style="font-weight: 700;">Estamos em Vitória.</h1>
-                <div>
-                    <p><i class="fa-solid fa-store"></i> Shopping Victoria Mall - Mata da Praia.</p>
-                    <p><i class="fa-solid fa-car"></i> Estacionamento gratuito para você e seus pacientes.</p>
-                    <p><i class="fa-solid fa-person-walking"></i> Local movimentado e com seguranças 24hrs.</p>
-                    <p><i class="fa-solid fa-trash-arrow-up"></i>O prédio possui descarte de lixo hospitalar.</p>
-                    <p><i class="fa-solid fa-user-doctor"></i> Fique próximo de outros consultórios e profissionais.</p>
+                <div class="localizacao-texto">
+                    <h3 class="titulo">Estamos em Vitória</h3>
+                    
+                    <div>
+                        <p><i class="fa-solid fa-store"></i> Shopping Victoria Mall - Mata da Praia.</p>
+                        <p><i class="fa-solid fa-car"></i> Estacionamento gratuito para você e seus pacientes.</p>
+                        <p><i class="fa-solid fa-person-walking"></i> Local movimentado e com seguranças 24hrs.</p>
+                        <p><i class="fa-solid fa-trash-arrow-up"></i>O prédio possui descarte de lixo hospitalar.</p>
+                        <p><i class="fa-solid fa-user-doctor"></i> Fique próximo de outros consultórios e profissionais.</p>
+                        <div><a type="button" href="https://wa.me/5527999203727">Agendar visita</a></div>
+                    </div>
                 </div>
             </div>
-
-            <!-- <div class="icones-redes">
-                <i class="fa-brands fa-facebook" style="color:rgb(0, 68, 187);"></i>
-                <i class="fa-brands fa-instagram" style="color:rgb(192, 43, 66);"></i>
-                <i class="fa-brands fa-whatsapp" style="color:rgb(9, 104, 9)"></i>
-            </div> -->
         </div>
         
-    </section>
+        <div class="div-inicial-img">
+            <div class="w-100">
+                <h4 class="titulo text-center">Galeria</h4>
+            </div> 
+            <div><img src="./public/img/consultorio1/f8569240-1c45-47a7-8942-1c87bbefcb01.jpg" alt=""></div>
+            <div><img src="./public/img/consultorio2/189f63b0-5437-426d-b26e-a6f751ad112e.jpg" alt=""></div>
+            <div><img src="./public/img/consultorio3/0d76829c-67f5-4c11-ad96-ba6df6913934.jpg" alt=""></div>
+            <div><img src="./public/img/consultorio3/89ba97d0-56a1-41e0-96f4-69bea32198e3.jpg" alt=""></div>
+            <div><img src="./public/img/consultorio1/140ba167-d447-4f86-97e6-17e5bfe4dab5.jpg" alt=""></div>
+            <div><img src="./public/img/consultorio1/f1de95d2-1996-4c97-8434-c044279fc854.jpg" alt=""></div>
+            <div><img src="./public/img/consultorio3/3597b589-b788-44a8-8dfa-e98f87f96af5.jpg" alt=""></div>
+            <div><img src="./public/img/consultorio2/92aaeb20-8d07-4f06-a187-b1f12ddc9acb.jpg" alt=""></div>
+        </div>
 
-    <footer class="footer">
-        <div class="div-footer">
-            <div>
-                <img src="./public/img/logo_png.png" alt="logo">
+        <div class="div-redes">
+            <div class="div-inicial-redes">
+                <div class="div-redes-texto">
+                    <h4 class="titulo">Visite nossas redes sociais</h4>
+                    <p>É um serviço onde você alugará um consultório médico apenas por algumas horas quando tiver pacientes agendados, dessa forma, você não precisa pagar uma mensalidade inteira para atender algumas vezes. Seu consultório já será limpo e climatizado e não precisará montar um ambiente do zero.</p>
+                </div>
+                <div class="div-redes-texto" >
+                    <div><a type="button" href="https://www.instagram.com/unifisiovix/" class="btn-redes">
+                        <i class="fa-brands fa-instagram"></i>
+                        Conhecer Instagram</a></div>
+                    <div><a type="button" href="https://www.facebook.com/Unifisiovix/" class="btn-redes">
+                        <i class="fa-brands fa-facebook"></i>
+                        Visitar facebook</a></div>
+                    <div><a type="button" href="https://unifisiovix.netlify.app/" class="btn-redes">
+                        <i class="fa-brands fa-google"></i>
+                        Acessar pelo Google</a></div>
+                </div>
             </div>
-            
-            <div class="icon-footer">
-                <a href="" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="" target="_blank">
-                    <i class="fa fa-whatsapp hover-opacity"></i>
-                </a>
-                <a href="" target="_blank">
-                    <i class="fa fa-google hover-opacity"></i>
-                </a>
-            </div>
-            <div>
-                <a href="https://goo.gl/maps/6XHN11Q8mgpEdLSu7" target="_blank">
-                    Unifisio Saúde & Bem Estar<br>
-                    R. Aristóbulo Barbosa Leão 500<br>
-                    Shopping Victoria Mall - <br>
-                    Mata da Praia, Vitória - ES, 29060-010
-                </a>
+            <div style="text-align: center;font-family: 'poppins'; padding-bottom: 10px;">
+                <p> © Produzido por Code Overshadow - 2023</p>
             </div>
         </div>
-    </footer>
+    </section>
 
     
     <!-- Modal Login-->
@@ -243,20 +212,6 @@
                         <div style="width: 49%">
                             <label for="confirma" class="form-label">Confirme sua Senha: </label>
                             <input type="password" class="form-control" id="confSenha" name="confSenha">
-                        </div>
-                        <div class="mb-3">
-                            <label for="emailCadastro" class="form-label">E-mail: </label>
-                            <input type="email" class="form-control" id="emailCadastro" name="emailCadastro">
-                        </div>
-                        <div class="d-flex w-100 mb-3">
-                            <div style="width: 49%; margin-right: 2%;">
-                                <label for="senhaCadastro" class="form-label">Senha: </label>
-                                <input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro">
-                            </div>
-                            <div style="width: 49%">
-                                <label for="confirma" class="form-label">Confirme sua Senha: </label>
-                                <input type="password" class="form-control" id="confSenha" name="confSenha">
-                            </div>
                         </div>
                         <center>
                             <button name="btn-cadastro" type="submit" class="btn btn-secondary btn-cadastro w-50 mt-3">Cadastrar</button>

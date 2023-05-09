@@ -1,50 +1,63 @@
 @import url('../css/style.css');
 
-.pagina-inicial{ width: 100%;padding-bottom: 100px;display: flex;justify-content: center;align-items: center;flex-wrap: wrap;}
-.pagina-inicial > h1{color: #009de0;font-weight: 700;font-size: 48px;}
-.pagina-inicial > div{width: 100%;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
-.imagem-logo-index{width: 20%;height: 20%;margin: 20px 0px;}
-.div-explicacao{width: 100%;padding: 50px 0px;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;background-color: #f3f3f3;}
-.div-explicacao div{width: 60%;padding: 60px 80px;margin: 30px 0px;background-color: #fff;}
-.div-explicacao h1{font-weight: 700;color: #f05e22; font-size: 36px;}
-.div-explicacao p{text-align: justify;font-weight: 500;font-family: nunito;}
-.div-imagens-externas{width: 100%;display: flex;flex-wrap: wrap;padding: 30px 0px;justify-content: center; background-color: #f8f8f8;}
-.div-imagens-externas div{width: 10%;height: 30%;padding: 12px;}
-.div-imagens-externas div img{width: 100%; height: 100%;transition: all ease-out 500ms;}
-.div-imagens-externas div img:hover{transform: scale(1.1);transition: all ease-out 500ms;}
-/* .icones-redes {width: 70px;position: fixed;right: 50px;padding: 1%;bottom: 4%; z-index: 10000000; display: flexbox;}
-.icones-redes i{font-size: 40px;margin: 20px 0px;} */
-.div-localizacao{background-color:#fff;display:flex;justify-content:space-evenly;flex-wrap:wrap;width:100%;padding:100px 0px;color:#01056a;}
-.div-localizacao-titulo{width: 100%;display: flex;justify-content: center;flex-wrap: wrap;color: #01056a;margin-bottom: 70px;}
-.div-localizacao-titulo h1{font-weight: 700;width: 30%;}
-.div-localizacao-titulo a{padding: 20px 35px;border: none;font-size: 18px;font-weight: 600;color: #fff;background-color: #01056a;text-decoration: none;}
-.div-localizacao-titulo > div{width: 40%;text-align: end;}
-.div-localizacao p{font-size: 18px;margin: 12px 0px;color:rgb(79, 79, 79, 0.7);}
-.div-localizacao p i{font-size: 20px;margin: 12px 0px;color:#01056a;margin-right: 10px;}
-.carrosel-index{width: 75%;}
+.div-inicial-index{display: flex; flex-wrap: wrap; justify-content: space-evenly; width: 70%; padding: 80px 0px; align-items: center; margin: auto;}
+.div-inicial-index > div{width: 40%; text-align: justify; font-family: nunito; font-weight: 300; font-size: 16px;}
+.titulo{font-weight: 800; margin-bottom: 30px; font-family: 'poppins'; text-align: start;}
+.w-40{width: 40%;}
+.iframe{width: 40%;text-align: end;}
 
-@media screen and (min-width: 600px) and (max-width: 1020px) {
-    .imagem-logo-index{width: 35%;height: 5%;margin: 20px 0px;}
-    .div-explicacao{padding: 10px 0px;}
-    .div-explicacao h1{font-weight: 700;font-size: 24px;}
-    .div-explicacao div{width: 90%;padding: 40px;margin: 30px 0px;}
-    .div-localizacao-titulo h1{font-weight: 700;width: 56%; margin: 0px 15px;}
-    .div-localizacao-titulo button{padding: 10px 25px;font-size: 16px;}
-    .div-localizacao-titulo > div{width: 35%;text-align: end;padding: 0px 15px;}
-    .carrosel-index{width: 85%;}
-    iframe{margin: 0px 20px 20px 20px;}
+.div-inicial-img{display: flex; flex-wrap: wrap; justify-content: space-evenly;flex-wrap: wrap; width: 65%; padding: 80px 0px; align-items: center; margin: auto;}
+.div-inicial-img > div{width: 20%; margin: 10px;}
+.div-inicial-img > div img{width: 100%; height: 100%;border-radius: 5px; transition: all ease-out 500ms;}
+.div-inicial-img > div img:hover{transform: scale(1.04);transition: all ease-out 500ms;}
+
+.div-redes{width: 100%;background: linear-gradient(#fff, #fbc9b6);}
+.div-inicial-redes{display: flex; flex-wrap: wrap; justify-content: space-evenly;flex-wrap: wrap; width: 65%; padding: 100px 0px; align-items: center; margin: auto;}
+.div-redes-texto{width: 40%; text-align: justify; font-family: nunito; font-weight: 300; font-size: 16px;}
+.btn-redes{width:80% ;padding: 10px 50px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000;text-decoration: none; border-radius: 5px; margin: 10px;}
+
+.div-localizacao{background-color:#f3f3f3;width:100%;}
+.div-localizacao > div {display:flex;justify-content:space-evenly;flex-wrap:wrap;width:70%;padding:100px 0px;margin: auto;}
+.div-localizacao-titulo{width: 100%;display: flex;justify-content: center;flex-wrap: wrap;margin-bottom: 70px;}
+.localizacao-texto a{width:70% ;text-align: center;padding: 10px 0px;border: none;font-size: 18px;font-weight: 600;color: #fff;background-color: #000;text-decoration: none; border-radius: 5px;}
+.div-localizacao-titulo > div{width: 40%;text-align: end;}
+.div-localizacao p{font-size: 16px;margin: 12px 0px; font-family: nunito;}
+.div-localizacao p i{font-size: 20px;margin: 12px 0px;color:#f05e22;margin-right: 10px;}
+.localizacao-texto{width: 40%;padding-left: 50px;}
+iframe{width: 100%;height: 100%;}
+
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+    .div-inicial-index > div{width: 80%}
+    .iframe{width: 90%;order: 2; margin-top: 50px;text-align: center;}
+    .localizacao-texto{width: 80%;order: 1;padding-left: 0px;}
+
+    .div-inicial-img{width: 80%;}
+    .div-inicial-img div{width: 30%; margin: 10px;}
+
+    .div-inicial-redes{width: 80%;padding-top: 60px;}
+    .div-redes-texto{width: 80%;}
+    
+
+    .div-redes-texto > div{text-align: center;}
+    .btn-redes{width:90% ;font-size: 17px;}
 }
 
 @media screen and (max-width: 600px) {
-    .imagem-logo-index{width: 38%;height: 5%;margin: 20px 0px;}
-    .pagina-inicial{padding-bottom: 60px;}
-    .div-explicacao{background-color: #01056a;}
-    .div-explicacao h1{font-weight: 700;color: #f05e22;font-size: 22px;}
-    .div-explicacao div{width: 90%;padding: 40px;margin: 30px 0px;background-color: #fff;}
+    .div-inicial-index > div{width: 100%}
+    .iframe{width: 100%;order: 2; margin-top: 50px;text-align: center;}
+    .localizacao-texto{width: 100%;order: 1;padding-left: 0px;}
+    .localizacao-texto a{width:100%;}
+
+    .div-inicial-img{width: 100%; padding-top: 30px;}
+    .div-inicial-img div{width: 45%; margin: 10px;}
+
+    .div-inicial-redes{width: 80%;padding-top: 60px;}
+    .div-redes-texto{width: 100%;}
+
+    .div-redes-texto > div{text-align: center;}
+    .btn-redes{width:100%; margin:10px auto;font-size: 16px;}
+
     .div-localizacao-titulo h1{font-weight: 700;width: 56%; margin: 0px 15px; font-size: 26px;}
     .div-localizacao-titulo button{padding: 10px 15px;font-size: 16px;}
     .div-localizacao-titulo > div{width: 35%;text-align: end;padding: 0px 12px;}
-    .carrosel-index{width: 100%; height: 25vh;}
-    .localizacao-texto{margin-left: 20px;}
-    iframe{margin: 0px 20px 20px 20px;}
 }
