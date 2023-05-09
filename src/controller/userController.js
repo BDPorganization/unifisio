@@ -66,9 +66,9 @@ module.exports.login = async (req, res) => {
                 };
 
                 req.session.user = dadosUser;
-                return res.status(200).json({ autorizado: true });
+                return res.status(200).redirect(req.headers.referer);
             }else {
-                return res.status(404).json({ autorizado: false });
+                return res.status(404).redirect(req.headers.referer, { status: 404 });
             }
         })
         .catch((err) => {

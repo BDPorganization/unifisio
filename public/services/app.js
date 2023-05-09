@@ -6,7 +6,7 @@ if (btnCheck) {
     const dadosPagamento = {
       quantity: document.getElementById("quantity").value,
       description: document.getElementById("product-description").value,
-      price: document.getElementById("unit-price").value
+      price: document.getElementById("unit-price").value * document.getElementById("quantity").value
     };
   
     console.log(dadosPagamento);
