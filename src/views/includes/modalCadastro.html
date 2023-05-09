@@ -1,0 +1,40 @@
+<!-- Modal Cadastro-->
+<div class="modal fade modal-lg" id="cadastro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Faça seu cadastro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="form-cadastro">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nomeCompleto" class="form-label">Nome completo: </label>
+                        <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto">
+                    </div>
+                    <div class="mb-3">
+                        <label for="especialidade" class="form-label">Especialidade: </label>
+                        <input type="text" class="form-control" id="especialidade" name="especialidade">
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailCadastro" class="form-label">E-mail: </label>
+                        <input type="email" class="form-control" id="emailCadastro" name="emailCadastro">
+                    </div>
+                    <div class="d-flex w-100 mb-3">
+                        <div style="width: 49%; margin-right: 2%;">
+                            <label for="senhaCadastro" class="form-label">Senha: </label>
+                            <input type="password" class="form-control" id="senhaCadastro" name="senhaCadastro">
+                        </div>
+                        <div style="width: 49%">
+                            <label for="confirma" class="form-label">Confirme sua Senha: </label>
+                            <input type="password" class="form-control" id="confSenha" name="confSenha">
+                        </div>
+                    </div>
+                    <center>
+                        <button name="btn-cadastro" type="submit" class="btn btn-secondary btn-cadastro w-50 mt-3">Cadastrar</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
