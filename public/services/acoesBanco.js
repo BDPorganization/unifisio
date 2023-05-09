@@ -1,25 +1,21 @@
 // Login
 const formLogin = document.getElementById('form-login');
 
-formLogin.addEventListener("submit", async (event) => {
+formLogin.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const emailLogin = formData.get('email');
-    const senhaLogin = formData.get('senha');
+    const emailLogin = formData.get('emailLogin');
+    const senhaLogin = formData.get('senhaLogin');
 
     try {
-        const response = await fetch('/loginDB', {
+        fetch('/loginDB', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({ emailLogin, senhaLogin })
         });
-
-        response.status == 200 ? location.reload() :
-        response.status == 404 ? alert("Usuário não cadastrado!") :
-        alert("Ocorreu um erro no login, por favor tente mais tarde!")
     }catch(err) {
         return err
     }
