@@ -4,7 +4,6 @@
 .div-imagens-sala{width: 50%;padding: 100px 0px;display: flex;justify-content:center}
 .div-texto-sala{width: 40%; padding: 100px 0px;}
 .div-imagem-grande{width: 470px; height: 100%;}
-.div-imagem-grande-st{width: 470px; height: 80%;}
 .div-imagem-grande div img{width: 100%;height: 100%;}
 .div-imagens-pequenas{width: 200px;height: 100%;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
 .div-imagens-pequenas div{width: 100%;height: 32%;margin: 2px 5px;}
