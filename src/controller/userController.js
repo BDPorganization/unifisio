@@ -4,7 +4,7 @@ const md5 = require('md5');
 
 module.exports.loginGoogle = async (req, res) => {
     const token = req.body.credential;
-    const client_id = process.env.GOOGLE_CLIENT_ID || '245073186631-0aq6pl4ailrqeruehjuvhkk35iuem2e6.apps.googleusercontent.com';
+    const client_id = process.env.GOOGLE_CLIENT_ID;
 
     (await googleAuth(token, client_id)).getUserData()
     .then(response => { 
@@ -66,9 +66,9 @@ module.exports.login = async (req, res) => {
                 };
 
                 req.session.user = dadosUser;
-                return res.status(200).redirect(req.headers.referer);
+                return res.status(200).render('index', { nome: dadosUser.nome_user });
             }else {
-                return res.status(404).redirect(req.headers.referer, { status: 404 });
+                return res.status(404).json({ autorizado: false });
             }
         })
         .catch((err) => {
@@ -151,7 +151,7 @@ module.exports.preencherDados = async (req, res) => {
             });
         })
         .catch((err) => {
-            return res.status(500).send(`Ocorreu um erro ao preencher dados do usuário, ${err}`);
+            return res.status(500).send(`Ocorreu um erro ao preencher dados do usuário, ${err.message}`);
         });
     }catch(err) {
         return res.status(400).send('Ocorreu um erro ao completar a ficha do usuário');

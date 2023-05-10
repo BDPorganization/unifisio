@@ -1,6 +1,6 @@
 window.addEventListener("load", () =>{
     fetch('/verificarLogin', {
-        method: "POST"
+        method: "GET"
     })
     .then((response) => {
         return response.json();
@@ -9,9 +9,14 @@ window.addEventListener("load", () =>{
         if(resultado['autenticado'] == true){
             const linkLogin = document.getElementById('nomeUsuario');
             let nomeUser = resultado.nome.split(" ");
-            
-            linkLogin.setAttribute('data-bs-target', '#logadoModal');
-            linkLogin.innerText = nomeUser[0];
+
+            if (nomeUser[0] == 'admin') {
+                linkLogin.setAttribute('data-bs-target', '#adminModal');
+                linkLogin.innerText = nomeUser[0];
+            } else {
+                linkLogin.setAttribute('data-bs-target', '#logadoModal');
+                linkLogin.innerText = nomeUser[0];
+            }
         }
     })
 });
