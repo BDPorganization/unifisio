@@ -146,15 +146,13 @@ module.exports.preencherDados = async (req, res) => {
         }
         dbMedicos.preencher_dados(dadosUser)
         .then(() => {
-            return res.status(200).json({
-                statusDados: "preenchido",
-            });
+            return res.status(200).json({ preenchido: true });
         })
         .catch((err) => {
-            return res.status(500).send(`Ocorreu um erro ao preencher dados do usuário, ${err.message}`);
+            return res.status(500).json({ preenchido: false });
         });
     }catch(err) {
-        return res.status(400).send('Ocorreu um erro ao completar a ficha do usuário');
+        return res.status(400).json({ preenchido: false });
     }
 };
 
