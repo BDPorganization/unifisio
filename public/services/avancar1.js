@@ -17,33 +17,50 @@ botao_avancar.addEventListener("click", () => {
             })
             .then((response) =>{
                 if (response.status == 204){
+                    const formPreencher = document.getElementById('form-preencher');
+
+                    document.getElementById('avancar').style.display = 'none';
                     exibirFormDados();
-                }else {
-                    let dadosPagamento = {
-                        quantity: document.getElementById("quantity").value,
-                        description: document.getElementById("product-description").innerHTML,
-                        price: document.getElementById("unit-price").value
-                    };
-   
-                    fetch("/pagamento", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(dadosPagamento),
-                    })
-                    .then((response) => {
-                        return response.json();
-                    })
-                    .then((pagamento) => {
-                        createCheckoutButton(pagamento.id);
-                    })
-                    .catch((err) => {
-                        alert(`Ocorreu um erro inesperado!, ${err}`);
+                    formPreencher.addEventListener("submit", (event) => {
+                        event.preventDefault();
+
+                        const formData = new FormData(event.target);
+                        const nome = formData.get('nome');
+                        const data_nascimento = formData.get('data_nascimento');
+                        const cpf = formData.get('cpf');
+                        const cep = formData.get('cep');
+                        const rua = formData.get('rua');
+                        const numero = formData.get('numero');
+
+                        try {
+                            fetch('/preencher_dados', {
+                                method: "POST",
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ nome, data_nascimento, cpf, cep, rua, numero })
+                            })
+                            .then((response) => {
+                                return response.json();
+                            })
+                            .then((resultado) => {
+                                if (resultado.preenchido == true) {
+                                    formPreencher.reset();
+                                    fecharFormDados();
+                                    criarPagamento();
+                                }
+                                return resultado;
+                            })
+                        } catch (err) {
+                            return err;
+                        }
                     });
+                } else {
+                    document.getElementById('avancar').style.display = 'none';
+                    criarPagamento();
                 }
             })
-        }else {
+        } else {
             abrirModal(modalLogin);
         }
     })
@@ -59,11 +76,42 @@ function exibirFormDados(){
 
     if (inputdate == ''){
         alert('Escolha uma data para continuar');
-    }else {
+    } else {
         let form = document.getElementById('formDadosPessoais');
         
         form.style.display = 'flex';
     }
+}
+
+function fecharFormDados(){
+    var form = document.getElementById('formDadosPessoais');
+
+    form.style.display = 'none';
+}
+
+function criarPagamento() {
+    var dadosPagamento = {
+        quantity: document.getElementById("quantity").value,
+        description: document.getElementById("product-description").innerHTML,
+        price: document.getElementById("unit-price").value
+    };
+
+    fetch("/pagamento", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dadosPagamento),
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((pagamento) => {
+        createCheckoutButton(pagamento.id);
+    })
+    .catch((err) => {
+        alert(`Ocorreu um erro inesperado!, ${err}`);
+    });
 }
   
 function createCheckoutButton(pagamentoId) {

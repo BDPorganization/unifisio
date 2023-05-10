@@ -75,13 +75,14 @@
             <div id="containerId" class="d-flex flex-wrap"></div>
         </div>
         <div style="width: 60%;margin-bottom: 30px;text-align: end;">
+            <div id="button-checkout"></div>
             <button id="avancar" style="width:20%;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000; border-radius: 5px; background-color: #fff;">
                 Continuar
             </button>
         </div>
         <div id="formDadosPessoais" class="row h-75 mb-5" style="display: none;">
-            <h4 style="font-weight: 800; margin-bottom: 20px; font-family: 'poppins';color:#000">Preencha seus dados</h4>
-            <form method="POST" action="/preencher_dados">
+            <h4 class="mb-3 w-100 color-blue">Precisamos dos seus dados atualizados</h4>
+            <form id="form-preencher">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome completo: </label>
@@ -116,13 +117,12 @@
                     </button>
                 </form>
             </div>
-        </div>
+        </div>      
     </div>
     <div style="width: 100%;text-align: center; padding: 80px 0px">
         <img src="../../public/img/bannerSalas.png" alt="">
     </div>
-    <div id="button-checkout"></div>
-
+    
     <%- include('./includes/footer.html'); %>
     <%- include('./includes/modalLogin.html'); %>
     <%- include('./includes/modalAdmin.html'); %>
