@@ -1,6 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = process.env.port || 3000;
+const port = process.env.PORT;
 const path = require('path');
 const bodyParser = require("body-parser");
 const session = require('express-session');
@@ -20,10 +21,6 @@ app.use(session({
 }));
 app.use('/', routes, routesPag);
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
-
-app.listen(port, (req, res) => {
+app.listen(port, () => {
     console.log(`Servidor rodando em ${port}`);
 });

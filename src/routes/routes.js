@@ -6,11 +6,13 @@ router.post("/loginGoogle", loginGoogle);
 router.post("/loginDB", login);
 router.post("/cadastro", cadastro);
 router.post("/preencher_dados", preencherDados);
-router.post("/verificarLogin", verificaLogin);
 router.post("/filtroData", selectHours);
-router.post("/desconectar", desconectar);
 router.post("/checarDados", checaDados);
 router.post("/aluguel", aluguel);
+
+router.get('/', (req, res) => {
+    res.render('index');
+});
 
 router.get("/index", (req, res) => {
     res.render('index');
@@ -39,5 +41,12 @@ router.get("/salas/salaPremium", (req, res) => {
 router.get("/salas/studioFisioterapia", (req, res) => {
     res.render('sala3');
 });
+
+router.get("/admin", (req, res) => {
+    res.render('manutencao');
+});
+
+router.get("/verificarLogin", verificaLogin);
+router.get("/desconectar", desconectar);
 
 module.exports = router;

@@ -8,14 +8,26 @@ formLogin.addEventListener("submit", (event) => {
     const emailLogin = formData.get('emailLogin');
     const senhaLogin = formData.get('senhaLogin');
 
+    console.log(emailLogin, senhaLogin);
+
     try {
         fetch('/loginDB', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ emailLogin, senhaLogin })
-        });
+        })
+        .then((response) => {
+            if (response.ok) {
+                window.location.reload(true);
+            } else if (response.status == 404) {
+                alert("Usuário ou senha incorretas!");
+            } else {
+                alert("Ocorreu um erro no sistema, por favor tente mais tarde!");
+            }
+            return response.json();
+        })
     }catch(err) {
         return err
     }
@@ -24,7 +36,7 @@ formLogin.addEventListener("submit", (event) => {
 // Cadastro
 const formCadastro = document.getElementById('form-cadastro');
 
-formCadastro.addEventListener("submit", async (event) => {
+formCadastro.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -35,18 +47,25 @@ formCadastro.addEventListener("submit", async (event) => {
     const confSenha = formData.get('confSenha');
 
     try {
-        const response = await fetch('/cadastro', {
+        fetch('/cadastro', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ emailCadastro, senhaCadastro, especialidade, nomeCompleto, confSenha })
-        });
-
-        response.status == 201 ? location.reload() :
-        response.status == 409 ? alert("As senhas não coincidem!") :
-        response.status == 302 ? alert("Usuário já cadastrado!") : 
-        alert("Ocorreu um erro no cadastro, por favor tente mais tarde!")
+        })
+        .then((response) => {
+            if (response.ok) {
+                window.location.reload(true);
+            } else if (response.status == 409) {
+                alert("As senhas não coincidem!");
+            } else if (response.status == 302) {
+                alert("Usuário já cadastrado!");
+            } else {
+                alert("Ocorreu um erro no cadastro, por favor tente mais tarde!");
+            }
+            return response.json();
+        })
     }catch(err) {
         return err
     }
