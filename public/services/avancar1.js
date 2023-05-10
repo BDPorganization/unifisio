@@ -5,7 +5,7 @@ const avancar1 = document.getElementById('formDadosPessoais');
 
 botao_avancar.addEventListener("click", () => {
     fetch('/verificarLogin', {
-        method: "POST"
+        method: "GET"
     })
     .then((response) => {
         return response.json();
