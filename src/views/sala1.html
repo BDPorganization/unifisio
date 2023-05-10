@@ -80,31 +80,6 @@
                 Continuar
             </button>
         </div>
-    </div>
-    <div style="width: 100%;text-align: center; padding: 80px 0px">
-        <img src="../../public/img/bannerSalas.png" alt="">
-    </div>
-    <div id="button-checkout"></div>
-
-    <!-- Modal -->
-    <div  class="collapse w-50 m-auto p-5" id="collapseExample" style="border: 2px solid #01056a; border-radius: 10px">
-        <!-- <div class="row h-75 mb-5">
-            <h4 class="mb-3 w-100 color-blue">Você pode consultar nossa disponibilidade</h4>
-            <div class="mb-3 col-sm-6">
-                <label for="data_escolhida" class="form-label w-100">Selecione uma data</label>
-                <input type="date" id="dateTime" name="dia" class="form-control">
-                <input type="hidden" id="pk_sala" name="pk_sala" value="1">
-            </div>
-            <div class="mb-3 col-sm-6">
-                <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
-                <div id="containerId" class="d-flex flex-wrap"></div>
-            </div>
-            <button 
-                id="avancar"
-                class="btn-navegacao">
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div> -->
         <div id="formDadosPessoais" class="row h-75 mb-5" style="display: none;">
             <h4 class="mb-3 w-100 color-blue">Precisamos dos seus dados atualizados</h4>
             <form method="POST" action="/preencher_dados">
@@ -143,6 +118,69 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div style="width: 100%;text-align: center; padding: 80px 0px">
+        <img src="../../public/img/bannerSalas.png" alt="">
+    </div>
+    <div id="button-checkout"></div>
+
+    <!-- Modal -->
+    <div  class="collapse w-50 m-auto p-5" id="collapseExample" style="border: 2px solid #01056a; border-radius: 10px">
+        <!-- <div class="row h-75 mb-5">
+            <h4 class="mb-3 w-100 color-blue">Você pode consultar nossa disponibilidade</h4>
+            <div class="mb-3 col-sm-6">
+                <label for="data_escolhida" class="form-label w-100">Selecione uma data</label>
+                <input type="date" id="dateTime" name="dia" class="form-control">
+                <input type="hidden" id="pk_sala" name="pk_sala" value="1">
+            </div>
+            <div class="mb-3 col-sm-6">
+                <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
+                <div id="containerId" class="d-flex flex-wrap"></div>
+            </div>
+            <button 
+                id="avancar"
+                class="btn-navegacao">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div> -->
+        <!-- <div id="formDadosPessoais" class="row h-75 mb-5" style="display: none;">
+            <h4 class="mb-3 w-100 color-blue">Precisamos dos seus dados atualizados</h4>
+            <form method="POST" action="/preencher_dados">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome completo: </label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data de Nascimento: </label>
+                        <input type="date" class="form-control" id="data" name="data_nascimento" required> 
+                    </div>
+                    <div class="mb-3">
+                        <label for="cpf" class="form-label">CPF: </label>
+                        <input type="text" class="form-control" id="cpf" name="cpf" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cep" class="form-label">Cep: </label>
+                        <input type="text" class="form-control" id="cep" name="cep" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rua" class="form-label">Logradouro: </label>
+                        <input type="text" class="form-control" id="rua" name="rua" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="numero" class="form-label">Numero: </label>
+                        <input type="text" class="form-control" id="numero" name="numero" required>
+                    </div>
+                    <button 
+                        name="btn-cadastro" 
+                        type="submit" 
+                        class="btn-navegacao"
+                        id="btn-preencher">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div> -->
     </div>
     
     <%- include('./includes/footer.html'); %>
