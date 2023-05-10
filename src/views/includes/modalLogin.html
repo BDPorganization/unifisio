@@ -1,24 +1,22 @@
 <!-- Modal Login-->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header w-100 text-center">
-                <h5 class="modal-title color-blue">Acessar minha conta</h5>
+                <h5 class="modal-title">Acessar minha conta</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" style="height: 400px; width: 100%;">
+            <div class="modal-body">
                 <form id="form-login">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email: </label>
-                        <input type="email" class="form-control" id="emailLogin" name="emailLogin" placeholder="name@example.com" required>
+                        <input type="email" class="form-control" id="emailLogin" name="emailLogin" required>
                     </div>
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha: </label>
                         <input type="password" class="form-control" id="senhaLogin" name="senhaLogin" required>
                     </div>
-                    <center>
-                        <button type="submit" class="btn btn-secondary w-50 mt-5 mb-2" name="btn-login" id="btnLogin">Acessar</button>
-                    </center>
+                    <button type="submit" class="btn btn-modal" name="btn-login" id="btnLogin">Acessar</button>
                 </form>
                 <center>
                     <div class="googleAuth w-50"> 
@@ -39,7 +37,11 @@
                     </div>
                 </center>
                 <div class="w-100 text-center mt-2 mb-2">
-                    <a href="" data-bs-toggle="modal" data-bs-target="#cadastro" class="btn btn-link w-50 mt-2" style="color: #f05e22;">Cadastrar-me</a>
+                    Novo aqui? 
+                    <a href="" data-bs-toggle="modal" 
+                    data-bs-target="#cadastro" 
+                    class="mt-2" style="color: #f05e22;">
+                    Cadastrar-me</a>
                 </div>
             </div>
         </div>
