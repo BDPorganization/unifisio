@@ -28,7 +28,22 @@ async function checaDados(checaDado) {
     }
 }
 
+async function agendaDados(agendaDado) {
+    const client = await database.connect();
+    
+    try {
+        const sql = 'insert into datas_agendadas (datas, hora, fk_salas_pk_salas, fk_medicos_pk_medicos) values ($1, $2, $3, $4)';
+        const values = [agendaDado.datas, agendaDado.hora, agendaDado.pk_salas, agendaDado.pk_medicos];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = { 
     returnHours,
-    checaDados
+    checaDados,
+    agendaDados
 }; 

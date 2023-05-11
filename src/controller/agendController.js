@@ -13,7 +13,7 @@ module.exports.selectHours = async (req, res) => {
                 res.status(200).json({
                     datas: resultado.rows
                 });
-            }else {
+            } else {
                 return res.status(204).json({ 
                     horas: false 
                 });
@@ -39,7 +39,7 @@ module.exports.checaDados = async (req, res) => {
                 return res.status(200).json({
                     dados: true
                 });
-            }else {
+            } else {
                 return res.status(204).json({
                     dados: false
                 });
@@ -50,5 +50,32 @@ module.exports.checaDados = async (req, res) => {
         });
     }catch(err) {
         return res.status(400).send('Ocorreu um erro na consulta dos dados do usuário');   
+    }
+};
+
+module.exports.agendaDados = async (req, res, next) => {
+    try {
+        let agendaDado = {
+            datas: req.body.datas,
+            hora: req.body.hora,
+            pk_salas: req.body.pk_salas,
+            pk_medicos: req.session.user.pk_medicos
+        }
+
+        dbAgenda.agendaDados(agendaDado)
+        .then((resultado) => {
+            if(resultado) {
+                next();
+            } else {
+                return res.status(204).json({
+                    agendado: false
+                });
+            }
+        })
+        .catch((err) => {
+            return res.status(500).send(`Ocorreu um erro ao agendar a sala, ${err}`)
+        });
+    }catch(err) {
+        return res.status(400).send('Ocorreu um erro no agendamento da sala');   
     }
 };

@@ -1,5 +1,5 @@
 const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, aluguel } = require("../controller/userController.js");
-const { selectHours, checaDados } = require("../controller/agendController.js");
+const { selectHours, checaDados, agendaDados } = require("../controller/agendController.js");
 const router = require("express").Router();
 
 router.post("/loginGoogle", loginGoogle);
@@ -48,5 +48,15 @@ router.get("/admin", (req, res) => {
 
 router.get("/verificarLogin", verificaLogin);
 router.get("/desconectar", desconectar);
+
+router.get("/pagAprovado", agendaDados, (req, res) => {
+    console.log(req.body);
+
+    if (req.query.status == "approved") {
+        res.render('index');
+    } else {
+        res.render('manutencao');
+    }
+});
 
 module.exports = router;
