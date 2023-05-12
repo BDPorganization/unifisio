@@ -33,12 +33,10 @@ padding-top: 20px;border-bottom: 0.1px solid #fff;padding-bottom: 20px;}
 .footer img{width: 170px;height: 100px;}
 .footer a{font-family: nunito;color: rgb(79, 79, 79, 0.7);text-decoration: none;font-weight: 600;}
 .icon-footer i{text-align: center;color: rgb(79, 79, 79, 0.7);font-size: 25px;letter-spacing: 20px;text-decoration: none;}
-.div-externa-duvidas{text-align: center;}
-.div-externa-duvidas h1{width: 100%;margin: 50px 0px;color:#01056a;}
-.div-externa-duvidas button{margin: 20px 0px 5px 0px;color:#01056a;font-family: nunito;font-size: 24px;}
 
+/* Modal */
+.modal{background: rgb(131,58,180);background: linear-gradient(0deg, rgba(131,58,180,1) 8%, rgba(240,94,34,1) 74%, rgba(252,176,69,1) 100%);
+font-family: nunito;}
+.modal-title{font-weight: 800; font-family: 'poppins';}
+.btn-modal{width:100%;padding: 10px 50px;border: none;font-size: 18px;font-weight: 600;border-radius: 5px;background-color: #000; color: #fff;margin-bottom: 15px;border:1px solid #000;}
 
-/* Dúvidas frequentes */
-.accordion{margin-bottom: 100px!important;text-align: start;font-family: nunito;font-size: 18px;}
-.accordion-button:not(.collapsed) {color:#01056a; background-color: transparent;}
-.accordion-button:focus {box-shadow: none;}
