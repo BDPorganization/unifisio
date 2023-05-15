@@ -1,21 +1,25 @@
 @import url('../css/style.css');
-.div-externa-duvidas{
-    padding: 100px 0px;
-    width: 65%;
-    margin: auto;
-}
-.div-externa-duvidas h4{
-    font-weight: 800; margin-bottom: 40px; font-family: 'poppins';color:#000
-}
-
-.div-externa-duvidas h2{
-    font-weight: 500; margin-bottom: 20px; font-family: 'poppins';color:#000
-}
+.div-externa-duvidas{padding: 100px 0px;width: 65%;margin: auto;display: flex;flex-wrap: wrap;justify-content: space-evenly;}
+.duvidas-img{width: 40%;}
+.duvidas-img img{width: 100%;}
+.div-externa-duvidas h4{width: 100%;font-weight: 800; margin-bottom: 40px; font-family: 'poppins';color:#000}
+.div-externa-duvidas h2{font-weight: 500; margin-bottom: 20px; font-family: 'poppins';color:#000}
+.div-externa-duvidas{text-align: center;}
+.div-externa-duvidas button{margin: 20px 0px 5px 0px;font-weight: 800; margin-bottom: 20px; font-family: 'poppins';color:#000}
 
 /* Dúvidas frequentes */
 .accordion{margin-bottom: 100px!important;text-align: start;font-family: nunito;font-size: 18px; width: 40%;}
 .accordion-button:not(.collapsed) {background-color: transparent;color:#000}
 .accordion-button:focus {box-shadow: none;}
 
-.div-externa-duvidas{text-align: center;}
-.div-externa-duvidas button{margin: 20px 0px 5px 0px;font-weight: 800; margin-bottom: 20px; font-family: 'poppins';color:#000}
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+    .div-externa-duvidas{padding: 80px 0px;width: 80%;}
+    .duvidas-img{width: 80%;order:2}
+    .accordion{width: 80%;order:1}
+}
+
+@media screen and (max-width: 600px) {
+    .div-externa-duvidas{padding: 80px 0px;width: 100%;}
+    .duvidas-img{width: 90%;order:2}
+    .accordion{width: 90%;order:1}
+}

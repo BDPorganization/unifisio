@@ -1,56 +1,21 @@
 @import './style.css';
 
-/* Informações Sobre as Salas*/
-.inicio-tela-salas{display: flex;justify-content: space-evenly;align-items: center;flex-wrap: wrap;width: 100%;padding: 20px 0px;}
-.div-card-inicio{width: 45%;height: 100%;}
-.m-left{margin-left: 150px;width: 45%;height: 100%;}
-.card-inicio{width: 30rem;height: 20rem;border-radius: 20px; margin: 100px auto 0px 170px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-.card-body a{width: 80%;color: #fff;font-size: 18px;font-weight: 700;background-color: #f05e22;}
-.texto-como-funciona{display: flex;justify-content: space-evenly;flex-wrap: wrap;width: 100%;height: 60vh;padding: 120px 100px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background-color: #f7f7f7;}
-.texto-como-funciona > div{width: 40%;height: 100%;}
-.texto-como-funciona div h1{font-weight: 700;font-size: 26px;margin: 30px 0px;text-transform: uppercase;}
-.texto-como-funciona div p{width: 80%;font-size: 20px;}
-.texto-como-funciona div i{color: #f05e22;}
-.opcoes-salas{width: 100%;display: flex;flex-wrap: wrap;padding: 150px 0px;align-items: center;justify-content: center;}
-.opcoes-salas > div{width: 25%;border: none;}
-.card-body1{width: 22rem;height: 27rem;flex: 0 0 0!important;margin: auto;border: 1px solid rgba(0, 0, 0, 0.175);border-radius: 20px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-.opcoes-salas h1{font-size: 26px;font-weight: 700;margin: 30px 0px 70px 0px;text-transform: uppercase;color: #f05e22;text-align: center;width: 100%;}
-.margin-5{margin-top: 50px;}
+.div-externa-cards{width: 100%;background: #f3f3f3;}
+.div-interna-cards{display: flex; flex-wrap: wrap; justify-content: space-evenly;flex-wrap: wrap; width: 65%; padding: 100px 0px; align-items: center; 
+margin: auto;}
+.titulo{width: 100%; text-align: center;font-weight: 800; margin-bottom: 80px; font-family: 'poppins';color:#000}
+.card-salas{width: 30%;border-radius: 2px;background-color: #fff;}
+.card-imgs{height: 50%;background: rgb(131,58,180);background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(250,73,3,1) 62%, rgba(252,176,69,1) 100%);padding-bottom: 4px;}
+.card-imgs img{width: 100%;height: 100%;}
+.card-salas h5{font-weight: 800; margin-bottom: 10px; font-family: 'poppins';color:#000; margin-top: 30px;}
+.card-salas p{color:#484848;font-weight: 500;width: 60%;margin: auto;font-family: nunito; font-size: 14px;}
+.div-link{width: 100%;margin-bottom: 30px;text-align: center;}
+.div-link a{font-size: 16px;font-weight: 600;color: #000;text-decoration: none; border-radius: 5px;}
 
-@media screen and (min-width: 1200px) and (max-width: 1500px) {
-    .inicio-tela-salas{justify-content: center; padding:0px 200px}
-    .m-left{margin-left: 0px;width: 55%;}
-    .div-card-inicio{width: 40%;}
-    .card-inicio{width: 27rem;height: 20rem;margin: 30px auto 50px 100px;}
-    .texto-como-funciona > div{width: 50%;height: 100%;}
-    .texto-como-funciona{padding: 70px 20px; height: 80vh;}
-    .opcoes-salas{padding: 80px 0px;justify-content: space-evenly}
-    .margin-5{margin-top: 0px;}
-}
-@media screen and (min-width: 850px) and (max-width: 1200px) {
-    .inicio-tela-salas{justify-content: center; padding:0px 200px}
-    .m-left{margin-left: 0px;width: 55%;display: none;}
-    .div-card-inicio{width: 40%;}
-    .card-inicio{width: 27rem;height: 20rem;margin: 30px auto 50px 100px;}
-    .texto-como-funciona > div{width: 50%;height: 100%;}
-    .texto-como-funciona{padding: 70px 20px; height: 80vh;}
-    .opcoes-salas{padding: 80px 0px;justify-content: center}
-    .opcoes-salas > div{width:25%; margin:0px 5px}
-    .margin-5{margin-top: 0px;}
-    .card-body1{width: 15rem;height: 30rem;}
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+    
 }
 
-@media screen and (max-width: 850px) {
-    .inicio-tela-salas{justify-content: center; padding:0px}
-    .m-left{display: none;}
-    .div-card-inicio{width: 90%}
-    .card-inicio{width: 100%;height: 100%;margin: 30px 0px;}
-    .texto-como-funciona > div{width: 100%;height: 100%; margin: 0px 20px;}
-    .texto-como-funciona{padding: 70px 0px; height: 100%;}
-    .texto-como-funciona div p{width: 96%;font-size: 16px;text-align: justify;margin-bottom: 50px;}
-    .opcoes-salas{padding: 80px 0px;justify-content: center}
-    .opcoes-salas > div{width:90%; margin: 10px 10px}
-    .margin-5{margin-top: 0px;}
-    .order1{order: 1;}
-    .order2{display: none;}
+@media screen and (max-width: 600px) {
+    
 }
