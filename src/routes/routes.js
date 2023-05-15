@@ -54,8 +54,7 @@ router.get("/admin", (req, res) => {
 router.get("/verificarLogin", verificaLogin);
 router.get("/desconectar", desconectar);
 
-router.get("/pagAprovado", agendaDados, (req, res) => {
-    console.log(req.body);
+router.get("/pagAprovado", (req, res) => {
     if (req.query.status == "approved") {
         res.render('index');
     } else {

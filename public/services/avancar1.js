@@ -90,11 +90,29 @@ function fecharFormDados(){
 }
 
 function criarPagamento() {
-    var dadosPagamento = {
-        quantity: document.getElementById("quantity").value,
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var data = document.getElementById("dateTime").value;
+    var checkboxesMarcados = [];
+    var arrayJson;
+    var dadosPagamento;
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkboxesMarcados.push(checkboxes[i].name);
+        }
+    }
+
+    arrayJson = JSON.stringify(checkboxesMarcados);
+    localStorage.setItem("data", data);
+    localStorage.setItem("hora", arrayJson);
+
+    dadosPagamento = {
+        quantity: checkboxesMarcados.length,
         description: document.getElementById("product-description").innerHTML,
         price: document.getElementById("unit-price").value
     };
+
+    console.log(dadosPagamento);
 
     fetch("/pagamento", {
         method: "POST",
