@@ -9,6 +9,8 @@ router.post("/preencher_dados", preencherDados);
 router.post("/filtroData", selectHours);
 router.post("/checarDados", checaDados);
 router.post("/aluguel", aluguel);
+router.post("/agendaDados", agendaDados);
+
 
 router.get('/', (req, res) => {
     res.render('index');
@@ -42,11 +44,6 @@ router.get("/salas/studioFisioterapia", (req, res) => {
     res.render('sala3');
 });
 
-router.get("/confirmaHorario", (req, res) => {
-    res.render('pagAprovado');
-});
-
-
 router.get("/admin", (req, res) => {
     res.render('manutencao');
 });
@@ -56,7 +53,7 @@ router.get("/desconectar", desconectar);
 
 router.get("/pagAprovado", (req, res) => {
     if (req.query.status == "approved") {
-        res.render('index');
+        res.render('pagAprovado');
     } else {
         res.render('manutencao');
     }

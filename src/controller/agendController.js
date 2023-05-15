@@ -53,19 +53,22 @@ module.exports.checaDados = async (req, res) => {
     }
 };
 
-module.exports.agendaDados = async (req, res, next) => {
+module.exports.agendaDados = async (req, res) => {
     try {
         let agendaDado = {
-            datas: req.body.datas,
-            hora: req.body.hora,
-            pk_salas: req.body.pk_salas,
+            data: req.body.dataAtual,
+            horarios: req.body.horarioAtual,
+            pk_salas: req.body.pk_sala,
             pk_medicos: req.session.user.pk_medicos
         }
 
+        console.log(agendaDado);
         dbAgenda.agendaDados(agendaDado)
         .then((resultado) => {
             if(resultado) {
-                next();
+                return res.status(204).json({
+                    agendado: true
+                });
             } else {
                 return res.status(204).json({
                     agendado: false
