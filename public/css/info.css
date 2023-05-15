@@ -1,6 +1,6 @@
 @import './style.css';
 
-.div-externa-cards{width: 100%;background: #f3f3f3;}
+.div-externa-cards, .div-exclusivo{width: 100%;background: #f3f3f3;}
 .div-interna-cards{display: flex; flex-wrap: wrap; justify-content: space-evenly;flex-wrap: wrap; width: 65%; padding: 100px 0px; align-items: center; 
 margin: auto;}
 .titulo{width: 100%; text-align: center;font-weight: 800; margin-bottom: 80px; font-family: 'poppins';color:#000}
@@ -12,10 +12,38 @@ margin: auto;}
 .div-link{width: 100%;margin-bottom: 30px;text-align: center;}
 .div-link a{font-size: 16px;font-weight: 600;color: #000;text-decoration: none; border-radius: 5px;}
 
+.div-funcionamento{display: flex; flex-wrap: wrap; justify-content: space-evenly; width: 70%; padding: 80px 0px; align-items: center; margin: auto; }
+.div-funcionamento > div{width: 40%;}
+.div-interna-funciona{text-align: justify; font-family: nunito; font-weight: 300; font-size: 16px;}
+
+.div-texto-exclusividades{display: flex; flex-wrap: wrap; justify-content: space-evenly;flex-wrap: wrap; width: 70%; padding: 80px 0px; align-items: center; margin: auto;}
+.div-texto-exclusividades > div{width: 48%;}
+
+.div-especialidades{display: flex; flex-wrap: wrap; justify-content: space-evenly;flex-wrap: wrap; width: 65%; padding: 80px 0px; align-items: center;margin: auto;}
+.div-especialidades > div{width: 30%; padding:30px 70px;background: #f3f3f3; margin: 10px 0px;}
+.div-texto-especialidades{border-radius: 3px;text-align:center;width: 100%;}
+.div-texto-especialidades p{font-weight: 600; font-size: 30px;margin-bottom: 20px;color:rgba(250,73,3,1)}
+.div-texto-especialidades h4{font-weight: 300; font-family: 'poppins';color:#000;padding-bottom: 20px;}
+
 @media screen and (min-width: 600px) and (max-width: 1200px) {
-    
+    .div-interna-cards{width: 80%; padding: 80px 0px;}
+    .card-salas{width: 40%; margin: 20px 10px;}
+    .titulo{margin-bottom: 40px;}
+    .div-funcionamento{width: 80%}
+    .div-texto-exclusividades{width: 80%}
+    .div-especialidades{width: 80%;}
+    .div-especialidades > div{width: 40%; padding:10px 0px;}
 }
 
 @media screen and (max-width: 600px) {
-    
+    .div-interna-cards{width: 100%; padding: 80px 0px;}
+    .card-salas{width: 80%; margin: 20px 0px;}
+    .titulo{margin-bottom: 40px;}
+    .div-funcionamento{width: 100%}
+    .div-funcionamento > div{width: 90%;}
+    .div-texto-exclusividades{width: 100%}
+    .div-texto-exclusividades > div{width: 90%;}
+    .div-order-2{order: 2;}
+    .div-especialidades{width: 100%;}
+    .div-especialidades > div{width: 45%; padding:10px 0px;}
 }

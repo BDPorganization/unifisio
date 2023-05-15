@@ -30,8 +30,6 @@
 <body>
     <%- include('./includes/nav.html'); %>
 
-    <section>
-        
     <div class="div-externa-cards">
         <div class="div-interna-cards">
             <h4 class="titulo">Conheça nossas salas</h4>
@@ -71,26 +69,24 @@
         </div>
     </div>
 
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly; width: 70%; padding: 80px 0px; align-items: center; margin: auto;">
-        <div style="width: 40%; text-align: justify; font-family: nunito; font-weight: 300; font-size: 16px;">
-            <h4 style="font-weight: 800; margin-bottom: 30px; font-family: 'poppins'; text-align: start;">Entenda como funciona o coworking</h4>
+    <div class="div-funcionamento">
+        <div class="div-interna-funciona">
+            <h4 class="titulo">Entenda como funciona o coworking</h4>
             <p>Ao acessar nosso site, escolha o consultório que mais te agradar, atente-se ao visual de cada sala, assim como às especificidades de cada uma. Depois que se decidir, é só escolher seu horário e efetuar o pagamento, você receberá um comprovante de aluguel e deverá aguardar o dia agendado.</p>
         </div> 
-        <div style="width: 40%;">
+        <div>
             <img src="./public/img/colagemProfissao.png" alt="" width="100%" height="100%" style="border-radius: 5px;"> 
         </div>
     </div>
     
-    <div style="background-color: #f3f3f3;width: 100%;">
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;flex-wrap: wrap; width: 65%; padding: 80px 0px; align-items: center; margin: auto;">  
-            
-            
-            <div style="width: 48%;">
+    <div class="div-exclusivo">
+        <div class="div-texto-exclusividades">  
+            <div class="div-order-2">
                 <img src="./public/img/colagemSalas.png" alt="" width="100%" height="100%" style="border-radius: 5px;"> 
             </div>
             
-            <div style="width: 48%;">
-                <h4 style="font-weight: 800; margin-bottom: 10px; font-family: 'poppins';">Ofereça um espaço de qualidade aos seus pacientes e clientes</h4>
+            <div>
+                <h4 class="titulo">Ofereça um espaço de qualidade aos seus pacientes e clientes</h4>
                 <p style="font-family: nunito;margin-top: 30px;">Diversas particularidades tornam nosso serviço singular, além de um excelente ambiente de trabalho, outras coisas podem influenciar em uma boa experiência, conheça alguns benefícios.</p>
                 <div class="d-flex justify-content-evenly margin-5 w-100 ">
                     <div class="w-50">
@@ -106,59 +102,46 @@
         </div>
     </div>
 
-    <div style="width: 100%;">
-    
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;flex-wrap: wrap; width: 65%; padding: 80px 0px; align-items: center; 
-        margin: auto;">
-            <div style="width: 100%; text-align: center;">
-                <h4 style="font-weight: 800; margin-bottom: 50px; font-family: 'poppins';color:#000">Especialidades</h4>
+    <div class="div-especialidades">
+        <h4 class="titulo">Especialidades</h4>
+        <div>
+            <div class="div-texto-especialidades">
+                <p><i class="fa-solid fa-spa"></i></p>
+                <h4>Estética</h4>
             </div>
-            <div style="width: 30%; padding:30px 70px;background-color: #fff;">
-                <div class="text-center" style="background: #f3f3f3; border-radius: 3px;
-                border-top: 2px solid rgba(131,58,180,1);">
-                    <p class="color-laranja" style="font-weight: 600; font-size: 30px;margin-bottom: 20px;"><i class="fa-solid fa-spa"></i></p>
-                    <h4 style="font-weight: 300; font-family: 'poppins';color:#000;padding-bottom: 20px;">Estética</h4>
-                </div>
+        </div>
+        <div>
+            <div class="div-texto-especialidades">
+                <p><i class="fa-solid fa-dumbbell"></i></p>
+                <h4>Fisioterapia</h4>
             </div>
-            <div style="width: 30%; padding:30px 70px;background-color: #fff;">
-                <div class="text-center" style="background: #f3f3f3; border-radius: 3px;
-                border-top: 2px solid rgba(131,58,180,1);">
-                    <p class="color-laranja" style="font-weight: 600; font-size: 30px;margin-bottom: 20px;"><i class="fa-solid fa-dumbbell"></i></p>
-                    <h4 style="font-weight: 300; font-family: 'poppins';color:#000;padding-bottom: 20px;">Fisioterapia</h4>
-                </div>
+        </div>
+        <div>
+            <div class="div-texto-especialidades">
+                <p><i class="fa-solid fa-brain"></i></p>
+                <h4>Psicologia</h4>
             </div>
-            <div style="width: 30%; padding:30px 70px;background-color: #fff;">
-                <div class="text-center" style="background: #f3f3f3; border-radius: 3px;
-                border-top: 2px solid rgba(131,58,180,1);">
-                    <p class="color-laranja" style="font-weight: 600; font-size: 30px;margin-bottom: 20px;"><i class="fa-solid fa-brain"></i></p>
-                    <h4 style="font-weight: 300; font-family: 'poppins';color:#000;padding-bottom: 20px;">Psicologia</h4>
-                </div>
+        </div>
+        <div>
+            <div class="div-texto-especialidades">
+                <p><i class="fa-solid fa-apple-whole"></i></p>
+                <h4>Nutrição</h4>
             </div>
-            <div style="width: 30%; padding:30px 70px;background-color: #fff;">
-                <div class="text-center" style="background: #f3f3f3; border-radius: 3px;
-                border-top: 2px solid rgba(131,58,180,1);">
-                    <p class="color-laranja" style="font-weight: 600; font-size: 30px;margin-bottom: 20px;"><i class="fa-solid fa-apple-whole"></i></p>
-                    <h4 style="font-weight: 300; font-family: 'poppins';color:#000;padding-bottom: 20px;">Nutrição</h4>
-                </div>
+        </div>
+        <div>
+            <div class="div-texto-especialidades">
+                <p><i class="fa-solid fa-pen-fancy"></i></p>
+                <h4>Tatuagens</h4>
             </div>
-            <div style="width: 30%; padding:30px 70px;background-color: #fff;">
-                <div class="text-center" style="background: #f3f3f3; border-radius: 3px;
-                border-top: 2px solid rgba(131,58,180,1);">
-                    <p class="color-laranja" style="font-weight: 600; font-size: 30px;margin-bottom: 20px;"><i class="fa-solid fa-pen-fancy"></i></p>
-                    <h4 style="font-weight: 300; font-family: 'poppins';color:#000;padding-bottom: 20px;">Tatuagens</h4>
-                </div>
-            </div>
-            <div style="width: 30%; padding:30px 70px;background-color: #fff;">
-                <div class="text-center" style="background: #f3f3f3; border-radius: 3px;
-                border-top: 2px solid rgba(131,58,180,1);">
-                    <p class="color-laranja" style="font-weight: 600; font-size: 30px;margin-bottom: 20px;"><i class="fa-solid fa-thermometer"></i></p>
-                    <h4 style="font-weight: 300; font-family: 'poppins';color:#000;padding-bottom: 20px;">Pediatria</h4>
-                </div>
+        </div>
+        <div>
+            <div class="div-texto-especialidades">
+                <p><i class="fa-solid fa-thermometer"></i></p>
+                <h4>Pediatria</h4>
             </div>
         </div>
     </div>
-</section>
-    
+
   <%- include('./includes/footer.html'); %>
   <%- include('./includes/modalLogin.html'); %>
   <%- include('./includes/modalAdmin.html'); %>

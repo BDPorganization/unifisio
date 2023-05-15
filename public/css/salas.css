@@ -5,11 +5,16 @@
 .info-salas-card{font-family: nunito;font-size: 16px;font-weight: 700;display: flex;width: 100%;justify-content: center;margin: 50px auto;flex-wrap: wrap;}
 .info-salas-card > div{width: 40%;}
 .info-salas-card i{color:#f05e22;margin-right: 10px;}
-.btn-navegacao{background-color:#01056a;border-radius: 100px;width:60px;padding: 15px;margin:0px auto 0px 0px;color: #fff;font-size: 18px; border:none;}
-.btn-navegacao:hover{background-color: #c6c8ff;}
-.iniciar-compra{width:70% ;text-align: center;padding: 10px 0px;border: none;font-size: 18px;font-weight: 600;color: #fff;background-color: #000;text-decoration: none; border-radius: 5px;}
-.acessar-politica{width:70% ;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000;text-decoration: none; border-radius: 5px; margin: 10px;background-color: #ffffff;}
- 
+
+
+.div-externa-form{width: 65%; margin: auto; display: flex; justify-content: center; flex-wrap: wrap;border-bottom: 1px solid #f3f3f3}
+.div-externa-form > div{width: 60%;margin-bottom: 30px;}
+.btn-continua{width:30%;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000; border-radius: 5px; background-color: #fff;}
+
+
+.div-imagem-final{width: 100%;text-align: center; padding: 80px 0px; overflow-x: auto;}
+
+
 a {color: #01056a;text-decoration: none;}
 input[type=checkbox]::after{background-color: #f05e22;}
 input[type="checkbox"] {display: inline-block;background-color: #4CAF50;color: #fff;border: none;padding: 10px 20px;font-size: 16px;text-transform: uppercase;cursor: pointer;}
@@ -20,19 +25,20 @@ input[type="checkbox"] span {display: inline-block;vertical-align: middle;margin
 }
 
 @media screen and (min-width: 600px) and (max-width: 1375px) {
-  .div-externa-text{padding: 50px 0px;}
-  .div-imagens-sala{margin: 0px 100px;}
-  .div-texto-sala{width: 90%;padding: 10px 0px 50px 0px;text-align: justify;}
-  .info-salas-card{ width: 100%; font-size: 14px;}
-  .iniciar-compra{width: 70%;}
-  .acessar-politica{width: 70%; margin-top: 10px;}
+  .div-interna-text{width: 80%; padding: 40px 0px;}
+  .imagem-salas{width: 40%;}
+  .div-externa-form{width: 80%;}
+  .div-externa-form > div{width: 100%;}
+  .btn-continua{width:40%;}
+  .info-salas-card > div{width: 50%;}
 }
 
 @media screen and (max-width: 600px) {
-  .div-externa-text{padding: 10px 0px;}
-  .div-imagens-sala{width: 90%;}
-  .div-texto-sala{width: 90%;padding: 10px 0px 50px 0px;text-align: justify;}
-  .info-salas-card{ width: 100%; font-size: 14px;}
-  .iniciar-compra{width: 100%;}
-  .acessar-politica{width: 100%; margin-top: 10px;}
+  .div-interna-text{width: 100%;padding: 40px 0px;}
+  .div-texto-sala{width: 90%;}
+  .imagem-salas{width: 90%;}
+  .div-externa-form{width: 80%;}
+  .div-externa-form > div{width: 100%;}
+  .btn-continua{width:100%;}
+  .info-salas-card > div{width: 50%;}
 }

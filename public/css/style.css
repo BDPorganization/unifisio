@@ -2,10 +2,6 @@
 * {margin: 0;padding: 0;}
 body{font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvetica Neue',sans-serif;}
 
-/*Cores Padrões*/
-.color-blue{color:#01056a;}
-.color-laranja{color:#f05e22;}
-
 /* Navbar */
 .div-nav img{width: 120px;height: 70px;}
 .button img{width: 80px;height: 60px;margin-left: 50px;}
@@ -40,3 +36,12 @@ font-family: nunito;}
 .modal-title{font-weight: 800; font-family: 'poppins';}
 .btn-modal{width:100%;padding: 10px 50px;border: none;font-size: 18px;font-weight: 600;border-radius: 5px;background-color: #000; color: #fff;margin-bottom: 15px;border:1px solid #000;}
 
+
+/* Pagamento Aprovado */
+.titulo{width: 100%; text-align: center;font-weight: 800; margin-bottom: 80px; font-family: 'poppins';color:#000}
+.div-confirmacao{text-align: center; width: 50%; margin: auto;}
+.div-confirmacao p{width: 100%;font-weight: 600; margin-bottom: 30px; font-family: 'poppins';color:#000}
+
+@media screen and (max-width: 600px) {
+    .div-confirmacao{text-align: center; width: 90%; margin: auto;}
+}

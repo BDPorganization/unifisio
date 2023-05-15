@@ -42,7 +42,7 @@ router.get("/salas/studioFisioterapia", (req, res) => {
     res.render('sala3');
 });
 
-router.get("/confirmaHorario", (req, res) => {
+router.get("/confirmarHorario", (req, res) => {
     res.render('pagAprovado');
 });
 

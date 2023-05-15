@@ -50,33 +50,28 @@
                     <p><i class="fa-solid fa-trash"></i> Lixeira hospitalar</p>
                 </div>
             </div>
-            <!-- <div class="d-flex flex-wrap justify-content-evenly">
-                <button class="iniciar-compra" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Iniciar compra</button>
-
-                <button class="acessar-politica">Acesse a política de conduta</button>
-            </div> -->
         </div>
         <div class="imagem-salas">
-            <img src="../../public/img/consultorio1/002136c1-501b-48ee-a57e-758e9113442f.jpg" class="d-block w-100 h-100" alt="...">
+            <img src="../../public/img/consultorio1/002136c1-501b-48ee-a57e-758e9113442f.jpg" class="w-100 h-100" alt="...">
         </div>
         
     </div>
     <div style="width: 100%; text-align: center;">
         <h4 style="font-weight: 800; margin-bottom: 20px; font-family: 'poppins';color:#000">Pré-agende seu atendimento</h4>
     </div>
-    <div style="width: 65%; margin: auto; display: flex; justify-content: center; flex-wrap: wrap;border-bottom: 1px solid #f3f3f3">
-        <div style="width: 60%;margin-bottom: 30px;">
+    <div class="div-externa-form">
+        <div class="div-interna-form">
             <label for="data_escolhida" class="form-label w-100" style="font-family: nunito;">Selecione uma data</label>
             <input type="date" id="dateTime" name="dia" class="form-control w-100">
             <input type="hidden" id="pk_sala" name="pk_sala" value="1">
         </div>
-        <div style="width: 60%; margin-bottom: 30px;">
+        <div>
             <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
             <div id="containerId" class="d-flex flex-wrap"></div>
         </div>
-        <div style="width: 60%;margin-bottom: 30px;text-align: end;">
+        <div class="text-end">
             <div id="button-checkout"></div>
-            <button id="avancar" style="width:20%;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000; border-radius: 5px; background-color: #fff;">
+            <button id="avancar" class="btn-continua">
                 Continuar
             </button>
         </div>
@@ -119,7 +114,7 @@
             </div>
         </div>      
     </div>
-    <div style="width: 100%;text-align: center; padding: 80px 0px">
+    <div class="div-imagem-final">
         <img src="../../public/img/bannerSalas.png" alt="">
     </div>
     
