@@ -3,10 +3,9 @@
     padding: 100px 0px;
     width: 65%;
     margin: auto;
-    border: 2px solid red;
 }
 .div-externa-duvidas h4{
-    font-weight: 800; margin-bottom: 20px; font-family: 'poppins';color:#000
+    font-weight: 800; margin-bottom: 40px; font-family: 'poppins';color:#000
 }
 
 .div-externa-duvidas h2{
@@ -14,7 +13,7 @@
 }
 
 /* Dúvidas frequentes */
-.accordion{margin-bottom: 100px!important;text-align: start;font-family: nunito;font-size: 18px; width: 40%;border: 2px solid red}
+.accordion{margin-bottom: 100px!important;text-align: start;font-family: nunito;font-size: 18px; width: 40%;}
 .accordion-button:not(.collapsed) {background-color: transparent;color:#000}
 .accordion-button:focus {box-shadow: none;}
 
