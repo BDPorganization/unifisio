@@ -92,6 +92,7 @@ function fecharFormDados(){
 function criarPagamento() {
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     var data = document.getElementById("dateTime").value;
+    var pk_sala = document.getElementById("pk_sala").value;
     var checkboxesMarcados = [];
     var arrayJson;
     var dadosPagamento;
@@ -104,6 +105,7 @@ function criarPagamento() {
 
     arrayJson = JSON.stringify(checkboxesMarcados);
     localStorage.setItem("data", data);
+    localStorage.setItem("pk_sala", pk_sala);
     localStorage.setItem("hora", arrayJson);
 
     dadosPagamento = {
@@ -111,8 +113,6 @@ function criarPagamento() {
         description: document.getElementById("product-description").innerHTML,
         price: document.getElementById("unit-price").value
     };
-
-    console.log(dadosPagamento);
 
     fetch("/pagamento", {
         method: "POST",
