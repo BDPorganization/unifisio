@@ -176,19 +176,21 @@ module.exports.apagarConta = async (req, res) => {
             pk_medicos: req.session.user.pk_medicos
         }
 
-        console.log(pk_apagar);
         req.session.destroy((err) => {
             if (err) {
                 return err;
             } else {
                 dbMedicos.deletarConta(pk_apagar)
                 .then((response) => {
-                    console.log(response);
-                })
-                //res.status(308).redirect('/index');
+                    if (response.rowCount > 0) {
+                        res.status(200).redirect('/index')
+                    } else {
+                        res.status(400).redirect('/index');
+                    }
+                });
             }
           });
     }catch(err) {
-        return res.status(401).send('Ocorreu um erro ao desconectar');
+        return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
     }
 };

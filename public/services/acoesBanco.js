@@ -72,28 +72,16 @@ formCadastro.addEventListener("submit", (event) => {
 });
 
 // Apagar conta
-const formApagarConta = document.getElementById('form-apagarConta');
+// const btnApagarConta = document.getElementById('btn-apagarConta');
 
-formCadastro.addEventListener("click", async (event) => {
-    event.preventDefault();
+// btnApagarConta.addEventListener("click", async (event) => {
+//     event.preventDefault();
 
-    try {
-        fetch('/apagarConta', {
-            method: 'GET',
-        })
-        .then((response) => {
-            // if (response.ok) {
-            //     window.location.reload(true);
-            // } else if (response.status == 409) {
-            //     alert("As senhas não coincidem!");
-            // } else if (response.status == 302) {
-            //     alert("Usuário já cadastrado!");
-            // } else {
-            //     alert("Ocorreu um erro no cadastro, por favor tente mais tarde!");
-            // }
-            return response.json();
-        });
-    }catch(err) {
-        return err
-    }
-});
+//     try {
+//         fetch('/apagarConta', {
+//             method: 'GET',
+//         });
+//     }catch(err) {
+//         return err
+//     }
+// });
