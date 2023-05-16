@@ -45,8 +45,23 @@ async function agendaDados(agendaDado) {
     }
 }
 
+async function agendamentos(agenda) {
+    const client = await database.connect();
+    
+    try {
+        const sql = 'select * from medicos med left join datas_agendadas dta on(med.pk_medicos = dta.fk_medicos_pk_medicos) left join salas sla on (sla.pk_salas = dta.fk_salas_pk_salas) where dta.fk_medicos_pk_medicos = $1';
+        const values = [agenda.pk_medicos];   
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = { 
     returnHours,
     checaDados,
-    agendaDados
+    agendaDados,
+    agendamentos
 }; 

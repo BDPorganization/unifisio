@@ -75,10 +75,30 @@ async function checaPkMedico(checaPkUser) {
 
 }
 
+async function deletarConta(pk_apagar) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'delete from datas_agendadas where fk_medicos_pk_medicos = $1'
+        const values = [pk_apagar.pk_medicos];
+        await client.query(sql, values);
+
+        const sql2 = 'delete from medicos where pk_medicos = $1'
+        const values2 = [pk_apagar.pk_medicos];
+        return  await client.query(sql2, values2);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+
+}
+
 module.exports = { 
     login,
     cadastro,
     preencher_dados,
     checaMedico,
-    checaPkMedico
+    checaPkMedico,
+    deletarConta
 }; 

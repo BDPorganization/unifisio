@@ -1,4 +1,4 @@
-const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, aluguel } = require("../controller/userController.js");
+const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta } = require("../controller/userController.js");
 const { selectHours, checaDados, agendaDados } = require("../controller/agendController.js");
 const router = require("express").Router();
 
@@ -8,7 +8,6 @@ router.post("/cadastro", cadastro);
 router.post("/preencher_dados", preencherDados);
 router.post("/filtroData", selectHours);
 router.post("/checarDados", checaDados);
-router.post("/aluguel", aluguel);
 router.post("/agendaDados", agendaDados);
 
 
@@ -54,6 +53,7 @@ router.get("/admin", (req, res) => {
 
 router.get("/verificarLogin", verificaLogin);
 router.get("/desconectar", desconectar);
+router.get("/apagarConta", apagarConta);
 
 router.get("/pagAprovado", (req, res) => {
     if (req.query.status == "approved") {

@@ -1,5 +1,5 @@
 <!-- Modal Logout-->
-<div class="modal fade modal-lg" id="logadoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="logadoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
@@ -11,9 +11,9 @@
                         <form method="GET" action="/admin">
                             <button type="submit" class="btn-modal">Meus aluguéis</button>
                         </form>
-                        <form id="form-apagarConta">
-                            <button type="submit" class="btn-modal">Apagar conta</button>
-                        </form>
+                        <div>
+                            <button class="btn-modal" data-bs-target="#modalConfExclusao" data-bs-toggle="modal">Apagar conta</button>
+                        </div>
                     </center>
                 </div>
             </div>

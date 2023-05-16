@@ -83,3 +83,29 @@ module.exports.agendaDados = async (req, res) => {
         return res.status(400).send('Ocorreu um erro no agendamento da sala');   
     }
 };
+
+module.exports.agendamentos = async (req, res) => {
+    try {
+        let agenda = {
+            pk_medicos: req.session.user.pk_medicos
+        }
+
+        dbAgenda.agendamentos(agenda)
+        .then((resultado) => {
+            if(resultado.rowCount > 0) {
+                return res.status(200).json({
+                    agendamento: true,
+                });
+            } else {
+                return res.status(404).json({
+                    agendamento: false
+                });
+            }
+        })
+        .catch((err) => {
+            return res.status(500).send(`Ocorreu um erro ao trazer agendamentos, ${err}`)
+        });
+    }catch(err) {
+        return res.status(400).send('Ocorreu um erro ao ver agendamentos já realizados');
+    }
+};

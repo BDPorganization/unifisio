@@ -170,13 +170,22 @@ module.exports.desconectar = async (req, res) => {
     }
 };
 
-module.exports.aluguel = async (req, res) => {
+module.exports.apagarConta = async (req, res) => {
     try {
+        let pk_apagar = {
+            pk_medicos: req.session.user.pk_medicos
+        }
+
+        console.log(pk_apagar);
         req.session.destroy((err) => {
             if (err) {
                 return err;
-            }else {
-                res.status(308).redirect('/index');
+            } else {
+                dbMedicos.deletarConta(pk_apagar)
+                .then((response) => {
+                    console.log(response);
+                })
+                //res.status(308).redirect('/index');
             }
           });
     }catch(err) {
