@@ -4,8 +4,6 @@ window.addEventListener("load", ()=> {
         let horarioAtual = JSON.parse(localStorage.getItem("hora"));
         let pk_sala = localStorage.getItem("pk_sala");
     
-        console.log(dataAtual, horarioAtual, pk_sala);
-    
         fetch('/agendaDados', {
             method: "POST",
             headers: {
@@ -17,7 +15,8 @@ window.addEventListener("load", ()=> {
             return response.json();
         })
         .then((resultado) => {
-            console.log(resultado);
+            document.getElementById('hour').innerText = resultado.hora[0];
+            document.getElementById('day').innerText = new Date(resultado.dia).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
             return resultado;
         })
     } catch (err) {

@@ -62,12 +62,13 @@ module.exports.agendaDados = async (req, res) => {
             pk_medicos: req.session.user.pk_medicos
         }
 
-        console.log(agendaDado);
         dbAgenda.agendaDados(agendaDado)
         .then((resultado) => {
-            if(resultado) {
-                return res.status(204).json({
-                    agendado: true
+            if(resultado == 0) {
+                return res.status(201).json({
+                    agendado: true,
+                    hora: req.body.horarioAtual,
+                    dia: req.body.dataAtual,
                 });
             } else {
                 return res.status(204).json({
