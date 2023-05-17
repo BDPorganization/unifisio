@@ -97,10 +97,14 @@ function criarPagamento() {
     var arrayJson;
     var dadosPagamento;
 
-    for (var i = 0; i < checkboxes.length; i++) {
+    for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
           checkboxesMarcados.push(checkboxes[i].name);
         }
+    }
+
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].disabled = true;
     }
 
     arrayJson = JSON.stringify(checkboxesMarcados);

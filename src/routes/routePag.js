@@ -21,7 +21,7 @@ mp.post("/pagamento", (req, res) => {
 			}
 		],
 		back_urls: {
-			"success": "http://localhost:3000/pagAprovado/",
+			"success": "https://unifiso.onrender.com/pagAprovado/",
 			"failure": "https://unifiso.onrender.com/pagReprovado/",
 			"pending": "https://unifiso.onrender.com/pagPendente/"
 		},
