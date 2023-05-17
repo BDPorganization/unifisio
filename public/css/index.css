@@ -14,12 +14,12 @@
 .div-redes{width: 100%;background: linear-gradient(#fff, #fbc9b6);}
 .div-inicial-redes{display: flex; flex-wrap: wrap; justify-content: space-evenly;flex-wrap: wrap; width: 65%; padding: 100px 0px; align-items: center; margin: auto;}
 .div-redes-texto{width: 40%; text-align: justify; font-family: nunito; font-weight: 300; font-size: 16px;}
-.btn-redes{width:80% ;padding: 10px 50px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000;text-decoration: none; border-radius: 5px; margin: 10px;}
+.btn-redes{width:80%;padding: 10px 50px;border: none;text-align:center; font-size: 18px;font-weight: 600;color: #000;border:1px solid #000;text-decoration: none; border-radius: 5px; margin: 10px;display: block;}
 
 .div-localizacao{background-color:#f3f3f3;width:100%;}
 .div-localizacao > div {display:flex;justify-content:space-evenly;flex-wrap:wrap;width:70%;padding:100px 0px;margin: auto;}
 .div-localizacao-titulo{width: 100%;display: flex;justify-content: center;flex-wrap: wrap;margin-bottom: 70px;}
-.localizacao-texto a{width:70% ;text-align: center;padding: 10px 0px;border: none;font-size: 18px;font-weight: 600;color: #fff;background-color: #000;text-decoration: none; border-radius: 5px;}
+.localizacao-texto a{width:70% ;text-align: center;padding: 10px 0px;border: none;font-size: 18px;font-weight: 600;color: #fff;background-color: #000;text-decoration: none; border-radius: 5px;display: block;}
 .div-localizacao-titulo > div{width: 40%;text-align: end;}
 .div-localizacao p{font-size: 16px;margin: 12px 0px; font-family: nunito;}
 .div-localizacao p i{font-size: 20px;margin: 12px 0px;color:#f05e22;margin-right: 10px;}
