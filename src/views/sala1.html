@@ -58,9 +58,9 @@
         </div>
         
     </div>
-    <div style="width: 100%; text-align: center;">
-        <h4 style="font-weight: 800; margin-bottom: 20px; font-family: 'poppins';color:#000">Pré-agende seu atendimento</h4>
-    </div>
+
+    <h4 class="titulo">Pré-agende seu atendimento</h4>
+
     <div class="div-externa-form">
         <div class="div-interna-form">
             <label for="data_escolhida" class="form-label w-100" style="font-family: nunito;">Selecione uma data</label>
@@ -78,7 +78,6 @@
             </button>
         </div>
         <div id="formDadosPessoais" class="row h-75 mb-5" style="display: none;">
-            <h4 class="mb-3 w-100 color-blue">Precisamos dos seus dados atualizados</h4>
             <form id="form-preencher">
                 <div class="modal-body">
                     <div class="mb-3">
@@ -105,13 +104,15 @@
                         <label for="numero" class="form-label">Numero: </label>
                         <input type="text" class="form-control" id="numero" name="numero" required>
                     </div>
-                    <button 
-                        name="btn-cadastro" 
-                        type="submit" 
-                        class="btn-navegacao"
-                        id="btn-preencher">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                    <div class="text-end">
+                        <button 
+                            name="btn-cadastro" 
+                            type="submit" 
+                            class="btn-continua"
+                            id="btn-preencher">
+                            Continuar
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>      
