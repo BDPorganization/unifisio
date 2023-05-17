@@ -20,6 +20,9 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use('/', routes, routesPag);
+app.use((req, res, next) => {
+    res.status(404).render('manutencao');
+});
 
 app.listen(port, () => {
     console.log(`Servidor rodando em ${port}`);
