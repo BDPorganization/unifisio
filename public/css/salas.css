@@ -14,10 +14,6 @@
 .div-imagem-final{width: 100%;text-align: center; padding: 80px 0px; overflow-x: auto;}
 
 a {color: #01056a;text-decoration: none;}
-input[type=checkbox]::after{background-color: #f05e22;}
-input[type="checkbox"] {display: inline-block;background-color: #4CAF50;color: #fff;border: none;padding: 10px 20px;font-size: 16px;text-transform: uppercase;cursor: pointer;}
-input[type="checkbox"]:checked + span {background-color: #008CBA;}
-input[type="checkbox"] span {display: inline-block;vertical-align: middle;margin-left: 10px;}
 
 @media screen and (min-width: 600px) and (max-width: 1400px) {
   .div-interna-text{width: 80%; padding: 40px 0px;}
@@ -36,4 +32,51 @@ input[type="checkbox"] span {display: inline-block;vertical-align: middle;margin
   .div-externa-form > div{width: 100%;}
   .btn-continua{width:100%;}
   .info-salas-card > div{width: 50%;}
+}
+
+.checkbox-card {
+  display: inline-block;
+  width: 130px;
+  height: 90px;
+  position: relative;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.checkbox-card:hover {
+  background-color: #e0e0e0;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-card .checkmark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: none;
+}
+
+input[type="checkbox"]:checked + .checkmark {
+  background-color: #00bcd4;
+}
+
+input[type="checkbox"]:disabled:not(:checked) + .checkmark {
+  background-color: #e0e0e0;
+}
+
+.checkbox-card {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

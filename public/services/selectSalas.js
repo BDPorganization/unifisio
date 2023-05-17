@@ -13,7 +13,7 @@ date.addEventListener("change", function() {
         return response.json();
     })
     .then((resultado) => {
-        if (resultado.horas == false) {
+        if (resultado.datas == false) {
             console.log('Nenhum horário encontrado para o dia selecionado');
         }
         createCheckboxesFromJSON(resultado.datas);
@@ -30,12 +30,16 @@ function createCheckboxesFromJSON(jsonData) {
     for (let i = 0; i < jsonData.length; i++) {
       const checkbox = document.createElement('input');
       const label = document.createElement('label');
+      const span = document.createElement('span');
   
       checkbox.type = 'checkbox';
       checkbox.name = jsonData[i].horario_disponivel;
       label.appendChild(document.createTextNode(jsonData[i].horario_disponivel));
       label.style.margin = '3px';
-      container.appendChild(checkbox);
+      label.classList.add("checkbox-card");
+      span.classList.add("checkmark");
       container.appendChild(label);
+      label.appendChild(checkbox);
+      label.appendChild(span)
     }
 }

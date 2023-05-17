@@ -107,6 +107,7 @@ function criarPagamento() {
         checkboxes[i].disabled = true;
     }
 
+    document.getElementById("dateTime").disabled = true;
     arrayJson = JSON.stringify(checkboxesMarcados);
     localStorage.setItem("data", data);
     localStorage.setItem("pk_sala", pk_sala);
