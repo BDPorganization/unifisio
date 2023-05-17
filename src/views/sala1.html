@@ -20,7 +20,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- Css externo -->
     <link rel="stylesheet" href="../../public/css/salas.css">
-    <title>Sala Com Leito Que Permite Mobilidade do Profissional - Unifisio</title>
+    <title>Puro comforto - Unifisio</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
@@ -28,16 +28,18 @@
 </head>
 <body>
     <%- include('./includes/nav.html'); %>
-    
     <div class="div-interna-text">
         <div class="div-texto-sala">
             <p style="color: #f05e22; font-weight: 100; text-align: center;">Sobre a acomodação</p>
-            <div style="width: 100%; text-align: center;">
-                <h4 style="font-weight: 800; margin-bottom: 20px; font-family: 'poppins';color:#000" id="product-description">Sala Comfort</h4>
-            </div> 
-            <input type="hidden" value="27.90" id="unit-price">
+            <h4 class="titulo" id="product-description">Sala Comfort</h4>
+           
+            <input type="hidden" value="21.90" id="unit-price">
             <input type="hidden" value="1" id="quantity">
+
             <p style="font-weight: 100; font-family: nunito;">A sala foi equipada para receber pacientes de qualquer faixa etária, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id augue in massa fermentum efficitur. Ut ut interdum lacus. Aliquam interdum, mauris eget ultrices malesuada, lectus sem consequat elit, vel efficitur lorem nulla quis urna.</p>
+
+            <h1 class="titulo" style="color: #f05e23;">R$ 21,90 <span style="font-weight: 100;font-size: 14px;text-shadow: none;">p/hora</span></h1>
+
             <div class="info-salas-card">
                 <div>
                     <p><i class="fa-solid fa-wifi"></i> Wi-fi</p>
@@ -117,6 +119,28 @@
     <div class="div-imagem-final">
         <img src="../../public/img/bannerSalas.png" alt="">
     </div>
+
+    <script>
+        // ATENÇÃO: toISOString() não é a melhor opção, veja explicação abaixo
+        var hoje = new Date().toISOString().slice(0, 16);
+
+        // DOMContentLoaded: assim que carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            var campo = document.querySelector('#dateTime');
+
+            // seta a data mínima para o campo
+            campo.min = hoje;
+
+            // mostra mensagem de erro customizada (caso não queira a mensagem padrão do browser)
+            campo.addEventListener('invalid', function(e) {
+                e.target.setCustomValidity(`A data não pode ser anterior a ${hoje}`);
+            });
+            campo.addEventListener('input', function(e) {
+                e.target.setCustomValidity('');
+                e.target.checkValidity();
+            });
+        });
+    </script>
     
     <%- include('./includes/footer.html'); %>
     <%- include('./includes/modalLogin.html'); %>

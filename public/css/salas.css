@@ -5,15 +5,13 @@
 .info-salas-card{font-family: nunito;font-size: 16px;font-weight: 700;display: flex;width: 100%;justify-content: center;margin: 50px auto;flex-wrap: wrap;}
 .info-salas-card > div{width: 40%;}
 .info-salas-card i{color:#f05e22;margin-right: 10px;}
+.titulo{font-weight: 800; margin-bottom: 20px; font-family: 'poppins';color:#000;width: 100%; text-align: center;}
 
-
-.div-externa-form{width: 65%; margin: auto; display: flex; justify-content: center; flex-wrap: wrap;border-bottom: 1px solid #f3f3f3}
+.div-externa-form{width: 65%; margin: auto; display: flex; justify-content: center; flex-wrap: wrap;border-bottom: 1px solid #f3f3f3; font-family: nunito;}
 .div-externa-form > div{width: 60%;margin-bottom: 30px;}
 .btn-continua{width:30%;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000; border-radius: 5px; background-color: #fff;}
 
-
 .div-imagem-final{width: 100%;text-align: center; padding: 80px 0px; overflow-x: auto;}
-
 
 a {color: #01056a;text-decoration: none;}
 input[type=checkbox]::after{background-color: #f05e22;}
@@ -21,10 +19,7 @@ input[type="checkbox"] {display: inline-block;background-color: #4CAF50;color: #
 input[type="checkbox"]:checked + span {background-color: #008CBA;}
 input[type="checkbox"] span {display: inline-block;vertical-align: middle;margin-left: 10px;}
 
-@media screen and (min-width: 1375px) and (max-width: 1450px){
-}
-
-@media screen and (min-width: 600px) and (max-width: 1375px) {
+@media screen and (min-width: 600px) and (max-width: 1400px) {
   .div-interna-text{width: 80%; padding: 40px 0px;}
   .imagem-salas{width: 40%;}
   .div-externa-form{width: 80%;}
