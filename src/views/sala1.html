@@ -23,7 +23,6 @@
     <title>Puro Conforto - Unifisio</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script src="/public/services/app.js" defer></script>
 </head>
 <body>
@@ -71,8 +70,10 @@
             <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
             <div id="containerId" class="d-flex flex-wrap"></div>
         </div>
-        <div class="text-end">
-            <div id="button-checkout"></div>
+        <div class="text-end space-buttons" id="button-checkout">
+            <button id="voltarPagamento" class="btn-voltar" style="display: none;" onclick="location.reload()">
+                Voltar
+            </button>
             <button id="avancar" class="btn-continua">
                 Continuar
             </button>
@@ -94,7 +95,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="cep" class="form-label">Cep: </label>
-                        <input type="text" class="form-control" id="cep" name="cep" required>
+                        <input type="text" class="form-control" id="cep" name="cep" size="10" maxlength="9" required>
                     </div>
                     <div class="mb-3">
                         <label for="rua" class="form-label">Logradouro: </label>

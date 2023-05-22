@@ -2,9 +2,10 @@ const dbAgenda = require('../models/classAgendamento.js');
 
 module.exports.selectHours = async (req, res) => {
     try{
-        const { dateNew } = req.body; 
+        const { dateNew, sala } = req.body; 
         let data = {
-            dia: dateNew
+            dia: dateNew,
+            pk_salas: sala
         }
 
         dbAgenda.returnHours(data)

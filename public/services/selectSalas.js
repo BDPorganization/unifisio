@@ -10,10 +10,11 @@ date.addEventListener("change", function() {
         body: JSON.stringify({ dateNew, sala })
     })
     .then((response) => {
+        console.log(response);
         return response.json();
     })
     .then((resultado) => {
-        if (resultado.datas == false) {
+        if (resultado.horas == false) {
             console.log('Nenhum horário encontrado para o dia selecionado');
         }
         createCheckboxesFromJSON(resultado.datas);

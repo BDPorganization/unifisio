@@ -69,19 +69,4 @@ formCadastro.addEventListener("submit", (event) => {
     }catch(err) {
         return err
     }
-});
-
-// Apagar conta
-// const btnApagarConta = document.getElementById('btn-apagarConta');
-
-// btnApagarConta.addEventListener("click", async (event) => {
-//     event.preventDefault();
-
-//     try {
-//         fetch('/apagarConta', {
-//             method: 'GET',
-//         });
-//     }catch(err) {
-//         return err
-//     }
-// });
+})

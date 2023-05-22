@@ -18,7 +18,7 @@ botao_avancar.addEventListener("click", () => {
             .then((response) =>{
                 if (response.status == 204){
                     const formPreencher = document.getElementById('form-preencher');
-
+                
                     document.getElementById('avancar').style.display = 'none';
                     exibirFormDados();
                     formPreencher.addEventListener("submit", (event) => {
@@ -56,8 +56,14 @@ botao_avancar.addEventListener("click", () => {
                         }
                     });
                 } else {
-                    document.getElementById('avancar').style.display = 'none';
-                    criarPagamento();
+                    let inputdate = document.getElementById('dateTime').value;
+
+                    if (inputdate == "") {
+                        alert('Escolha uma data para continuar');
+                    } else {
+                        document.getElementById('avancar').style.display = 'none';
+                        criarPagamento();
+                    }
                 }
             })
         } else {
@@ -74,7 +80,7 @@ function abrirModal(element) {
 function exibirFormDados(){
     var inputdate = document.getElementById('dateTime').value;
 
-    if (inputdate == ''){
+    if (inputdate == ""){
         alert('Escolha uma data para continuar');
     } else {
         let form = document.getElementById('formDadosPessoais');
@@ -131,6 +137,7 @@ function criarPagamento() {
     })
     .then((pagamento) => {
         createCheckoutButton(pagamento.id);
+        document.getElementById("voltarPagamento").style.display = "inline-block";
     })
     .catch((err) => {
         alert(`Ocorreu um erro inesperado!, ${err}`);
