@@ -96,6 +96,7 @@ module.exports.agendamentos = async (req, res) => {
             if(resultado.rowCount > 0) {
                 return res.status(200).json({
                     agendamento: true,
+                    dados: resultado.rows
                 });
             } else {
                 return res.status(404).json({

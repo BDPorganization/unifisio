@@ -1,5 +1,5 @@
 const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta } = require("../controller/userController.js");
-const { selectHours, checaDados, agendaDados } = require("../controller/agendController.js");
+const { selectHours, checaDados, agendaDados, agendamentos } = require("../controller/agendController.js");
 const router = require("express").Router();
 
 router.post("/loginGoogle", loginGoogle);
@@ -9,7 +9,7 @@ router.post("/preencher_dados", preencherDados);
 router.post("/filtroData", selectHours);
 router.post("/checarDados", checaDados);
 router.post("/agendaDados", agendaDados);
-
+router.post("/checarAgendamentos", agendamentos);
 
 router.get('/', (req, res) => {
     res.render('index');
@@ -43,12 +43,12 @@ router.get("/salas/studioFisioterapia", (req, res) => {
     res.render('sala3');
 });
 
-router.get("/confirmarHorario", (req, res) => {
-    res.render('pagAprovado');
-});
-
 router.get("/admin", (req, res) => {
     res.render('manutencao');
+});
+
+router.get("/aluguel", (req, res) => {
+    res.render('alugueis');
 });
 
 router.get("/verificarLogin", verificaLogin);
