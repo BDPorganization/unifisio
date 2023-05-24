@@ -12,7 +12,6 @@ async function login(loginUser) {
     } finally {
         client.release();
     }
-
 }
 
 async function cadastro(cadastroUser){
@@ -27,7 +26,6 @@ async function cadastro(cadastroUser){
     } finally {
         client.release();
     }
-
 }
 
 async function preencher_dados(dadosUser){
@@ -42,14 +40,13 @@ async function preencher_dados(dadosUser){
     } finally {
         client.release();
     }
-
 }
 
 async function checaMedico(checaUser) {
     const client = await database.connect();
 
     try {
-        const sql = 'SELECT * FROM medicos WHERE nome = $1 AND email = $2'
+        const sql = 'SELECT * FROM medicos WHERE nome = $1 AND email = $2;'
         const values = [checaUser.nome, checaUser.email];
         return await client.query(sql, values);
     } catch (err) {
@@ -57,14 +54,13 @@ async function checaMedico(checaUser) {
     } finally {
         client.release();
     }
-
 }
 
 async function checaPkMedico(checaPkUser) {
     const client = await database.connect();
 
     try {
-        const sql = 'SELECT * FROM medicos WHERE pk_medicos = $1'
+        const sql = 'SELECT * FROM medicos WHERE pk_medicos = $1;'
         const values = [checaPkUser.pk_medicos];
         return await client.query(sql, values);
     } catch (err) {
@@ -72,26 +68,69 @@ async function checaPkMedico(checaPkUser) {
     } finally {
         client.release();
     }
-
 }
 
 async function deletarConta(pk_apagar) {
     const client = await database.connect();
 
     try {
-        const sql = 'delete from datas_agendadas where fk_medicos_pk_medicos = $1'
+        const sql = 'DELETE FROM datas_agendadas WHERE fk_medicos_pk_medicos = $1;'
         const values = [pk_apagar.pk_medicos];
         await client.query(sql, values);
 
-        const sql2 = 'delete from medicos where pk_medicos = $1'
+        const sql2 = 'DELETE FROM medicos WHERE pk_medicos = $1;'
         const values2 = [pk_apagar.pk_medicos];
-        return  await client.query(sql2, values2);
+        return await client.query(sql2, values2);
     } catch (err) {
         return err;
     } finally {
         client.release();
     }
+}
 
+async function adcSalas(adcSala) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'INSERT INTO salas (nome, descricao, valor, imgUrl) VALUES ($1, $2, $3, $4);'
+        const values = [adcSala.nome, adcSala.descricao, adcSala.valor, adcSala.imgUrl];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
+async function checarSalas() {
+    const client = await database.connect();
+
+    try {
+        const sql = 'SELECT * FROM salas;'
+        return await client.query(sql);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
+async function deletarSalas(pk_salas) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'DELETE FROM salas WHERE pk_sala = $1;'
+        const values = [pk_apagar.pk_medicos];
+        await client.query(sql, values);
+
+        const sql2 = 'DELETE FROM medicos WHERE pk_medicos = $1;'
+        const values2 = [pk_salas.pk_sala];
+        return await client.query(sql2, values2);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
 }
 
 module.exports = { 
@@ -100,5 +139,8 @@ module.exports = {
     preencher_dados,
     checaMedico,
     checaPkMedico,
-    deletarConta
+    deletarConta,
+    adcSalas,
+    checarSalas,
+    deletarSalas
 }; 

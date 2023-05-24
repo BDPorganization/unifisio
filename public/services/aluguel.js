@@ -1,7 +1,7 @@
 window.addEventListener("load", ()=> {
     try {
         fetch('/checarAgendamentos', {
-            method: "POST"
+            method: "GET"
         })
         .then((response) => {
             return response.json();

@@ -23,7 +23,7 @@ module.exports.loginGoogle = async (req, res) => {
 
                 req.session.user = dadosUser;
                 return res.status(200).redirect(req.headers.referer);
-            }else {
+            } else {
                 dbMedicos.cadastro(infoUser)
                 .then((resposta) => {
                     let checaPkUser = {
@@ -67,14 +67,14 @@ module.exports.login = async (req, res) => {
 
                 req.session.user = dadosUser;
                 return res.status(200).render('index', { nome: dadosUser.nome_user });
-            }else {
+            } else {
                 return res.status(404).json({ autorizado: false });
             }
         })
         .catch((err) => {
             return res.status(500).json({ autorizado: false });
         });
-    }catch(err) {
+    } catch(err) {
         return res.status(400).json({ autorizado: false });
     }
 };
@@ -94,7 +94,7 @@ module.exports.cadastro = async (req, res) => {
             .then((response) => {
                 if (response.rowCount > 0) {
                     return res.status(302).json({ cadastrado: false });
-                }else {
+                } else {
                     dbMedicos.cadastro(cadastroUser)
                     .then(() => {
                         return res.status(201).json({ cadastrado: true });
@@ -107,10 +107,10 @@ module.exports.cadastro = async (req, res) => {
             .catch((err) => {
                 return res.status(500).json({ cadastrado: false });
             });
-        }else {
+        } else {
             return res.status(409).json({ cadastrado: false });
         }
-    }catch(err) {
+    } catch(err) {
         return res.status(400).json({ cadastrado: false });  
     }
 };
@@ -122,12 +122,12 @@ module.exports.verificaLogin = async (req, res) => {
                 autenticado: true,
                 nome: req.session.user.nome_user
             });
-        }else {
+        } else {
             res.status(203).json({
                 autenticado: false,
             });
         }
-    }catch(err) {
+    } catch(err) {
         return res.status(400).send('Ocorreu um erro na verificação do login');
      }
 };
@@ -151,7 +151,7 @@ module.exports.preencherDados = async (req, res) => {
         .catch((err) => {
             return res.status(500).json({ preenchido: false });
         });
-    }catch(err) {
+    } catch(err) {
         return res.status(400).json({ preenchido: false });
     }
 };
@@ -161,11 +161,11 @@ module.exports.desconectar = async (req, res) => {
         req.session.destroy((err) => {
             if (err) {
                 return err;
-            }else {
+            } else {
                 res.status(308).redirect('/index');
             }
           });
-    }catch(err) {
+    } catch(err) {
         return res.status(401).send('Ocorreu um erro ao desconectar');
     }
 };
@@ -183,14 +183,76 @@ module.exports.apagarConta = async (req, res) => {
                 dbMedicos.deletarConta(pk_apagar)
                 .then((response) => {
                     if (response.rowCount > 0) {
-                        res.status(200).redirect('/index')
+                        return res.status(200).redirect('/index');
                     } else {
-                        res.status(400).redirect('/index');
+                        return res.status(400).redirect('/index');
                     }
                 });
             }
           });
-    }catch(err) {
+    } catch(err) {
+        return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
+    }
+};
+
+module.exports.adcSala = async (req, res) => {
+    try {
+        let adcSala = {
+            nome: req.body.nomeSala,
+            descricao: req.body.descricaoSala,
+            valor: req.body.valorSala,
+            //imgUrl: imgSala || null
+        }
+
+        dbMedicos.adcSalas(adcSala)
+        .then((response) => {
+            console.log(response);
+            if (response.rowCount > 0) {
+                return res.status(201).redirect(req.headers.referer);
+            } else {
+                return res.status(400).redirect(req.headers.referer);
+            }
+        });
+    } catch(err) {
+        return res.status(401).send('Ocorreu um erro ao adicionar a sala');
+    }
+};
+
+module.exports.checarSalasAdmin = async (req, res) => {
+    try {
+        dbMedicos.checarSalas()
+        .then((response) => {
+            if (response.rowCount > 0) {
+                return res.status(200).json({
+                    salas: true,
+                    dados: response.rows
+                });
+            } else {
+                return res.status(404).json({
+                    salas: false,
+                });
+            }
+        });
+    } catch(err) {
+        return res.status(401).send('Ocorreu um erro ao adicionar a sala');
+    }
+};
+
+module.exports.excluirSala = async (req, res) => {
+    try {
+        let pk_salas = {
+            pk_sala: req.body.pk_sala
+        }
+
+        dbMedicos.deletarSalas(pk_salas)
+        .then((response) => {
+            if (response.rowCount > 0) {
+                return res.status(201).redirect(req.headers.referer);
+            } else {
+                return res.status(201).redirect(req.headers.referer);
+            }
+        });
+    } catch(err) {
         return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
     }
 };

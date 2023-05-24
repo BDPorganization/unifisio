@@ -1,0 +1,22 @@
+<!-- Modal Logout-->
+<div class="modal fade modal-lg" id="adcSalaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
+                <div style="width: 100%; padding: 15px;">
+                    <center>
+                        <form method="POST" action="/adcSala">
+                            <div class="inputs-sala">
+                                <input class="w-50" type="text" placeholder="Nome da sala" name="nomeSala">
+                                <input class="w-50" type="text" placeholder="Pequena descrição" name="descricaoSala">
+                                <input class="w-50" type="text" placeholder="Valor em reais" name="valorSala">
+                                <input class="w-50" type="file" placeholder="Imagem da sala" name="imgSala">
+                            </div>
+                            <button type="submit" class="btn btn-secondary w-50 mt-2">Adicionar</button>
+                        </form>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

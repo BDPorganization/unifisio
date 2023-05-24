@@ -1,4 +1,4 @@
-const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta } = require("../controller/userController.js");
+const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala } = require("../controller/userController.js");
 const { selectHours, checaDados, agendaDados, agendamentos } = require("../controller/agendController.js");
 const router = require("express").Router();
 
@@ -9,7 +9,8 @@ router.post("/preencher_dados", preencherDados);
 router.post("/filtroData", selectHours);
 router.post("/checarDados", checaDados);
 router.post("/agendaDados", agendaDados);
-router.post("/checarAgendamentos", agendamentos);
+router.post("/adcSala", adcSala);
+router.post("/excluirSala", excluirSala);
 
 router.get('/', (req, res) => {
     res.render('index');
@@ -44,7 +45,7 @@ router.get("/salas/studioFisioterapia", (req, res) => {
 });
 
 router.get("/admin", (req, res) => {
-    res.render('manutencao');
+    res.render('painelAdmin');
 });
 
 router.get("/aluguel", (req, res) => {
@@ -54,6 +55,8 @@ router.get("/aluguel", (req, res) => {
 router.get("/verificarLogin", verificaLogin);
 router.get("/desconectar", desconectar);
 router.get("/apagarConta", apagarConta);
+router.get("/checarAgendamentos", agendamentos);
+router.get("/checarSalas", checarSalasAdmin);
 
 router.get("/pagAprovado", (req, res) => {
     if (req.query.status == "approved") {
