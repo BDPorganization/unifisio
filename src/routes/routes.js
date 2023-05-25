@@ -1,6 +1,18 @@
 const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala } = require("../controller/userController.js");
 const { selectHours, checaDados, agendaDados, agendamentos } = require("../controller/agendController.js");
+const { upload } = require("../../public/services/multer.js");
+const FileController = require("../controller/fileController.js");
 const router = require("express").Router();
+const path = require('path');
+const fs = require('fs');
+
+const verificarAutenticacao = (req, res, next) => {
+    if (req.session && req.session.user.nome_user == 'Admin') {
+      next();
+    } else {
+      res.status(401).json({ message: 'Acesso não autorizado.' });
+    }
+};
 
 router.post("/loginGoogle", loginGoogle);
 router.post("/loginDB", login);
@@ -10,6 +22,7 @@ router.post("/filtroData", selectHours);
 router.post("/checarDados", checaDados);
 router.post("/agendaDados", agendaDados);
 router.post("/adcSala", adcSala);
+router.post("/upload", upload.single('image'), FileController.upload);
 router.post("/excluirSala", excluirSala);
 
 router.get('/', (req, res) => {
@@ -63,6 +76,19 @@ router.get("/pagAprovado", (req, res) => {
         res.render('pagAprovado');
     } else {
         res.render('manutencao');
+    }
+});
+
+router.get('/uploads/:imageName', (req, res) => {
+    const imageName = req.params.imageName;
+    const imagePath = path.join(process.cwd(), 'uploads', imageName);
+  
+    // Verificar se o arquivo existe
+    if (fs.existsSync(imagePath)) {
+      // Enviar o arquivo como resposta
+      res.sendFile(imagePath);
+    } else {
+      res.status(404).send('Imagem não encontrada');
     }
 });
 

@@ -17,7 +17,7 @@
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- Css externo -->
-    <link rel="stylesheet" href="./public/css/info.css">
+    <link rel="stylesheet" href="../../public/css/info.css">
     <title>Salas - Unifisio</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -31,9 +31,9 @@
     <%- include('./includes/nav.html'); %>
 
     <div class="div-externa-cards">
-        <div class="div-interna-cards">
+        <div class="div-interna-cards" id="div-interna-cards">
             <h4 class="titulo">Conheça nossas salas</h4>
-            <div class="card-salas">
+            <!-- <div class="card-salas">
                 <div class="card-imgs">
                     <img src="../../public/img/consultorio1/8febed64-08ff-4f67-a925-1e28edf0fd3f.jpg" alt="sala 1">
                 </div>
@@ -65,7 +65,7 @@
                     <hr style="color:#000">
                     <div class="div-link"><a href="/salas/studioFisioterapia">Saber mais</a></div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -157,5 +157,6 @@
     <!-- SCRIPT JS-->
     <script src="/public/services/acoesBanco.js"></script>
     <script src="/public/services/avancar1.js"></script>
+    <script src="/public/services/salas.js"></script>
 </body>
 </html>

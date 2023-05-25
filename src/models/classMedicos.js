@@ -119,13 +119,10 @@ async function deletarSalas(pk_salas) {
     const client = await database.connect();
 
     try {
-        const sql = 'DELETE FROM salas WHERE pk_sala = $1;'
-        const values = [pk_apagar.pk_medicos];
-        await client.query(sql, values);
+        const sql = 'DELETE FROM salas WHERE pk_salas = $1;'
+        const values = [pk_salas.pk_sala];
+        return await client.query(sql, values);
 
-        const sql2 = 'DELETE FROM medicos WHERE pk_medicos = $1;'
-        const values2 = [pk_salas.pk_sala];
-        return await client.query(sql2, values2);
     } catch (err) {
         return err;
     } finally {

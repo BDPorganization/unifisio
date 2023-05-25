@@ -29,8 +29,9 @@
     "google-auth-struct": "^1.0.7",
     "md5": "^2.3.0",
     "mercadopago": "^1.5.15",
+    "multer": "^1.4.5-lts.1",
     "pg": "^8.9.0",
-    "qrcode": "^1.5.1"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

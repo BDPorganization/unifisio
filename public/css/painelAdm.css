@@ -46,15 +46,16 @@
 }
 
 #container {
-    margin-top: 20px;
+    width: 65%;
+    margin-top: 20px!important;
+    margin: auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .card {
-    width: 450px;
-    height: 450px;
+    width: 30%;
     margin: 10px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -75,4 +76,6 @@
 
 .card img {
     border-radius: 5px;
+    width: 100%;
+    height: 50%;
 }

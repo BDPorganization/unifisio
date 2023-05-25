@@ -18,27 +18,38 @@ window.addEventListener("load", ()=> {
 
 function gerarCard(dados) {
     const card = document.createElement('div');
+    const logo = document.createElement('img');
+    const pagamento = document.createElement('p');
     const sala = document.createElement('h3');
+    const valor = document.createElement('p');
+    const detalhes = document.createElement('p');
+    const hr = document.createElement('hr');
     const dia = document.createElement('p');
-    const descricao = document.createElement('p');
     const hora = document.createElement('p');
     const email = document.createElement('p');
-    const valor = document.createElement('p');
     const container = document.getElementById('container'); 
 
-    card.className = 'card';
+    card.className = "card";
+    logo.src = "http://localhost:3000/public/img/logo_png.png"
+    pagamento.textContent = "Comprovante digital";
+    pagamento.className = "comprovante-pagamento";
     sala.textContent = dados.nome;
+    valor.textContent = `R$ ${dados.valor}`;
+    valor.className = "valor-reais";
+    detalhes.textContent = "Detalhes";
+    detalhes.className = "detalhes-pagamento";
     dia.textContent = `Dia: ${new Date(dados.datas).toLocaleDateString('pt-BR')}`; 
-    descricao.textContent = `Descrição: ${dados.descricao}`; 
     hora.textContent = `Horário: ${dados.hora}`;
     email.textContent = `E-mail: ${dados.email}`;
-    valor.textContent = `Preço unitário: R$${dados.valor}`;
 
+    //card.appendChild(logo);
+    card.appendChild(pagamento);
     card.appendChild(sala);
+    card.appendChild(valor);
+    card.appendChild(detalhes);
+    card.appendChild(hr);
     card.appendChild(dia);
-    card.appendChild(descricao);
     card.appendChild(hora);
     card.appendChild(email);
-    card.appendChild(valor);
     container.appendChild(card);
 }

@@ -10,7 +10,7 @@ window.addEventListener("load", () =>{
             const linkLogin = document.getElementById('nomeUsuario');
             let nomeUser = resultado.nome.split(" ");
 
-            if (nomeUser[0] == 'admin') {
+            if (nomeUser[0] == 'Admin') {
                 linkLogin.setAttribute('data-bs-target', '#adminModal');
                 linkLogin.innerText = nomeUser[0];
             } else {

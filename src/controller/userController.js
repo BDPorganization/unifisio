@@ -201,16 +201,19 @@ module.exports.adcSala = async (req, res) => {
             nome: req.body.nomeSala,
             descricao: req.body.descricaoSala,
             valor: req.body.valorSala,
-            //imgUrl: imgSala || null
+            imgUrl: req.body.image
         }
 
         dbMedicos.adcSalas(adcSala)
         .then((response) => {
-            console.log(response);
             if (response.rowCount > 0) {
-                return res.status(201).redirect(req.headers.referer);
+                return res.status(200).json({
+                    salvarSala: true,
+                });
             } else {
-                return res.status(400).redirect(req.headers.referer);
+                return res.status(200).json({
+                    salvarSala: false,
+                });
             }
         });
     } catch(err) {
@@ -247,9 +250,13 @@ module.exports.excluirSala = async (req, res) => {
         dbMedicos.deletarSalas(pk_salas)
         .then((response) => {
             if (response.rowCount > 0) {
-                return res.status(201).redirect(req.headers.referer);
+                return res.status(200).json({
+                    excluirSala: true,
+                });
             } else {
-                return res.status(201).redirect(req.headers.referer);
+                return res.status(405).json({
+                    excluirSala: false,
+                });
             }
         });
     } catch(err) {

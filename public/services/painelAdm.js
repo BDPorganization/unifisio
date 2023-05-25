@@ -1,6 +1,3 @@
-const btnExcluirSala = document.querySelector("button");
-console.log(btnExcluirSala);
-
 window.addEventListener("load", ()=> {
     try {
         fetch('/checarSalas', {
@@ -19,31 +16,81 @@ window.addEventListener("load", ()=> {
     }
 });
 
-if (btnExcluirSala) {
-    btnExcluirSala.addEventListener("click", ()=> {
-        var pk_sala = document.getElementsByClassName("input-hidden").value;
-        console.log(pk_sala);
-    
-        try {
-            fetch('/excluirSala', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ pk_sala })
-            })
-            .then((response) => {
-                return response.json();
-            })
-            .then((resultado) => {
-                console.log(resultado);
-                //location.reload();
-            })
-        } catch (err) {
-            return err;
-        }
-    });
-}
+function onClickBtIncluirSala() {
+    var nomeSala = document.getElementById("nomeSala").value;
+    var descricaoSala = document.getElementById("descricaoSala").value;
+    var valorSala = document.getElementById("valorSala").value;
+    var imgSala = document.getElementById("imgSala");
+    var image = imgSala.files[0].name;
+
+    try {
+        fetch('/adcSala', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nomeSala, descricaoSala, valorSala, image })
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((resultado) => {
+            if (resultado.salvarSala == true) {
+                const formData = new FormData();
+
+                formData.append('image', imgSala.files[0]);
+
+                fetch('/upload', {
+                    method: "POST",
+                    body: formData
+                })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((resultado) => {
+                    location.reload();
+                })
+                .catch((err) => {
+                    alert("Erro na inserção da imagem:", err);
+                })
+            } else {
+                alert("Erro na inserção da sala, tente novamente mais tarde!");
+            }
+        });
+    } catch (err) {
+        return err;
+    }
+};
+
+function onClickBtExcluirSala(botao) {
+    var hiddenInput = botao.nextElementSibling;
+    var pk_sala = hiddenInput.value;
+
+    try {
+        fetch('/excluirSala', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pk_sala })
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((resultado) => {
+            console.log(resultado);
+            if (resultado.excluirSala == true) {
+                location.reload();
+                alert("Sala excluída com sucesso!");
+            } else {
+                alert("Erro na exclusão da sala, tente novamente mais tarde!");
+            }
+        });
+    } catch (err) {
+        return err;
+    }
+};
+
 
 function gerarCard(dados) {
     const card = document.createElement('div');
@@ -59,11 +106,13 @@ function gerarCard(dados) {
     sala.textContent = dados.nome;
     descricao.textContent = `Descrição: ${dados.descricao}`; 
     valor.textContent = `Preço unitário: R$${dados.valor}`;
-    imgUrl.src = "https://img.freepik.com/vetores-gratis/gato-e-gatinho-brincam-no-sofa-na-sala-de-estar-vetor_107791-19007.jpg?size=626&ext=jpg&ga=GA1.2.691316326.1676481620&semt=sph";
+    imgUrl.src = `/uploads/${dados.imgurl}`;
     button.type = 'button';
     button.innerHTML = '<i class="fa-solid fa-trash-can"></i> Excluir sala';
     button.className = 'btn-styled';
-    button.name = 'btn-excluir';
+    button.onclick = function() {
+        onClickBtExcluirSala(this);
+    };
     input.value = dados.pk_salas;
     input.type = 'hidden'
     input.className = 'input-hidden'

@@ -1,0 +1,56 @@
+#container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 380px;
+    height: 380px;
+    margin: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    padding: 10px;
+}
+
+img {
+    width: 50px;
+}
+
+.card .comprovante-pagamento {
+    color: #000;
+    text-align: end;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.card h3 {
+    color: #000;
+    text-align: center;
+    margin: 10px;
+    font-size: 22px;
+}
+
+.card .valor-reais {
+    color: #f05e22;
+    text-align: center;
+    margin: 20px;
+    font-size: 30px;
+}
+
+hr {
+    margin: 5px!important;
+}
+
+.card .detalhes-pagamento {
+    margin: 8px;
+    margin-left: 10px;
+}
+
+.card p {
+    color: #000;
+    text-align: start;
+    margin-left: 10px;
+    margin-top: 5px;
+}
