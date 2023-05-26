@@ -263,3 +263,27 @@ module.exports.excluirSala = async (req, res) => {
         return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
     }
 };
+
+module.exports.selectSalasByPk = async (req, res) => {
+    try {
+        let pk_salas = {
+            pk_sala: req.body.idSala
+        }
+
+        dbMedicos.selectSalas(pk_salas)
+        .then((response) => {
+            if (response.rowCount > 0) {
+                return res.status(200).json({
+                    salas: true,
+                    dados: response.rows
+                });
+            } else {
+                return res.status(404).json({
+                    salas: false,
+                });
+            }
+        });
+    } catch(err) {
+        return res.status(401).send('Ocorreu um erro ao adicionar a sala');
+    }
+};

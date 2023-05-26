@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
     <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async></script>
     <script src="/public/services/verificaLogin.js" async></script>
+    <script src="/public/services/salas.js" defer></script>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
@@ -30,119 +31,89 @@
 <body>
     <%- include('./includes/nav.html'); %>
 
-    <div class="div-externa-cards">
-        <div class="div-interna-cards" id="div-interna-cards">
-            <h4 class="titulo">Conheça nossas salas</h4>
-            <!-- <div class="card-salas">
-                <div class="card-imgs">
-                    <img src="../../public/img/consultorio1/8febed64-08ff-4f67-a925-1e28edf0fd3f.jpg" alt="sala 1">
-                </div>
-                <div class="text-center">
-                    <h5>Sala Comfort</h5>
-                    <p>Para você que prioriza conforto e aconchego</p>
-                    <hr style="color:#000">
-                    <div class="div-link"><a href="/salas/salaComfort">Saber mais</a></div>
-                </div>
+    <div style="display: none;" id="display">
+        <div class="div-externa-cards">
+            <div class="div-interna-cards" id="div-interna-cards">
+                <h4 class="titulo">Conheça nossas salas</h4>
+       
             </div>
-            <div class="card-salas">
-                <div class="card-imgs">
-                    <img src="../../public/img/consultorio2/9b881eb1-2833-4ee5-854b-089043b61202.jpg" alt="sala 2">
-                </div>
-                <div class="text-center">
-                    <h5>Sala Premium</h5>
-                    <p>Para você que gosta de espaço e tem muitos materiais</p>
-                    <hr style="color:#000">
-                    <div class="div-link"><a href="/salas/salaPremium">Saber mais</a></div>
-                </div>
-            </div>
-            <div class="card-salas">
-                <div class="card-imgs">
-                    <img src="../../public/img/consultorio3/d0b39ca3-e7e0-4d46-9c89-4e052de9150d.jpg" alt="sala 3">
-                </div>
-                <div class="text-center">
-                    <h5>Studio de Recuperação</h5>
-                    <p>Pilates e fisioterapia para até 5 pacientes</p>
-                    <hr style="color:#000">
-                    <div class="div-link"><a href="/salas/studioFisioterapia">Saber mais</a></div>
-                </div>
-            </div> -->
         </div>
-    </div>
-
-    <div class="div-funcionamento">
-        <div class="div-interna-funciona">
-            <h4 class="titulo">Entenda como funciona o coworking</h4>
-            <p>Ao acessar nosso site, escolha o consultório que mais te agradar, atente-se ao visual de cada sala, assim como às especificidades de cada uma. Depois que se decidir, é só escolher seu horário e efetuar o pagamento, você receberá um comprovante de aluguel e deverá aguardar o dia agendado.</p>
-        </div> 
-        <div>
-            <img src="./public/img/colagemProfissao.png" alt="" width="100%" height="100%" style="border-radius: 5px;"> 
-        </div>
-    </div>
     
-    <div class="div-exclusivo">
-        <div class="div-texto-exclusividades">  
-            <div class="div-order-2">
-                <img src="./public/img/colagemSalas.png" alt="" width="100%" height="100%" style="border-radius: 5px;"> 
-            </div>
-            
+        <div class="div-funcionamento">
+            <div class="div-interna-funciona">
+                <h4 class="titulo">Entenda como funciona o coworking</h4>
+                <p>Ao acessar nosso site, escolha o consultório que mais te agradar, atente-se ao visual de cada sala, assim como às especificidades de cada uma. Depois que se decidir, é só escolher seu horário e efetuar o pagamento, você receberá um comprovante de aluguel e deverá aguardar o dia agendado.</p>
+            </div> 
             <div>
-                <h4 class="titulo">Ofereça um espaço de qualidade aos seus pacientes e clientes</h4>
-                <p style="font-family: nunito;margin-top: 30px;">Diversas particularidades tornam nosso serviço singular, além de um excelente ambiente de trabalho, outras coisas podem influenciar em uma boa experiência, conheça alguns benefícios.</p>
-                <div class="d-flex justify-content-evenly margin-5 w-100 ">
-                    <div class="w-50">
-                        <p><i class="fa-solid fa-check text-success"></i> Estacionamento</p>
-                        <p><i class="fa-solid fa-check text-success"></i> Segurança 24hrs</p>
-                    </div>
-                    <div class="w-50">
-                        <p><i class="fa-solid fa-check text-success"></i> Ar-condicionado</p>
-                        <p><i class="fa-solid fa-check text-success"></i> Lixeira hospitalar</p>
-                    </div>
-                </div>  
+                <img src="./public/img/colagemProfissao.png" alt="" width="100%" height="100%" style="border-radius: 5px;"> 
             </div>
         </div>
+        
+        <div class="div-exclusivo">
+            <div class="div-texto-exclusividades">  
+                <div class="div-order-2">
+                    <img src="./public/img/colagemSalas.png" alt="" width="100%" height="100%" style="border-radius: 5px;"> 
+                </div>
+                
+                <div>
+                    <h4 class="titulo">Ofereça um espaço de qualidade aos seus pacientes e clientes</h4>
+                    <p style="font-family: nunito;margin-top: 30px;">Diversas particularidades tornam nosso serviço singular, além de um excelente ambiente de trabalho, outras coisas podem influenciar em uma boa experiência, conheça alguns benefícios.</p>
+                    <div class="d-flex justify-content-evenly margin-5 w-100 ">
+                        <div class="w-50">
+                            <p><i class="fa-solid fa-check text-success"></i> Estacionamento</p>
+                            <p><i class="fa-solid fa-check text-success"></i> Segurança 24hrs</p>
+                        </div>
+                        <div class="w-50">
+                            <p><i class="fa-solid fa-check text-success"></i> Ar-condicionado</p>
+                            <p><i class="fa-solid fa-check text-success"></i> Lixeira hospitalar</p>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    
+        <div class="div-especialidades">
+            <h4 class="titulo">Especialidades</h4>
+            <div>
+                <div class="div-texto-especialidades">
+                    <p><i class="fa-solid fa-spa"></i></p>
+                    <h4>Estética</h4>
+                </div>
+            </div>
+            <div>
+                <div class="div-texto-especialidades">
+                    <p><i class="fa-solid fa-dumbbell"></i></p>
+                    <h4>Fisioterapia</h4>
+                </div>
+            </div>
+            <div>
+                <div class="div-texto-especialidades">
+                    <p><i class="fa-solid fa-brain"></i></p>
+                    <h4>Psicologia</h4>
+                </div>
+            </div>
+            <div>
+                <div class="div-texto-especialidades">
+                    <p><i class="fa-solid fa-apple-whole"></i></p>
+                    <h4>Nutrição</h4>
+                </div>
+            </div>
+            <div>
+                <div class="div-texto-especialidades">
+                    <p><i class="fa-solid fa-pen-fancy"></i></p>
+                    <h4>Tatuagens</h4>
+                </div>
+            </div>
+            <div>
+                <div class="div-texto-especialidades">
+                    <p><i class="fa-solid fa-thermometer"></i></p>
+                    <h4>Pediatria</h4>
+                </div>
+            </div>
+        </div>
+        <%- include('./includes/footer.html'); %>
     </div>
 
-    <div class="div-especialidades">
-        <h4 class="titulo">Especialidades</h4>
-        <div>
-            <div class="div-texto-especialidades">
-                <p><i class="fa-solid fa-spa"></i></p>
-                <h4>Estética</h4>
-            </div>
-        </div>
-        <div>
-            <div class="div-texto-especialidades">
-                <p><i class="fa-solid fa-dumbbell"></i></p>
-                <h4>Fisioterapia</h4>
-            </div>
-        </div>
-        <div>
-            <div class="div-texto-especialidades">
-                <p><i class="fa-solid fa-brain"></i></p>
-                <h4>Psicologia</h4>
-            </div>
-        </div>
-        <div>
-            <div class="div-texto-especialidades">
-                <p><i class="fa-solid fa-apple-whole"></i></p>
-                <h4>Nutrição</h4>
-            </div>
-        </div>
-        <div>
-            <div class="div-texto-especialidades">
-                <p><i class="fa-solid fa-pen-fancy"></i></p>
-                <h4>Tatuagens</h4>
-            </div>
-        </div>
-        <div>
-            <div class="div-texto-especialidades">
-                <p><i class="fa-solid fa-thermometer"></i></p>
-                <h4>Pediatria</h4>
-            </div>
-        </div>
-    </div>
-
-    <%- include('./includes/footer.html'); %>
     <%- include('./includes/modalLogin.html'); %>
     <%- include('./includes/modalConfExclusao.html'); %>
     <%- include('./includes/modalAdmin.html'); %>
@@ -156,7 +127,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <!-- SCRIPT JS-->
     <script src="/public/services/acoesBanco.js"></script>
-    <script src="/public/services/avancar1.js"></script>
-    <script src="/public/services/salas.js"></script>
 </body>
 </html>

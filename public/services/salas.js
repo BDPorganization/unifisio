@@ -1,3 +1,6 @@
+const fragment = document.createDocumentFragment();
+const container = document.getElementById('div-interna-cards'); 
+
 window.addEventListener("load", ()=> {
     try {
         fetch('/checarSalas', {
@@ -10,6 +13,8 @@ window.addEventListener("load", ()=> {
             for (let i = 0; i < resultado.dados.length; i++) {
                 gerarCard(resultado.dados[i]);
             }
+            container.appendChild(fragment);
+            document.getElementById("display").style.display = "";
         })
     } catch (err) {
         return err;
@@ -27,8 +32,6 @@ function gerarCard(dados) {
     const div_link = document.createElement('div');
     const a = document.createElement('a');
 
-    const container = document.getElementById('div-interna-cards'); 
-
     card.className = 'card-salas';
     card_img.className = 'card-imgs';
     imgUrl.src = `/uploads/${dados.imgurl}`;
@@ -38,7 +41,7 @@ function gerarCard(dados) {
     hr.style.color = '#000';
     div_link.className = 'div-link';
     a.textContent = 'Saber mais'
-    a.href = '#'
+    a.href = `/salas/${dados.pk_salas}`
 
     
 
@@ -50,5 +53,5 @@ function gerarCard(dados) {
     card.appendChild(hr);
     card.appendChild(div_link);
     div_link.appendChild(a);
-    container.appendChild(card);
-}
+    fragment.appendChild(card);
+} 

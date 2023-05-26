@@ -106,7 +106,7 @@ async function checarSalas() {
     const client = await database.connect();
 
     try {
-        const sql = 'SELECT * FROM salas;'
+        const sql = 'SELECT * FROM salas ORDER BY pk_salas;'
         return await client.query(sql);
     } catch (err) {
         return err;
@@ -130,6 +130,20 @@ async function deletarSalas(pk_salas) {
     }
 }
 
+async function selectSalas(pk_salas) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'SELECT * FROM salas WHERE pk_salas = $1;'
+        const values = [pk_salas.pk_sala];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = { 
     login,
     cadastro,
@@ -139,5 +153,6 @@ module.exports = {
     deletarConta,
     adcSalas,
     checarSalas,
-    deletarSalas
+    deletarSalas,
+    selectSalas
 }; 

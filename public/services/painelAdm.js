@@ -1,3 +1,6 @@
+const fragment = document.createDocumentFragment();
+const container = document.getElementById('container'); 
+
 window.addEventListener("load", ()=> {
     try {
         fetch('/checarSalas', {
@@ -10,6 +13,7 @@ window.addEventListener("load", ()=> {
             for (let i = 0; i < resultado.dados.length; i++) {
                 gerarCard(resultado.dados[i]);
             }
+            container.appendChild(fragment);
         })
     } catch (err) {
         return err;
@@ -100,12 +104,17 @@ function gerarCard(dados) {
     const valor = document.createElement('p');
     const button = document.createElement('button');
     const input = document.createElement('input');
-    const container = document.getElementById('container'); 
 
     card.className = 'card';
     sala.textContent = dados.nome;
     descricao.textContent = `Descrição: ${dados.descricao}`; 
-    valor.textContent = `Preço unitário: R$${dados.valor}`;
+    valor.textContent = `Preço unitário: ${dados.valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+        useGrouping: true
+    })}`;
     imgUrl.src = `/uploads/${dados.imgurl}`;
     button.type = 'button';
     button.innerHTML = '<i class="fa-solid fa-trash-can"></i> Excluir sala';
@@ -123,5 +132,5 @@ function gerarCard(dados) {
     card.appendChild(valor);
     card.appendChild(button);
     card.appendChild(input);
-    container.appendChild(card);
+    fragment.appendChild(card);
 }

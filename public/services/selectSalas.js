@@ -10,7 +10,6 @@ date.addEventListener("change", function() {
         body: JSON.stringify({ dateNew, sala })
     })
     .then((response) => {
-        console.log(response);
         return response.json();
     })
     .then((resultado) => {
@@ -29,18 +28,25 @@ function createCheckboxesFromJSON(jsonData) {
     container.innerHTML = '';
     p.innerHTML = 'Selecione seu horário:';
     for (let i = 0; i < jsonData.length; i++) {
-      const checkbox = document.createElement('input');
-      const label = document.createElement('label');
-      const span = document.createElement('span');
-  
-      checkbox.type = 'checkbox';
-      checkbox.name = jsonData[i].horario_disponivel;
-      label.appendChild(document.createTextNode(jsonData[i].horario_disponivel));
-      label.style.margin = '3px';
-      label.classList.add("checkbox-card");
-      span.classList.add("checkmark");
-      container.appendChild(label);
-      label.appendChild(checkbox);
-      label.appendChild(span)
+        const checkbox = document.createElement('input');
+        const label = document.createElement('label');
+        const span = document.createElement('span');
+        var horarios = jsonData[i].horario_disponivel;
+        var partes = horarios.split(':');
+        var horas = parseInt(partes[0], 10);
+        var minutos = parseInt(partes[1], 10);
+        var horaFormatada = horas < 10 ? "0" + horas : horas;
+        var minutosFormatados = minutos < 10 ? "0" + minutos : minutos;
+        var horaFinal = `${horaFormatada}:${minutosFormatados}`;
+
+        checkbox.type = 'checkbox';
+        checkbox.name = horaFinal;
+        label.appendChild(document.createTextNode(horaFinal));
+        label.style.margin = '3px';
+        label.classList.add("checkbox-card");
+        span.classList.add("checkmark");
+        container.appendChild(label);
+        label.appendChild(checkbox);
+        label.appendChild(span)
     }
 }

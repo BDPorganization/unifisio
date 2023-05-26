@@ -34,7 +34,13 @@ function gerarCard(dados) {
     pagamento.textContent = "Comprovante digital";
     pagamento.className = "comprovante-pagamento";
     sala.textContent = dados.nome;
-    valor.textContent = `R$ ${dados.valor}`;
+    valor.textContent = `${dados.valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+        useGrouping: true
+    })}`;
     valor.className = "valor-reais";
     detalhes.textContent = "Detalhes";
     detalhes.className = "detalhes-pagamento";

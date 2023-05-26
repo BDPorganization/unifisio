@@ -1,4 +1,4 @@
-const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala } = require("../controller/userController.js");
+const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala, selectSalasByPk } = require("../controller/userController.js");
 const { selectHours, checaDados, agendaDados, agendamentos } = require("../controller/agendController.js");
 const { upload } = require("../../public/services/multer.js");
 const FileController = require("../controller/fileController.js");
@@ -14,7 +14,8 @@ const verificarAutenticacao = (req, res, next) => {
     }
 };
 
-router.post("/loginGoogle", loginGoogle);
+router.post
+("/loginGoogle", loginGoogle);
 router.post("/loginDB", login);
 router.post("/cadastro", cadastro);
 router.post("/preencher_dados", preencherDados);
@@ -24,6 +25,7 @@ router.post("/agendaDados", agendaDados);
 router.post("/adcSala", adcSala);
 router.post("/upload", upload.single('image'), FileController.upload);
 router.post("/excluirSala", excluirSala);
+router.post("/selectSalas", selectSalasByPk);
 
 router.get('/', (req, res) => {
     res.render('index');
@@ -45,16 +47,10 @@ router.get("/contato", (req, res) => {
     res.render('contato');
 });
 
-router.get("/salas/salaComfort", (req, res) => {
-    res.render('sala1');
-});
+router.get("/salas/:id", (req, res) => {
+    const postId = req.params.id;
 
-router.get("/salas/salaPremium", (req, res) => {
-    res.render('sala2');
-});
-
-router.get("/salas/studioFisioterapia", (req, res) => {
-    res.render('sala3');
+    res.render('sala', { postId });
 });
 
 router.get("/admin", (req, res) => {
@@ -83,9 +79,7 @@ router.get('/uploads/:imageName', (req, res) => {
     const imageName = req.params.imageName;
     const imagePath = path.join(process.cwd(), 'uploads', imageName);
   
-    // Verificar se o arquivo existe
     if (fs.existsSync(imagePath)) {
-      // Enviar o arquivo como resposta
       res.sendFile(imagePath);
     } else {
       res.status(404).send('Imagem não encontrada');
