@@ -48,6 +48,10 @@ hr {
     margin-left: 10px;
 }
 
+p {
+    margin: 0;
+}
+
 .card p {
     color: #000;
     text-align: start;

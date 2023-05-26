@@ -111,3 +111,26 @@ module.exports.agendamentos = async (req, res) => {
         return res.status(400).send('Ocorreu um erro ao ver agendamentos já realizados');
     }
 };
+
+module.exports.horariosAgenda = async (req, res) => {
+    try {
+        dbAgenda.horariosAgendados()
+        .then((resultado) => {
+            if(resultado.rowCount > 0) {
+                return res.status(200).json({
+                    horariosAgendados: true,
+                    dados: resultado.rows
+                });
+            } else {
+                return res.status(404).json({
+                    horariosAgendados: false
+                });
+            }
+        })
+        .catch((err) => {
+            return res.status(500).send(`Ocorreu um erro ao trazer agendamentos, ${err}`)
+        });
+    }catch(err) {
+        return res.status(400).send('Ocorreu um erro ao ver agendamentos já realizados');
+    }
+};

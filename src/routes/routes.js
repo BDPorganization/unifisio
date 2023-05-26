@@ -1,5 +1,5 @@
 const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala, selectSalasByPk } = require("../controller/userController.js");
-const { selectHours, checaDados, agendaDados, agendamentos } = require("../controller/agendController.js");
+const { selectHours, checaDados, agendaDados, agendamentos, horariosAgenda } = require("../controller/agendController.js");
 const { upload } = require("../../public/services/multer.js");
 const FileController = require("../controller/fileController.js");
 const router = require("express").Router();
@@ -57,6 +57,10 @@ router.get("/admin", (req, res) => {
     res.render('painelAdmin');
 });
 
+router.get("/horasAgendados", (req, res) => {
+    res.render('horariosAgendados');
+});
+
 router.get("/aluguel", (req, res) => {
     res.render('alugueis');
 });
@@ -66,6 +70,7 @@ router.get("/desconectar", desconectar);
 router.get("/apagarConta", apagarConta);
 router.get("/checarAgendamentos", agendamentos);
 router.get("/checarSalas", checarSalasAdmin);
+router.get("/horariosAgendados", horariosAgenda);
 
 router.get("/pagAprovado", (req, res) => {
     if (req.query.status == "approved") {
