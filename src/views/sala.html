@@ -123,28 +123,6 @@
         <div class="div-imagem-final">
             <img src="../../public/img/bannerSalas.png" alt="">
         </div>
-    
-        <script>
-            // ATENÇÃO: toISOString() não é a melhor opção, veja explicação abaixo
-            var hoje = new Date().toISOString().slice(0, 16);
-    
-            // DOMContentLoaded: assim que carregar a página
-            document.addEventListener('DOMContentLoaded', function() {
-                var campo = document.querySelector('#dateTime');
-    
-                // seta a data mínima para o campo
-                campo.min = hoje;
-    
-                // mostra mensagem de erro customizada (caso não queira a mensagem padrão do browser)
-                campo.addEventListener('invalid', function(e) {
-                    e.target.setCustomValidity(`A data não pode ser anterior a ${hoje}`);
-                });
-                campo.addEventListener('input', function(e) {
-                    e.target.setCustomValidity('');
-                    e.target.checkValidity();
-                });
-            });
-        </script>
         
         <%- include('./includes/footer.html'); %>
     </div>

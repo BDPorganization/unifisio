@@ -27,8 +27,16 @@ window.addEventListener("load", ()=> {
             document.getElementById("product-description").innerHTML = resultado.dados[0].nome;
             document.getElementById("imgUrl").src = `/uploads/${resultado.dados[0].imgurl}`;
             document.getElementById("display").style.display = "";
+            exibirDatasFuturas();
         })
     } catch (err) {
         return err;
     }
 });
+
+function exibirDatasFuturas() {
+    var dataAtual = new Date();
+    var inputDate = document.getElementById('dateTime');
+
+    inputDate.min = dataAtual.toISOString().split('T')[0];
+}
