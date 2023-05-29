@@ -103,6 +103,7 @@ function gerarCard(dados) {
     const descricao = document.createElement('p');
     const valor = document.createElement('p');
     const button = document.createElement('button');
+    const button2 = document.createElement('button');
     const input = document.createElement('input');
 
     card.className = 'card';
@@ -119,8 +120,13 @@ function gerarCard(dados) {
     button.type = 'button';
     button.innerHTML = '<i class="fa-solid fa-trash-can"></i> Excluir sala';
     button.className = 'btn-styled';
+    button2.innerHTML = '<i class="fa-solid fa-pencil"></i> Editar sala';
+    button2.className = 'btn-styled2';
     button.onclick = function() {
         onClickBtExcluirSala(this);
+    };
+    button2.onclick = function() {
+        
     };
     input.value = dados.pk_salas;
     input.type = 'hidden'
@@ -131,6 +137,7 @@ function gerarCard(dados) {
     card.appendChild(descricao);
     card.appendChild(valor);
     card.appendChild(button);
+    card.appendChild(button2);
     card.appendChild(input);
     fragment.appendChild(card);
 }

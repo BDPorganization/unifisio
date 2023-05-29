@@ -2,6 +2,7 @@
 .top-div a {transition: 0.2s all ease-in-out; border: none; border-radius: 15px; padding: 10px 20px; font-family: Poppins; font-weight: 600; font-size: 18px; background-color: #f05e22; color: #000;}
 .top-div a:hover {text-decoration: none; transition: 0.2s all ease-in-out; background-color: #000; color: #fff; }
 .btn-styled {transition: 0.2s all ease-in-out; border: none; border-radius: 15px; padding: 10px 20px; font-family: Poppins; font-weight: 600; font-size: 16px; background-color: #000; color: #fff;}
+.btn-styled2 {transition: 0.2s all ease-in-out; border: none; border-radius: 15px; padding: 10px 20px; font-family: Poppins; font-weight: 600; font-size: 16px; background-color: #f05e22; color: #fff; margin-top: 10px;}
 .inputs-sala {display: flex; justify-content: center; flex-wrap: wrap; flex-direction: column;}
 #container {width: 65%; margin-top: 20px!important; margin: auto; display: flex; justify-content: space-evenly; flex-wrap: wrap;}
 .card { width: 30%; margin: 10px; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); border-radius: 10px; padding: 10px;}
