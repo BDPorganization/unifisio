@@ -7,15 +7,18 @@ const path = require('path');
 const fs = require('fs');
 
 const verificarAutenticacao = (req, res, next) => {
-    if (req.session && req.session.user.nome_user == 'Admin') {
-      next();
+    if (req.session.user) {
+        if (req.session.user.nome_user == 'Admin') {
+          next();
+        } else {
+          res.status(401).json({ message: 'Acesso não autorizado.' });
+        }
     } else {
-      res.status(401).json({ message: 'Acesso não autorizado.' });
+        res.status(401).json({ message: 'Usuário não autenticado.' });
     }
 };
 
-router.post
-("/loginGoogle", loginGoogle);
+router.post("/loginGoogle", loginGoogle);
 router.post("/loginDB", login);
 router.post("/cadastro", cadastro);
 router.post("/preencher_dados", preencherDados);
@@ -53,11 +56,11 @@ router.get("/salas/:id", (req, res) => {
     res.render('sala', { postId });
 });
 
-router.get("/admin", (req, res) => {
+router.get("/admin", verificarAutenticacao, (req, res) => {
     res.render('painelAdmin');
 });
 
-router.get("/horasAgendados", (req, res) => {
+router.get("/horasAgendados", verificarAutenticacao, (req, res) => {
     res.render('horariosAgendados');
 });
 
