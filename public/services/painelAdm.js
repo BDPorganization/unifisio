@@ -1,5 +1,6 @@
 const fragment = document.createDocumentFragment();
-const container = document.getElementById('container'); 
+const container = document.getElementById('container');
+var dadosSala = [];
 
 window.addEventListener("load", ()=> {
     try {
@@ -12,6 +13,7 @@ window.addEventListener("load", ()=> {
         .then((resultado) => {
             for (let i = 0; i < resultado.dados.length; i++) {
                 gerarCard(resultado.dados[i]);
+                dadosSala.push(resultado.dados[i]);
             }
             container.appendChild(fragment);
         })
@@ -23,6 +25,7 @@ window.addEventListener("load", ()=> {
 function onClickBtIncluirSala() {
     var nomeSala = document.getElementById("nomeSala").value;
     var descricaoSala = document.getElementById("descricaoSala").value;
+    var longDescricaoSala = document.getElementById("longDescricaoSala").value;
     var valorSala = document.getElementById("valorSala").value;
     var imgSala = document.getElementById("imgSala");
     var image = imgSala.files[0].name;
@@ -33,7 +36,7 @@ function onClickBtIncluirSala() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ nomeSala, descricaoSala, valorSala, image })
+            body: JSON.stringify({ nomeSala, descricaoSala, longDescricaoSala, valorSala, image })
         })
         .then((response) => {
             return response.json();
@@ -66,10 +69,55 @@ function onClickBtIncluirSala() {
     }
 };
 
-function onClickBtExcluirSala(botao) {
-    var hiddenInput = botao.nextElementSibling;
-    var pk_sala = hiddenInput.value;
+function onClickBtEditarSala() {
+    var checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
+    var pk_sala = checkedCheckbox.value;
+    var nome_sala = document.getElementById("nome").value;
+    var peq_descricao = document.getElementById("peqDescricao").value;
+    var long_descricao = document.getElementById("longDescricao").value;
+    var preco = document.getElementById("valor").value;
 
+    console.log(dadosSala);
+
+    dadosSala.forEach((dado) => {
+        if (dado.pk_salas == pk_sala) {
+            console.log('O nome foi encontrado:', dado.nome);
+            console.log('Descrição:', dado.descricao);
+            console.log('Valor:', dado.valor);
+            console.log('PK Salas:', dado.pk_salas);
+            console.log('Imagem URL:', dado.imgurl);
+        }
+    });
+
+    try {
+        fetch('/editarSala', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pk_sala, nome_sala, peq_descricao, long_descricao, preco })
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((resultado) => {
+            console.log(resultado);
+            if (resultado.editarSala == true) {
+                location.reload();
+                alert("Sala editada com sucesso!");
+            } else {
+                alert("Erro na edição da sala, tente novamente mais tarde!");
+            }
+        });
+    } catch (err) {
+        return err;
+    }
+};
+
+function onClickBtExcluirSala() {
+    var checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
+    var pk_sala = checkedCheckbox.value;
+    
     try {
         fetch('/excluirSala', {
             method: "POST",
@@ -82,7 +130,6 @@ function onClickBtExcluirSala(botao) {
             return response.json();
         })
         .then((resultado) => {
-            console.log(resultado);
             if (resultado.excluirSala == true) {
                 location.reload();
                 alert("Sala excluída com sucesso!");
@@ -95,16 +142,15 @@ function onClickBtExcluirSala(botao) {
     }
 };
 
-
 function gerarCard(dados) {
     const card = document.createElement('div');
     const imgUrl = document.createElement('img');
     const sala = document.createElement('h3');
     const descricao = document.createElement('p');
     const valor = document.createElement('p');
-    const button = document.createElement('button');
-    const button2 = document.createElement('button');
-    const input = document.createElement('input');
+    const checkboxWrapper  = document.createElement('label');
+    const checkbox = document.createElement('input');
+    const checkmark = document.createElement('span');
 
     card.className = 'card';
     sala.textContent = dados.nome;
@@ -117,27 +163,18 @@ function gerarCard(dados) {
         useGrouping: true
     })}`;
     imgUrl.src = `/uploads/${dados.imgurl}`;
-    button.type = 'button';
-    button.innerHTML = '<i class="fa-solid fa-trash-can"></i> Excluir sala';
-    button.className = 'btn-styled';
-    button2.innerHTML = '<i class="fa-solid fa-pencil"></i> Editar sala';
-    button2.className = 'btn-styled2';
-    button.onclick = function() {
-        onClickBtExcluirSala(this);
-    };
-    button2.onclick = function() {
-        
-    };
-    input.value = dados.pk_salas;
-    input.type = 'hidden'
-    input.className = 'input-hidden'
-
+    checkboxWrapper.className = 'checkbox-wrapper';
+    checkbox.type = 'checkbox';
+    checkbox.value = dados.pk_salas;
+    checkmark.className = 'checkmark';
+    
     card.appendChild(imgUrl);
     card.appendChild(sala);
     card.appendChild(descricao);
     card.appendChild(valor);
-    card.appendChild(button);
-    card.appendChild(button2);
-    card.appendChild(input);
+    checkboxWrapper.appendChild(checkbox);
+    checkboxWrapper.appendChild(checkmark);
+    checkboxWrapper.appendChild(document.createTextNode('Selecione a sala'));
+    card.appendChild(checkboxWrapper);
     fragment.appendChild(card);
 }

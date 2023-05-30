@@ -1,4 +1,4 @@
-const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala, selectSalasByPk } = require("../controller/userController.js");
+const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala, editarSala, selectSalasByPk } = require("../controller/userController.js");
 const { selectHours, checaDados, agendaDados, agendamentos, horariosAgenda } = require("../controller/agendController.js");
 const { upload } = require("../../public/services/multer.js");
 const FileController = require("../controller/fileController.js");
@@ -28,6 +28,7 @@ router.post("/agendaDados", agendaDados);
 router.post("/adcSala", adcSala);
 router.post("/upload", upload.single('image'), FileController.upload);
 router.post("/excluirSala", excluirSala);
+router.post("/editarSala", editarSala);
 router.post("/selectSalas", selectSalasByPk);
 
 router.get('/', (req, res) => {
@@ -56,7 +57,7 @@ router.get("/salas/:id", (req, res) => {
     res.render('sala', { postId });
 });
 
-router.get("/admin", verificarAutenticacao, (req, res) => {
+router.get("/admin", (req, res) => {
     res.render('painelAdmin');
 });
 
@@ -88,9 +89,9 @@ router.get('/uploads/:imageName', (req, res) => {
     const imagePath = path.join(process.cwd(), 'uploads', imageName);
   
     if (fs.existsSync(imagePath)) {
-      res.sendFile(imagePath);
+        res.sendFile(imagePath);
     } else {
-      res.status(404).send('Imagem não encontrada');
+        res.status(404).send('Imagem não encontrada');
     }
 });
 

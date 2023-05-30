@@ -200,6 +200,7 @@ module.exports.adcSala = async (req, res) => {
         let adcSala = {
             nome: req.body.nomeSala,
             descricao: req.body.descricaoSala,
+            longDescricao: req.body.longDescricaoSala,
             valor: req.body.valorSala,
             imgUrl: req.body.image
         }
@@ -256,6 +257,33 @@ module.exports.excluirSala = async (req, res) => {
             } else {
                 return res.status(405).json({
                     excluirSala: false,
+                });
+            }
+        });
+    } catch(err) {
+        return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
+    }
+};
+
+module.exports.editarSala = async (req, res) => {
+    try {
+        let updateSala = {
+            pk_sala: req.body.pk_sala,
+            nome: req.body.nome_sala,
+            peq_descricao: req.body.peq_descricao,
+            long_descricao: req.body.long_descricao,
+            preco: req.body.preco,
+        }
+
+        dbMedicos.editarSalas(updateSala)
+        .then((response) => {
+            if (response.rowCount > 0) {
+                return res.status(200).json({
+                    editarSala: true,
+                });
+            } else {
+                return res.status(405).json({
+                    editarSala: false,
                 });
             }
         });

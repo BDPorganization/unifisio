@@ -92,8 +92,8 @@ async function adcSalas(adcSala) {
     const client = await database.connect();
 
     try {
-        const sql = 'INSERT INTO salas (nome, descricao, valor, imgUrl) VALUES ($1, $2, $3, $4);'
-        const values = [adcSala.nome, adcSala.descricao, adcSala.valor, adcSala.imgUrl];
+        const sql = 'INSERT INTO salas (nome, descricao, descricao_longa, valor, imgUrl) VALUES ($1, $2, $3, $4, $5\);'
+        const values = [adcSala.nome, adcSala.descricao, adcSala.longDescricao, adcSala.valor, adcSala.imgUrl];
         return await client.query(sql, values);
     } catch (err) {
         return err;
@@ -130,6 +130,21 @@ async function deletarSalas(pk_salas) {
     }
 }
 
+async function editarSalas(updateSala) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'UPDATE salas SET nome = $1, descricao = $2, valor = $3, descricao_longa = $4 WHERE pk_salas = $5;'
+        const values = [updateSala.nome, updateSala.peq_descricao, updateSala.preco, updateSala.long_descricao, updateSala.pk_sala];
+        return await client.query(sql, values);
+
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 async function selectSalas(pk_salas) {
     const client = await database.connect();
 
@@ -154,5 +169,6 @@ module.exports = {
     adcSalas,
     checarSalas,
     deletarSalas,
+    editarSalas,
     selectSalas
 }; 

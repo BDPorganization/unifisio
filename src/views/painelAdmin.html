@@ -29,6 +29,12 @@
             <a class="btn" type="button" data-bs-toggle="modal" data-bs-target="#adcSalaModal">
                 <i class="fa fa-circle-plus"></i> Incluir sala
             </a>
+            <a class="btn" type="button" data-bs-toggle="modal" data-bs-target="#edtSalaModal">
+                <i class="fa-solid fa-pencil"></i> Editar sala
+            </a>
+            <a class="btn" type="button" onclick="onClickBtExcluirSala()">
+                <i class="fa-solid fa-trash-can"></i> Excluir sala
+            </a>
         </div>
     </div>
 
@@ -43,6 +49,7 @@
     <%- include('./includes/modalAdmin.html'); %>
     <%- include('./includes/modalCadastro.html'); %>
     <%- include('./includes/modalAdcSala.html'); %>
+    <%- include('./includes/modalEdtSala.html'); %>
 
     <!-- Script FontAwesome -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
