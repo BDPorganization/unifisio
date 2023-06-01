@@ -1,15 +1,17 @@
-const { response } = require("express");
-
 window.addEventListener("load", ()=> {
     try {
         let dataAtual = localStorage.getItem("data");
         let name_sala = localStorage.getItem("name_sala");
-        let preco_sala = localStorage.getItem("preco_sala");
+        let preco_sala = localStorage.getItem("preco_sala").toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+            useGrouping: true
+        });
         let email_user = localStorage.getItem("email_user");
         let name_user = localStorage.getItem("name_user");
         let to = localStorage.getItem("email_user");
-        let idTemplate = process.env.ID_TEMPLATE;
-        let token = process.env.TOKEN_EMAIL;
         let horarioAtual = JSON.parse(localStorage.getItem("hora"));
         let pk_sala = localStorage.getItem("pk_sala");
     
@@ -24,6 +26,9 @@ window.addEventListener("load", ()=> {
             return response.json();
         })
         .then((resultado) => {
+            let token = resultado.token;
+            let idTemplate = resultado.idTemplate;
+
             document.getElementById('hour').innerText = resultado.hora[0];
             document.getElementById('day').innerText = new Date(resultado.dia).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
             
@@ -41,14 +46,13 @@ window.addEventListener("load", ()=> {
                     name_user, 
                     email_user, 
                     to, 
-                    idTemplate 
+                    idTemplate
                 })
             })
             .then((response) => {
                 return response.json();
             })
             .then((resultado) => {
-                console.log(resultado);
                 return resultado;
             })
         })
