@@ -12,6 +12,7 @@ window.addEventListener("load", ()=> {
         })
         .then((resultado) => {
             const span = document.createElement('span');
+            
             document.getElementById("unit-price").value = resultado.dados[0].valor;
             document.getElementById("descricao_longa").innerHTML = resultado.dados[0].descricao_longa;
             document.getElementById("preco").innerHTML = `${resultado.dados[0].valor.toLocaleString("pt-BR", {

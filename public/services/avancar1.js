@@ -99,6 +99,10 @@ function criarPagamento() {
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     var data = document.getElementById("dateTime").value;
     var pk_sala = document.getElementById("pk_sala").value;
+    var name_sala = document.getElementById("product-description").innerHTML;
+    var preco_sala = document.getElementById("preco").innerHTML;
+    var email_user = document.getElementById("emailUser").value;
+    var name_user = document.getElementById("nomeUsuario").innerHTML;
     var checkboxesMarcados = [];
     var arrayJson;
     var dadosPagamento;
@@ -117,6 +121,10 @@ function criarPagamento() {
     arrayJson = JSON.stringify(checkboxesMarcados);
     localStorage.setItem("data", data);
     localStorage.setItem("pk_sala", pk_sala);
+    localStorage.setItem("name_sala", name_sala);
+    localStorage.setItem("preco_sala", preco_sala);
+    localStorage.setItem("email_user", email_user);
+    localStorage.setItem("name_user", name_user);
     localStorage.setItem("hora", arrayJson);
 
     dadosPagamento = {

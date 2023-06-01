@@ -18,7 +18,8 @@ module.exports.loginGoogle = async (req, res) => {
             if (resultado.rowCount > 0) {
                 let dadosUser = {
                     pk_medicos: resultado.rows[0].pk_medicos,
-                    nome_user: resultado.rows[0].nome
+                    nome_user: resultado.rows[0].nome,
+                    email_user: resultado.rows[0].email
                 };
 
                 req.session.user = dadosUser;
@@ -34,7 +35,8 @@ module.exports.loginGoogle = async (req, res) => {
                     .then((result) => {
                         let dadosUser = {
                             pk_medicos: result.rows[0].pk_medicos,
-                            nome_user: result.rows[0].nome
+                            nome_user: result.rows[0].nome,
+                            email_user: result.rows[0].email
                         };
 
                         req.session.user = dadosUser;
@@ -62,7 +64,8 @@ module.exports.login = async (req, res) => {
             if (resultado.rowCount > 0) {
                 let dadosUser = {
                     pk_medicos: resultado.rows[0].pk_medicos,
-                    nome_user: resultado.rows[0].nome
+                    nome_user: resultado.rows[0].nome,
+                    email_user: resultado.rows[0].email
                 };
 
                 req.session.user = dadosUser;
@@ -120,7 +123,8 @@ module.exports.verificaLogin = async (req, res) => {
         if (req.session.user) {
             res.status(200).json({
                 autenticado: true,
-                nome: req.session.user.nome_user
+                nome: req.session.user.nome_user,
+                email: req.session.user.email_user
             });
         } else {
             res.status(203).json({

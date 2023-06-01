@@ -8,6 +8,7 @@ window.addEventListener("load", () =>{
     .then((resultado) => {
         if(resultado['autenticado'] == true){
             const linkLogin = document.getElementById('nomeUsuario');
+            const emailLogin = document.getElementById('emailUser').value = resultado.email;
             let nomeUser = resultado.nome.split(" ");
 
             if (nomeUser[0] == 'Admin') {
