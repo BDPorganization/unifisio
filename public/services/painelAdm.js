@@ -56,6 +56,7 @@ function onClickBtIncluirSala() {
                 })
                 .then((resultado) => {
                     location.reload();
+                    return resultado;
                 })
                 .catch((err) => {
                     alert("Erro na inserção da imagem:", err);
@@ -69,6 +70,32 @@ function onClickBtIncluirSala() {
     }
 };
 
+function onClickBtEditarModal() {
+    try {
+        let checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
+        let pk_sala = checkedCheckbox.value;
+        let nome_sala = document.getElementById("nome");
+        let peq_descricao = document.getElementById("peqDescricao");
+        let long_descricao = document.getElementById("longDescricao");
+        let preco = document.getElementById("valor");
+
+        dadosSala.forEach((dado) => {
+            if (dado.pk_salas == pk_sala) {
+                nome_sala.value = dado.nome;
+                peq_descricao.value = dado.descricao;
+                long_descricao.value = dado.descricao_longa;
+                preco.value = dado.valor;
+            }
+        });
+    } catch (err) {
+        let modal = document.getElementById("edtSalaModal");
+
+        alert("Nenhuma sala selecionada!");
+        modal.style.display = "none";
+        return err;
+    }
+}
+
 function onClickBtEditarSala() {
     var checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
     var pk_sala = checkedCheckbox.value;
@@ -76,18 +103,6 @@ function onClickBtEditarSala() {
     var peq_descricao = document.getElementById("peqDescricao").value;
     var long_descricao = document.getElementById("longDescricao").value;
     var preco = document.getElementById("valor").value;
-
-    console.log(dadosSala);
-
-    dadosSala.forEach((dado) => {
-        if (dado.pk_salas == pk_sala) {
-            console.log('O nome foi encontrado:', dado.nome);
-            console.log('Descrição:', dado.descricao);
-            console.log('Valor:', dado.valor);
-            console.log('PK Salas:', dado.pk_salas);
-            console.log('Imagem URL:', dado.imgurl);
-        }
-    });
 
     try {
         fetch('/editarSala', {
@@ -104,7 +119,6 @@ function onClickBtEditarSala() {
             console.log(resultado);
             if (resultado.editarSala == true) {
                 location.reload();
-                alert("Sala editada com sucesso!");
             } else {
                 alert("Erro na edição da sala, tente novamente mais tarde!");
             }
@@ -115,66 +129,73 @@ function onClickBtEditarSala() {
 };
 
 function onClickBtExcluirSala() {
-    var checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
-    var pk_sala = checkedCheckbox.value;
-    
     try {
-        fetch('/excluirSala', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ pk_sala })
-        })
-        .then((response) => {
-            return response.json();
-        })
-        .then((resultado) => {
-            if (resultado.excluirSala == true) {
-                location.reload();
-                alert("Sala excluída com sucesso!");
-            } else {
-                alert("Erro na exclusão da sala, tente novamente mais tarde!");
-            }
-        });
+        let checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
+        let pk_sala = checkedCheckbox.value;
+
+        if (pk_sala) {
+            fetch('/excluirSala', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pk_sala })
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((resultado) => {
+                if (resultado.excluirSala == true) {
+                    location.reload();
+                    alert("Sala excluída com sucesso!");
+                } else {
+                    alert("Erro na exclusão da sala, tente novamente mais tarde!");
+                }
+            });
+        }
     } catch (err) {
+        alert("Nenhuma sala selecionada!");
         return err;
     }
 };
 
 function gerarCard(dados) {
-    const card = document.createElement('div');
-    const imgUrl = document.createElement('img');
-    const sala = document.createElement('h3');
-    const descricao = document.createElement('p');
-    const valor = document.createElement('p');
-    const checkboxWrapper  = document.createElement('label');
-    const checkbox = document.createElement('input');
-    const checkmark = document.createElement('span');
-
-    card.className = 'card';
-    sala.textContent = dados.nome;
-    descricao.textContent = `Descrição: ${dados.descricao}`; 
-    valor.textContent = `Preço unitário: ${dados.valor.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-        useGrouping: true
-    })}`;
-    imgUrl.src = `/uploads/${dados.imgurl}`;
-    checkboxWrapper.className = 'checkbox-wrapper';
-    checkbox.type = 'checkbox';
-    checkbox.value = dados.pk_salas;
-    checkmark.className = 'checkmark';
+    try {
+        const card = document.createElement('div');
+        const imgUrl = document.createElement('img');
+        const sala = document.createElement('h3');
+        const descricao = document.createElement('p');
+        const valor = document.createElement('p');
+        const checkboxWrapper  = document.createElement('label');
+        const checkbox = document.createElement('input');
+        const checkmark = document.createElement('span');
     
-    card.appendChild(imgUrl);
-    card.appendChild(sala);
-    card.appendChild(descricao);
-    card.appendChild(valor);
-    checkboxWrapper.appendChild(checkbox);
-    checkboxWrapper.appendChild(checkmark);
-    checkboxWrapper.appendChild(document.createTextNode('Selecione a sala'));
-    card.appendChild(checkboxWrapper);
-    fragment.appendChild(card);
+        card.className = 'card';
+        sala.textContent = dados.nome;
+        descricao.textContent = `Descrição: ${dados.descricao}`; 
+        valor.textContent = `Preço unitário: ${dados.valor.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+            useGrouping: true
+        })}`;
+        imgUrl.src = `/uploads/${dados.imgurl}`;
+        checkboxWrapper.className = 'checkbox-wrapper';
+        checkbox.type = 'checkbox';
+        checkbox.value = dados.pk_salas;
+        checkmark.className = 'checkmark';
+        
+        card.appendChild(imgUrl);
+        card.appendChild(sala);
+        card.appendChild(descricao);
+        card.appendChild(valor);
+        checkboxWrapper.appendChild(checkbox);
+        checkboxWrapper.appendChild(checkmark);
+        checkboxWrapper.appendChild(document.createTextNode('Selecione a sala'));
+        card.appendChild(checkboxWrapper);
+        fragment.appendChild(card);
+    } catch (err) {
+        return err;
+    }
 }

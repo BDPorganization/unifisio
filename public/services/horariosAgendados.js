@@ -41,8 +41,8 @@ function gerarCard(dados) {
     sala.textContent = dados.nome_sala;
     detalhes.textContent = "Detalhes";
     detalhes.className = "detalhes-pagamento";
-    nome_medico.textContent = dados.nome_medicos;
-    especialidade.textContent = dados.especialidade;
+    nome_medico.textContent = `Nome: ${dados.nome_medicos}`;
+    especialidade.textContent = `Especialidade: ${dados.especialidade == null ? "" : dados.especialidade}`;
     dia.textContent = `Dia: ${new Date(dados.datas).toLocaleDateString('pt-BR')}`; 
     hora.textContent = `Horário: ${dados.hora}`;
     email.textContent = `E-mail: ${dados.email}`;
@@ -55,9 +55,9 @@ function gerarCard(dados) {
     })}`;
 
     card.appendChild(pagamento);
+    card.appendChild(hr);
     card.appendChild(sala);
     card.appendChild(detalhes);
-    card.appendChild(hr);
     card.appendChild(nome_medico);
     card.appendChild(especialidade);
     card.appendChild(dia);

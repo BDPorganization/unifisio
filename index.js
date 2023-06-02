@@ -20,7 +20,7 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use('/', routes, routesPag);
-app.use((req, res, next) => {
+app.use((req, res) => {
     res.status(404).render('manutencao');
 });
 

@@ -8,8 +8,7 @@ if (btnCheck) {
       description: document.getElementById("product-description").value,
       price: document.getElementById("unit-price").value * document.getElementById("quantity").value
     };
-  
-    console.log(dadosPagamento);
+
     fetch("/pagamento", {
       method: "POST",
       headers: {

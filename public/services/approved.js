@@ -28,6 +28,8 @@ window.addEventListener("load", ()=> {
         .then((resultado) => {
             let token = resultado.token;
             let idTemplate = resultado.idTemplate;
+            let data_formatada = new Date(dataAtual).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+            let horario_formatado = resultado.hora[0];
 
             document.getElementById('hour').innerText = resultado.hora[0];
             document.getElementById('day').innerText = new Date(resultado.dia).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
@@ -39,8 +41,8 @@ window.addEventListener("load", ()=> {
                     'x-access-token': token
                 },
                 body: JSON.stringify({ 
-                    dataAtual, 
-                    horarioAtual, 
+                    data_formatada, 
+                    horario_formatado, 
                     name_sala, 
                     preco_sala, 
                     name_user, 
