@@ -2,7 +2,8 @@ window.addEventListener("load", ()=> {
     try {
         let dataAtual = localStorage.getItem("data");
         let name_sala = localStorage.getItem("name_sala");
-        let preco_sala = localStorage.getItem("preco_sala").toLocaleString("pt-BR", {
+        let preco = localStorage.getItem("preco_sala");
+        let preco_sala = preco.toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
             minimumFractionDigits: 2,
@@ -43,8 +44,7 @@ window.addEventListener("load", ()=> {
                 body: JSON.stringify({ 
                     data_formatada, 
                     horario_formatado, 
-                    name_sala, 
-                    preco_sala, 
+                    name_sala,
                     name_user, 
                     email_user, 
                     to, 
