@@ -35,7 +35,8 @@ window.addEventListener("load", ()=> {
             document.getElementById('hour').innerText = resultado.hora[0];
             document.getElementById('day').innerText = new Date(resultado.dia).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
             
-            fetch('https://codemail.onrender.com/codeTemplateMail', {
+            //Enviando informações para o servidor do e-mail na AWS
+            fetch('http://15.229.6.45:3002/codeTemplateMail', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
