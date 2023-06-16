@@ -24,33 +24,11 @@
 <body>
     <%- include('./includes/nav.html'); %>
 
-    <div class="m-auto pt-5" style="width: 65%;"><h4 class="titulo">Horários Agendados</h4></div>
+    <div id="container">
 
-    <form action="" method="">
-      <div style="background-color: #f3f3f3;padding: 2px 0px; display: flex; justify-content: space-between;width: 65%; margin: 0px auto 50px auto;font-size: 14px;padding: 5px;font-weight: 700;">
-        
-        <div style="width: 80%">
-          <label for="procura">Procurar: </label>
-          <input id="procura" name="procura" style="width: 50%;" placeholder="Pesquise pelo nome ou cpf">
-          <button type="submit" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px;color:#fff;">
-            Buscar
-          </button>
-        </div>
-        
-        <div>
-          <button type="submit" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px; color:#fff">
-            Hoje
-          </button>
-          <button type="submit" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px;color:#fff">
-            Esse Mês
-          </button>
-        </div>
-      </div>
-    </form>
-    
-
-    <table id="table" class="table table-striped m-auto" style="width: 65%; font-family: poppins;"></table>
+    </div>
   
+
     <%- include('./includes/modalLogin.html'); %>
     <%- include('./includes/modalConfExclusao.html'); %>
     <%- include('./includes/modalLogout.html'); %>

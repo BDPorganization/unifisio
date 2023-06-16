@@ -9,9 +9,8 @@ window.addEventListener("load", ()=> {
         .then((resultado) => {
             console.log(resultado);
             if (resultado.horariosAgendados == true) {
-                for (let i = 0; i < resultado.dados.length; i++) {
-                    gerarCard(resultado.dados[i]);
-                }
+                gerarTabela(resultado);
+                
             } else {
                 alert("Nenhum agendamento encontrado!");
             }
@@ -21,48 +20,71 @@ window.addEventListener("load", ()=> {
     }
 });
 
-function gerarCard(dados) {
-    const card = document.createElement('div');
-    const pagamento = document.createElement('p');
-    const sala = document.createElement('h3');
-    const detalhes = document.createElement('p');
-    const hr = document.createElement('hr');
-    const nome_medico = document.createElement('p');
-    const especialidade = document.createElement('p');
-    const dia = document.createElement('p');
-    const hora = document.createElement('p');
-    const email = document.createElement('p');
-    const valor = document.createElement('p');
-    const container = document.getElementById('container'); 
+function gerarTabela(resultado) {
 
-    card.className = "card";
-    pagamento.textContent = "Agendamento digital";
-    pagamento.className = "comprovante-pagamento";
-    sala.textContent = dados.nome_sala;
-    detalhes.textContent = "Detalhes";
-    detalhes.className = "detalhes-pagamento";
-    nome_medico.textContent = dados.nome_medicos;
-    especialidade.textContent = dados.especialidade;
-    dia.textContent = `Dia: ${new Date(dados.datas).toLocaleDateString('pt-BR')}`; 
-    hora.textContent = `Horário: ${dados.hora}`;
-    email.textContent = `E-mail: ${dados.email}`;
-    valor.textContent = `Valor pago: ${dados.valor.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-        useGrouping: true
-    })}`;
+    // criando tabela
+    var container = document.getElementById('table');
 
-    card.appendChild(pagamento);
-    card.appendChild(sala);
-    card.appendChild(detalhes);
-    card.appendChild(hr);
-    card.appendChild(nome_medico);
-    card.appendChild(especialidade);
-    card.appendChild(dia);
-    card.appendChild(hora);
-    card.appendChild(email);
-    card.appendChild(valor);
-    container.appendChild(card);
+    gerarCabecalho(container);
+    gerarCorpo(container, resultado);
+}
+
+function gerarCabecalho(container) {
+    const header = document.createElement('thead');
+    const tr = document.createElement('tr');
+    const nome = document.createElement('th');
+    const sala = document.createElement('th');
+    const especialidade = document.createElement('th');
+    const data = document.createElement('th');
+    const horario = document.createElement('th');
+    const valor = document.createElement('th');
+
+    nome.textContent = "nome";
+    sala.textContent = "sala";
+    especialidade.textContent = "especialidade";
+    data.textContent = "data";
+    horario.textContent = "horario";
+    valor.textContent = "valor";
+
+    tr.appendChild(nome);
+    tr.appendChild(sala);
+    tr.appendChild(especialidade);
+    tr.appendChild(data);
+    tr.appendChild(horario);
+    tr.appendChild(valor);
+    
+    header.appendChild(tr);
+    container.appendChild(header);
+}
+
+function gerarCorpo(container, resultado) {
+    const tbody = document.createElement('tbody');
+    
+    for (let i = 0; i < resultado.dados.length; i++) {
+        const tr = document.createElement('tr');
+        const nome = document.createElement('td');
+        const sala = document.createElement('td');
+        const especialidade = document.createElement('td');
+        const data = document.createElement('td');
+        const horario = document.createElement('td');
+        const valor = document.createElement('td');
+    
+        nome.textContent = resultado.dados[i]["nome_medicos"];
+        sala.textContent = resultado.dados[i]["nome_sala"];
+        especialidade.textContent = resultado.dados[i]["especialidade"];
+        data.textContent = resultado.dados[i]["datas"]
+        horario.textContent = resultado.dados[i]["hora"];
+        valor.textContent = resultado.dados[i]["valor"];
+    
+        tr.appendChild(nome);
+        tr.appendChild(sala);
+        tr.appendChild(especialidade);
+        tr.appendChild(data);
+        tr.appendChild(horario);
+        tr.appendChild(valor);
+        
+        tbody.appendChild(tr);
+    }
+    
+    container.appendChild(tbody);
 }
