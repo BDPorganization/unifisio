@@ -1,15 +1,18 @@
-const { response } = require("express");
-
 window.addEventListener("load", ()=> {
     try {
         let dataAtual = localStorage.getItem("data");
         let name_sala = localStorage.getItem("name_sala");
-        let preco_sala = localStorage.getItem("preco_sala");
+        let preco = localStorage.getItem("preco_sala");
+        let preco_sala = preco.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+            useGrouping: true
+        });
         let email_user = localStorage.getItem("email_user");
         let name_user = localStorage.getItem("name_user");
         let to = localStorage.getItem("email_user");
-        let idTemplate = process.env.ID_TEMPLATE;
-        let token = process.env.TOKEN_EMAIL;
         let horarioAtual = JSON.parse(localStorage.getItem("hora"));
         let pk_sala = localStorage.getItem("pk_sala");
     
@@ -24,31 +27,35 @@ window.addEventListener("load", ()=> {
             return response.json();
         })
         .then((resultado) => {
+            let token = resultado.token;
+            let idTemplate = resultado.idTemplate;
+            let data_formatada = new Date(dataAtual).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+            let horario_formatado = resultado.hora[0];
+
             document.getElementById('hour').innerText = resultado.hora[0];
             document.getElementById('day').innerText = new Date(resultado.dia).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
             
-            fetch('https://codemail.onrender.com/codeTemplateMail', {
+            //Enviando informações para o servidor do e-mail na AWS
+            fetch('http://15.229.6.45:3002/codeTemplateMail', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                     'x-access-token': token
                 },
                 body: JSON.stringify({ 
-                    dataAtual, 
-                    horarioAtual, 
-                    name_sala, 
-                    preco_sala, 
+                    data_formatada, 
+                    horario_formatado, 
+                    name_sala,
                     name_user, 
                     email_user, 
                     to, 
-                    idTemplate 
+                    idTemplate
                 })
             })
             .then((response) => {
                 return response.json();
             })
             .then((resultado) => {
-                console.log(resultado);
                 return resultado;
             })
         })

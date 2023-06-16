@@ -63,7 +63,7 @@ async function horariosAgendados() {
     const client = await database.connect();
     
     try {
-        const sql = 'SELECT *, SA.nome AS nome_sala, ME.nome as nome_medicos  FROM datas_agendadas DA INNER JOIN medicos ME ON (DA.fk_medicos_pk_medicos = ME.pk_medicos) INNER JOIN salas SA ON (DA.fk_salas_pk_salas = SA.pk_salas);';   
+        const sql = 'SELECT *, SA.nome AS nome_sala, ME.nome as nome_medicos FROM datas_agendadas DA INNER JOIN medicos ME ON (DA.fk_medicos_pk_medicos = ME.pk_medicos) INNER JOIN salas SA ON (DA.fk_salas_pk_salas = SA.pk_salas);';   
         return await client.query(sql);
     } catch (err) {
         return err;

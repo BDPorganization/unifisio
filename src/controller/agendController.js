@@ -62,6 +62,8 @@ module.exports.agendaDados = async (req, res) => {
             pk_salas: req.body.pk_sala,
             pk_medicos: req.session.user.pk_medicos
         }
+        let idTemplate = process.env.ID_TEMPLATE;
+        let token = process.env.TOKEN_EMAIL;
 
         dbAgenda.agendaDados(agendaDado)
         .then((resultado) => {
@@ -70,6 +72,8 @@ module.exports.agendaDados = async (req, res) => {
                     agendado: true,
                     hora: req.body.horarioAtual,
                     dia: req.body.dataAtual,
+                    idTemplate: idTemplate,
+                    token: token
                 });
             } else {
                 return res.status(204).json({

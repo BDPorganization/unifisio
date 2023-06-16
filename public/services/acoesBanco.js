@@ -8,8 +8,6 @@ formLogin.addEventListener("submit", (event) => {
     const emailLogin = formData.get('emailLogin');
     const senhaLogin = formData.get('senhaLogin');
 
-    console.log(emailLogin, senhaLogin);
-
     try {
         fetch('/loginDB', {
             method: 'POST',
@@ -28,7 +26,7 @@ formLogin.addEventListener("submit", (event) => {
             }
             return response.json();
         });
-    }catch(err) {
+    } catch(err) {
         return err
     }
 });
@@ -66,7 +64,7 @@ formCadastro.addEventListener("submit", (event) => {
             }
             return response.json();
         });
-    }catch(err) {
+    } catch(err) {
         return err
     }
 })

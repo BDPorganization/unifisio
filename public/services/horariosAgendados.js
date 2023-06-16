@@ -21,8 +21,6 @@ window.addEventListener("load", ()=> {
 });
 
 function gerarTabela(resultado) {
-
-    // criando tabela
     var container = document.getElementById('table');
 
     gerarCabecalho(container);
@@ -85,6 +83,5 @@ function gerarCorpo(container, resultado) {
         
         tbody.appendChild(tr);
     }
-    
     container.appendChild(tbody);
 }
