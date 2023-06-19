@@ -1,15 +1,8 @@
 window.addEventListener("load", ()=> {
     try {
+        let urlEmail = 'http://15.229.6.45:3002/codeTemplateMail';
         let dataAtual = localStorage.getItem("data");
         let name_sala = localStorage.getItem("name_sala");
-        let preco = localStorage.getItem("preco_sala");
-        let preco_sala = preco.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-            useGrouping: true
-        });
         let email_user = localStorage.getItem("email_user");
         let name_user = localStorage.getItem("name_user");
         let to = localStorage.getItem("email_user");
@@ -36,7 +29,7 @@ window.addEventListener("load", ()=> {
             document.getElementById('day').innerText = new Date(resultado.dia).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
             
             //Enviando informações para o servidor do e-mail na AWS
-            fetch('http://15.229.6.45:3002/codeTemplateMail', {
+            fetch(urlEmail, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

@@ -37,12 +37,12 @@ function gerarCabecalho(container) {
     const horario = document.createElement('th');
     const valor = document.createElement('th');
 
-    nome.textContent = "nome";
-    sala.textContent = "sala";
-    especialidade.textContent = "especialidade";
-    data.textContent = "data";
-    horario.textContent = "horario";
-    valor.textContent = "valor";
+    nome.textContent = "Nome";
+    sala.textContent = "Sala";
+    especialidade.textContent = "Especialidade";
+    data.textContent = "Data";
+    horario.textContent = "Horario";
+    valor.textContent = "Valor";
 
     tr.appendChild(nome);
     tr.appendChild(sala);
@@ -70,9 +70,15 @@ function gerarCorpo(container, resultado) {
         nome.textContent = resultado.dados[i]["nome_medicos"];
         sala.textContent = resultado.dados[i]["nome_sala"];
         especialidade.textContent = resultado.dados[i]["especialidade"];
-        data.textContent = resultado.dados[i]["datas"]
+        data.textContent = new Date (resultado.dados[i]["datas"]).toLocaleDateString('pt-BR')
         horario.textContent = resultado.dados[i]["hora"];
-        valor.textContent = resultado.dados[i]["valor"];
+        valor.textContent = resultado.dados[i]["valor"].toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+            useGrouping: true
+        });
     
         tr.appendChild(nome);
         tr.appendChild(sala);
