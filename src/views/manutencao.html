@@ -19,61 +19,63 @@
         <link rel="stylesheet" href="../../public/css/index.css">
         <title>Manutenção - Unifisio</title>
 
-    <style>
-        .error p {
-            text-align: center;
-            font-size: 15px;
-            font-family: Poppins;
-            margin-bottom: 20px;
-        }
+        <style>
+            .error p {
+                text-align: center;
+                font-size: 15px;
+                font-family: Poppins;
+                margin-bottom: 20px;
+            }
 
-        .defender {
-            text-align: center;
-            margin-top: 5%;
-            font-family: Poppins;
-            font-size: 16px;
-            color: #6e6e6e;
-        }
+            .defender {
+                text-align: center;
+                margin-top: 5%;
+                font-family: Poppins;
+                font-size: 16px;
+                color: #6e6e6e;
+            }
 
-        .defender a {
-            text-align: center;
-            margin-top: 20px;
-            font-family: Poppins;
-            padding: 8px 20px;
-            border-radius: 8px;
-            border: 1px solid #FFEFBD;
-            background-color: #ff735c;
-            font-size: 16px;
-            color: #fff;
-            text-decoration: none;
-        }
+            .defender a {
+                text-align: center;
+                margin-top: 20px;
+                font-family: Poppins;
+                padding: 8px 20px;
+                border-radius: 8px;
+                border: 1px solid #FFEFBD;
+                background-color: #ff735c;
+                font-size: 16px;
+                color: #fff;
+                text-decoration: none;
+            }
 
-        .calc {
-            width: calc(30%);
-        }
-    </style>
-</head>
-<body>
-    <%- include('./includes/nav.html'); %>
+            .calc {
+                width: calc(30%);
+            }
+        </style>
+    </head>
+    <body>
+        <%- include('./includes/nav.html'); %>
 
-    <div class="error defender">
-        <img class="calc" src="../../public/img/erro-404-perdido-na-ilustracao-do-conceito-de-espaco_114360-7901-removebg-preview.png" alt="ERROR-404">
-        <p><b>Página não encontrada ou em manutenção</b></p>
-        <a href="/index">Voltar ao menu</a>
-    </div>
+        <div class="error defender">
+            <img class="calc" src="../../public/img/erro-404-perdido-na-ilustracao-do-conceito-de-espaco_114360-7901-removebg-preview.png" alt="ERROR-404">
+            <p><b>Página não encontrada ou em manutenção</b></p>
+            <a href="/index">Voltar ao menu</a>
+        </div>
 
-    <%- include('./includes/modalLogin.html'); %>
-    <%- include('./includes/modalConfExclusao.html'); %>
-    <%- include('./includes/modalLogout.html'); %>
-    <%- include('./includes/modalAdmin.html'); %>
-    <%- include('./includes/modalCadastro.html'); %>
+        <%- include('./includes/modalLogin.html'); %>
+        <%- include('./includes/modalConfExclusao.html'); %>
+        <%- include('./includes/modalLogout.html'); %>
+        <%- include('./includes/modalAdmin.html'); %>
+        <%- include('./includes/modalCadastro.html'); %>
 
+        
+        <!-- Script FontAwesome -->
+        <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
+        <!-- Script Boostrap-->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     
-    <!-- Script Boostrap-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
- 
-    <script src="/public/services/verificaLogin.js"></script>
-    <script src="/public/services/acoesBanco.js"></script>
-</body>
+        <script src="/public/services/verificaLogin.js"></script>
+        <script src="/public/services/acoesBanco.js"></script>
+    </body>
 </html>
