@@ -1,7 +1,7 @@
 const cart = require("express").Router();
 var cartItems = [];
 
-cart.post('/cart', (req, res) => {
+cart.post('/addCart', (req, res) => {
     const item = req.body;
 
     cartItems.push(item);
