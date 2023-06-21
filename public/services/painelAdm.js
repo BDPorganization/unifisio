@@ -116,7 +116,6 @@ function onClickBtEditarSala() {
             return response.json();
         })
         .then((resultado) => {
-            console.log(resultado);
             if (resultado.editarSala == true) {
                 location.reload();
             } else {
@@ -147,17 +146,48 @@ function onClickBtExcluirSala() {
             .then((resultado) => {
                 if (resultado.excluirSala == true) {
                     location.reload();
-                    alert("Sala excluída com sucesso!");
                 } else {
                     alert("Erro na exclusão da sala, tente novamente mais tarde!");
                 }
             });
+        } else {
+            alert("Nenhuma sala selecionada!");
         }
     } catch (err) {
-        alert("Nenhuma sala selecionada!");
         return err;
     }
 };
+
+function onClickBtBloquearDia() {
+    try {
+        let blockDay = document.getElementById("dataInput").value;
+
+        if (blockDay) {
+            fetch('/bloquearDia', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ blockDay })
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((resultado) => {
+                if (resultado.bloquearDia == true) {
+                    alert("Data bloqueada com sucesso!");
+                    location.reload();
+                } else {
+                    alert("Erro ao bloquear, tente novamente mais tarde!");
+                }
+            });
+        } else {
+            alert("Nenhum dia selecionado para bloquear!");
+        }
+    } catch (err) {
+        return err;
+    }
+}
 
 function gerarCard(dados) {
     try {

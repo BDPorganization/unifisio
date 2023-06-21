@@ -6,7 +6,7 @@ const path = require('path');
 const session = require('express-session');
 const routes = require('./src/routes/routes.js');
 const routesPag = require('./src/routes/routePag.js');
-const routesCart = require('./src/routes/cart.js');
+const routesCart = require('./src/routes/routeCart.js');
 
 app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, '/src/views'));

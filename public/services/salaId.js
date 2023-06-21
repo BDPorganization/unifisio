@@ -12,7 +12,8 @@ window.addEventListener("load", ()=> {
         })
         .then((resultado) => {
             const span = document.createElement('span');
-            let datas_bloqueadas = resultado.datas_bloqueadas;
+            let datas_bloqueadas = resultado.dias;
+            console.log(datas_bloqueadas);
             
             document.getElementById("unit-price").value = resultado.dados[0].valor;
             document.getElementById("descricao_longa").innerHTML = resultado.dados[0].descricao_longa;

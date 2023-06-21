@@ -92,7 +92,7 @@ async function adcSalas(adcSala) {
     const client = await database.connect();
 
     try {
-        const sql = 'INSERT INTO salas (nome, descricao, descricao_longa, valor, imgUrl) VALUES ($1, $2, $3, $4, $5\);'
+        const sql = 'INSERT INTO salas (nome, descricao, descricao_longa, valor, imgUrl) VALUES ($1, $2, $3, $4, $5);'
         const values = [adcSala.nome, adcSala.descricao, adcSala.longDescricao, adcSala.valor, adcSala.imgUrl];
         return await client.query(sql, values);
     } catch (err) {
@@ -159,6 +159,33 @@ async function selectSalas(pk_salas) {
     }
 }
 
+async function selectDiasBloqueados() {
+    const client = await database.connect();
+
+    try {
+        const sql = 'SELECT dias FROM dias_indisponiveis;'
+        return await client.query(sql);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
+async function bloquearDiaSelecionado(blockDay) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'INSERT INTO dias_indisponiveis (dias, usuario_bloqueou) VALUES ($1, $2);'
+        const values = [blockDay.day, blockDay.user];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = { 
     login,
     cadastro,
@@ -170,5 +197,7 @@ module.exports = {
     checarSalas,
     deletarSalas,
     editarSalas,
-    selectSalas
+    selectSalas,
+    bloquearDiaSelecionado,
+    selectDiasBloqueados
 }; 
