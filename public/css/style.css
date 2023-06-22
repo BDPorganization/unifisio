@@ -16,7 +16,6 @@ body{font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvet
 .btn-login:hover{border: 1px solid #000;}
 .btn-login:focus{border: 1px solid #000;}
 .container-fluid{width: 65%;}
-
 @media screen and (max-width: 600px) {
     .container-fluid{width: 100%;}
 }

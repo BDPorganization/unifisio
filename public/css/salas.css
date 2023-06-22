@@ -10,8 +10,8 @@
 .div-externa-form{width: 65%; margin: auto; display: flex; justify-content: center; flex-wrap: wrap;border-bottom: 1px solid #f3f3f3; font-family: nunito;}
 .div-externa-form > div{width: 60%;margin-bottom: 30px;}
 .btn-continua{width:30%;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000; border-radius: 5px; background-color: #fff;}
-.btn-voltar{width:30%;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000; border-radius: 5px; background-color: #fff; margin-bottom: 10px;}
-.mercadopago-button{width:30%!important;padding: 10px 20px;border: none!important;font-family: Nunito!important; font-size: 18px!important;font-weight: 600!important;color: #fff!important; border-radius: 5px!important; background-color: #f05e22!important;}
+.btn-voltar{width:30%;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000; border-radius: 5px; background-color: #fff;}
+.mercadopago-button{width:30%!important;border: none!important;font-family: Nunito!important; font-size: 18px!important;font-weight: 600!important;color: #fff!important; border-radius: 5px!important; background-color: #f05e22!important;}
 .div-imagem-final{width: 100%;text-align: center; padding: 80px 0px; overflow-x: auto;}
 
 a {color: #01056a;text-decoration: none;}

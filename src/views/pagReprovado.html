@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
+    <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async></script>
+    <script src="/public/services/verificaLogin.js" async></script>
+    <!-- Nunito -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300&family=Poppins:wght@200;800&display=swap" rel="stylesheet">
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- Css externo -->
+    <link rel="stylesheet" href="../../public/css/duvidas.css">
+    <title>Pagamento aprovado - Unifisio</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="../../public/services/app.js" defer></script>
+
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+
+<body>
+    <%- include('./includes/nav.html'); %>
+    <div>
+        <h2 class="titulo text-danger pt-5">Seu pagamento foi reprovado!</h2>
+        <div class="div-confirmacao" style="border: 2px solid #f3f3f3; border-radius: 20px;padding: 50px 0px;">
+            <h2 class="titulo pt-5">Tente finalizar sua compra novamente, caso seja detectado algum desconto, solicite estorno.</h2>
+        </div>
+    </div>
+
+    <%- include('./includes/modalLogin.html'); %>
+    <%- include('./includes/modalConfExclusao.html'); %>
+    <%- include('./includes/modalAdmin.html'); %>
+    <%- include('./includes/modalLogout.html'); %>
+    <%- include('./includes/modalCadastro.html'); %>
+
+    <!-- Script FontAwesome -->
+    <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
+    <!-- Script Boostrap-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <!-- SCRIPT JS-->
+    <script src="/public/services/acoesBanco.js"></script>
+    <script src="/public/services/approved.js"></script>
+</body>
+</html>
