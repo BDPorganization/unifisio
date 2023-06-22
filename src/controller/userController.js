@@ -305,13 +305,47 @@ module.exports.selectSalasByPk = async (req, res) => {
         dbMedicos.selectSalas(pk_salas)
         .then((response) => {
             if (response.rowCount > 0) {
-                return res.status(200).json({
-                    salas: true,
-                    dados: response.rows
+                dbMedicos.selectDiasBloqueados()
+                .then((resultado) => {
+                    if (resultado.rowCount > 0) {
+                        return res.status(200).json({
+                            salas: true,
+                            dados: response.rows,
+                            dias: resultado.rows
+                        });
+                    } else {
+                        return res.status(404).json({
+                            salas: false,
+                        });
+                    }
                 });
             } else {
                 return res.status(404).json({
                     salas: false,
+                });
+            }
+        });
+    } catch(err) {
+        return res.status(401).send('Ocorreu um erro ao carregar a sala');
+    }
+};
+
+module.exports.bloquearDia = async (req, res) => {
+    try {
+        let blockDay = {
+            day: req.body.blockDay,
+            user: req.session.user.nome_user
+        }
+
+        dbMedicos.bloquearDiaSelecionado(blockDay)
+        .then((response) => {
+            if (response.rowCount > 0) {
+                return res.status(201).json({
+                    bloquearDia: true,
+                });
+            } else {
+                return res.status(404).json({
+                    bloquearDia: false,
                 });
             }
         });

@@ -32,8 +32,11 @@
             <a class="btn" type="button" data-bs-toggle="modal" data-bs-target="#edtSalaModal" onclick="onClickBtEditarModal()">
                 <i class="fa-solid fa-pencil"></i> Editar sala
             </a>
-            <a class="btn" type="button" onclick="onClickBtExcluirSala()">
+            <a class="btn" type="button" data-bs-toggle="modal" data-bs-target="#modalConfExclusaoSala">
                 <i class="fa-solid fa-trash-can"></i> Excluir sala
+            </a>
+            <a class="btn" type="button" data-bs-toggle="modal" data-bs-target="#modalBloquearDia">
+                <i class="fa-solid fa-calendar-days"></i> Bloquear/Desbloquear dia
             </a>
         </div>
     </div>
@@ -45,6 +48,8 @@
 
     <%- include('./includes/modalLogin.html'); %>
     <%- include('./includes/modalConfExclusao.html'); %>
+    <%- include('./includes/modalConfExclusaoSala.html'); %>
+    <%- include('./includes/modalBloquearDia.html'); %>
     <%- include('./includes/modalLogout.html'); %>
     <%- include('./includes/modalAdmin.html'); %>
     <%- include('./includes/modalCadastro.html'); %>

@@ -1,3 +1,6 @@
+const inputDate = document.getElementById('dateTime');
+var datas_bloqueadas = [];
+
 window.addEventListener("load", ()=> {
     try {
         const idSala = document.getElementById("idSala").value;
@@ -12,8 +15,8 @@ window.addEventListener("load", ()=> {
         })
         .then((resultado) => {
             const span = document.createElement('span');
-            let datas_bloqueadas = resultado.datas_bloqueadas;
-            
+
+            datas_bloqueadas = resultado.dias;
             document.getElementById("unit-price").value = resultado.dados[0].valor;
             document.getElementById("descricao_longa").innerHTML = resultado.dados[0].descricao_longa;
             document.getElementById("preco").innerHTML = `${resultado.dados[0].valor.toLocaleString("pt-BR", {
@@ -36,9 +39,27 @@ window.addEventListener("load", ()=> {
     }
 });
 
-function exibirDatasFuturas(datas_bloqueadas) {
+inputDate.addEventListener('change', bloquearDiaEspecifico);
+
+function exibirDatasFuturas() {
     var dataAtual = new Date();
-    var inputDate = document.getElementById('dateTime');
 
     inputDate.min = dataAtual.toISOString().split('T')[0];
+}
+
+function bloquearDiaEspecifico() {;
+    var dataSelecionada = new Date(inputDate.value);
+
+    for (let i = 0; i < datas_bloqueadas.length; i++) {
+        let diaBloqueado = new Date(datas_bloqueadas[i].dias);
+        console.log("diaBloqueado:", diaBloqueado.toISOString().split('T')[0]);
+        console.log("diaSelecionado:", dataSelecionada.toISOString().split('T')[0]);
+
+        if (dataSelecionada.toISOString().split('T')[0] == diaBloqueado.toISOString().split('T')[0]) {
+            inputDate.value = "";
+            alert("Este dia está bloqueado!");
+            document.getElementById("containerId").innerHTML = "";
+        }
+    }
+    
 }
