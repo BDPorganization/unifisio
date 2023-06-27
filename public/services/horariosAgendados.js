@@ -8,7 +8,6 @@ window.addEventListener("load", ()=> {
         })
         .then((resultado) => {
             if (resultado.horariosAgendados == true) {
-                console.log(resultado);
                 gerarTabela(resultado);
                 
             } else {
@@ -86,7 +85,7 @@ function gerarCorpo(container, resultado) {
         button.type = "button";
         button.className = "btn btn-danger";
         button.textContent = "Cancelar agendamento";
-        button.addEventListener("click", cancelarAgendamento(inputHidden.value))
+        //button.addEventListener("click", cancelarAgendamento(inputHidden.value))
     
         tr.appendChild(nome);
         tr.appendChild(sala);
@@ -117,6 +116,33 @@ function filtrarTabela() {
             const coluna = colunas[j];
 
             if (coluna.textContent.toLowerCase().indexOf(termo) > -1) {
+                correspondencia = true;
+                break;
+            }
+        }
+  
+        if (correspondencia) {
+            linha.style.display = '';
+        } else {
+            linha.style.display = 'none';
+        }
+    }
+}
+
+function filtrarHoje() {
+    const dataAtual = new Date().toLocaleDateString();
+    const tabela = document.getElementById('table');
+    const linhas = tabela.getElementsByTagName('tr');
+  
+    for (let i = 1; i < linhas.length; i++) {
+        const linha = linhas[i];
+        const colunas = linha.getElementsByTagName('td');
+        let correspondencia = false;
+  
+        for (let j = 0; j < colunas.length; j++) {
+            const coluna = colunas[j];
+
+            if (coluna.textContent.toLowerCase().indexOf(dataAtual) > -1) {
                 correspondencia = true;
                 break;
             }

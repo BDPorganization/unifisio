@@ -34,12 +34,14 @@
         </div>
         
         <div class="tabela1">
-          <button type="submit" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px; color:#fff">
+          <button onclick="filtrarHoje()" type="button" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px; color:#fff">
+            <i class="fa-solid fa-calendar-day"></i>
             Hoje
           </button>
-          <!-- <button type="submit" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px;color:#fff">
-            Esse Mês
-          </button> -->
+          <button onclick="filtrarTabela()" type="reset" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px; color:#fff">
+            <i class="fa-solid fa-broom"></i>
+            Limpar
+          </button>
         </div>
       </div>
     </form>

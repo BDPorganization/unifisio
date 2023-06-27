@@ -58,7 +58,7 @@ router.get("/salas/:id", (req, res) => {
     res.render('sala', { postId });
 });
 
-router.get("/admin", verificarAutenticacao, (req, res) => {
+router.get("/admin", (req, res) => {
     res.render('painelAdmin');
 });
 
