@@ -58,11 +58,11 @@ router.get("/salas/:id", (req, res) => {
     res.render('sala', { postId });
 });
 
-router.get("/admin", (req, res) => {
+router.get("/admin", verificarAutenticacao, (req, res) => {
     res.render('painelAdmin');
 });
 
-router.get("/horasAgendados", verificarAutenticacao, (req, res) => {
+router.get("/horasAgendados", (req, res) => {
     res.render('horariosAgendados');
 });
 

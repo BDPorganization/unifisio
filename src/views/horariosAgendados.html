@@ -28,28 +28,24 @@
 
     <form action="" method="" >
       <div class="tabela1 form-filtros">
-        
         <div style="width: 80%">
           <label for="procura">Procurar: </label>
-          <input id="procura" name="procura" style="width: 50%;" placeholder="Pesquise pelo nome ou cpf">
-          <button type="submit" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px;color:#fff;">
-            Buscar
-          </button>
+          <input id="filtroInput" name="filtroInput" style="width: 50%;" type="text" placeholder="Pesquise por um das informações da tabela" oninput="filtrarTabela()">
         </div>
         
         <div class="tabela1">
           <button type="submit" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px; color:#fff">
             Hoje
           </button>
-          <button type="submit" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px;color:#fff">
+          <!-- <button type="submit" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px;color:#fff">
             Esse Mês
-          </button>
+          </button> -->
         </div>
       </div>
     </form>
     
 
-    <div style="width: 100%;overflow-x: scroll;">
+    <div style="width: 100%; overflow-x: scroll;">
       <table id="table" class="table table-striped m-auto tabela" style="font-family: poppins;"></table>
     </div>
   

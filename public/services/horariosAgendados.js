@@ -7,8 +7,8 @@ window.addEventListener("load", ()=> {
             return response.json();
         })
         .then((resultado) => {
-            console.log(resultado);
             if (resultado.horariosAgendados == true) {
+                console.log(resultado);
                 gerarTabela(resultado);
                 
             } else {
@@ -66,6 +66,8 @@ function gerarCorpo(container, resultado) {
         const data = document.createElement('td');
         const horario = document.createElement('td');
         const valor = document.createElement('td');
+        const inputHidden = document.createElement('input');
+        const button = document.createElement('button');
     
         nome.textContent = resultado.dados[i]["nome_medicos"];
         sala.textContent = resultado.dados[i]["nome_sala"];
@@ -79,6 +81,12 @@ function gerarCorpo(container, resultado) {
             maximumFractionDigits: 2,
             useGrouping: true
         });
+        inputHidden.value = resultado.dados[i]["pk_agendamento"];
+        inputHidden.type = "hidden";
+        button.type = "button";
+        button.className = "btn btn-danger";
+        button.textContent = "Cancelar agendamento";
+        button.addEventListener("click", cancelarAgendamento(inputHidden.value))
     
         tr.appendChild(nome);
         tr.appendChild(sala);
@@ -86,8 +94,43 @@ function gerarCorpo(container, resultado) {
         tr.appendChild(data);
         tr.appendChild(horario);
         tr.appendChild(valor);
+        tr.appendChild(inputHidden);
+        tr.appendChild(button);
         
         tbody.appendChild(tr);
     }
     container.appendChild(tbody);
+}
+
+function filtrarTabela() {
+    const input = document.getElementById('filtroInput');
+    const termo = input.value.toLowerCase();
+    const tabela = document.getElementById('table');
+    const linhas = tabela.getElementsByTagName('tr');
+  
+    for (let i = 1; i < linhas.length; i++) {
+        const linha = linhas[i];
+        const colunas = linha.getElementsByTagName('td');
+        let correspondencia = false;
+  
+        for (let j = 0; j < colunas.length; j++) {
+            const coluna = colunas[j];
+
+            if (coluna.textContent.toLowerCase().indexOf(termo) > -1) {
+                correspondencia = true;
+                break;
+            }
+        }
+  
+        if (correspondencia) {
+            linha.style.display = '';
+        } else {
+            linha.style.display = 'none';
+        }
+    }
+}
+
+function cancelarAgendamento(pk_agendamento) {
+    console.log(pk_agendamento)
+    alert("Cancelando agendamento...");
 }
