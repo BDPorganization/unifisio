@@ -96,4 +96,14 @@ router.get('/uploads/:imageName', (req, res) => {
     }
 });
 
+router.get('/download', (req, res) => {
+    const contractPath = path.join(process.cwd(), 'doc', 'exemplo.pdf');
+
+    res.download(contractPath, 'contract.pdf', (err) => {
+        if (err) {
+            res.status(400).send('Ocorreu um erro durante o download do contrato.', err);
+        }
+    });
+});
+
 module.exports = router;
