@@ -11,11 +11,16 @@ window.addEventListener("load", ()=> {
             return response.json();
         })
         .then((resultado) => {
-            for (let i = 0; i < resultado.dados.length; i++) {
-                gerarCard(resultado.dados[i]);
-                dadosSala.push(resultado.dados[i]);
+            if (resultado) {
+                for (let i = 0; i < resultado.dados.length; i++) {
+                    gerarCard(resultado.dados[i]);
+                    dadosSala.push(resultado.dados[i]);
+                }
+                container.appendChild(fragment);
+            } else {
+                alert("Nenhuma sala encontrada!");
+                return;
             }
-            container.appendChild(fragment);
         })
     } catch (err) {
         return err;
@@ -60,9 +65,11 @@ function onClickBtIncluirSala() {
                 })
                 .catch((err) => {
                     alert("Erro na inserção da imagem:", err);
+                    return;
                 })
             } else {
                 alert("Erro na inserção da sala, tente novamente mais tarde!");
+                return;
             }
         });
     } catch (err) {
@@ -88,10 +95,7 @@ function onClickBtEditarModal() {
             }
         });
     } catch (err) {
-        let modal = document.getElementById("edtSalaModal");
-
         alert("Nenhuma sala selecionada!");
-        modal.style.display = "none";
         return err;
     }
 }
@@ -103,7 +107,7 @@ function onClickBtEditarSala() {
     var peq_descricao = document.getElementById("peqDescricao").value;
     var long_descricao = document.getElementById("longDescricao").value;
     var preco = document.getElementById("valor").value;
-
+    
     try {
         fetch('/editarSala', {
             method: "POST",
@@ -120,6 +124,7 @@ function onClickBtEditarSala() {
                 location.reload();
             } else {
                 alert("Erro na edição da sala, tente novamente mais tarde!");
+                return;
             }
         });
     } catch (err) {
@@ -148,12 +153,12 @@ function onClickBtExcluirSala() {
                     location.reload();
                 } else {
                     alert("Erro na exclusão da sala, tente novamente mais tarde!");
+                    return;
                 }
             });
-        } else {
-            alert("Nenhuma sala selecionada!");
         }
     } catch (err) {
+        alert("Nenhuma sala selecionada!");
         return err;
     }
 };
@@ -179,10 +184,12 @@ function onClickBtBloquearDia() {
                     location.reload();
                 } else {
                     alert("Erro ao bloquear, tente novamente mais tarde!");
+                    return;
                 }
             });
         } else {
             alert("Nenhum dia selecionado para bloquear!");
+            return;
         }
     } catch (err) {
         return err;

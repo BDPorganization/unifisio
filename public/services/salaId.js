@@ -58,7 +58,7 @@ function bloquearDiaEspecifico() {;
         if (dataSelecionada.toISOString().split('T')[0] == diaBloqueado.toISOString().split('T')[0]) {
             inputDate.value = "";
             alert("Este dia está bloqueado!");
-            document.getElementById("containerId").innerHTML = "";
+            document.getElementById("containerId").style.display = "hidden";
         }
     }
     

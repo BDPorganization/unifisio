@@ -72,10 +72,25 @@ async function horariosAgendados() {
     }
 }
 
+async function excluirAgendamento(pk_agenda) {
+    const client = await database.connect();
+    
+    try {
+        const sql = 'DELETE FROM datas_agendadas WHERE pk_agendamento = $1;';   
+        const values = [pk_agenda.pk_agendamento];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = { 
     returnHours,
     checaDados,
     agendaDados,
     agendamentos,
-    horariosAgendados
+    horariosAgendados,
+    excluirAgendamento
 }; 

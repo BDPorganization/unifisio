@@ -138,3 +138,29 @@ module.exports.horariosAgenda = async (req, res) => {
         return res.status(400).send('Ocorreu um erro ao ver agendamentos já realizados');
     }
 };
+
+module.exports.excluirAgendamento = async (req, res) => {
+    try {
+        let pk_agenda = {
+            pk_agendamento: req.body.pk_agendamento
+        }
+
+        dbAgenda.excluirAgendamento(pk_agenda)
+        .then((resultado) => {
+            if(resultado.rowCount > 0) {
+                return res.status(200).json({
+                    excluirAgendamento: true,
+                });
+            } else {
+                return res.status(404).json({
+                    excluirAgendamento: false
+                });
+            }
+        })
+        .catch((err) => {
+            return res.status(500).send(`Ocorreu um erro ao trazer agendamentos, ${err}`)
+        });
+    }catch(err) {
+        return res.status(400).send('Ocorreu um erro ao ver agendamentos já realizados');
+    }
+};

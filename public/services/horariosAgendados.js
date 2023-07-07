@@ -12,6 +12,7 @@ window.addEventListener("load", ()=> {
                 
             } else {
                 alert("Nenhum agendamento encontrado!");
+                return;
             }
         });
     } catch (err) {
@@ -65,8 +66,9 @@ function gerarCorpo(container, resultado) {
         const data = document.createElement('td');
         const horario = document.createElement('td');
         const valor = document.createElement('td');
-        const inputHidden = document.createElement('input');
-        const button = document.createElement('button');
+        const checkboxWrapper  = document.createElement('label');
+        const checkbox = document.createElement('input');
+        const checkmark = document.createElement('span');
     
         nome.textContent = resultado.dados[i]["nome_medicos"];
         sala.textContent = resultado.dados[i]["nome_sala"];
@@ -80,12 +82,11 @@ function gerarCorpo(container, resultado) {
             maximumFractionDigits: 2,
             useGrouping: true
         });
-        inputHidden.value = resultado.dados[i]["pk_agendamento"];
-        inputHidden.type = "hidden";
-        button.type = "button";
-        button.className = "btn btn-danger";
-        button.textContent = "Cancelar agendamento";
-        //button.addEventListener("click", cancelarAgendamento(inputHidden.value))
+        checkboxWrapper.className = 'checkbox-wrapper';
+        checkbox.type = 'checkbox';
+        checkbox.value = resultado.dados[i]["pk_agendamento"];
+        checkmark.className = 'checkmark';
+
     
         tr.appendChild(nome);
         tr.appendChild(sala);
@@ -93,8 +94,10 @@ function gerarCorpo(container, resultado) {
         tr.appendChild(data);
         tr.appendChild(horario);
         tr.appendChild(valor);
-        tr.appendChild(inputHidden);
-        tr.appendChild(button);
+        checkboxWrapper.appendChild(checkbox);
+        checkboxWrapper.appendChild(checkmark);
+        checkboxWrapper.appendChild(document.createTextNode(' Selecione'));
+        tr.appendChild(checkboxWrapper);
         
         tbody.appendChild(tr);
     }
@@ -156,7 +159,33 @@ function filtrarHoje() {
     }
 }
 
-function cancelarAgendamento(pk_agendamento) {
-    console.log(pk_agendamento)
-    alert("Cancelando agendamento...");
+function cancelarAgendamento() {
+    try {
+        let checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
+        let pk_agendamento = checkedCheckbox.value;
+
+        if (pk_agendamento) {
+            fetch('/excluirAgendamento', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pk_agendamento })
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((resultado) => {
+                if (resultado.excluirAgendamento == true) {
+                    location.reload();
+                } else {
+                    alert("Erro na exclusão do agendamento, tente novamente mais tarde!");
+                    return;
+                }
+            });
+        }
+    } catch (err) {
+        alert("Nenhum agendamento selecionado!");
+        return err;
+    }
 }
