@@ -1,6 +1,7 @@
 const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala, editarSala, selectSalasByPk, bloquearDia } = require("../controller/userController.js");
 const { selectHours, checaDados, agendaDados, agendamentos, horariosAgenda, excluirAgendamento} = require("../controller/agendController.js");
 const { upload } = require("../../public/services/multer.js");
+const { PDFDocument, StandardFonts } = require('pdf-lib');
 const FileController = require("../controller/fileController.js");
 const router = require("express").Router();
 const path = require('path');
@@ -97,10 +98,31 @@ router.get('/uploads/:imageName', (req, res) => {
     }
 });
 
-router.get('/download', (req, res) => {
-    const contractPath = path.join(process.cwd(), 'doc', 'exemplo.pdf');
+router.get('/download', async (req, res) => {
+    const arquivoPDF = fs.readFileSync(path.join(process.cwd(), 'doc', 'exemplo.pdf'));
+    const documentoPDF = await PDFDocument.load(arquivoPDF);
+    const nomeUsuario = "Bruno Duarte";
+    const cpf ="17268062788";
+    const novaPagina = documentoPDF.addPage();
+    const fonte = await documentoPDF.embedFont(StandardFonts.Helvetica);
 
-    res.download(contractPath, 'contract.pdf', (err) => {
+    novaPagina.setFont(fonte);
+    novaPagina.setFontSize(12);
+
+    const coordenadaX = 50;
+    const coordenadaY = 50;
+
+    novaPagina.drawText(`Eu, ${nomeUsuario}, portador do CPF: ${cpf},  confirmo que aceito os termos deste contrato.`, {
+        x: coordenadaX,
+        y: coordenadaY,
+    });
+
+    const novoArquivoPDF = await documentoPDF.save();
+    fs.writeFileSync(path.join(process.cwd(), 'doc', 'contrato.pdf'), novoArquivoPDF);
+
+    const newContract = path.join(process.cwd(), 'doc', 'contrato.pdf');
+
+    res.download(newContract, 'contratoAssinado.pdf', (err) => {
         if (err) {
             res.status(400).send('Ocorreu um erro durante o download do contrato.', err);
         }
