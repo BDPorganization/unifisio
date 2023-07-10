@@ -49,16 +49,18 @@ function exibirDatasFuturas() {
 
 function bloquearDiaEspecifico() {;
     var dataSelecionada = new Date(inputDate.value);
+    var div_main =  document.getElementById("div-main");
 
     for (let i = 0; i < datas_bloqueadas.length; i++) {
         let diaBloqueado = new Date(datas_bloqueadas[i].dias);
-        console.log("diaBloqueado:", diaBloqueado.toISOString().split('T')[0]);
-        console.log("diaSelecionado:", dataSelecionada.toISOString().split('T')[0]);
 
-        if (dataSelecionada.toISOString().split('T')[0] == diaBloqueado.toISOString().split('T')[0]) {
+        if (dataSelecionada.toISOString().split('T')[0] === diaBloqueado.toISOString().split('T')[0]) {
             inputDate.value = "";
             alert("Este dia está bloqueado!");
-            document.getElementById("containerId").style.display = "hidden";
+            div_main.style.display = "none";
+            return;
+        } else {
+            div_main.style.display = "";
         }
     }
     

@@ -166,7 +166,7 @@ module.exports.desconectar = async (req, res) => {
             if (err) {
                 return err;
             } else {
-                res.status(308).redirect('/index');
+                res.status(308).redirect('/');
             }
           });
     } catch(err) {

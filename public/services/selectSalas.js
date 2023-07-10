@@ -15,7 +15,7 @@ date.addEventListener("change", function() {
         })
         .then((resultado) => {
             if (resultado.horas == false) {
-                console.log('Nenhum horário encontrado para o dia selecionado');
+                alert('Nenhum horário encontrado para o dia selecionado');
             }
             createCheckboxesFromJSON(resultado.datas);
         });

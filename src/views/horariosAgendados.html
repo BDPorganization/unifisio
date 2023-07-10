@@ -42,7 +42,7 @@
             <i class="fa-solid fa-broom"></i>
             Limpar
           </button>
-          <button onclick="cancelarAgendamento()" type="button" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px; color:#fff">
+          <button data-bs-toggle="modal" data-bs-target="#modalConfCancelamento" type="button" style="background-color: #f05e22;border: none;border-radius: 20px;padding: 1px 7px; color:#fff">
             <i class="fa-solid fa-ban"></i>
             Cancelar Agendamento
           </button>
@@ -56,7 +56,7 @@
     </div>
   
     <%- include('./includes/modalLogin.html'); %>
-    <%- include('./includes/modalConfExclusao.html'); %>
+    <%- include('./includes/modalConfCancelamento.html'); %>
     <%- include('./includes/modalLogout.html'); %>
     <%- include('./includes/modalAdmin.html'); %>
     <%- include('./includes/modalCadastro.html'); %>

@@ -34,7 +34,7 @@ a {color: #01056a;text-decoration: none;}
   .div-externa-form{width: 80%;}
   .div-externa-form > div{width: 100%;}
   .btn-continua{width:100%;}
-  .btn-voltar{width:100%;}
+  .btn-voltar{width:100%; margin-bottom: 10px;}
   .mercadopago-button{width:100%!important;}
   .info-salas-card > div{width: 50%;}
 }
