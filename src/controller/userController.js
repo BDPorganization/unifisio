@@ -47,7 +47,7 @@ module.exports.loginGoogle = async (req, res) => {
         })
     })
     .catch((err) => {
-        return res.status(500).send(`Erro ao logar com conta Google, ${err}`);
+        return res.status(400).send(`Erro ao logar com conta Google, ${err}`);
     });
 };
 
@@ -75,7 +75,7 @@ module.exports.login = async (req, res) => {
             }
         })
         .catch((err) => {
-            return res.status(500).json({ autorizado: false });
+            return res.status(400).json({ autorizado: false });
         });
     } catch(err) {
         return res.status(400).json({ autorizado: false });
@@ -103,12 +103,12 @@ module.exports.cadastro = async (req, res) => {
                         return res.status(201).json({ cadastrado: true });
                     })
                     .catch((err) => {
-                        return res.status(500).json({ cadastrado: false });
+                        return res.status(400).json({ cadastrado: false });
                     });
                 }
             })
             .catch((err) => {
-                return res.status(500).json({ cadastrado: false });
+                return res.status(400).json({ cadastrado: false });
             });
         } else {
             return res.status(409).json({ cadastrado: false });
@@ -153,7 +153,7 @@ module.exports.preencherDados = async (req, res) => {
             return res.status(200).json({ preenchido: true });
         })
         .catch((err) => {
-            return res.status(500).json({ preenchido: false });
+            return res.status(400).json({ preenchido: false });
         });
     } catch(err) {
         return res.status(400).json({ preenchido: false });
