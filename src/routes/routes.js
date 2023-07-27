@@ -72,6 +72,10 @@ router.get("/aluguel", (req, res) => {
     res.render('alugueis');
 });
 
+router.get("/cart", (req, res) => {
+    res.render('cart');
+});
+
 router.get("/verificarLogin", verificaLogin);
 router.get("/desconectar", desconectar);
 router.get("/apagarConta", apagarConta);

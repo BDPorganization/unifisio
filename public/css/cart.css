@@ -1,0 +1,61 @@
+@import './style.css';
+
+body {
+    font-family: Poppins;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: center;
+    height: 30px;
+}
+
+th div {
+    display: grid;
+    justify-content: space-around;
+}
+
+.carrinho {
+    margin-top: 2%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 400px;
+    box-shadow: 3px 3px 5px #ccc;
+    position: relative;
+}
+
+.carrinho a {
+    border: none;
+    border-radius: 10px;
+    background-color: #f05e22;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px 10px;
+    margin: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.carrinho a:hover {
+    background-color: #000;
+    color: #ccc!important;
+    cursor: pointer;
+}
+
+.space-buttons{
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap;
+}

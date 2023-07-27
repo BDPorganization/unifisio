@@ -72,12 +72,9 @@
                 <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
                 <div id="containerId" class="d-flex flex-wrap"></div>
             </div>
-            <div class="text-end space-buttons" id="button-checkout">
-                <button id="voltarPagamento" class="btn-voltar" style="display: none;" onclick="location.reload()">
-                    Voltar
-                </button>
-                <button id="avancar" class="btn-continua">
-                    Continuar
+            <div class="text-end space-buttons">
+                <button id="adcCart" class="btn-voltar" style="display: none;">
+                    Adicionar ao carrinho
                 </button>
             </div>
             <div id="formDadosPessoais" class="row h-75 mb-5" style="display: none;">
@@ -141,7 +138,6 @@
     <!-- SCRIPT JS-->
     <script src="/public/services/selectSalas.js"></script>
     <script src="/public/services/acoesBanco.js"></script>
-    <script type="text/javascript" src="/public/services/avancar1.js" defer></script>
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="/public/services/adcCart.js"></script>
 </body>
 </html>

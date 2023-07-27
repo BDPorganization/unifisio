@@ -7,52 +7,52 @@ module.exports.loginGoogle = async (req, res) => {
     const client_id = process.env.GOOGLE_CLIENT_ID;
 
     (await googleAuth(token, client_id)).getUserData()
-    .then(response => { 
-        let infoUser = {
-            nome: response.name,
-            email: response.email,
-        }
+        .then(response => {
+            let infoUser = {
+                nome: response.name,
+                email: response.email,
+            }
 
-        dbMedicos.checaMedico(infoUser)
-        .then((resultado) => {
-            if (resultado.rowCount > 0) {
-                let dadosUser = {
-                    pk_medicos: resultado.rows[0].pk_medicos,
-                    nome_user: resultado.rows[0].nome,
-                    email_user: resultado.rows[0].email
-                };
-
-                req.session.user = dadosUser;
-                return res.status(200).redirect(req.headers.referer);
-            } else {
-                dbMedicos.cadastro(infoUser)
-                .then((resposta) => {
-                    let checaPkUser = {
-                        pk_medicos: resposta.rows[0].pk_medicos,
-                    };
-
-                    dbMedicos.checaPkMedico(checaPkUser)
-                    .then((result) => {
+            dbMedicos.checaMedico(infoUser)
+                .then((resultado) => {
+                    if (resultado.rowCount > 0) {
                         let dadosUser = {
-                            pk_medicos: result.rows[0].pk_medicos,
-                            nome_user: result.rows[0].nome,
-                            email_user: result.rows[0].email
+                            pk_medicos: resultado.rows[0].pk_medicos,
+                            nome_user: resultado.rows[0].nome,
+                            email_user: resultado.rows[0].email
                         };
 
                         req.session.user = dadosUser;
-                        return res.status(201).redirect(req.headers.referer);
-                    })
+                        return res.status(200).redirect(req.headers.referer);
+                    } else {
+                        dbMedicos.cadastro(infoUser)
+                            .then((resposta) => {
+                                let checaPkUser = {
+                                    pk_medicos: resposta.rows[0].pk_medicos,
+                                };
+
+                                dbMedicos.checaPkMedico(checaPkUser)
+                                    .then((result) => {
+                                        let dadosUser = {
+                                            pk_medicos: result.rows[0].pk_medicos,
+                                            nome_user: result.rows[0].nome,
+                                            email_user: result.rows[0].email
+                                        };
+
+                                        req.session.user = dadosUser;
+                                        return res.status(201).redirect(req.headers.referer);
+                                    })
+                            })
+                    }
                 })
-            }
         })
-    })
-    .catch((err) => {
-        return res.status(400).send(`Erro ao logar com conta Google, ${err}`);
-    });
+        .catch((err) => {
+            return res.status(400).send(`Erro ao logar com conta Google, ${err}`);
+        });
 };
 
 module.exports.login = async (req, res) => {
-    try{
+    try {
         let { emailLogin, senhaLogin } = req.body
         let loginUser = {
             email: emailLogin,
@@ -60,24 +60,24 @@ module.exports.login = async (req, res) => {
         };
 
         dbMedicos.login(loginUser)
-        .then(resultado => {
-            if (resultado.rowCount > 0) {
-                let dadosUser = {
-                    pk_medicos: resultado.rows[0].pk_medicos,
-                    nome_user: resultado.rows[0].nome,
-                    email_user: resultado.rows[0].email
-                };
+            .then(resultado => {
+                if (resultado.rowCount > 0) {
+                    let dadosUser = {
+                        pk_medicos: resultado.rows[0].pk_medicos,
+                        nome_user: resultado.rows[0].nome,
+                        email_user: resultado.rows[0].email
+                    };
 
-                req.session.user = dadosUser;
-                return res.status(200).render('index', { nome: dadosUser.nome_user });
-            } else {
-                return res.status(404).json({ autorizado: false });
-            }
-        })
-        .catch((err) => {
-            return res.status(400).json({ autorizado: false });
-        });
-    } catch(err) {
+                    req.session.user = dadosUser;
+                    return res.status(200).render('index', { nome: dadosUser.nome_user });
+                } else {
+                    return res.status(404).json({ autorizado: false });
+                }
+            })
+            .catch((err) => {
+                return res.status(400).json({ autorizado: false });
+            });
+    } catch (err) {
         return res.status(400).json({ autorizado: false });
     }
 };
@@ -91,35 +91,35 @@ module.exports.cadastro = async (req, res) => {
             email: emailCadastro,
             senha: md5(senhaCadastro)
         }
- 
+
         if (senhaCadastro == confSenha) {
             dbMedicos.checaMedico(cadastroUser)
-            .then((response) => {
-                if (response.rowCount > 0) {
-                    return res.status(302).json({ cadastrado: false });
-                } else {
-                    dbMedicos.cadastro(cadastroUser)
-                    .then(() => {
-                        return res.status(201).json({ cadastrado: true });
-                    })
-                    .catch((err) => {
-                        return res.status(400).json({ cadastrado: false });
-                    });
-                }
-            })
-            .catch((err) => {
-                return res.status(400).json({ cadastrado: false });
-            });
+                .then((response) => {
+                    if (response.rowCount > 0) {
+                        return res.status(302).json({ cadastrado: false });
+                    } else {
+                        dbMedicos.cadastro(cadastroUser)
+                            .then(() => {
+                                return res.status(201).json({ cadastrado: true });
+                            })
+                            .catch((err) => {
+                                return res.status(400).json({ cadastrado: false });
+                            });
+                    }
+                })
+                .catch((err) => {
+                    return res.status(400).json({ cadastrado: false });
+                });
         } else {
             return res.status(409).json({ cadastrado: false });
         }
-    } catch(err) {
-        return res.status(400).json({ cadastrado: false });  
+    } catch (err) {
+        return res.status(400).json({ cadastrado: false });
     }
 };
 
 module.exports.verificaLogin = async (req, res) => {
-    try{
+    try {
         if (req.session.user) {
             res.status(200).json({
                 autenticado: true,
@@ -131,9 +131,9 @@ module.exports.verificaLogin = async (req, res) => {
                 autenticado: false,
             });
         }
-    } catch(err) {
+    } catch (err) {
         return res.status(400).send('Ocorreu um erro na verificação do login');
-     }
+    }
 };
 
 module.exports.preencherDados = async (req, res) => {
@@ -149,13 +149,13 @@ module.exports.preencherDados = async (req, res) => {
             codigo_medico: req.session.user.pk_medicos
         }
         dbMedicos.preencher_dados(dadosUser)
-        .then(() => {
-            return res.status(200).json({ preenchido: true });
-        })
-        .catch((err) => {
-            return res.status(400).json({ preenchido: false });
-        });
-    } catch(err) {
+            .then(() => {
+                return res.status(200).json({ preenchido: true });
+            })
+            .catch((err) => {
+                return res.status(400).json({ preenchido: false });
+            });
+    } catch (err) {
         return res.status(400).json({ preenchido: false });
     }
 };
@@ -168,8 +168,8 @@ module.exports.desconectar = async (req, res) => {
             } else {
                 res.status(308).redirect('/');
             }
-          });
-    } catch(err) {
+        });
+    } catch (err) {
         return res.status(401).send('Ocorreu um erro ao desconectar');
     }
 };
@@ -185,16 +185,16 @@ module.exports.apagarConta = async (req, res) => {
                 return err;
             } else {
                 dbMedicos.deletarConta(pk_apagar)
-                .then((response) => {
-                    if (response.rowCount > 0) {
-                        return res.status(200).redirect('/index');
-                    } else {
-                        return res.status(400).redirect('/index');
-                    }
-                });
+                    .then((response) => {
+                        if (response.rowCount > 0) {
+                            return res.status(200).redirect('/index');
+                        } else {
+                            return res.status(400).redirect('/index');
+                        }
+                    });
             }
-          });
-    } catch(err) {
+        });
+    } catch (err) {
         return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
     }
 };
@@ -210,18 +210,18 @@ module.exports.adcSala = async (req, res) => {
         }
 
         dbMedicos.adcSalas(adcSala)
-        .then((response) => {
-            if (response.rowCount > 0) {
-                return res.status(200).json({
-                    salvarSala: true,
-                });
-            } else {
-                return res.status(200).json({
-                    salvarSala: false,
-                });
-            }
-        });
-    } catch(err) {
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(200).json({
+                        salvarSala: true,
+                    });
+                } else {
+                    return res.status(200).json({
+                        salvarSala: false,
+                    });
+                }
+            });
+    } catch (err) {
         return res.status(401).send('Ocorreu um erro ao adicionar a sala');
     }
 };
@@ -229,19 +229,19 @@ module.exports.adcSala = async (req, res) => {
 module.exports.checarSalasAdmin = async (req, res) => {
     try {
         dbMedicos.checarSalas()
-        .then((response) => {
-            if (response.rowCount > 0) {
-                return res.status(200).json({
-                    salas: true,
-                    dados: response.rows
-                });
-            } else {
-                return res.status(404).json({
-                    salas: false,
-                });
-            }
-        });
-    } catch(err) {
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(200).json({
+                        salas: true,
+                        dados: response.rows
+                    });
+                } else {
+                    return res.status(404).json({
+                        salas: false,
+                    });
+                }
+            });
+    } catch (err) {
         return res.status(401).send('Ocorreu um erro ao adicionar a sala');
     }
 };
@@ -253,18 +253,18 @@ module.exports.excluirSala = async (req, res) => {
         }
 
         dbMedicos.deletarSalas(pk_salas)
-        .then((response) => {
-            if (response.rowCount > 0) {
-                return res.status(200).json({
-                    excluirSala: true,
-                });
-            } else {
-                return res.status(405).json({
-                    excluirSala: false,
-                });
-            }
-        });
-    } catch(err) {
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(200).json({
+                        excluirSala: true,
+                    });
+                } else {
+                    return res.status(405).json({
+                        excluirSala: false,
+                    });
+                }
+            });
+    } catch (err) {
         return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
     }
 };
@@ -280,18 +280,18 @@ module.exports.editarSala = async (req, res) => {
         }
 
         dbMedicos.editarSalas(updateSala)
-        .then((response) => {
-            if (response.rowCount > 0) {
-                return res.status(200).json({
-                    editarSala: true,
-                });
-            } else {
-                return res.status(405).json({
-                    editarSala: false,
-                });
-            }
-        });
-    } catch(err) {
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(200).json({
+                        editarSala: true,
+                    });
+                } else {
+                    return res.status(405).json({
+                        editarSala: false,
+                    });
+                }
+            });
+    } catch (err) {
         return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
     }
 };
@@ -303,29 +303,30 @@ module.exports.selectSalasByPk = async (req, res) => {
         }
 
         dbMedicos.selectSalas(pk_salas)
-        .then((response) => {
-            if (response.rowCount > 0) {
-                dbMedicos.selectDiasBloqueados()
-                .then((resultado) => {
-                    if (resultado.rowCount > 0) {
-                        return res.status(200).json({
-                            salas: true,
-                            dados: response.rows,
-                            dias: resultado.rows
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    dbMedicos.selectDiasBloqueados()
+                        .then((resultado) => {
+                            if (resultado.rowCount > 0) {
+                                return res.status(200).json({
+                                    salas: true,
+                                    dados: response.rows,
+                                    dias: resultado.rows
+                                });
+                            } else {
+                                return res.status(200).json({
+                                    salas: true,
+                                    dados: response.rows,
+                                });
+                            }
                         });
-                    } else {
-                        return res.status(404).json({
-                            salas: false,
-                        });
-                    }
-                });
-            } else {
-                return res.status(404).json({
-                    salas: false,
-                });
-            }
-        });
-    } catch(err) {
+                } else {
+                    return res.status(404).json({
+                        salas: false,
+                    });
+                }
+            });
+    } catch (err) {
         return res.status(401).send('Ocorreu um erro ao carregar a sala');
     }
 };
@@ -338,18 +339,18 @@ module.exports.bloquearDia = async (req, res) => {
         }
 
         dbMedicos.bloquearDiaSelecionado(blockDay)
-        .then((response) => {
-            if (response.rowCount > 0) {
-                return res.status(201).json({
-                    bloquearDia: true,
-                });
-            } else {
-                return res.status(404).json({
-                    bloquearDia: false,
-                });
-            }
-        });
-    } catch(err) {
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(201).json({
+                        bloquearDia: true,
+                    });
+                } else {
+                    return res.status(404).json({
+                        bloquearDia: false,
+                    });
+                }
+            });
+    } catch (err) {
         return res.status(401).send('Ocorreu um erro ao adicionar a sala');
     }
 };

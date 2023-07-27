@@ -32,7 +32,7 @@ mp.post("/pagamento", (req, res) => {
     
 	mercadopago.preferences.create(payment)
 	.then((response) => {
-		res.status(201).json({ id: response.body.id });
+		res.status(201).json({ id: response.body.id, init_point: response.body.init_point });
 	})
     .catch((err) => {
 		res.status(500).send(err);
