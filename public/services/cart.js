@@ -8,8 +8,6 @@ window.addEventListener("load", () => {
           return response.json();
         } else if (response.status == 401) {
           alert("Faça login para visualizar os produtos no carrinho!");
-        } else {
-          alert("Nenhum produto adicionado!");
         }
       })
       .then((resultado) => {

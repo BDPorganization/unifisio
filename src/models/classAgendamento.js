@@ -32,12 +32,9 @@ async function agendaDados(agendaDado) {
     const client = await database.connect();
     
     try {
-        for (let i = 0; i < agendaDado.horarios.length; i++) {
-            const sql = 'insert into datas_agendadas (datas, hora, fk_salas_pk_salas, fk_medicos_pk_medicos) values ($1, $2, $3, $4)';
-            const values = [agendaDado.data, agendaDado.horarios[i], agendaDado.pk_salas, agendaDado.pk_medicos];   
-            await client.query(sql, values);
-        }
-        return 0;
+        const sql = 'insert into datas_agendadas (datas, hora, fk_salas_pk_salas, fk_medicos_pk_medicos) values ($1, $2, $3, $4)';
+        const values = [agendaDado.data, agendaDado.horarios, agendaDado.pk_salas, agendaDado.pk_medicos];   
+        return await client.query(sql, values);
     } catch (err) {
         return err;
     } finally {

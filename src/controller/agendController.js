@@ -67,7 +67,7 @@ module.exports.agendaDados = async (req, res) => {
 
         dbAgenda.agendaDados(agendaDado)
         .then((resultado) => {
-            if(resultado == 0) {
+            if(resultado.rowCount > 0) {
                 return res.status(201).json({
                     agendado: true,
                     hora: req.body.horarioAtual,
@@ -76,7 +76,7 @@ module.exports.agendaDados = async (req, res) => {
                     token: token
                 });
             } else {
-                return res.status(204).json({
+                return res.status(406).json({
                     agendado: false
                 });
             }

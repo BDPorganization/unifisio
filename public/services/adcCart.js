@@ -23,8 +23,7 @@ botao_adcCart.addEventListener("click", () => {
                         .then((response) => {
                             if (response.status == 204) {
                                 const formPreencher = document.getElementById('form-preencher');
-
-                                document.getElementById('avancar').style.display = 'none';
+                                
                                 exibirFormDados();
                                 formPreencher.addEventListener("submit", (event) => {
                                     event.preventDefault();
@@ -139,7 +138,7 @@ function adcCart() {
             .then((response) => {
                 return response.json();
             })
-            .then((pagamento) => {
+            .then((resultado) => {
                 alert("Incluso no carrinho!");
             })
             .catch((err) => {

@@ -11,14 +11,15 @@ table {
 }
 
 th, td {
-    padding: 8px;
+    padding: 5px;
     border: 1px solid #ccc;
+    cursor: pointer;
 }
 
 th {
     background-color: #f2f2f2;
     text-align: center;
-    height: 30px;
+    height: 10px;
 }
 
 th div {

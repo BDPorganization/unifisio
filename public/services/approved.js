@@ -1,7 +1,10 @@
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
     try {
         const matchingItems = {};
-        let urlEmail = 'http://15.229.6.45:3002/codeTemplateMail';
+        let name_user;
+        let to;
+        let token;
+        let idTemplate;
 
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
@@ -18,68 +21,80 @@ window.addEventListener("load", () => {
                 const value = matchingItems[key];
 
                 let dataAtual = value.data_agendada;
-                let name_user = value.nome_medico;
-                let to = value.email_medico;
-                let horarioAtual = JSON.parse(value.horarios);
+                let horarioAtual = value.horarios;
                 let pk_sala = value.pk_sala;
+                let id = value.pk_cart;
+                name_user = value.nome_medico;
+                to = value.email_medico;
 
-                fetch('/agendaDados', {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ dataAtual, horarioAtual, pk_sala })
-                })
-                    .then((response) => {
-                        return response.json();
-                    })
-                    .then((resultado) => {
-                        let token = resultado.token;
-                        let idTemplate = resultado.idTemplate;
+                try {
+                    const response = await fetch('/agendaDados', {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ dataAtual, horarioAtual, pk_sala })
+                    });
 
-                        fetch('/deleteAllCart', {
+                    const resultado = await response.json();
+
+                    if (resultado.agendado !== true) {
+                        alert("Erro ao agendar a(s) sala(s), favor entrar em contato com o administrador!");
+                    }
+
+                    token = resultado.token;
+                    idTemplate = resultado.idTemplate;
+
+                    try {
+                        const deleteResponse = await fetch('/deleteItemCart', {
                             method: "DELETE",
-                        })
-                            .then((response) => {
-                                return response.json();
-                            })
-                            .then((resultado) => {
-                                if (resultado.excludeAllCart == true) {
-                                    return resultado;
-                                } else {
-                                    alert("Erro ao remover itens do carrinho, tente novamente!");
-                                    return;
-                                }
-                            });
-
-                        // document.getElementById('hour').innerText = resultado.hora[0];
-                        // document.getElementById('day').innerText = new Date(resultado.dia).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-
-                        return resultado;
-                    })
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ id })
+                        });
+                    } catch (err) {
+                        alert(`Ocorreu um erro inesperado!, ${err}`);
+                        return err;
+                    }
+                } catch (err) {
+                    alert(`Ocorreu um erro inesperado!, ${err}`);
+                    return err;
+                }
             }
         }
-
-        //Enviando informações para o servidor do e-mail na AWS
-        // fetch(urlEmail, {
-        //     method: "POST",
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'x-access-token': token
-        //     },
-        //     body: JSON.stringify({
-        //         name_user,
-        //         to,
-        //         idTemplate
-        //     })
-        // })
-        //     .then((response) => {
-        //         return response.json();
-        //     })
-        //     .then((resultado) => {
-        //         return resultado;
-        //     })
+        downloadContrato();
+        enviaEmail(name_user, to, idTemplate, token);
     } catch (err) {
+        alert(`Ocorreu um erro inesperado!, ${err}`);
         return err;
     }
 });
+
+//Envia as informações para o servidor do e-mail na AWS
+async function enviaEmail(name_user, to, idTemplate, token) {
+    const urlEmail = 'http://15.229.6.45:3002/codeTemplateMail';
+
+    const sendMail = await fetch(urlEmail, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': token
+        },
+        body: JSON.stringify({
+            name_user,
+            to,
+            idTemplate
+        })
+    });
+
+    return sendMail;
+}
+
+async function downloadContrato() {
+    const contrato = await fetch('/download', {
+        method: "GET",
+    });
+
+    return contrato;
+}

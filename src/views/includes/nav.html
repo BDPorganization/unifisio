@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
         <a class="navbar-brand div-nav" href="#"><img src="../../public/img/logo_png.png" alt="LOGO_UNIFISIO"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -9,10 +10,17 @@
                 <a class="nav-link" href="/index" title="Página principal">Home</a>
                 <a class="nav-link" href="/salas" title="Salas">Salas</a>
                 <a class="nav-link" href="/duvidas" title="Dúvidas frequentes">Dúvidas</a>
-                <a class="nav-link" href="/cart" title="Carrinho de compras"><i class="fa-solid fa-cart-shopping"></i></a>
-                
+                <a class="nav-link position-relative" href="/cart" title="Carrinho de compras">
+                    <span id="span_icon" style="visibility: hidden;" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                    <i id="cart" class="fa-solid fa-cart-shopping"></i>
+                </a>
+
                 <input type="hidden" id="emailUser" value="">
-                <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal" id="nomeUsuario">
+                <a class="btn-login btn" type="button" data-bs-toggle="modal" data-bs-target="#loginModal"
+                    id="nomeUsuario">
                     <i class="fa fa-user"></i> Login
                 </a>
             </div>
