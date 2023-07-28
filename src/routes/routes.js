@@ -109,8 +109,8 @@ router.get('/uploads/:imageName', (req, res) => {
 router.get('/download', async (req, res) => {
     const arquivoPDF = fs.readFileSync(path.join(process.cwd(), 'doc', 'exemplo.pdf'));
     const documentoPDF = await PDFDocument.load(arquivoPDF);
-    const nomeUsuario = "Bruno Duarte";
-    const cpf ="17268062788";
+    const nomeUsuario = "Nome do usuário";
+    const cpf ="xxxxxxxxxxx";
     const novaPagina = documentoPDF.addPage();
     const fonte = await documentoPDF.embedFont(StandardFonts.Helvetica);
 
