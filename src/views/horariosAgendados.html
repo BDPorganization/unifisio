@@ -91,14 +91,14 @@
         <div class="div-principal">
           <div class="form-search">
             <label for="procura">Procurar: </label>
-            <input id="filtroInput" name="filtroInput" type="text" placeholder="Procurar..." oninput="filtrarTabela()">
+            <input id="filtroInputMobile" name="filtroInputMobile" type="text" placeholder="Procurar..." oninput="filtrarTabelaMobile()">
           </div>
         </div>        
       </div>
     </form>
 
 
-    <div style="width: 100%; overflow-x: scroll;">
+    <div id="div-table" style="width: 100%; overflow-x: none;">
       <table id="table" class="table table-striped m-auto tabela" style="font-family: poppins;"></table>
     </div>
 

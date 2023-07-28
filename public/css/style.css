@@ -18,6 +18,7 @@ body{font-family: 'Circular',-apple-system,'BlinkMacSystemFont','Roboto','Helvet
 .container-fluid{width: 65%;}
 @media screen and (max-width: 600px) {
     .container-fluid{width: 100%;}
+    .start-100{left: 10%!important;}
 }
 
 /* Footer */

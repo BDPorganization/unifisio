@@ -56,6 +56,7 @@ window.addEventListener("load", async () => {
 
                         if (deleteResponse.excludeItemCart == true) {
                             localStorage.clear();
+                            verificaCart();
                         }
                     } catch (err) {
                         alert(`Ocorreu um erro inesperado!, ${err}`);
@@ -69,7 +70,6 @@ window.addEventListener("load", async () => {
         }
         downloadContrato();
         enviaEmail(name_user, to, idTemplate, token);
-        verificaCart();
     } catch (err) {
         alert(`Ocorreu um erro inesperado!, ${err}`);
         return err;
@@ -78,7 +78,7 @@ window.addEventListener("load", async () => {
 
 //Envia as informações para o servidor do e-mail na AWS
 async function enviaEmail(name_user, to, idTemplate, token) {
-    const urlEmail = 'http://15.229.6.45:3002/codeTemplateMail';
+    const urlEmail = 'https://codemail.onrender.com/codeTemplateMail';
 
     const sendMail = await fetch(urlEmail, {
         method: "POST",

@@ -41,7 +41,7 @@ function gerarCabecalho(container) {
     sala.textContent = "Sala";
     especialidade.textContent = "Especialidade";
     data.textContent = "Data";
-    horario.textContent = "Horario";
+    horario.textContent = "Horário";
     valor.textContent = "Valor";
 
     tr.appendChild(nome);
@@ -96,7 +96,7 @@ function gerarCorpo(container, resultado) {
         tr.appendChild(valor);
         checkboxWrapper.appendChild(checkbox);
         checkboxWrapper.appendChild(checkmark);
-        checkboxWrapper.appendChild(document.createTextNode(' Selecione'));
+        //checkboxWrapper.appendChild(document.createTextNode(' Selecione'));
         tr.appendChild(checkboxWrapper);
         
         tbody.appendChild(tr);
@@ -106,6 +106,34 @@ function gerarCorpo(container, resultado) {
 
 function filtrarTabela() {
     const input = document.getElementById('filtroInput');
+    const termo = input.value.toLowerCase();
+    const tabela = document.getElementById('table');
+    const linhas = tabela.getElementsByTagName('tr');
+  
+    for (let i = 1; i < linhas.length; i++) {
+        const linha = linhas[i];
+        const colunas = linha.getElementsByTagName('td');
+        let correspondencia = false;
+  
+        for (let j = 0; j < colunas.length; j++) {
+            const coluna = colunas[j];
+
+            if (coluna.textContent.toLowerCase().indexOf(termo) > -1) {
+                correspondencia = true;
+                break;
+            }
+        }
+  
+        if (correspondencia) {
+            linha.style.display = '';
+        } else {
+            linha.style.display = 'none';
+        }
+    }
+}
+
+function filtrarTabelaMobile() {
+    const input = document.getElementById('filtroInputMobile');
     const termo = input.value.toLowerCase();
     const tabela = document.getElementById('table');
     const linhas = tabela.getElementsByTagName('tr');

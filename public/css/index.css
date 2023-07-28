@@ -184,7 +184,7 @@ iframe {
     border-radius: 5px;
 }
 
-#filtroInput {
+#filtroInput, #filtroInputMobile {
     width: 60%;
     padding-left: 5px;
     border-radius: 5px;
@@ -364,8 +364,10 @@ iframe {
     }
 
     .form-filtros {
-        width: 95%
+        width: 95%;
     }
 
-    ;
+    #div-table {
+        overflow-x: scroll;
+    }
 }
