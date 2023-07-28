@@ -4,13 +4,13 @@ body {
     font-family: Poppins;
 }
 
-table {
+#tabela-produtos {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
 }
 
-th, td {
+td {
     padding: 5px;
     border: 1px solid #ccc;
     cursor: pointer;
@@ -20,6 +20,8 @@ th {
     background-color: #f2f2f2;
     text-align: center;
     height: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
 }
 
 th div {
@@ -59,4 +61,13 @@ th div {
     display: flex; 
     justify-content: center; 
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+    .carrinho {
+        padding: 2px;
+    }
+    .total {
+        padding: 10px;
+    }
 }

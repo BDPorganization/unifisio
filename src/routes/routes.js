@@ -87,8 +87,12 @@ router.get("/pagAprovado", (req, res) => {
     if (req.query.status == "approved") {
         res.render('pagAprovado');
     } else {
-        res.render('manutencao');
+        res.render('pagReprovado');
     }
+});
+
+router.get("/pagReprovado", (req, res) => {
+    res.render('pagReprovado');
 });
 
 router.get('/uploads/:imageName', (req, res) => {

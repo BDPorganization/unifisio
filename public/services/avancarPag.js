@@ -34,7 +34,7 @@ function criarPagamento() {
 
                 let dadosPagamento = {
                     quantity: 1,
-                    description: "Carrinho Unifísio",
+                    description: "Consultórios Unifísio",
                     price: document.getElementById("valor_total").value
                 };
 

@@ -53,6 +53,10 @@ window.addEventListener("load", async () => {
                             },
                             body: JSON.stringify({ id })
                         });
+
+                        if (deleteResponse.excludeItemCart == true) {
+                            localStorage.clear();
+                        }
                     } catch (err) {
                         alert(`Ocorreu um erro inesperado!, ${err}`);
                         return err;
@@ -65,6 +69,7 @@ window.addEventListener("load", async () => {
         }
         downloadContrato();
         enviaEmail(name_user, to, idTemplate, token);
+        verificaCart();
     } catch (err) {
         alert(`Ocorreu um erro inesperado!, ${err}`);
         return err;

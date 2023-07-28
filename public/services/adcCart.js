@@ -1,5 +1,6 @@
 const botao_adcCart = document.getElementById("adcCart");
 const inputData = document.getElementById('dateTime');
+const modalLogin = document.getElementById('loginModal');
 
 inputData.addEventListener('change', mostrarBotao);
 
@@ -23,7 +24,7 @@ botao_adcCart.addEventListener("click", () => {
                         .then((response) => {
                             if (response.status == 204) {
                                 const formPreencher = document.getElementById('form-preencher');
-                                
+
                                 exibirFormDados();
                                 formPreencher.addEventListener("submit", (event) => {
                                     event.preventDefault();
@@ -83,6 +84,11 @@ function abrirModal(element) {
     element.style.display = "block";
 }
 
+function fecharModal(element) {
+    element.classList.remove("show");
+    element.style.display = "none";
+}
+
 function exibirFormDados() {
     var inputdate = document.getElementById('dateTime').value;
 
@@ -128,21 +134,77 @@ function adcCart() {
             horarios: horarios
         };
 
-        fetch("/addCart", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
+        fetch("/listCart", {
+            method: "GET",
         })
             .then((response) => {
                 return response.json();
             })
-            .then((resultado) => {
-                alert("Incluso no carrinho!");
+            .then((result) => {
+                if (result.listCart == true) {
+                    const cartItems = result.itens;
+                    let itemAlreadyInCart = false;
+
+                    for (let i = 0; i < cartItems.length; i++) {
+                        const element = cartItems[i];
+
+                        for (let j = 0; j < horarios.length; j++) {
+                            const elemento = horarios[j];
+
+                            if (element.pk_sala == pk_sala && element.data_agendada == data_agendada && element.horarios == elemento) {
+                                itemAlreadyInCart = true;
+                                break;
+                            }
+                        }
+
+                        if (itemAlreadyInCart) {
+                            alert("Você não pode incluir itens que já estão no carrinho!");
+                            break;
+                        }
+                    }
+
+                    if (!itemAlreadyInCart) {
+                        fetch("/addCart", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(data),
+                        })
+                            .then((response) => {
+                                return response.json();
+                            })
+                            .then((resultado) => {
+                                alert("Incluso no carrinho!");
+                                verificaCart();
+                            })
+                            .catch((err) => {
+                                alert(`Ocorreu um erro inesperado!, ${err}`);
+                            });
+                    }
+                } else {
+                    fetch("/addCart", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    })
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((resultado) => {
+                            alert("Incluso no carrinho!");
+                            verificaCart();
+                        })
+                        .catch((err) => {
+                            alert(`Ocorreu um erro inesperado!, ${err}`);
+                        });
+                }
             })
             .catch((err) => {
-                alert(`Ocorreu um erro inesperado!, ${err}`);
+                alert("Ocorreu um erro inesperado!", err);
+                return err;
             });
     } catch (err) {
         return err;

@@ -48,6 +48,8 @@ function verificaCart() {
 
                     span.style.visibility = "";
                     span.innerHTML = quantidade;
+
+                    return resultado;
                 }
             })
     } catch (err) {

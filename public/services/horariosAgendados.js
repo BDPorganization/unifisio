@@ -73,7 +73,7 @@ function gerarCorpo(container, resultado) {
         nome.textContent = resultado.dados[i]["nome_medicos"];
         sala.textContent = resultado.dados[i]["nome_sala"];
         especialidade.textContent = resultado.dados[i]["especialidade"];
-        data.textContent = new Date (resultado.dados[i]["datas"]).toLocaleDateString('pt-BR')
+        data.textContent = new Date (resultado.dados[i]["datas"]).toLocaleDateString('pt-BR');
         horario.textContent = resultado.dados[i]["hora"];
         valor.textContent = resultado.dados[i]["valor"].toLocaleString("pt-BR", {
             style: "currency",

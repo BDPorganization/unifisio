@@ -33,13 +33,14 @@ function construirTabela(dadosDoBanco) {
     row.innerHTML = `
           <td>${dado.nome}</td>
           <td>${dado.valor.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-      useGrouping: true
-    })}
+            style: "currency",
+            currency: "BRL",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+            useGrouping: true
+          })}
           </td>
+          <td>${new Date (dado.data_agendada).toLocaleDateString('pt-BR')}</td>
           <td>${dado.horarios}</td>
           <td onclick="onClickBtExcluirItens(${dado.pk_cart})"><i class="fa-solid fa-trash"></i></td>
       `;

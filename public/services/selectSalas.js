@@ -11,12 +11,13 @@ date.addEventListener("change", function() {
             body: JSON.stringify({ dateNew, sala })
         })
         .then((response) => {
+            if (response.status == 204) {
+                alert("Nenhum horário encontrado para o dia selecionado!");
+                return false;
+            }
             return response.json();
         })
         .then((resultado) => {
-            if (resultado.horas == false) {
-                alert('Nenhum horário encontrado para o dia selecionado');
-            }
             createCheckboxesFromJSON(resultado.datas);
         });
     } catch (err) {

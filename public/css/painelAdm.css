@@ -62,4 +62,9 @@
 @media screen and (max-width: 600px) {
     #container {width: 100%; padding: 80px 0px;}
     .card {width: 80%; margin: 20px 0px;}
+    .top-div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }

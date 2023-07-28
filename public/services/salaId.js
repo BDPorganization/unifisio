@@ -59,9 +59,11 @@ function bloquearDiaEspecifico() {
                 inputDate.value = "";
                 alert("Este dia está bloqueado!");
                 div_main.style.display = "none";
+                document.getElementById("adcCart").style.display = "none";
                 return;
             } else {
                 div_main.style.display = "";
+                document.getElementById("adcCart").style.display = "";
             }
         }
     }
