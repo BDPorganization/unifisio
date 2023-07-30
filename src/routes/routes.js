@@ -1,5 +1,5 @@
 const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala, editarSala, selectSalasByPk, bloquearDia } = require("../controller/userController.js");
-const { selectHours, checaDados, agendaDados, agendamentos, horariosAgenda, excluirAgendamento} = require("../controller/agendController.js");
+const { selectHours, checaDados, agendaDados, agendamentos, horariosAgenda, excluirAgendamento, checaSalasAgendadas } = require("../controller/agendController.js");
 const { upload } = require("../../public/services/multer.js");
 const { PDFDocument, StandardFonts } = require('pdf-lib');
 const FileController = require("../controller/fileController.js");
@@ -33,6 +33,7 @@ router.post("/editarSala", editarSala);
 router.post("/selectSalas", selectSalasByPk);
 router.post("/bloquearDia", bloquearDia);
 router.post("/excluirAgendamento", excluirAgendamento);
+router.post("/checarSalasAgendadas", checaSalasAgendadas)
 
 router.get('/', (req, res) => {
     res.render('index');

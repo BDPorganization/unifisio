@@ -74,13 +74,9 @@ async function deletarConta(pk_apagar) {
     const client = await database.connect();
 
     try {
-        const sql = 'DELETE FROM datas_agendadas WHERE fk_medicos_pk_medicos = $1;'
+        const sql = 'DELETE FROM datas_agendadas, dados_pessoais, medicos USING medicos WHERE datas_agendadas.fk_medicos_pk_medicos = medicos.pk_medicos AND dados_pessoais.fk_medicos_pk_medicos = medicos.pk_medicos AND medicos.pk_medicos = $1;'
         const values = [pk_apagar.pk_medicos];
-        await client.query(sql, values);
-
-        const sql2 = 'DELETE FROM medicos WHERE pk_medicos = $1;'
-        const values2 = [pk_apagar.pk_medicos];
-        return await client.query(sql2, values2);
+        return await client.query(sql, values);
     } catch (err) {
         return err;
     } finally {

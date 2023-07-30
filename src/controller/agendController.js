@@ -164,3 +164,32 @@ module.exports.excluirAgendamento = async (req, res) => {
         return res.status(400).send('Ocorreu um erro ao ver agendamentos já realizados');
     }
 };
+
+module.exports.checaSalasAgendadas = async (req, res) => {
+    try {
+        let dados = {
+            data: req.body.data,
+            horarios: req.body.horarios,
+            pk_salas: req.body.pk_sala
+        }
+        console.log(dados)
+        dbAgenda.checaSalas(dados)
+        .then((resultado) => {
+            console.log(resultado.rows)
+            if(resultado.rowCount > 0) {
+                return res.status(401).json({
+                    checaSalasAgendadas: true,
+                });
+            } else {
+                return res.status(200).json({
+                    checaSalasAgendadas: false
+                });
+            }
+        })
+        .catch((err) => {
+            return res.status(400).send(`Ocorreu um erro ao trazer agendamentos, ${err}`)
+        });
+    }catch(err) {
+        return res.status(400).send('Ocorreu um erro ao checar o agendamento');
+    }
+};

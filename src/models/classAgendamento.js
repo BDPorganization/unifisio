@@ -83,11 +83,26 @@ async function excluirAgendamento(pk_agenda) {
     }
 }
 
+async function checaSalas(dados) {
+    const client = await database.connect();
+    
+    try {
+        const sql = 'SELECT * FROM datas_agendadas ';   
+        //const values = [dados.data, dados.horarios, dados.pk_salas];
+        return await client.query(sql);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = { 
     returnHours,
     checaDados,
     agendaDados,
     agendamentos,
     horariosAgendados,
-    excluirAgendamento
+    excluirAgendamento,
+    checaSalas
 }; 
