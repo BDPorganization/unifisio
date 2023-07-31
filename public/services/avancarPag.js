@@ -60,12 +60,15 @@ function criarPagamento() {
                             return response.json();
                         })
                         .then((resultado) => {
-                            const resp = resultado.listChecaSalas[0];
                             let dataAgendada = false;
 
-                            if (resultado.checaSalasAgendadas == true) {
-                                appendAlert(`O horário ${resp.hora} do dia ${new Date(resp.datas).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} não está mais disponível, favor retirar do carrinho.`, 'danger')
-                                return dataAgendada = true;
+                            if (resultado.listChecaSalas) {
+                                const resp = resultado.listChecaSalas[0];
+
+                                if (resultado.checaSalasAgendadas == true) {
+                                    appendAlert(`O horário ${resp.hora} do dia ${new Date(resp.datas).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} não está mais disponível, favor retirar do carrinho.`, 'danger')
+                                    return dataAgendada = true;
+                                }
                             }
 
                             if (dataAgendada == false) {
@@ -97,12 +100,12 @@ function criarPagamento() {
 
 
 function converterParaFormatoISO(dataInput) {
-  const [ano, mes, dia] = dataInput.split('-');
-  const dataOriginal = new Date(Date.UTC(ano, mes - 1, dia));
+    const [ano, mes, dia] = dataInput.split('-');
+    const dataOriginal = new Date(Date.UTC(ano, mes - 1, dia));
 
-  dataOriginal.setUTCHours(3, 0, 0, 0);
+    dataOriginal.setUTCHours(3, 0, 0, 0);
 
-  const dataConvertida = dataOriginal.toISOString();
+    const dataConvertida = dataOriginal.toISOString();
 
-  return dataConvertida;
+    return dataConvertida;
 }

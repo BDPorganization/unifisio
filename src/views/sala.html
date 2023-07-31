@@ -1,146 +1,156 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon" />
     <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async></script>
-    <script src="/public/services/funcoesGerais.js" async></script>
     <script src="/public/services/salaId.js" defer></script>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
     <!-- Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300&family=Poppins:wght@200;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300&family=Poppins:wght@200;800&display=swap"
+        rel="stylesheet">
     <!-- Boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- Css externo -->
     <link rel="stylesheet" href="../../public/css/salas.css">
     <title>Agende seu atendimento - Unifisio</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
 <body>
     <%- include('./includes/nav.html'); %>
 
-    <div class="d-flex justify-content-center w-100 mt-2">
-        <div class="liveAlertPlaceholder w-75"></div>
-    </div>
+        <div style="display: none;" id="display">
+            <div class="div-interna-text">
+                <div class="div-texto-sala">
+                    <p style="color: #f05e22; font-weight: 100; text-align: center;">Sobre a acomodação</p>
+                    <h4 class="titulo" id="product-description"></h4>
 
-    <div style="display: none;" id="display">
-        <div class="div-interna-text">
-            <div class="div-texto-sala">
-                <p style="color: #f05e22; font-weight: 100; text-align: center;">Sobre a acomodação</p>
-                <h4 class="titulo" id="product-description"></h4>
-               
-                <input type="hidden" value="" id="unit-price">
-                <input type="hidden" value="1" id="quantity">
-                <input type="hidden" value="<%= postId %>" id="idSala">
-    
-                <p style="font-weight: 100; font-family: nunito;" id="descricao_longa"></p>
-    
-                <h1 class="titulo" style="color: #f05e23;" id="preco"></h1>
-    
-                <div class="info-salas-card">
-                    <div>
-                        <p><i class="fa-solid fa-wifi"></i> Wi-fi</p>
-                        <p><i class="fa-solid fa-snowflake"></i> Ar-condicionado</p>
-                        <p><i class="fa-solid fa-square-parking"></i> Estacionamento</p>
-                    </div>
-                    <div>
-                        <p><i class="fa-solid fa-restroom"></i> Banheiro</p>
-                        <p><i class="fa-solid fa-faucet-drip"></i> Água corrente</p>
-                        <p><i class="fa-solid fa-trash"></i> Lixeira hospitalar</p>
+                    <input type="hidden" value="" id="unit-price">
+                    <input type="hidden" value="1" id="quantity">
+                    <input type="hidden" value="<%= postId %>" id="idSala">
+
+                    <p style="font-weight: 100; font-family: nunito;" id="descricao_longa"></p>
+
+                    <h1 class="titulo" style="color: #f05e23;" id="preco"></h1>
+
+                    <div class="info-salas-card">
+                        <div>
+                            <p><i class="fa-solid fa-wifi"></i> Wi-fi</p>
+                            <p><i class="fa-solid fa-snowflake"></i> Ar-condicionado</p>
+                            <p><i class="fa-solid fa-square-parking"></i> Estacionamento</p>
+                        </div>
+                        <div>
+                            <p><i class="fa-solid fa-restroom"></i> Banheiro</p>
+                            <p><i class="fa-solid fa-faucet-drip"></i> Água corrente</p>
+                            <p><i class="fa-solid fa-trash"></i> Lixeira hospitalar</p>
+                        </div>
                     </div>
                 </div>
+                <div class="imagem-salas">
+                    <img id="imgUrl" src="" class="w-100 h-100" alt="IMG-SALA">
+                </div>
+
             </div>
-            <div class="imagem-salas">
-                <img id="imgUrl" src="" class="w-100 h-100" alt="IMG-SALA">
-            </div>
-            
-        </div>
-    
-        <h4 class="titulo">Pré-agende seu atendimento</h4>
-    
-        <div class="div-externa-form">
-            <div class="div-interna-form">
-                <label for="data_escolhida" class="form-label w-100" style="font-family: nunito;">Selecione uma data</label>
-                <input type="date" id="dateTime" name="dia" class="form-control w-100">
-                <input type="hidden" id="pk_sala" name="pk_sala" value="<%= postId %>">
-            </div>
-            <div id="div-main">
-                <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
-                <div id="containerId" class="d-flex flex-wrap"></div>
-            </div>
-            <div class="text-end space-buttons">
-                <button id="adcCart" class="btn-voltar" style="display: none;">
-                    Adicionar ao carrinho
-                </button>
-            </div>
-            <div id="formDadosPessoais" class="row h-75 mb-5" style="display: none;">
-                <form id="form-preencher">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome completo: </label>
-                            <input type="text" class="form-control" id="nome" name="nome" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="data" class="form-label">Data de Nascimento: </label>
-                            <input type="date" class="form-control" id="data" name="data_nascimento" required> 
-                        </div>
-                        <div class="mb-3">
-                            <label for="cpf" class="form-label">CPF: </label>
-                            <input type="text" class="form-control" id="cpf" name="cpf" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="cep" class="form-label">Cep: </label>
-                            <input type="text" class="form-control" id="cep" name="cep" size="10" maxlength="9" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="rua" class="form-label">Logradouro: </label>
-                            <input type="text" class="form-control" id="rua" name="rua" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="numero" class="form-label">Numero: </label>
-                            <input type="text" class="form-control" id="numero" name="numero" required>
-                        </div>
-                        <div class="text-end">
-                            <button 
-                                name="btn-cadastro" 
-                                type="submit" 
-                                class="btn-continua"
-                                id="btn-preencher">
-                                Continuar
-                            </button>
-                        </div>
+
+            <h4 class="titulo">Pré-agende seu atendimento</h4>
+
+            <div class="div-externa-form">
+                <div class="div-interna-form">
+                    <label for="data_escolhida" class="form-label w-100" style="font-family: nunito;">Selecione uma
+                        data</label>
+                    <input type="date" id="dateTime" name="dia" class="form-control w-100">
+                    <input type="hidden" id="pk_sala" name="pk_sala" value="<%= postId %>">
+                </div>
+
+                <div class="d-flex justify-content-center w-100 mt-2">
+                    <div class="liveAlertPlaceholder w-75"></div>
+                </div>
+                <div id="div-main">
+                    <label id="label-hora" for="exampleInputEmail1" class="form-label w-100"></label>
+                    <div id="containerId" class="d-flex flex-wrap"></div>
+                </div>
+                <div class="text-end space-buttons">
+                    <button id="adcCart" class="btn-voltar" style="display: none;">
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+                <div id="formDadosPessoais" class="row h-75 mb-5" style="display: none;">
+                    <form id="form-preencher">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome completo: </label>
+                                <input type="text" class="form-control" id="nome" name="nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="data" class="form-label">Data de Nascimento: </label>
+                                <input type="date" class="form-control" id="data" name="data_nascimento" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cpf" class="form-label">CPF: </label>
+                                <input type="text" class="form-control" id="cpf" name="cpf" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cep" class="form-label">Cep: </label>
+                                <input type="text" class="form-control" id="cep" name="cep" size="10" maxlength="9"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="rua" class="form-label">Logradouro: </label>
+                                <input type="text" class="form-control" id="rua" name="rua" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="numero" class="form-label">Numero: </label>
+                                <input type="text" class="form-control" id="numero" name="numero" required>
+                            </div>
+                            <div class="text-end">
+                                <button name="btn-cadastro" type="submit" class="btn-continua" id="btn-preencher">
+                                    Continuar
+                                </button>
+                            </div>
                     </form>
                 </div>
-            </div>      
+            </div>
         </div>
         <div class="div-imagem-final">
             <img src="../../public/img/bannerSalas.png" alt="">
         </div>
-        
-        <%- include('./includes/footer.html'); %>
-    </div>
-    
-    <%- include('./includes/modalLogin.html'); %>
-    <%- include('./includes/modalConfExclusao.html'); %>
-    <%- include('./includes/modalAdmin.html'); %>
-    <%- include('./includes/modalLogout.html'); %>
-    <%- include('./includes/modalCadastro.html'); %>
 
-    <!-- Script FontAwesome -->
-    <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
-    <!-- Script Boostrap-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-    <!-- SCRIPT JS-->
-    <script src="/public/services/selectSalas.js"></script>
-    <script src="/public/services/acoesBanco.js"></script>
-    <script src="/public/services/adcCart.js"></script>
+        <%- include('./includes/footer.html'); %>
+            </div>
+
+            <%- include('./includes/modalLogin.html'); %>
+                <%- include('./includes/modalConfExclusao.html'); %>
+                    <%- include('./includes/modalAdmin.html'); %>
+                        <%- include('./includes/modalLogout.html'); %>
+                            <%- include('./includes/modalCadastro.html'); %>
+
+                                <!-- Script FontAwesome -->
+                                <script src="https://kit.fontawesome.com/a9ac96b7ba.js"
+                                    crossorigin="anonymous"></script>
+                                <!-- Script Boostrap-->
+                                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+                                    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+                                    crossorigin="anonymous"></script>
+                                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+                                    integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+                                    crossorigin="anonymous"></script>
+                                <!-- SCRIPT JS-->
+                                <script src="/public/services/selectSalas.js"></script>
+                                <script src="/public/services/acoesBanco.js"></script>
+                                <script src="/public/services/adcCart.js"></script>
+                                <script src="/public/services/funcoesGerais.js"></script>
+
 </body>
+
 </html>
