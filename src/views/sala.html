@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/public/img/logoSimples_png.png" type="image/x-icon"/>
     <script Referrer-Policy: no-referrer-when-downgrade src="https://accounts.google.com/gsi/client" async></script>
-    <script src="/public/services/verificaLogin.js" async></script>
+    <script src="/public/services/funcoesGerais.js" async></script>
     <script src="/public/services/salaId.js" defer></script>
     <!-- Nunito -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +25,10 @@
 </head>
 <body>
     <%- include('./includes/nav.html'); %>
+
+    <div class="d-flex justify-content-center w-100 mt-2">
+        <div class="liveAlertPlaceholder w-75"></div>
+    </div>
 
     <div style="display: none;" id="display">
         <div class="div-interna-text">

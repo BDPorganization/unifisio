@@ -18,7 +18,7 @@ window.addEventListener("load", ()=> {
                 }
                 container.appendChild(fragment);
             } else {
-                alert("Nenhuma sala encontrada!");
+                appendAlert("Nenhuma sala encontrada!", 'warning');
                 return;
             }
         })

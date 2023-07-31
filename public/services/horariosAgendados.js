@@ -11,7 +11,7 @@ window.addEventListener("load", ()=> {
                 gerarTabela(resultado);
                 
             } else {
-                alert("Nenhum agendamento encontrado!");
+                appendAlert("Nenhum agendamento encontrado!", 'warning');
                 return;
             }
         });
@@ -73,7 +73,7 @@ function gerarCorpo(container, resultado) {
         nome.textContent = resultado.dados[i]["nome_medicos"];
         sala.textContent = resultado.dados[i]["nome_sala"];
         especialidade.textContent = resultado.dados[i]["especialidade"];
-        data.textContent = new Date (resultado.dados[i]["datas"]).toLocaleDateString('pt-BR');
+        data.textContent = new Date (resultado.dados[i]["datas"]).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
         horario.textContent = resultado.dados[i]["hora"];
         valor.textContent = resultado.dados[i]["valor"].toLocaleString("pt-BR", {
             style: "currency",
@@ -96,7 +96,6 @@ function gerarCorpo(container, resultado) {
         tr.appendChild(valor);
         checkboxWrapper.appendChild(checkbox);
         checkboxWrapper.appendChild(checkmark);
-        //checkboxWrapper.appendChild(document.createTextNode(' Selecione'));
         tr.appendChild(checkboxWrapper);
         
         tbody.appendChild(tr);
@@ -207,7 +206,7 @@ function cancelarAgendamento() {
                 if (resultado.excluirAgendamento == true) {
                     location.reload();
                 } else {
-                    alert("Erro na exclusão do agendamento, tente novamente mais tarde!");
+                    appendAlert("Erro na exclusão do agendamento, tente novamente mais tarde!", 'danger');
                     return;
                 }
             });

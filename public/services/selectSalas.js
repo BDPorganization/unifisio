@@ -12,7 +12,7 @@ date.addEventListener("change", function() {
         })
         .then((response) => {
             if (response.status == 204) {
-                alert("Nenhum horário encontrado para o dia selecionado!");
+                appendAlert("Nenhum horário encontrado para o dia selecionado!", 'warning');
                 return false;
             }
             return response.json();

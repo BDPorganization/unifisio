@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
         if (response.ok) {
           return response.json();
         } else if (response.status == 401) {
-          alert("Faça login para visualizar os produtos no carrinho!");
+          appendAlert("Faça login para visualizar os produtos no carrinho!", 'warning');
         }
       })
       .then((resultado) => {
@@ -40,7 +40,7 @@ function construirTabela(dadosDoBanco) {
             useGrouping: true
           })}
           </td>
-          <td>${new Date (dado.data_agendada).toLocaleDateString('pt-BR')}</td>
+          <td>${new Date (dado.data_agendada).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</td>
           <td>${dado.horarios}</td>
           <td onclick="onClickBtExcluirItens(${dado.pk_cart})"><i class="fa-solid fa-trash"></i></td>
       `;
@@ -80,7 +80,7 @@ function onClickBtExcluirAllItens() {
         if (resultado.excludeAllCart == true) {
           location.reload();
         } else {
-          alert("Erro ao remover itens do carrinho, tente novamente!");
+          appendAlert("Erro ao remover itens do carrinho, tente novamente!", 'danger');
           return;
         }
       });
@@ -103,7 +103,7 @@ function onClickBtExcluirItens(id) {
         if (resultado.excludeItemCart == true) {
           location.reload();
         } else {
-          alert("Erro ao remover itens do carrinho, tente novamente!");
+          appendAlert("Erro ao remover itens do carrinho, tente novamente!", 'danger');
           return;
         }
       });

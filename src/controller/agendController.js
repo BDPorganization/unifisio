@@ -172,13 +172,13 @@ module.exports.checaSalasAgendadas = async (req, res) => {
             horarios: req.body.horarios,
             pk_salas: req.body.pk_sala
         }
-        console.log(dados)
+
         dbAgenda.checaSalas(dados)
         .then((resultado) => {
-            console.log(resultado.rows)
             if(resultado.rowCount > 0) {
                 return res.status(401).json({
                     checaSalasAgendadas: true,
+                    listChecaSalas: resultado.rows,
                 });
             } else {
                 return res.status(200).json({

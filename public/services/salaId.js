@@ -57,7 +57,7 @@ function bloquearDiaEspecifico() {
     
             if (dataSelecionada.toISOString().split('T')[0] === diaBloqueado.toISOString().split('T')[0]) {
                 inputDate.value = "";
-                alert("Este dia está bloqueado!");
+                appendAlert("Este dia está bloqueado!", 'danger');
                 div_main.style.display = "none";
                 document.getElementById("adcCart").style.display = "none";
                 return;

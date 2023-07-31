@@ -87,9 +87,9 @@ async function checaSalas(dados) {
     const client = await database.connect();
     
     try {
-        const sql = 'SELECT * FROM datas_agendadas ';   
-        //const values = [dados.data, dados.horarios, dados.pk_salas];
-        return await client.query(sql);
+        const sql = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND hora = $2 AND fk_salas_pk_salas = $3';   
+        const values = [dados.data, dados.horarios, dados.pk_salas];
+        return await client.query(sql, values);
     } catch (err) {
         return err;
     } finally {

@@ -64,7 +64,7 @@ botao_adcCart.addEventListener("click", () => {
                                 let inputdate = document.getElementById('dateTime').value;
 
                                 if (inputdate == "") {
-                                    alert('Escolha uma data para continuar');
+                                    appendAlert('Escolha uma data para continuar', 'warning')
                                 } else {
                                     adcCart();
                                 }
@@ -93,7 +93,7 @@ function exibirFormDados() {
     var inputdate = document.getElementById('dateTime').value;
 
     if (inputdate == "") {
-        alert('Escolha uma data para continuar');
+        appendAlert('Escolha uma data para continuar', 'danger');
     } else {
         let form = document.getElementById('formDadosPessoais');
 
@@ -158,7 +158,7 @@ function adcCart() {
                         }
 
                         if (itemAlreadyInCart) {
-                            alert("Você não pode incluir itens que já estão no carrinho!");
+                            appendAlert('Você não pode incluir itens que já estão no carrinho!', 'danger');
                             break;
                         }
                     }
@@ -175,7 +175,7 @@ function adcCart() {
                                 return response.json();
                             })
                             .then((resultado) => {
-                                alert("Incluso no carrinho!");
+                                appendAlert('Incluso no carrinho!', 'success');
                                 verificaCart();
                             })
                             .catch((err) => {
@@ -194,7 +194,7 @@ function adcCart() {
                             return response.json();
                         })
                         .then((resultado) => {
-                            alert("Incluso no carrinho!");
+                            appendAlert('Incluso no carrinho!', 'success');
                             verificaCart();
                         })
                         .catch((err) => {

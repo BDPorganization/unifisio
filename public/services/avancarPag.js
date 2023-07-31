@@ -42,7 +42,6 @@ function criarPagamento() {
 
                 for (let j = 0; j < resultado.itens.length; j++) {
                     const elemento = resultado.itens[j];
-                    console.log(elemento.data_agendada)
                     let dataFormatada = converterParaFormatoISO(elemento.data_agendada);
                     let dadosSalas = {
                         data: dataFormatada,
@@ -61,27 +60,33 @@ function criarPagamento() {
                             return response.json();
                         })
                         .then((resultado) => {
+                            const resp = resultado.listChecaSalas[0];
+                            let dataAgendada = false;
+
                             if (resultado.checaSalasAgendadas == true) {
-                                alert("Horários indisponíveis no momento!");
-                                return;
-                            }// } else {
-                            //     fetch("/pagamento", {
-                            //         method: "POST",
-                            //         headers: {
-                            //             "Content-Type": "application/json",
-                            //         },
-                            //         body: JSON.stringify(dadosPagamento),
-                            //     })
-                            //         .then((response) => {
-                            //             return response.json();
-                            //         })
-                            //         .then((pagamento) => {
-                            //             window.location.href = pagamento.init_point;
-                            //         })
-                            //         .catch((err) => {
-                            //             alert(`Ocorreu um erro inesperado!, ${err}`);
-                            //         });
-                            // }
+                                appendAlert(`O horário ${resp.hora} do dia ${new Date(resp.datas).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} não está mais disponível, favor retirar do carrinho.`, 'danger')
+                                return dataAgendada = true;
+                            }
+
+                            if (dataAgendada == false) {
+                                fetch("/pagamento", {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify(dadosPagamento),
+                                })
+                                    .then((response) => {
+                                        return response.json();
+                                    })
+                                    .then((pagamento) => {
+                                        window.location.href = pagamento.init_point;
+                                    })
+                                    .catch((err) => {
+                                        alert(`Ocorreu um erro inesperado!, ${err}`);
+                                        return;
+                                    });
+                            }
                         })
                 }
             });

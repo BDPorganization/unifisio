@@ -12,7 +12,7 @@ window.addEventListener("load", ()=> {
                     gerarCard(resultado.dados[i]);
                 }
             } else {
-                alert("Nenhum agendamento encontrado!");
+                appendAlert("Nenhum agendamento encontrado!", 'warning');
             }
         })
     } catch (err) {
