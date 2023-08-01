@@ -21,6 +21,8 @@ formLogin.addEventListener("submit", (event) => {
                 window.location.reload(true);
             } else if (response.status == 404) {
                 alert("Usuário ou senha incorretas!");
+            } else if (response.status == 429) {
+                alert("Muitas tentativas de login. Tente novamente após 15 minutos.");
             } else {
                 alert("Ocorreu um erro no sistema, por favor tente mais tarde!");
             }

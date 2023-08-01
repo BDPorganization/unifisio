@@ -2,6 +2,8 @@ const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados
 const { selectHours, checaDados, agendaDados, agendamentos, horariosAgenda, excluirAgendamento, checaSalasAgendadas } = require("../controller/agendController.js");
 const { upload } = require("../../public/services/multer.js");
 const { PDFDocument, StandardFonts } = require('pdf-lib');
+const { registrarAtividade, registrarAtividadeGoogle, registrarAtividadeCadastro } = require('../middlewares/logger.js')
+const { loginRateLimit } = require('../middlewares/loginLimit.js')
 const FileController = require("../controller/fileController.js");
 const router = require("express").Router();
 const path = require('path');
@@ -19,9 +21,9 @@ const verificarAutenticacao = (req, res, next) => {
     }
 };
 
-router.post("/loginGoogle", loginGoogle);
-router.post("/loginDB", login);
-router.post("/cadastro", cadastro);
+router.post("/loginGoogle", [ registrarAtividadeGoogle, loginGoogle ]);
+router.post("/loginDB", [ registrarAtividade, loginRateLimit, login ]);
+router.post("/cadastro", [ registrarAtividadeCadastro, cadastro ]);
 router.post("/preencher_dados", preencherDados);
 router.post("/filtroData", selectHours);
 router.post("/checarDados", checaDados);
