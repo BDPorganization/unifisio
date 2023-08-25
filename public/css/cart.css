@@ -1,34 +1,35 @@
 @import './style.css';
-
 body {
     font-family: Poppins;
 }
-
 #tabela-produtos {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
 }
-
 td {
     padding: 5px;
     border: 1px solid #ccc;
     cursor: pointer;
 }
-
-th {
-    background-color: #f2f2f2;
-    text-align: center;
-    height: 10px;
-    margin: 10px;
-    border: 1px solid #ccc;
+.thead{
+    text-align: start;
+    color: #fff;
 }
-
-th div {
-    display: grid;
-    justify-content: space-around;
+.thead-center{
+    text-align: center; color: #fff;
 }
-
+.container{
+    border: 1px solid #DDDDDD;
+    border-radius: 20px;
+    padding: 15px;
+}
+h4{
+    width: 100%;
+    font-weight: 800;
+    font-family:'poppins';
+    color:#000;
+}
 .carrinho {
     margin-top: 2%;
     border: 1px solid #ccc;
@@ -38,11 +39,10 @@ th div {
     box-shadow: 3px 3px 5px #ccc;
     position: relative;
 }
-
 .carrinho a {
     border: none;
     border-radius: 10px;
-    background-color: #f05e22;
+    background-color: #F05E22;
     font-weight: 600;
     font-size: 14px;
     padding: 5px 10px;
@@ -50,19 +50,16 @@ th div {
     text-decoration: none;
     color: #000;
 }
-
 .carrinho a:hover {
     background-color: #000;
     color: #ccc!important;
     cursor: pointer;
 }
-
 .space-buttons{
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
-
 @media screen and (max-width: 600px) {
     .carrinho {
         padding: 2px;

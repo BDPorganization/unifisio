@@ -8,43 +8,78 @@ window.addEventListener("load", () => {
           return response.json();
         } else if (response.status == 401) {
           appendAlert("Faça login para visualizar os produtos no carrinho!", 'warning');
+          return false;
         }
       })
       .then((resultado) => {
         if (resultado) {
           construirTabela(resultado.itens);
           calcTotal(resultado.itens);
+        } else if (resultado == undefined) {
+          console.log(resultado)
+          appendAlert("Adicione produtos para visualizar seu carrinho!", 'warning');
         }
-      })
+      });
   } catch (err) {
     return err;
   }
 });
 
 function construirTabela(dadosDoBanco) {
-  const tabela = document.getElementById('tabela-produtos');
-  const tbody = tabela.getElementsByTagName('tbody')[0];
-
+  const tbody = document.getElementById('tbody');
+  console.log(dadosDoBanco);
   tbody.innerHTML = '';
 
   dadosDoBanco.forEach(dado => {
-    const row = document.createElement('tr');
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td");
+    const h5 = document.createElement("h5");
 
-    row.innerHTML = `
-          <td>${dado.nome}</td>
-          <td>${dado.valor.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-            useGrouping: true
-          })}
-          </td>
-          <td>${new Date (dado.data_agendada).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</td>
-          <td>${dado.horarios}</td>
-          <td onclick="onClickBtExcluirItens(${dado.pk_cart})"><i class="fa-solid fa-trash"></i></td>
-      `;
-    tbody.appendChild(row);
+    h5.textContent = dado.nome;
+
+    const div = document.createElement("div");
+    div.classList.add("d-flex", "flex-wrap", "w-100");
+
+    const p1 = document.createElement("p");
+    p1.style.paddingTop = "5px";
+    p1.textContent = "Horário:";
+
+    const p2 = document.createElement("p");
+    p2.style.borderRadius = "5px";
+    p2.style.backgroundColor = "#F3F3F3";
+    p2.style.padding = "3px";
+    p2.style.margin = "5px";
+    p2.textContent = dado.horarios;
+
+    div.appendChild(p1);
+    div.appendChild(p2);
+
+    td1.appendChild(h5);
+    td1.appendChild(div);
+
+    const td2 = document.createElement("td");
+    td2.style.width = "15%";
+    td2.style.padding = "40px 0px";
+    td2.style.textAlign = "center";
+    td2.textContent = new Date(dado.data_agendada).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+
+    const td3 = document.createElement("td");
+    td3.style.width = "15%";
+    td3.style.padding = "40px 0px";
+    td3.style.textAlign = "center";
+    td3.textContent = dado.valor.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      useGrouping: true
+    });
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+
+    tbody.appendChild(tr);
   });
 }
 
