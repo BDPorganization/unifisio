@@ -150,7 +150,7 @@ module.exports.preencherDados = async (req, res) => {
         }
         dbMedicos.preencher_dados(dadosUser)
             .then(() => {
-                return res.status(200).json({ preenchido: true });
+                return res.status(201).json({ preenchido: true });
             })
             .catch((err) => {
                 return res.status(400).json({ preenchido: false });
@@ -212,7 +212,7 @@ module.exports.adcSala = async (req, res) => {
         dbMedicos.adcSalas(adcSala)
             .then((response) => {
                 if (response.rowCount > 0) {
-                    return res.status(200).json({
+                    return res.status(201).json({
                         salvarSala: true,
                     });
                 } else {
@@ -242,7 +242,7 @@ module.exports.checarSalasAdmin = async (req, res) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro ao adicionar a sala');
+        return res.status(401).send('Ocorreu um erro listar salas');
     }
 };
 
@@ -265,7 +265,7 @@ module.exports.excluirSala = async (req, res) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
+        return res.status(401).send('Ocorreu um erro ao excluir sala');
     }
 };
 
@@ -292,7 +292,7 @@ module.exports.editarSala = async (req, res) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro ao deletar a conta do usuário');
+        return res.status(401).send('Ocorreu um erro ao editar sala');
     }
 };
 
@@ -351,6 +351,67 @@ module.exports.bloquearDia = async (req, res) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro ao adicionar a sala');
+        return res.status(401).send('Ocorreu um erro ao bloquear dia');
+    }
+};
+
+module.exports.consultaDadosContrato = async (req, res, next) => {
+    try {
+        let dados = {
+            pk_medicos: req.session.user.pk_medicos
+        }
+
+        dbMedicos.consultaUsuario(dados)
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    req.rows = response.rows;
+                    next();
+                }
+            });
+    } catch (err) {
+        return res.status(401).send('Ocorreu um erro ao consultar CPF');
+    }
+};
+
+module.exports.diasBloqueados = async (req, res) => {
+    try {
+        dbMedicos.selectDiasBloqueados()
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(200).json({
+                        diasBloqueados: true,
+                        dados: response.rows
+                    });
+                } else {
+                    return res.status(404).json({
+                        diasBloqueados: false,
+                    });
+                }
+            });
+    } catch (err) {
+        return res.status(401).send('Ocorreu um erro ao consultar CPF');
+    }
+};
+
+module.exports.excluirDiaBloqueado = async (req, res) => {
+    try {
+        let dados = {
+            pk_dias_indisponiveis: req.body.pk_dias_indisponiveis
+        }
+
+        dbMedicos.excluirDiaBloqueado(dados)
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(200).json({
+                        excluirDiaBloqueado: true,
+                    });
+                } else {
+                    return res.status(404).json({
+                        excluirDiaBloqueado: false,
+                    });
+                }
+            });
+    } catch (err) {
+        return res.status(401).send('Ocorreu um erro ao consultar CPF');
     }
 };

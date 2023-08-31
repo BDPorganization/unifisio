@@ -167,7 +167,7 @@ async function selectDiasBloqueados() {
     const client = await database.connect();
 
     try {
-        const sql = 'SELECT dias FROM dias_indisponiveis;'
+        const sql = 'SELECT * FROM dias_indisponiveis;'
         return await client.query(sql);
     } catch (err) {
         return err;
@@ -190,6 +190,35 @@ async function bloquearDiaSelecionado(blockDay) {
     }
 }
 
+async function consultaUsuario(dados) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'SELECT * FROM dados_pessoais WHERE fk_medicos_pk_medicos = $1'
+        const values = [dados.pk_medicos];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
+async function excluirDiaBloqueado(dados) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'DELETE FROM dias_indisponiveis WHERE pk_dias_indisponiveis = $1;'
+        const values = [dados.pk_dias_indisponiveis];
+        return await client.query(sql, values);
+
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = { 
     login,
     cadastro,
@@ -203,5 +232,7 @@ module.exports = {
     editarSalas,
     selectSalas,
     bloquearDiaSelecionado,
-    selectDiasBloqueados
+    selectDiasBloqueados,
+    consultaUsuario,
+    excluirDiaBloqueado
 }; 

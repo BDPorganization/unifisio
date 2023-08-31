@@ -39,7 +39,10 @@
                 <i class="fa-solid fa-trash-can"></i> <span class="text-mobile">Excluir sala</span>
             </a>
             <a class="btn" type="button" data-bs-toggle="modal" data-bs-target="#modalBloquearDia">
-                <i class="fa-solid fa-calendar-days"></i> <span class="text-mobile">Bloquear/Desbloquear dia</span>
+                <i class="fa-solid fa-calendar-xmark"></i> <span class="text-mobile">Bloquear dia</span>
+            </a>
+            <a onclick="onClickBtCarregarDiasBloqueados()" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#modalDesbloquearDia">
+                <i class="fa-solid fa-calendar-days"></i> <span class="text-mobile">Desbloquear dia</span>
             </a>
         </div>
     </div>
@@ -53,6 +56,7 @@
     <%- include('./includes/modalConfExclusao.html'); %>
     <%- include('./includes/modalConfExclusaoSala.html'); %>
     <%- include('./includes/modalBloquearDia.html'); %>
+    <%- include('./includes/modalDesbloquearDia.html'); %>
     <%- include('./includes/modalLogout.html'); %>
     <%- include('./includes/modalAdmin.html'); %>
     <%- include('./includes/modalCadastro.html'); %>

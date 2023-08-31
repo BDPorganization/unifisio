@@ -69,18 +69,18 @@ window.addEventListener("load", async () => {
             }
         }
         downloadContrato();
-        enviaEmail(name_user, to, idTemplate, token);
+        await enviaEmail(name_user, to, idTemplate, token);
     } catch (err) {
         alert(`Ocorreu um erro inesperado!, ${err}`);
         return err;
     }
 });
 
-//Envia as informações para o servidor do e-mail na AWS
+//Envia as informações para o servidor do e-mail
 async function enviaEmail(name_user, to, idTemplate, token) {
     const urlEmail = 'https://codemail.onrender.com/codeTemplateMail';
 
-    const sendMail = await fetch(urlEmail, {
+    fetch(urlEmail, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -91,9 +91,17 @@ async function enviaEmail(name_user, to, idTemplate, token) {
             to,
             idTemplate
         })
+    })
+    .then((response) => {
+        if (response.ok) {
+            return response;
+        } else {
+            appendAlert("Ocorreu uma falha no envio do e-mail, favor entrar em contato com o administrador", "danger");
+        }
+    })
+    .catch((err) => {
+        return err;
     });
-
-    return sendMail;
 }
 
 async function downloadContrato() {

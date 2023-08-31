@@ -91,7 +91,10 @@ function onClickBtEditarModal() {
                 nome_sala.value = dado.nome;
                 peq_descricao.value = dado.descricao;
                 long_descricao.value = dado.descricao_longa;
-                preco.value = dado.valor;
+                preco.value = parseFloat(dado.valor).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                });
             }
         });
     } catch (err) {
@@ -181,7 +184,6 @@ function onClickBtBloquearDia() {
             .then((resultado) => {
                 if (resultado.bloquearDia == true) {
                     alert("Data bloqueada com sucesso!");
-                    location.reload();
                 } else {
                     alert("Erro ao bloquear, tente novamente mais tarde!");
                     return;
@@ -232,6 +234,90 @@ function gerarCard(dados) {
         checkboxWrapper.appendChild(document.createTextNode('Selecione a sala'));
         card.appendChild(checkboxWrapper);
         fragment.appendChild(card);
+    } catch (err) {
+        return err;
+    }
+}
+
+// function formatarMoeda() {
+//     const valorInput = document.getElementById('valorSala');
+//     const valorNumerico = parseFloat(valorInput.value.replace(/[^\d.-]/g, ''));
+//     const valorFormatado = valorNumerico.toLocaleString('pt-BR', {
+//         style: 'currency',
+//         currency: 'BRL'
+//     });
+
+//     valorInput.value = valorFormatado;
+// }
+
+function onClickBtCarregarDiasBloqueados() {
+    try {
+        document.getElementById("containerDias").innerHTML = "";
+        
+        fetch('/checarDiasBloqueados', {
+            method: "GET"
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((resultado) => {
+            if (resultado.diasBloqueados == true) {
+                document.getElementById("texto-desbloquear").innerHTML = "Selecione o dia para desbloquear:"
+                for (let i = 0; i < resultado.dados.length; i++) {
+                    const containerDias = document.getElementById("containerDias");
+                    const checkbox = document.createElement('input');
+                    const label = document.createElement('label');
+                    const span = document.createElement('span');
+                    let dias = resultado.dados[i].dias;
+                    let myDate = new Date(dias).toLocaleString().split(',')[0];
+    
+            
+                    checkbox.type = 'checkbox';
+                    checkbox.name = myDate;
+                    checkbox.value = resultado.dados[i].pk_dias_indisponiveis;
+                    label.appendChild(document.createTextNode(myDate));
+                    label.style.margin = '3px';
+                    label.classList.add("checkbox-card");
+                    span.classList.add("checkmarkDia");
+                    container.appendChild(label);
+                    label.appendChild(checkbox);
+                    label.appendChild(span);
+                    containerDias.appendChild(label);
+                }
+            } else {
+                document.getElementById("texto-desbloquear").innerHTML = "Nenhuma data bloqueada!"
+                return;
+            }
+        })
+    } catch (err) {
+        return err;
+    }
+}
+
+function onClickBtDesbloquearDia() {
+    var checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
+    var pk_dias_indisponiveis = checkedCheckbox.value;
+
+    try {
+        fetch('/excluirDiaBloqueado', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pk_dias_indisponiveis })
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((resultado) => {
+            if (resultado.excluirDiaBloqueado == true) {
+                alert("Data desbloqueada com sucesso!");
+                onClickBtCarregarDiasBloqueados();
+            } else {
+                alert("Erro ao desbloquear, tente novamente mais tarde!!");
+                return;
+            }
+        })
     } catch (err) {
         return err;
     }
