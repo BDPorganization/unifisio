@@ -109,7 +109,7 @@ module.exports.agendamentos = async (req, res) => {
             }
         })
         .catch((err) => {
-            return res.status(400).send(`Ocorreu um erro ao trazer agendamentos, ${err}`)
+            return res.status(400).send(`Ocorreu um erro ao trazer os agendamentos, ${err}`)
         });
     }catch(err) {
         return res.status(400).send('Ocorreu um erro ao ver agendamentos já realizados');
@@ -132,7 +132,7 @@ module.exports.horariosAgenda = async (req, res) => {
             }
         })
         .catch((err) => {
-            return res.status(400).send(`Ocorreu um erro ao trazer agendamentos, ${err}`)
+            return res.status(400).send(`Ocorreu um erro ao trazer os agendamentos, ${err}`)
         });
     }catch(err) {
         return res.status(400).send('Ocorreu um erro ao ver agendamentos já realizados');
@@ -158,10 +158,10 @@ module.exports.excluirAgendamento = async (req, res) => {
             }
         })
         .catch((err) => {
-            return res.status(400).send(`Ocorreu um erro ao trazer agendamentos, ${err}`)
+            return res.status(400).send(`Ocorreu um erro ao excluir o agendamento, ${err}`)
         });
     }catch(err) {
-        return res.status(400).send('Ocorreu um erro ao ver agendamentos já realizados');
+        return res.status(400).send('Ocorreu um erro ao excluir o agendamento selecionado');
     }
 };
 

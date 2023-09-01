@@ -369,7 +369,7 @@ module.exports.consultaDadosContrato = async (req, res, next) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro ao consultar CPF');
+        return res.status(401).send('Ocorreu um erro ao consultar os dados do usuário');
     }
 };
 
@@ -389,7 +389,7 @@ module.exports.diasBloqueados = async (req, res) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro ao consultar CPF');
+        return res.status(401).send('Ocorreu um erro ao consultar os dias bloqueados');
     }
 };
 
@@ -412,6 +412,6 @@ module.exports.excluirDiaBloqueado = async (req, res) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro ao consultar CPF');
+        return res.status(401).send('Ocorreu um erro ao desbloquear o dia selecionado');
     }
 };

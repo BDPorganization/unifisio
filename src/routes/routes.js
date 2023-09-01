@@ -8,7 +8,6 @@ const FileController = require("../controller/fileController.js");
 const router = require("express").Router();
 const path = require('path');
 const fs = require('fs');
-const { response } = require("express");
 
 const verificarAutenticacao = (req, res, next) => {
     if (req.session.user) {

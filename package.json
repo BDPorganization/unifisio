@@ -1,6 +1,6 @@
 {
   "name": "unifisio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Ferramentas previstas\r - github\r - visual studio code\r - pgAdmin\r - sourcetree",
   "main": "index.js",
   "scripts": {

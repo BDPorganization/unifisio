@@ -67,8 +67,7 @@
 
             <div class="div-externa-form">
                 <div class="div-interna-form">
-                    <label for="data_escolhida" class="form-label w-100" style="font-family: nunito;">Selecione uma
-                        data</label>
+                    <label for="data_escolhida" class="form-label w-100" style="font-family: nunito;">Selecione uma data</label>
                     <input type="date" id="dateTime" name="dia" class="form-control w-100">
                     <input type="hidden" id="pk_sala" name="pk_sala" value="<%= postId %>">
                 </div>
@@ -126,31 +125,30 @@
             <img src="../../public/img/bannerSalas.png" alt="">
         </div>
 
-        <%- include('./includes/footer.html'); %>
-            </div>
+    <%- include('./includes/footer.html'); %>
+        </div>
 
-            <%- include('./includes/modalLogin.html'); %>
-                <%- include('./includes/modalConfExclusao.html'); %>
-                    <%- include('./includes/modalAdmin.html'); %>
-                        <%- include('./includes/modalLogout.html'); %>
-                            <%- include('./includes/modalCadastro.html'); %>
+    <%- include('./includes/modalLogin.html'); %>
+    <%- include('./includes/modalConfExclusao.html'); %>
+    <%- include('./includes/modalAdmin.html'); %>
+    <%- include('./includes/modalLogout.html'); %>
+    <%- include('./includes/modalCadastro.html'); %>
 
-                                <!-- Script FontAwesome -->
-                                <script src="https://kit.fontawesome.com/a9ac96b7ba.js"
-                                    crossorigin="anonymous"></script>
-                                <!-- Script Boostrap-->
-                                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-                                    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-                                    crossorigin="anonymous"></script>
-                                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
-                                    integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
-                                    crossorigin="anonymous"></script>
-                                <!-- SCRIPT JS-->
-                                <script src="/public/services/selectSalas.js"></script>
-                                <script src="/public/services/acoesBanco.js"></script>
-                                <script src="/public/services/adcCart.js"></script>
-                                <script src="/public/services/funcoesGerais.js"></script>
-
+    <!-- Script FontAwesome -->
+    <script src="https://kit.fontawesome.com/a9ac96b7ba.js"
+        crossorigin="anonymous"></script>
+    <!-- Script Boostrap-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+    <!-- SCRIPT JS-->
+    <script src="/public/services/selectSalas.js"></script>
+    <script src="/public/services/acoesBanco.js"></script>
+    <script src="/public/services/adcCart.js"></script>
+    <script src="/public/services/funcoesGerais.js"></script>
 </body>
 
 </html>

@@ -31,7 +31,8 @@ function onClickBtIncluirSala() {
     var nomeSala = document.getElementById("nomeSala").value;
     var descricaoSala = document.getElementById("descricaoSala").value;
     var longDescricaoSala = document.getElementById("longDescricaoSala").value;
-    var valorSala = document.getElementById("valorSala").value;
+    var valor = document.getElementById("valorSala").value;
+    var valorSala = valor.substring(3).replace(",", ".");
     var imgSala = document.getElementById("imgSala");
     var image = imgSala.files[0].name;
 
@@ -103,13 +104,14 @@ function onClickBtEditarModal() {
     }
 }
 
-function onClickBtEditarSala() {
+function onClickBtEditarSala() {5
     var checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
     var pk_sala = checkedCheckbox.value;
     var nome_sala = document.getElementById("nome").value;
     var peq_descricao = document.getElementById("peqDescricao").value;
     var long_descricao = document.getElementById("longDescricao").value;
-    var preco = document.getElementById("valor").value;
+    var valor = document.getElementById("valor").value;
+    var preco = valor.substring(3).replace(",", ".");
     
     try {
         fetch('/editarSala', {
@@ -239,16 +241,31 @@ function gerarCard(dados) {
     }
 }
 
-// function formatarMoeda() {
-//     const valorInput = document.getElementById('valorSala');
-//     const valorNumerico = parseFloat(valorInput.value.replace(/[^\d.-]/g, ''));
-//     const valorFormatado = valorNumerico.toLocaleString('pt-BR', {
-//         style: 'currency',
-//         currency: 'BRL'
-//     });
-
-//     valorInput.value = valorFormatado;
-// }
+function formatarMoeda(params) {
+    try {
+        if (params === 0) {
+            const valorInput = document.getElementById('valorSala');
+            const valorNumerico = parseFloat(valorInput.value.replace(/[^\d.-]/g, ''));
+            const valorFormatado = valorNumerico.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+        
+            valorInput.value = valorFormatado;
+        } else if (params === 1) {
+            const valorInput = document.getElementById('valor');
+            const valorNumerico = parseFloat(valorInput.value.replace(/[^\d.-]/g, ''));
+            const valorFormatado = valorNumerico.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+        
+            valorInput.value = valorFormatado;
+        }
+    } catch (err) {
+        return err;
+    }
+}
 
 function onClickBtCarregarDiasBloqueados() {
     try {
