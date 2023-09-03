@@ -16,7 +16,6 @@ window.addEventListener("load", () => {
           construirTabela(resultado.itens);
           calcTotal(resultado.itens);
         } else if (resultado == undefined) {
-          console.log(resultado)
           appendAlert("Adicione produtos para visualizar seu carrinho!", 'warning');
         }
       });
@@ -27,7 +26,6 @@ window.addEventListener("load", () => {
 
 function construirTabela(dadosDoBanco) {
   const tbody = document.getElementById('tbody');
-  console.log(dadosDoBanco);
   tbody.innerHTML = '';
 
   dadosDoBanco.forEach(dado => {
@@ -41,10 +39,12 @@ function construirTabela(dadosDoBanco) {
     div.classList.add("d-flex", "flex-wrap", "w-100");
 
     const p1 = document.createElement("p");
+
     p1.style.paddingTop = "5px";
     p1.textContent = "Horário:";
 
     const p2 = document.createElement("p");
+
     p2.style.borderRadius = "5px";
     p2.style.backgroundColor = "#F3F3F3";
     p2.style.padding = "3px";
@@ -58,12 +58,14 @@ function construirTabela(dadosDoBanco) {
     td1.appendChild(div);
 
     const td2 = document.createElement("td");
+
     td2.style.width = "15%";
     td2.style.padding = "40px 0px";
     td2.style.textAlign = "center";
     td2.textContent = new Date(dado.data_agendada).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
     const td3 = document.createElement("td");
+
     td3.style.width = "15%";
     td3.style.padding = "40px 0px";
     td3.style.textAlign = "center";
@@ -75,9 +77,22 @@ function construirTabela(dadosDoBanco) {
       useGrouping: true
     });
 
+    const td4 = document.createElement("td");
+    const icon = document.createElement("i");
+
+    td4.style.width = "5%";
+    td4.style.padding = "40px 0px";
+    td4.style.textAlign = "center";
+    td4.onclick = () => {
+      onClickBtExcluirItens(dado.pk_cart);
+    };
+    icon.classList.add("fa", "fa-trash-can");
+    td4.appendChild(icon);
+
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.appendChild(td3);
+    tr.appendChild(td4);
 
     tbody.appendChild(tr);
   });
