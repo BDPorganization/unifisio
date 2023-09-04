@@ -2,15 +2,17 @@
 <div class="modal fade modal-lg" id="adcSalaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
-            <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 400px; width: 100%;">
+            <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 530px; width: 100%;">
                 <div style="width: 100%; padding: 15px;">
                     <center>
                         <div class="inputs-sala">
                             <h3 class="titulo">Incluir sala</h3>
+                            <p class="text-danger">* É recomendado utilizar imagens com resolução 1600x1200, as imagens devem ter menos de 2MB</p>
                             <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Nome da sala" name="nomeSala" id="nomeSala">
                             <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Pequena descrição" name="descricaoSala" id="descricaoSala">
                             <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Resumo da sala" name="longDescricaoSala" id="longDescricaoSala">
                             <input class="w-75 form-control m-auto mb-3 valorSala" type="text" placeholder="Valor em reais" name="valorSala" id="valorSala" onchange="formatarMoeda(0)">
+                            <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Tags da sala separadas por ;" name="tagsSala" id="tagsSala">
                             <input class="w-75 form-control m-auto mb-3" type="file" placeholder="Imagem da sala" name="imgSala" id="imgSala">
                         </div>
                         <button type="submit" class="btn btn-secondary w-50 mt-2" onclick="onClickBtIncluirSala()">Adicionar</button>

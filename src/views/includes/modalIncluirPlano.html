@@ -1,0 +1,22 @@
+<!-- Modal Logout-->
+<div class="modal fade modal-lg" id="adcPlanoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 500px; width: 100%;">
+                <div style="width: 100%; padding: 15px;">
+                    <center>
+                        <div class="inputs-sala">
+                            <h3 class="titulo">Incluir Plano</h3>
+                            <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Nome do Plano" name="nomePlano" id="nomePlano">
+                            <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Descrição" name="descricaoPlano" id="descricaoPlano">
+                            <input class="w-75 form-control m-auto mb-3" type="number" placeholder="Duração em dias" name="duracaoPlano" id="duracaoPlano">
+                            <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Tipo (Diário, Semanal, Mensal)" name="tipoPlano" id="tipoPlano">
+                            <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Valor em reais" name="valorPlano" id="valorPlano" onchange="formatarMoeda(0)">
+                        </div>
+                        <button type="submit" class="btn btn-secondary w-50 mt-2" onclick="onClickBtIncluirPlano()">Adicionar</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

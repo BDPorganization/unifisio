@@ -96,8 +96,23 @@ async function adcSalas(adcSala) {
     const client = await database.connect();
 
     try {
-        const sql = 'INSERT INTO salas (nome, descricao, descricao_longa, valor, imgUrl) VALUES ($1, $2, $3, $4, $5);'
-        const values = [adcSala.nome, adcSala.descricao, adcSala.longDescricao, adcSala.valor, adcSala.imgUrl];
+        const tags = adcSala.tags || [];
+        const sql = 'INSERT INTO salas (nome, descricao, descricao_longa, valor, imgUrl, tags) VALUES ($1, $2, $3, $4, $5, $6);'
+        const values = [adcSala.nome, adcSala.descricao, adcSala.longDescricao, adcSala.valor, adcSala.imgUrl, tags];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
+async function adcPlanos(adcPlano) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'INSERT INTO planos (nome, descricao, duracao_em_dias, tipo, preco) VALUES ($1, $2, $3, $4, $5);'
+        const values = [adcPlano.nome, adcPlano.descricao, adcPlano.duracao, adcPlano.tipo, adcPlano.valor];
         return await client.query(sql, values);
     } catch (err) {
         return err;
@@ -111,6 +126,19 @@ async function checarSalas() {
 
     try {
         const sql = 'SELECT * FROM salas ORDER BY pk_salas;'
+        return await client.query(sql);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
+async function checarPlanos() {
+    const client = await database.connect();
+
+    try {
+        const sql = 'SELECT * FROM planos ORDER BY pk_planos;'
         return await client.query(sql);
     } catch (err) {
         return err;
@@ -134,12 +162,42 @@ async function deletarSalas(pk_salas) {
     }
 }
 
+async function deletarPlanos(pk_planos) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'DELETE FROM planos WHERE pk_planos = $1;'
+        const values = [pk_planos.pk_planos];
+        return await client.query(sql, values);
+
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 async function editarSalas(updateSala) {
     const client = await database.connect();
 
     try {
         const sql = 'UPDATE salas SET nome = $1, descricao = $2, valor = $3, descricao_longa = $4 WHERE pk_salas = $5;'
         const values = [updateSala.nome, updateSala.peq_descricao, updateSala.preco, updateSala.long_descricao, updateSala.pk_sala];
+        return await client.query(sql, values);
+
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
+async function editarPlanos(updatePlano) {
+    const client = await database.connect();
+
+    try {
+        const sql = 'UPDATE planos SET nome = $1, descricao = $2, duracao_em_dias = $3, tipo = $4, preco = $5 WHERE pk_planos = $6;'
+        const values = [updatePlano.nome_plano, updatePlano.descricao, updatePlano.duracaoDias, updatePlano.tipo, updatePlano.preco, updatePlano.pk_plano];
         return await client.query(sql, values);
 
     } catch (err) {
@@ -227,9 +285,13 @@ module.exports = {
     checaPkMedico,
     deletarConta,
     adcSalas,
+    adcPlanos,
     checarSalas,
+    checarPlanos,
     deletarSalas,
+    deletarPlanos,
     editarSalas,
+    editarPlanos,
     selectSalas,
     bloquearDiaSelecionado,
     selectDiasBloqueados,

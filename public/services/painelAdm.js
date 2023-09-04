@@ -33,8 +33,16 @@ function onClickBtIncluirSala() {
     var longDescricaoSala = document.getElementById("longDescricaoSala").value;
     var valor = document.getElementById("valorSala").value;
     var valorSala = valor.substring(3).replace(",", ".");
+    var tags = document.getElementById("tagsSala").value;
+    var arrayTags = tags.split(';');
     var imgSala = document.getElementById("imgSala");
+    var imageSize = imgSala.files[0].size;
     var image = imgSala.files[0].name;
+
+    if (imageSize > 2 * 1024 * 1024) {
+        alert("A imagem é muito grande. O tamanho máximo permitido é de 2MB.");
+        return;
+    }
 
     try {
         fetch('/adcSala', {
@@ -42,7 +50,7 @@ function onClickBtIncluirSala() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ nomeSala, descricaoSala, longDescricaoSala, valorSala, image })
+            body: JSON.stringify({ nomeSala, descricaoSala, longDescricaoSala, valorSala, arrayTags, image })
         })
         .then((response) => {
             return response.json();
@@ -104,7 +112,7 @@ function onClickBtEditarModal() {
     }
 }
 
-function onClickBtEditarSala() {5
+function onClickBtEditarSala() {
     var checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
     var pk_sala = checkedCheckbox.value;
     var nome_sala = document.getElementById("nome").value;

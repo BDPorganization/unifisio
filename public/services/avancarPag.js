@@ -98,7 +98,6 @@ function criarPagamento() {
     }
 }
 
-
 function converterParaFormatoISO(dataInput) {
     const [ano, mes, dia] = dataInput.split('-');
     const dataOriginal = new Date(Date.UTC(ano, mes - 1, dia));

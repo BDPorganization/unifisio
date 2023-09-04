@@ -1,4 +1,4 @@
-const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, checarSalasAdmin, excluirSala, editarSala, selectSalasByPk, bloquearDia, consultaDadosContrato, diasBloqueados, excluirDiaBloqueado } = require("../controller/userController.js");
+const { login, loginGoogle, cadastro, verificaLogin, desconectar, preencherDados, apagarConta, adcSala, adcPlano, checarSalasAdmin, checarPlanosAdmin, excluirSala, excluirPlano, editarSala, editarPlano, selectSalasByPk, bloquearDia, consultaDadosContrato, diasBloqueados, excluirDiaBloqueado } = require("../controller/userController.js");
 const { selectHours, checaDados, agendaDados, agendamentos, horariosAgenda, excluirAgendamento, checaSalasAgendadas } = require("../controller/agendController.js");
 const { upload } = require("../../public/services/multer.js");
 const { PDFDocument, StandardFonts } = require('pdf-lib');
@@ -29,9 +29,12 @@ router.post("/filtroData", selectHours);
 router.post("/checarDados", checaDados);
 router.post("/agendaDados", agendaDados);
 router.post("/adcSala", adcSala);
-router.post("/upload", upload.single('image'), FileController.upload);
-router.post("/excluirSala", excluirSala);
 router.post("/editarSala", editarSala);
+router.post("/excluirSala", excluirSala);
+router.post("/adcPlano", adcPlano);
+router.post("/editarPlano", editarPlano);
+router.post("/excluirPlano", excluirPlano);
+router.post("/upload", upload.single('image'), FileController.upload);
 router.post("/selectSalas", selectSalasByPk);
 router.post("/bloquearDia", bloquearDia);
 router.post("/excluirAgendamento", excluirAgendamento);
@@ -80,11 +83,22 @@ router.get("/cart", (req, res) => {
     res.render('cart');
 });
 
+router.get("/criarPlanos", (req, res) => {
+    res.render('criarPlanos');
+});
+
+router.get("/planos/:id", (req, res) => {
+    const postId = req.params.id;
+
+    res.render('planos', { postId });
+});
+
 router.get("/verificarLogin", verificaLogin);
 router.get("/desconectar", desconectar);
 router.get("/apagarConta", apagarConta);
 router.get("/checarAgendamentos", agendamentos);
 router.get("/checarSalas", checarSalasAdmin);
+router.get("/checarPlanos", checarPlanosAdmin);
 router.get("/horariosAgendados", horariosAgenda);
 router.get("/checarDiasBloqueados", diasBloqueados);
 

@@ -206,7 +206,8 @@ module.exports.adcSala = async (req, res) => {
             descricao: req.body.descricaoSala,
             longDescricao: req.body.longDescricaoSala,
             valor: req.body.valorSala,
-            imgUrl: req.body.image
+            imgUrl: req.body.image,
+            tags: req.body.arrayTags
         }
 
         dbMedicos.adcSalas(adcSala)
@@ -226,6 +227,33 @@ module.exports.adcSala = async (req, res) => {
     }
 };
 
+module.exports.adcPlano = async (req, res) => {
+    try {
+        let adcPlano = {
+            nome: req.body.nomePlano,
+            descricao: req.body.descricaoPlano,
+            duracao: req.body.duracaoPlano,
+            tipo: req.body.tipoPlano,
+            valor: req.body.valorPlano,
+        }
+
+        dbMedicos.adcPlanos(adcPlano)
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(201).json({
+                        salvarPlano: true,
+                    });
+                } else {
+                    return res.status(200).json({
+                        salvarPlano: false,
+                    });
+                }
+            });
+    } catch (err) {
+        return res.status(401).send('Ocorreu um erro ao adicionar o plano');
+    }
+};
+
 module.exports.checarSalasAdmin = async (req, res) => {
     try {
         dbMedicos.checarSalas()
@@ -242,7 +270,27 @@ module.exports.checarSalasAdmin = async (req, res) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro listar salas');
+        return res.status(401).send('Ocorreu um erro ao listar salas');
+    }
+};
+
+module.exports.checarPlanosAdmin = async (req, res) => {
+    try {
+        dbMedicos.checarPlanos()
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(200).json({
+                        salas: true,
+                        dados: response.rows
+                    });
+                } else {
+                    return res.status(404).json({
+                        salas: false,
+                    });
+                }
+            });
+    } catch (err) {
+        return res.status(401).send('Ocorreu um erro ao listar planos');
     }
 };
 
@@ -269,6 +317,29 @@ module.exports.excluirSala = async (req, res) => {
     }
 };
 
+module.exports.excluirPlano = async (req, res) => {
+    try {
+        let pk_planos = {
+            pk_planos: req.body.pk_plano
+        }
+
+        dbMedicos.deletarPlanos(pk_planos)
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(200).json({
+                        excluirPlano: true,
+                    });
+                } else {
+                    return res.status(405).json({
+                        excluirPlano: false,
+                    });
+                }
+            });
+    } catch (err) {
+        return res.status(401).send('Ocorreu um erro ao excluir o plano');
+    }
+};
+
 module.exports.editarSala = async (req, res) => {
     try {
         let updateSala = {
@@ -276,7 +347,7 @@ module.exports.editarSala = async (req, res) => {
             nome: req.body.nome_sala,
             peq_descricao: req.body.peq_descricao,
             long_descricao: req.body.long_descricao,
-            preco: req.body.preco,
+            preco: req.body.preco
         }
 
         dbMedicos.editarSalas(updateSala)
@@ -288,6 +359,34 @@ module.exports.editarSala = async (req, res) => {
                 } else {
                     return res.status(405).json({
                         editarSala: false,
+                    });
+                }
+            });
+    } catch (err) {
+        return res.status(401).send('Ocorreu um erro ao editar sala');
+    }
+};
+
+module.exports.editarPlano = async (req, res) => {
+    try {
+        let updatePlano = {
+            pk_plano: req.body.pk_plano,
+            nome_plano: req.body.nome_plano,
+            descricao: req.body.descricao,
+            duracaoDias: req.body.duracaoDias,
+            tipo: req.body.tipo,
+            preco: req.body.preco
+        }
+
+        dbMedicos.editarPlanos(updatePlano)
+            .then((response) => {
+                if (response.rowCount > 0) {
+                    return res.status(200).json({
+                        editarPlano: true,
+                    });
+                } else {
+                    return res.status(405).json({
+                        editarPlano: false,
                     });
                 }
             });

@@ -1,0 +1,19 @@
+<!-- Modal Login-->
+<div class="modal fade" id="planosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header w-100 text-center">
+                <h5 class="modal-title">Escolher datas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="fecharModal(document.getElementById('planoModal'))"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" readonly="true" id="tipo_plano">
+                <input type="date" id="inputDate">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="fecharModal(document.getElementById('planoModal'))">Fechar</button>
+                <button type="submit" onclick="alugarPlano()" class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>

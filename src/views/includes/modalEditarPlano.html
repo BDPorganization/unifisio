@@ -1,0 +1,43 @@
+<!-- Modal Editar Plano-->
+<div class="modal fade modal-lg" id="edtPlanoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-body" style="display: flex; justify-content: space-around; padding: 0%; height: 500px; width: 100%;">
+                <div style="width: 100%; padding: 15px;">
+                    <center>
+                        <div class="inputs-sala">
+                            <h3 class="titulo">Editar Plano</h3>
+                            
+                            <div class="form-group">
+                                <label for="nome">Nome do Plano:</label>
+                                <input class="w-75 form-control" type="text" placeholder="Nome do Plano" name="nome" id="nome">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="peqDescricao">Descrição:</label>
+                                <input class="w-75 form-control" type="text" placeholder="Descrição" name="descricao" id="descricao">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="longDescricao">Duração em dias:</label>
+                                <input class="w-75 form-control" type="text" placeholder="Duração em dias" name="duracaoDias" id="duracaoDias">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="valor">Tipo:</label>
+                                <input class="w-75 form-control valorSala" type="text" placeholder="Tipo (Diário, Semanal e Mensal)" name="tipo" id="tipo">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="valor">Valor:</label>
+                                <input class="w-75 form-control valorSala" type="text" placeholder="Valor em reais" name="valor" id="valor" onchange="formatarMoeda(1)">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-secondary w-50 mt-2" onclick="onClickBtEditarPlano()">Editar</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
