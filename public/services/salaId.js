@@ -14,6 +14,7 @@ window.addEventListener("load", ()=> {
             return response.json();
         })
         .then((resultado) => {
+            console.log(resultado.dias)
             const span = document.createElement('span');
 
             datas_bloqueadas = resultado.dias;

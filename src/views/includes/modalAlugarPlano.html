@@ -1,13 +1,15 @@
-<!-- Modal Login-->
-<div class="modal fade" id="planosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Alugar Plano -->
+<div class="modal fade" id="planoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header w-100 text-center">
                 <h5 class="modal-title">Escolher datas</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="fecharModal(document.getElementById('planoModal'))"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding: 0%; min-height: 200px; width: 100%;">
                 <input type="text" readonly="true" id="tipo_plano">
+                <input type="text" readonly="true" id="precoPlano">
+                <input type="text" readonly="true" id="descricaoPlano">
                 <input type="date" id="inputDate">
             </div>
             <div class="modal-footer">

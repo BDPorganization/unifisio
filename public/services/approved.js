@@ -19,9 +19,8 @@ window.addEventListener("load", async () => {
         for (const key in matchingItems) {
             if (Object.hasOwnProperty.call(matchingItems, key)) {
                 const value = matchingItems[key];
-
                 let dataAtual = value.data_agendada;
-                let horarioAtual = value.horarios;
+                let horarioAtual = value.horarios == "0" ? "00:00" : value.horarios;
                 let pk_sala = value.pk_sala;
                 let id = value.pk_cart;
                 name_user = value.nome_medico;

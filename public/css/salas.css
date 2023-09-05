@@ -7,7 +7,7 @@
 .info-salas-card i{color:#f05e22;margin-right: 10px;}
 .titulo{font-weight: 800; margin-bottom: 20px; font-family: 'poppins';color:#000;width: 100%; text-align: center;}
 .space-buttons{display: flex; justify-content: space-between; flex-wrap: wrap;}
-.div-externa-form{width: 65%; margin: auto; display: flex; justify-content: center; flex-wrap: wrap;border-bottom: 1px solid #f3f3f3; font-family: nunito;}
+.div-externa-form{width: 50%; margin: auto; display: flex; justify-content: center; flex-wrap: wrap;border-bottom: 1px solid #f3f3f3; font-family: nunito;}
 .div-externa-form > div{width: 60%;margin-bottom: 30px;}
 .btn-continua{width:30%;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000; border-radius: 5px; background-color: #fff;}
 .btn-voltar{width:100%;padding: 10px 30px;border: none;font-size: 18px;font-weight: 600;color: #000;border:1px solid #000; border-radius: 5px; background-color: #fff;}

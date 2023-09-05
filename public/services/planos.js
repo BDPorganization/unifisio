@@ -1,7 +1,7 @@
 const fragment = document.createDocumentFragment();
 const container = document.getElementById('container');
 var dadosPlanos = [];
-const modalAlugar = document.getElementById('planosModal');
+const modalAlugar = document.getElementById('planoModal');
 
 window.addEventListener("load", () => {
     try {
@@ -38,6 +38,8 @@ function gerarCard(dados) {
         const valor = document.createElement('p');
         const botao = document.createElement('button');
         const tipo_params = dados.tipo;
+        const preco_params = dados.preco;
+        const descricao_params = dados.descricao;
 
         card.className = 'card';
         plano.textContent = dados.nome;
@@ -54,8 +56,7 @@ function gerarCard(dados) {
         botao.className = 'btn btn-primary text-white';
         botao.textContent = 'Alugar';
         botao.addEventListener('click', () => {
-            console.log("oi")
-            abrirModal(modalAlugar, tipo_params);
+            abrirModal(modalAlugar, tipo_params, preco_params, descricao_params);
         });
 
         card.appendChild(plano);
@@ -70,8 +71,10 @@ function gerarCard(dados) {
     }
 }
 
-function abrirModal(element, tipo_params) {
+function abrirModal(element, tipo_params, preco_params, descricao_params) {
     document.getElementById("tipo_plano").value = tipo_params;
+    document.getElementById("precoPlano").value = preco_params;
+    document.getElementById("descricaoPlano").value = descricao_params;
     element.classList.add("show");
     element.style.display = "block";
 }
@@ -83,15 +86,26 @@ function fecharModal(element) {
 }
 
 function alugarPlano() {
-    const dataSelecionada = new Date(document.getElementById('inputDate').value);
+    const dataSelecionada = document.getElementById('inputDate').value;
     const planoSelecionado = document.getElementById("tipo_plano").value;
+    const precoPlano = document.getElementById("precoPlano").value;
+    const descricaoPlano = document.getElementById("descricaoPlano").value;
     let diasPermitidos;
 
-    console.log(dataSelecionada, planoSelecionado);
+    if (dataSelecionada == "") {
+        alert("Escolha uma data para continuar");
+        return false;
+    }
 
     switch (planoSelecionado) {
         case 'Diário':
-            diasPermitidos = 1;
+            let params = {
+                tipo: planoSelecionado,
+                dia: dataSelecionada,
+                preco: precoPlano,
+                descricao: descricaoPlano
+            }
+            alugarDiario(params);
             break;
         case 'Semanal':
             diasPermitidos = 7;
@@ -131,6 +145,7 @@ function alugarDiario(params) {
                             if (response.status == 204) {
                                 const formPreencher = document.getElementById('form-preencher');
 
+                                fecharModal(modalAlugar);
                                 exibirFormDados();
                                 formPreencher.addEventListener("submit", (event) => {
                                     event.preventDefault();
@@ -167,11 +182,12 @@ function alugarDiario(params) {
                                     }
                                 });
                             } else {
-                                adcCart();
+                                adcCart(params);
                             }
                         });
                 } else {
-                    abrirModal(modalLogin);
+                    fecharModal(modalAlugar);
+                    appendAlert("Faça login para concluir a compra!", "warning");
                 }
             });
     } catch (err) {
@@ -193,61 +209,62 @@ function fecharFormDados() {
 
 function adcCart(params) {
     try {
-        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        let data_agendada = document.getElementById("dateTime").value;
-        let pk_sala = document.getElementById("pk_sala").value;
-        let name_sala = document.getElementById("product-description").innerHTML;
-        let preco_sala = document.getElementById("unit-price").value;
-        let email_user = document.getElementById("emailUser").value;
-        let name_user = document.getElementById("nomeUsuario").innerHTML;
-        let horarios = [];
+        const { tipo, dia, preco, descricao } = params;
 
-        for (let i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked) {
-                horarios.push(checkboxes[i].name);
-            }
-        }
+        if (tipo == "Diário") {
+            let data = {
+                data_agendada: dia,
+                pk_sala: document.getElementById("pk_sala").value,
+                name_sala: descricao,
+                preco_sala: preco,
+                email_user: document.getElementById("emailUser").value,
+                name_user: document.getElementById("nomeUsuario").innerHTML,
+                horarios: "0"
+            };
 
-        let data = {
-            data_agendada: data_agendada,
-            pk_sala: pk_sala,
-            name_sala: name_sala,
-            preco_sala: preco_sala,
-            email_user: email_user,
-            name_user: name_user,
-            horarios: horarios
-        };
-
-        fetch("/listCart", {
-            method: "GET",
-        })
-            .then((response) => {
-                return response.json();
+            fetch("/listCart", {
+                method: "GET",
             })
-            .then((result) => {
-                if (result.listCart == true) {
-                    const cartItems = result.itens;
-                    let itemAlreadyInCart = false;
+                .then((response) => {
+                    return response.json();
+                })
+                .then((result) => {
+                    if (result.listCart == true) {
+                        const cartItems = result.itens;
+                        let itemAlreadyInCart = false;
 
-                    for (let i = 0; i < cartItems.length; i++) {
-                        const element = cartItems[i];
+                        for (let i = 0; i < cartItems.length; i++) {
+                            const element = cartItems[i];
 
-                        for (let j = 0; j < horarios.length; j++) {
-                            const elemento = horarios[j];
-
-                            if (element.pk_sala == pk_sala && element.data_agendada == data_agendada && element.horarios == elemento) {
+                            if (element.pk_sala == data.pk_sala && element.data_agendada == data.data_agendada && element.horarios == data.horarios) {
                                 itemAlreadyInCart = true;
+                                fecharModal(modalAlugar);
+                                appendAlert('Você não pode incluir itens que já estão no carrinho!', 'danger');
                                 break;
                             }
                         }
 
-                        if (itemAlreadyInCart) {
-                            appendAlert('Você não pode incluir itens que já estão no carrinho!', 'danger');
-                            break;
+                        if (!itemAlreadyInCart) {
+                            fetch("/addCart", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify(data),
+                            })
+                                .then((response) => {
+                                    return response.json();
+                                })
+                                .then((resultado) => {
+                                    fecharModal(modalAlugar);
+                                    appendAlert('Incluso no carrinho!', 'success');
+                                    verificaCart();
+                                })
+                                .catch((err) => {
+                                    alert(`Ocorreu um erro inesperado!, ${err}`);
+                                });
                         }
-                    }
-
-                    if (!itemAlreadyInCart) {
+                    } else {
                         fetch("/addCart", {
                             method: "POST",
                             headers: {
@@ -259,6 +276,7 @@ function adcCart(params) {
                                 return response.json();
                             })
                             .then((resultado) => {
+                                fecharModal(modalAlugar);
                                 appendAlert('Incluso no carrinho!', 'success');
                                 verificaCart();
                             })
@@ -266,30 +284,12 @@ function adcCart(params) {
                                 alert(`Ocorreu um erro inesperado!, ${err}`);
                             });
                     }
-                } else {
-                    fetch("/addCart", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(data),
-                    })
-                        .then((response) => {
-                            return response.json();
-                        })
-                        .then((resultado) => {
-                            appendAlert('Incluso no carrinho!', 'success');
-                            verificaCart();
-                        })
-                        .catch((err) => {
-                            alert(`Ocorreu um erro inesperado!, ${err}`);
-                        });
-                }
-            })
-            .catch((err) => {
-                alert("Ocorreu um erro inesperado!", err);
-                return err;
-            });
+                })
+                .catch((err) => {
+                    alert("Ocorreu um erro inesperado!", err);
+                    return err;
+                });
+        }
     } catch (err) {
         return err;
     }

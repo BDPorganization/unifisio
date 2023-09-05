@@ -22,6 +22,14 @@
 </head>
 <body>
     <%- include('./includes/nav.html'); %>
+    
+    <%- include('./includes/modalLogin.html'); %>
+    <%- include('./includes/modalAlugarPlano.html'); %>
+    <%- include('./includes/modalConfExclusao.html'); %>
+    <%- include('./includes/modalAdmin.html'); %>
+    <%- include('./includes/modalLogout.html'); %>
+    <%- include('./includes/modalCadastro.html'); %>
+
     <div class="d-flex justify-content-center w-100 mt-2">
         <div class="liveAlertPlaceholder w-75"></div>
     </div>
@@ -31,48 +39,45 @@
 
     </div>
 
-    <div id="formDadosPessoais" class="row h-75 mb-5" style="display: none;">
-        <form id="form-preencher">
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome completo: </label>
-                    <input type="text" class="form-control" id="nome" name="nome" required>
-                </div>
-                <div class="mb-3">
-                    <label for="data" class="form-label">Data de Nascimento: </label>
-                    <input type="date" class="form-control" id="data" name="data_nascimento" required>
-                </div>
-                <div class="mb-3">
-                    <label for="cpf" class="form-label">CPF: </label>
-                    <input type="text" class="form-control" id="cpf" name="cpf" required>
-                </div>
-                <div class="mb-3">
-                    <label for="cep" class="form-label">Cep: </label>
-                    <input type="text" class="form-control" id="cep" name="cep" size="10" maxlength="9"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="rua" class="form-label">Logradouro: </label>
-                    <input type="text" class="form-control" id="rua" name="rua" required>
-                </div>
-                <div class="mb-3">
-                    <label for="numero" class="form-label">Numero: </label>
-                    <input type="text" class="form-control" id="numero" name="numero" required>
-                </div>
-                <div class="text-end">
-                    <button name="btn-cadastro" type="submit" class="btn-continua" id="btn-preencher">
-                        Continuar
-                    </button>
-                </div>
-        </form>
+    <div class="div-externa-form">
+        <div id="formDadosPessoais" class="row h-75 mb-5" style="display: none;">
+            <form id="form-preencher">
+                <h3>Preencha seus dados pessoais para continuar</h3>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome completo: </label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data de Nascimento: </label>
+                        <input type="date" class="form-control" id="data" name="data_nascimento" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cpf" class="form-label">CPF: </label>
+                        <input type="text" class="form-control" id="cpf" name="cpf" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cep" class="form-label">Cep: </label>
+                        <input type="text" class="form-control" id="cep" name="cep" size="10" maxlength="9"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rua" class="form-label">Logradouro: </label>
+                        <input type="text" class="form-control" id="rua" name="rua" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="numero" class="form-label">Numero: </label>
+                        <input type="text" class="form-control" id="numero" name="numero" required>
+                    </div>
+                    <div class="text-end">
+                        <button name="btn-cadastro" type="submit" class="btn-continua" id="btn-preencher">
+                            Continuar
+                        </button>
+                    </div>
+            </form>
+        </div>
     </div>
 
-    <%- include('./includes/modalLogin.html'); %>
-    <%- include('./includes/modalAlugarPlano.html'); %>
-    <%- include('./includes/modalConfExclusao.html'); %>
-    <%- include('./includes/modalAdmin.html'); %>
-    <%- include('./includes/modalLogout.html'); %>
-    <%- include('./includes/modalCadastro.html'); %>
     <!-- Script FontAwesome -->
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
     <!-- Script Boostrap-->

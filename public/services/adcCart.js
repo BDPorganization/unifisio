@@ -64,7 +64,7 @@ botao_adcCart.addEventListener("click", () => {
                                 let inputdate = document.getElementById('dateTime').value;
 
                                 if (inputdate == "") {
-                                    appendAlert('Escolha uma data para continuar', 'warning')
+                                    appendAlert('Escolha uma data para continuar', 'warning');
                                 } else {
                                     adcCart();
                                 }

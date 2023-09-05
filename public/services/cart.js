@@ -49,7 +49,7 @@ function construirTabela(dadosDoBanco) {
     p2.style.backgroundColor = "#F3F3F3";
     p2.style.padding = "3px";
     p2.style.margin = "5px";
-    p2.textContent = dado.horarios;
+    p2.textContent = dado.horarios == "0" ? "De acordo com o plano" : dado.horarios;
 
     div.appendChild(p1);
     div.appendChild(p2);
