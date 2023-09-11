@@ -402,23 +402,24 @@ module.exports.selectSalasByPk = async (req, res) => {
         }
 
         dbMedicos.selectSalas(pk_salas)
-            .then((response) => {
+            .then(async (response) => {
                 if (response.rowCount > 0) {
-                    dbMedicos.selectDiasBloqueados()
-                        .then((resultado) => {
-                            if (resultado.rowCount > 0) {
-                                return res.status(200).json({
-                                    salas: true,
-                                    dados: response.rows,
-                                    dias: resultado.rows
-                                });
-                            } else {
-                                return res.status(200).json({
-                                    salas: true,
-                                    dados: response.rows,
-                                });
-                            }
+                    let dias = await dbMedicos.selectDiasBloqueados();
+                    let dias_planos = await dbMedicos.selectDiasPlanos();
+
+                    if (dias || dias_planos) {
+                        return res.status(200).json({
+                            salas: true,
+                            dados: response.rows,
+                            dias: dias.rows,
+                            dias_planos: dias_planos.rows
                         });
+                    } else {
+                        return res.status(200).json({
+                            salas: true,
+                            dados: response.rows,
+                        });
+                    }
                 } else {
                     return res.status(404).json({
                         salas: false,

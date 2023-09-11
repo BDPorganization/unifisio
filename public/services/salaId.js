@@ -1,5 +1,6 @@
 const inputDate = document.getElementById('dateTime');
 var datas_bloqueadas = [];
+var datas_planos = [];
 
 window.addEventListener("load", ()=> {
     try {
@@ -14,10 +15,10 @@ window.addEventListener("load", ()=> {
             return response.json();
         })
         .then((resultado) => {
-            console.log(resultado.dias)
             const span = document.createElement('span');
 
             datas_bloqueadas = resultado.dias;
+            datas_planos = resultado.dias_planos;
             document.getElementById("unit-price").value = resultado.dados[0].valor;
             document.getElementById("descricao_longa").innerHTML = resultado.dados[0].descricao_longa;
             document.getElementById("preco").innerHTML = `${resultado.dados[0].valor.toLocaleString("pt-BR", {
@@ -59,6 +60,25 @@ function bloquearDiaEspecifico() {
             if (dataSelecionada.toISOString().split('T')[0] === diaBloqueado.toISOString().split('T')[0]) {
                 inputDate.value = "";
                 appendAlert("O dia selecionado está indisponível!", 'danger');
+                div_main.style.display = "none";
+                document.getElementById("adcCart").style.display = "none";
+                return;
+            } else {
+                div_main.style.display = "";
+                document.getElementById("adcCart").style.display = "";
+            }
+        }
+    }
+
+    if (datas_planos) {
+        for (let i = 0; i < datas_planos.length; i++) {
+            let diaPlanos = new Date(datas_planos[i].datas);
+            let diaPlanosPkSala = datas_planos[i].fk_salas_pk_salas;
+            let salaAlugadaPlano = document.getElementById("pk_sala").value;
+            
+            if (dataSelecionada.toISOString().split('T')[0] === diaPlanos.toISOString().split('T')[0] && salaAlugadaPlano == diaPlanosPkSala) {
+                inputDate.value = "";
+                appendAlert("O dia selecionado está indisponível!", 'warning');
                 div_main.style.display = "none";
                 document.getElementById("adcCart").style.display = "none";
                 return;

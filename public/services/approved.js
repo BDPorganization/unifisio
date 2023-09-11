@@ -52,11 +52,6 @@ window.addEventListener("load", async () => {
                             },
                             body: JSON.stringify({ id })
                         });
-
-                        if (deleteResponse.excludeItemCart == true) {
-                            localStorage.clear();
-                            verificaCart();
-                        }
                     } catch (err) {
                         alert(`Ocorreu um erro inesperado!, ${err}`);
                         return err;
@@ -67,8 +62,10 @@ window.addEventListener("load", async () => {
                 }
             }
         }
-        downloadContrato();
         await enviaEmail(name_user, to, idTemplate, token);
+        await downloadContrato();
+        verificaCart();
+        localStorage.clear();
     } catch (err) {
         alert(`Ocorreu um erro inesperado!, ${err}`);
         return err;

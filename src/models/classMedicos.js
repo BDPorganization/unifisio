@@ -277,6 +277,20 @@ async function excluirDiaBloqueado(dados) {
     }
 }
 
+async function selectDiasPlanos() {
+    const client = await database.connect();
+
+    try {
+        const sql = `SELECT * FROM datas_agendadas WHERE hora = $1;`;
+        const values = ['00:00:00'];
+        return await client.query(sql, values);
+    } catch (err) {
+        return err;
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = { 
     login,
     cadastro,
@@ -296,5 +310,6 @@ module.exports = {
     bloquearDiaSelecionado,
     selectDiasBloqueados,
     consultaUsuario,
-    excluirDiaBloqueado
+    excluirDiaBloqueado,
+    selectDiasPlanos
 }; 
