@@ -34,11 +34,13 @@ module.exports.adcItemCart = async (req, res) => {
             nome_medico: req.body.name_user,
             email_medico: req.body.email_user,
             data_agendada: req.body.data_agendada,
+            data_agendada_fim: req.body.data_agendada_fim,
             pk_sala: req.body.pk_sala
         }
 
         dbCart.adcCart(dados)
             .then((response) => {
+                console.log(response)
                 if (response == 0) {
                     return res.status(201).json({
                         adcItemCart: true,

@@ -19,8 +19,8 @@ async function adcCart(dados) {
 
     try {
         for (let i = 0; i < dados.horarios.length; i++) {
-            const sql = 'INSERT INTO carrinho(nome, valor, fk_medicos_pk_medicos, horarios, nome_medico, email_medico, data_agendada, pk_sala) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);';
-            const values = [dados.name_sala, dados.preco_sala, dados.pk_medicos, dados.horarios[i], dados.nome_medico, dados.email_medico, dados.data_agendada, dados.pk_sala];
+            const sql = 'INSERT INTO carrinho(nome, valor, fk_medicos_pk_medicos, horarios, nome_medico, email_medico, data_agendada, data_agendada_fim, pk_sala) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);';
+            const values = [dados.name_sala, dados.preco_sala, dados.pk_medicos, dados.horarios[i], dados.nome_medico, dados.email_medico, dados.data_agendada, dados.data_agendada_fim, dados.pk_sala];
             await client.query(sql, values);
         }
         return 0;

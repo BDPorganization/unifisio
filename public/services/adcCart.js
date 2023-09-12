@@ -175,8 +175,10 @@ function adcCart() {
                                 return response.json();
                             })
                             .then((resultado) => {
-                                appendAlert('Incluso no carrinho!', 'success');
-                                verificaCart();
+                                if (resultado.adcItemCart == true) {
+                                    appendAlert('Incluso no carrinho!', 'success');
+                                    verificaCart();
+                                }
                             })
                             .catch((err) => {
                                 alert(`Ocorreu um erro inesperado!, ${err}`);
@@ -194,8 +196,10 @@ function adcCart() {
                             return response.json();
                         })
                         .then((resultado) => {
-                            appendAlert('Incluso no carrinho!', 'success');
-                            verificaCart();
+                            if (resultado.adcItemCart == true) {
+                                appendAlert('Incluso no carrinho!', 'success');
+                                verificaCart();
+                            }
                         })
                         .catch((err) => {
                             alert(`Ocorreu um erro inesperado!, ${err}`);

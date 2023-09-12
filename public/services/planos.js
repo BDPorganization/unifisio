@@ -72,9 +72,12 @@ function gerarCard(dados) {
 }
 
 function abrirModal(element, tipo_params, preco_params, descricao_params) {
+    const inputDateFim = document.getElementById("inputDateFim");
+    
     document.getElementById("tipo_plano").value = tipo_params;
     document.getElementById("precoPlano").value = preco_params;
     document.getElementById("descricaoPlano").value = descricao_params;
+    tipo_params == "Diário" ? inputDateFim.style.display = "none" : inputDateFim.style.display = "";
     element.classList.add("show");
     element.style.display = "block";
 }
@@ -86,40 +89,49 @@ function fecharModal(element) {
 }
 
 function alugarPlano() {
-    const dataSelecionada = document.getElementById('inputDate').value;
+    const dataSelecionadaInicio = document.getElementById('inputDate').value;
+    const dataSelecionadaFim = document.getElementById('inputDateFim').value;
     const planoSelecionado = document.getElementById("tipo_plano").value;
     const precoPlano = document.getElementById("precoPlano").value;
     const descricaoPlano = document.getElementById("descricaoPlano").value;
     let diasPermitidos;
 
-    if (dataSelecionada == "") {
+    if (dataSelecionadaInicio == "") {
         alert("Escolha uma data para continuar");
         return false;
     }
 
     switch (planoSelecionado) {
         case 'Diário':
-            let params = {
+            let paramsDiario = {
                 tipo: planoSelecionado,
-                dia: dataSelecionada,
+                dtInicio: dataSelecionadaInicio,
                 preco: precoPlano,
                 descricao: descricaoPlano
             }
-            alugarDiario(params);
+            alugarPlanosTipo(paramsDiario);
             break;
         case 'Semanal':
+            let paramsSemanal = {
+                tipo: planoSelecionado,
+                dtInicio: dataSelecionadaInicio,
+                dtFim: dataSelecionadaFim,
+                preco: precoPlano,
+                descricao: descricaoPlano
+            }
+            alugarPlanosTipo(paramsSemanal);
             diasPermitidos = 7;
             break;
         case 'Mensal':
-            diasPermitidos = 30;
+            diasPermitidos = 31;
             break;
         default:
             diasPermitidos = 0;
             break;
     }
 
-    const diferencaEmDias = Math.ceil((dataSelecionada - new Date()) / (1000 * 60 * 60 * 24));
-    console.log(diferencaEmDias)
+    const diferencaEmMilissegundos = new Date(dataSelecionadaFim) - new Date(dataSelecionadaInicio);
+    const diferencaEmDias = Math.ceil(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
 
     if (diferencaEmDias <= 0 || diferencaEmDias > diasPermitidos) {
         alert('Seleção de data inválida para o plano selecionado.');
@@ -128,7 +140,7 @@ function alugarPlano() {
     return true;
 }
 
-function alugarDiario(params) {
+function alugarPlanosTipo(params) {
     try {
         fetch('/verificarLogin', {
             method: "GET"
@@ -209,11 +221,11 @@ function fecharFormDados() {
 
 function adcCart(params) {
     try {
-        const { tipo, dia, preco, descricao } = params;
+        const { tipo, dtInicio, dtFim, preco, descricao } = params;
 
         if (tipo == "Diário") {
             let data = {
-                data_agendada: dia,
+                data_agendada: dtInicio,
                 pk_sala: document.getElementById("pk_sala").value,
                 name_sala: descricao,
                 preco_sala: preco,
@@ -256,9 +268,11 @@ function adcCart(params) {
                                     return response.json();
                                 })
                                 .then((resultado) => {
-                                    fecharModal(modalAlugar);
-                                    appendAlert('Incluso no carrinho!', 'success');
-                                    verificaCart();
+                                    if (resultado.adcItemCart == true) {
+                                        fecharModal(modalAlugar);
+                                        appendAlert('Incluso no carrinho!', 'success');
+                                        verificaCart();
+                                    }
                                 })
                                 .catch((err) => {
                                     alert(`Ocorreu um erro inesperado!, ${err}`);
@@ -276,9 +290,98 @@ function adcCart(params) {
                                 return response.json();
                             })
                             .then((resultado) => {
+                                if (resultado.adcItemCart == true) {
+                                    fecharModal(modalAlugar);
+                                    appendAlert('Incluso no carrinho!', 'success');
+                                    verificaCart();
+                                }
+                            })
+                            .catch((err) => {
+                                alert(`Ocorreu um erro inesperado!, ${err}`);
+                            });
+                    }
+                })
+                .catch((err) => {
+                    alert("Ocorreu um erro inesperado!", err);
+                    return err;
+                });
+        }
+
+        if (tipo == "Semanal") {
+            let data = {
+                data_agendada: dtInicio,
+                data_agendada_fim: dtFim,
+                pk_sala: document.getElementById("pk_sala").value,
+                name_sala: descricao,
+                preco_sala: preco,
+                email_user: document.getElementById("emailUser").value,
+                name_user: document.getElementById("nomeUsuario").innerHTML,
+                horarios: "0"
+            };
+
+            console.log(data)
+
+            fetch("/listCart", {
+                method: "GET",
+            })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((result) => {
+                    if (result.listCart == true) {
+                        const cartItems = result.itens;
+                        let itemAlreadyInCart = false;
+
+                        for (let i = 0; i < cartItems.length; i++) {
+                            const element = cartItems[i];
+
+                            if (element.pk_sala == data.pk_sala && element.data_agendada == data.data_agendada && element.data_agendada_fim == data.data_agendada_fim && element.horarios == data.horarios) {
+                                itemAlreadyInCart = true;
                                 fecharModal(modalAlugar);
-                                appendAlert('Incluso no carrinho!', 'success');
-                                verificaCart();
+                                appendAlert('Você não pode incluir itens que já estão no carrinho!', 'danger');
+                                break;
+                            }
+                        }
+
+                        if (!itemAlreadyInCart) {
+                            fetch("/addCart", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify(data),
+                            })
+                                .then((response) => {
+                                    return response.json();
+                                })
+                                .then((resultado) => {
+                                    if (resultado.adcItemCart == true) {
+                                        fecharModal(modalAlugar);
+                                        appendAlert('Incluso no carrinho!', 'success');
+                                        verificaCart();
+                                    }
+                                })
+                                .catch((err) => {
+                                    alert(`Ocorreu um erro inesperado!, ${err}`);
+                                });
+                        }
+                    } else {
+                        fetch("/addCart", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(data),
+                        })
+                            .then((response) => {
+                                return response.json();
+                            })
+                            .then((resultado) => {
+                                if (resultado.adcItemCart == true) {
+                                    fecharModal(modalAlugar);
+                                    appendAlert('Incluso no carrinho!', 'success');
+                                    verificaCart();
+                                }
                             })
                             .catch((err) => {
                                 alert(`Ocorreu um erro inesperado!, ${err}`);
