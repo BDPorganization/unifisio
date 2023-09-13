@@ -58,6 +58,7 @@ module.exports.agendaDados = async (req, res) => {
     try {
         let agendaDado = {
             data: req.body.dataAtual,
+            data_fim: req.body.dataFim,
             horarios: req.body.horarioAtual,
             pk_salas: req.body.pk_sala,
             pk_medicos: req.session.user.pk_medicos
@@ -169,6 +170,7 @@ module.exports.checaSalasAgendadas = async (req, res) => {
     try {
         let dados = {
             data: req.body.data,
+            data_fim: req.body.data_fim,
             horarios: req.body.horarios,
             pk_salas: req.body.pk_sala
         }
@@ -182,7 +184,7 @@ module.exports.checaSalasAgendadas = async (req, res) => {
                 });
             } else {
                 return res.status(200).json({
-                    checaSalasAgendadas: false
+                    checaSalasAgendadas: false,
                 });
             }
         })

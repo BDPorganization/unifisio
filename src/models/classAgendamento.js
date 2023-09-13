@@ -1,3 +1,4 @@
+const { cli } = require('winston/lib/winston/config/index.js');
 const database = require('./classConexao.js')
 
 async function returnHours(data) {
@@ -32,8 +33,8 @@ async function agendaDados(agendaDado) {
     const client = await database.connect();
     
     try {
-        const sql = 'insert into datas_agendadas (datas, hora, fk_salas_pk_salas, fk_medicos_pk_medicos) values ($1, $2, $3, $4)';
-        const values = [agendaDado.data, agendaDado.horarios, agendaDado.pk_salas, agendaDado.pk_medicos];   
+        const sql = 'insert into datas_agendadas (datas, datas_fim, hora, fk_salas_pk_salas, fk_medicos_pk_medicos) values ($1, $2, $3, $4, $5)';
+        const values = [agendaDado.data, agendaDado.data_fim, agendaDado.horarios, agendaDado.pk_salas, agendaDado.pk_medicos];   
         return await client.query(sql, values);
     } catch (err) {
         return err;
@@ -85,12 +86,29 @@ async function excluirAgendamento(pk_agenda) {
 
 async function checaSalas(dados) {
     const client = await database.connect();
-    
+    var currentDate = new Date(dados.data);
+    var endDate = dados.data_fim !== "" ? new Date(dados.data_fim) : dados.datas;
+    var dias = getDaysBetweenDates(currentDate, endDate);
+
     try {
         if (dados.horarios == "0:00") {
-            const sql = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND fk_salas_pk_salas = $2';   
-            const values = [dados.data, dados.pk_salas];
-            return await client.query(sql, values);
+            for (let i = 0; i < dias.length; i++) {
+                const sql = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND fk_salas_pk_salas = $2';   
+                const values = [dias[i], dados.pk_salas];
+                await client.query(sql, values);
+
+                const sql2 = 'SELECT * FROM datas_agendadas WHERE datas_fim = $1 AND fk_salas_pk_salas = $2';   
+                const values2 = [dias[i], dados.pk_salas];
+                await client.query(sql2, values2);
+
+                if ((await client.query(sql, values)).rowCount > 0) {
+                    return await client.query(sql, values);
+                }
+
+                if ((await client.query(sql2, values2)).rowCount > 0) {
+                    return await client.query(sql2, values2);;
+                }
+            }
         } else {
             const sql = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND hora = $2 AND fk_salas_pk_salas = $3';   
             const values = [dados.data, dados.horarios, dados.pk_salas];
@@ -102,6 +120,18 @@ async function checaSalas(dados) {
         client.release();
     }
 }
+
+const getDaysBetweenDates = (startDate, endDate) => {
+    const days = [];
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= endDate) {
+        days.push(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return days;
+}
+
 
 module.exports = { 
     returnHours,

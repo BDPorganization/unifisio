@@ -109,6 +109,7 @@ function alugarPlano() {
                 preco: precoPlano,
                 descricao: descricaoPlano
             }
+
             alugarPlanosTipo(paramsDiario);
             break;
         case 'Semanal':
@@ -119,6 +120,7 @@ function alugarPlano() {
                 preco: precoPlano,
                 descricao: descricaoPlano
             }
+
             alugarPlanosTipo(paramsSemanal);
             diasPermitidos = 7;
             break;
@@ -137,6 +139,7 @@ function alugarPlano() {
         alert('Seleção de data inválida para o plano selecionado.');
         return false;
     }
+
     return true;
 }
 
@@ -254,6 +257,13 @@ function adcCart(params) {
                                 appendAlert('Você não pode incluir itens que já estão no carrinho!', 'danger');
                                 break;
                             }
+
+                            if (element.pk_sala == data.pk_sala && element.data_agendada == data.data_agendada) {
+                                itemAlreadyInCart = true;
+                                fecharModal(modalAlugar);
+                                appendAlert('O plano diário não pode ser incluído, pois já existe um item no carrinho para o mesmo dia!', 'danger');
+                                break;
+                            }
                         }
 
                         if (!itemAlreadyInCart) {
@@ -319,8 +329,6 @@ function adcCart(params) {
                 horarios: "0"
             };
 
-            console.log(data)
-
             fetch("/listCart", {
                 method: "GET",
             })
@@ -339,6 +347,13 @@ function adcCart(params) {
                                 itemAlreadyInCart = true;
                                 fecharModal(modalAlugar);
                                 appendAlert('Você não pode incluir itens que já estão no carrinho!', 'danger');
+                                break;
+                            }
+
+                            if (element.pk_sala == data.pk_sala && element.data_agendada == data.data_agendada) {
+                                itemAlreadyInCart = true;
+                                fecharModal(modalAlugar);
+                                appendAlert('O plano semanal não pode ser incluído, pois já existe um item no carrinho para o mesmo dia!', 'danger');
                                 break;
                             }
                         }

@@ -71,3 +71,15 @@ const appendAlert = (message, type) => {
 
     alertPlaceholder.append(wrapper)
 }
+
+const getDaysBetweenDates = (startDate, endDate) => {
+    const days = [];
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= endDate) {
+        days.push(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return days;
+}

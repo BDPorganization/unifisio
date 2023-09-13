@@ -20,6 +20,7 @@ window.addEventListener("load", async () => {
             if (Object.hasOwnProperty.call(matchingItems, key)) {
                 const value = matchingItems[key];
                 let dataAtual = value.data_agendada;
+                let dataFim = value.data_agendada_fim;
                 let horarioAtual = value.horarios == "0" ? "00:00" : value.horarios;
                 let pk_sala = value.pk_sala;
                 let id = value.pk_cart;
@@ -32,7 +33,7 @@ window.addEventListener("load", async () => {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ dataAtual, horarioAtual, pk_sala })
+                        body: JSON.stringify({ dataAtual, dataFim, horarioAtual, pk_sala })
                     });
 
                     const resultado = await response.json();

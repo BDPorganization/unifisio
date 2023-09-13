@@ -40,7 +40,6 @@ module.exports.adcItemCart = async (req, res) => {
 
         dbCart.adcCart(dados)
             .then((response) => {
-                console.log(response)
                 if (response == 0) {
                     return res.status(201).json({
                         adcItemCart: true,

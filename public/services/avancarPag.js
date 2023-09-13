@@ -46,8 +46,10 @@ function criarPagamento() {
                 for (let j = 0; j < resultado.itens.length; j++) {
                     const elemento = resultado.itens[j];
                     let dataFormatada = converterParaFormatoISO(elemento.data_agendada);
+                    let dataFimFormatada = elemento.data_agendada_fim !== null ? converterParaFormatoISO(elemento.data_agendada_fim) : "";
                     let dadosSalas = {
                         data: dataFormatada,
+                        data_fim: dataFimFormatada,
                         horarios: elemento.horarios + ':00',
                         pk_sala: elemento.pk_sala
                     }
@@ -67,9 +69,14 @@ function criarPagamento() {
                             .then((resultado) => {
                                 if (resultado.listChecaSalas) {
                                     const resp = resultado.listChecaSalas[0];
+
+                                    if (resultado.checaSalasAgendadas == true && resp.hora == "00:00:00") {
+                                        appendAlert(`Os horários dos dias ${new Date(resp.datas).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} - ${new Date(resp.datas_fim).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} não estão mais disponíveis, favor retirar do carrinho.`, 'danger')
+                                        return continuarPagamento = false;
+                                    }
     
                                     if (resultado.checaSalasAgendadas == true) {
-                                        appendAlert(`O horário ${resp.hora == "00:00:00" ? "" : resp.hora} do dia ${new Date(resp.datas).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} não está mais disponível, favor retirar do carrinho.`, 'danger')
+                                        appendAlert(`O horário ${resp.hora} do dia ${new Date(resp.datas).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} não está mais disponível, favor retirar do carrinho.`, 'danger')
                                         return continuarPagamento = false;
                                     }
                                 }
@@ -77,28 +84,28 @@ function criarPagamento() {
                     );
                 }
 
-                // Aguarda que todas as promessas de fetch sejam resolvidas
-                Promise.all(fetchPromises).then(() => {
-                    if (continuarPagamento) {
-                        fetch("/pagamento", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(dadosPagamento),
-                        })
-                            .then((response) => {
-                                return response.json();
-                            })
-                            .then((pagamento) => {
-                                window.location.href = pagamento.init_point;
-                            })
-                            .catch((err) => {
-                                alert(`Ocorreu um erro inesperado!, ${err}`);
-                                return;
-                            });
-                    }
-                });
+                //Aguarda que todas as promessas de fetch sejam resolvidas
+                // Promise.all(fetchPromises).then(() => {
+                //     if (continuarPagamento) {
+                //         fetch("/pagamento", {
+                //             method: "POST",
+                //             headers: {
+                //                 "Content-Type": "application/json",
+                //             },
+                //             body: JSON.stringify(dadosPagamento),
+                //         })
+                //             .then((response) => {
+                //                 return response.json();
+                //             })
+                //             .then((pagamento) => {
+                //                 window.location.href = pagamento.init_point;
+                //             })
+                //             .catch((err) => {
+                //                 alert(`Ocorreu um erro inesperado!, ${err}`);
+                //                 return;
+                //             });
+                //     }
+                // });
             });
     } catch (err) {
         return err;

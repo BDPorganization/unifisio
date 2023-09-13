@@ -62,7 +62,7 @@ function construirTabela(dadosDoBanco) {
     td2.style.width = "15%";
     td2.style.padding = "40px 0px";
     td2.style.textAlign = "center";
-    td2.textContent = new Date(dado.data_agendada).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    td2.textContent = `${new Date(dado.data_agendada).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} - ${dado.data_agendada_fim !== null ? new Date(dado.data_agendada_fim).toLocaleDateString('pt-BR', { timeZone: 'UTC' }) : ""}`;
 
     const td3 = document.createElement("td");
 
