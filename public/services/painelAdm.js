@@ -2,26 +2,26 @@ const fragment = document.createDocumentFragment();
 const container = document.getElementById('container');
 var dadosSala = [];
 
-window.addEventListener("load", ()=> {
+window.addEventListener("load", () => {
     try {
         fetch('/checarSalas', {
             method: "GET"
         })
-        .then((response) => {
-            return response.json();
-        })
-        .then((resultado) => {
-            if (resultado) {
-                for (let i = 0; i < resultado.dados.length; i++) {
-                    gerarCard(resultado.dados[i]);
-                    dadosSala.push(resultado.dados[i]);
+            .then((response) => {
+                return response.json();
+            })
+            .then((resultado) => {
+                if (resultado) {
+                    for (let i = 0; i < resultado.dados.length; i++) {
+                        gerarCard(resultado.dados[i]);
+                        dadosSala.push(resultado.dados[i]);
+                    }
+                    container.appendChild(fragment);
+                } else {
+                    appendAlert("Nenhuma sala encontrada!", 'warning');
+                    return;
                 }
-                container.appendChild(fragment);
-            } else {
-                appendAlert("Nenhuma sala encontrada!", 'warning');
-                return;
-            }
-        })
+            })
     } catch (err) {
         return err;
     }
@@ -52,35 +52,35 @@ function onClickBtIncluirSala() {
             },
             body: JSON.stringify({ nomeSala, descricaoSala, longDescricaoSala, valorSala, arrayTags, image })
         })
-        .then((response) => {
-            return response.json();
-        })
-        .then((resultado) => {
-            if (resultado.salvarSala == true) {
-                const formData = new FormData();
+            .then((response) => {
+                return response.json();
+            })
+            .then((resultado) => {
+                if (resultado.salvarSala == true) {
+                    const formData = new FormData();
 
-                formData.append('image', imgSala.files[0]);
+                    formData.append('image', imgSala.files[0]);
 
-                fetch('/upload', {
-                    method: "POST",
-                    body: formData
-                })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((resultado) => {
-                    location.reload();
-                    return resultado;
-                })
-                .catch((err) => {
-                    alert("Erro na inserção da imagem:", err);
+                    fetch('/upload', {
+                        method: "POST",
+                        body: formData
+                    })
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((resultado) => {
+                            location.reload();
+                            return resultado;
+                        })
+                        .catch((err) => {
+                            alert("Erro na inserção da imagem:", err);
+                            return;
+                        })
+                } else {
+                    alert("Erro na inserção da sala, tente novamente mais tarde!");
                     return;
-                })
-            } else {
-                alert("Erro na inserção da sala, tente novamente mais tarde!");
-                return;
-            }
-        });
+                }
+            });
     } catch (err) {
         return err;
     }
@@ -120,7 +120,7 @@ function onClickBtEditarSala() {
     var long_descricao = document.getElementById("longDescricao").value;
     var valor = document.getElementById("valor").value;
     var preco = valor.substring(3).replace(",", ".");
-    
+
     try {
         fetch('/editarSala', {
             method: "POST",
@@ -129,17 +129,17 @@ function onClickBtEditarSala() {
             },
             body: JSON.stringify({ pk_sala, nome_sala, peq_descricao, long_descricao, preco })
         })
-        .then((response) => {
-            return response.json();
-        })
-        .then((resultado) => {
-            if (resultado.editarSala == true) {
-                location.reload();
-            } else {
-                alert("Erro na edição da sala, tente novamente mais tarde!");
-                return;
-            }
-        });
+            .then((response) => {
+                return response.json();
+            })
+            .then((resultado) => {
+                if (resultado.editarSala == true) {
+                    location.reload();
+                } else {
+                    alert("Erro na edição da sala, tente novamente mais tarde!");
+                    return;
+                }
+            });
     } catch (err) {
         return err;
     }
@@ -158,17 +158,17 @@ function onClickBtExcluirSala() {
                 },
                 body: JSON.stringify({ pk_sala })
             })
-            .then((response) => {
-                return response.json();
-            })
-            .then((resultado) => {
-                if (resultado.excluirSala == true) {
-                    location.reload();
-                } else {
-                    alert("Erro na exclusão da sala, tente novamente mais tarde!");
-                    return;
-                }
-            });
+                .then((response) => {
+                    return response.json();
+                })
+                .then((resultado) => {
+                    if (resultado.excluirSala == true) {
+                        location.reload();
+                    } else {
+                        alert("Erro na exclusão da sala, tente novamente mais tarde!");
+                        return;
+                    }
+                });
         }
     } catch (err) {
         alert("Nenhuma sala selecionada!");
@@ -188,17 +188,17 @@ function onClickBtBloquearDia() {
                 },
                 body: JSON.stringify({ blockDay })
             })
-            .then((response) => {
-                return response.json();
-            })
-            .then((resultado) => {
-                if (resultado.bloquearDia == true) {
-                    alert("Data bloqueada com sucesso!");
-                } else {
-                    alert("Erro ao bloquear, tente novamente mais tarde!");
-                    return;
-                }
-            });
+                .then((response) => {
+                    return response.json();
+                })
+                .then((resultado) => {
+                    if (resultado.bloquearDia == true) {
+                        alert("Data bloqueada com sucesso!");
+                    } else {
+                        alert("Erro ao bloquear, tente novamente mais tarde!");
+                        return;
+                    }
+                });
         } else {
             alert("Nenhum dia selecionado para bloquear!");
             return;
@@ -215,13 +215,13 @@ function gerarCard(dados) {
         const sala = document.createElement('h3');
         const descricao = document.createElement('p');
         const valor = document.createElement('p');
-        const checkboxWrapper  = document.createElement('label');
+        const checkboxWrapper = document.createElement('label');
         const checkbox = document.createElement('input');
         const checkmark = document.createElement('span');
-    
+
         card.className = 'card';
         sala.textContent = dados.nome;
-        descricao.textContent = `Descrição: ${dados.descricao}`; 
+        descricao.textContent = `Descrição: ${dados.descricao}`;
         valor.textContent = `Preço unitário: ${dados.valor.toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
@@ -234,7 +234,7 @@ function gerarCard(dados) {
         checkbox.type = 'checkbox';
         checkbox.value = dados.pk_salas;
         checkmark.className = 'checkmark';
-        
+
         card.appendChild(imgUrl);
         card.appendChild(sala);
         card.appendChild(descricao);
@@ -258,7 +258,7 @@ function formatarMoeda(params) {
                 style: 'currency',
                 currency: 'BRL'
             });
-        
+
             valorInput.value = valorFormatado;
         } else if (params === 1) {
             const valorInput = document.getElementById('valor');
@@ -267,7 +267,7 @@ function formatarMoeda(params) {
                 style: 'currency',
                 currency: 'BRL'
             });
-        
+
             valorInput.value = valorFormatado;
         }
     } catch (err) {
@@ -278,42 +278,42 @@ function formatarMoeda(params) {
 function onClickBtCarregarDiasBloqueados() {
     try {
         document.getElementById("containerDias").innerHTML = "";
-        
+
         fetch('/checarDiasBloqueados', {
             method: "GET"
         })
-        .then((response) => {
-            return response.json();
-        })
-        .then((resultado) => {
-            if (resultado.diasBloqueados == true) {
-                document.getElementById("texto-desbloquear").innerHTML = "Selecione o dia para desbloquear:"
-                for (let i = 0; i < resultado.dados.length; i++) {
-                    const containerDias = document.getElementById("containerDias");
-                    const checkbox = document.createElement('input');
-                    const label = document.createElement('label');
-                    const span = document.createElement('span');
-                    let dias = resultado.dados[i].dias;
-                    let myDate = new Date(dias).toLocaleString().split(',')[0];
-    
-            
-                    checkbox.type = 'checkbox';
-                    checkbox.name = myDate;
-                    checkbox.value = resultado.dados[i].pk_dias_indisponiveis;
-                    label.appendChild(document.createTextNode(myDate));
-                    label.style.margin = '3px';
-                    label.classList.add("checkbox-card");
-                    span.classList.add("checkmarkDia");
-                    container.appendChild(label);
-                    label.appendChild(checkbox);
-                    label.appendChild(span);
-                    containerDias.appendChild(label);
+            .then((response) => {
+                return response.json();
+            })
+            .then((resultado) => {
+                if (resultado.diasBloqueados == true) {
+                    document.getElementById("texto-desbloquear").innerHTML = "Selecione o dia para desbloquear:"
+                    for (let i = 0; i < resultado.dados.length; i++) {
+                        const containerDias = document.getElementById("containerDias");
+                        const checkbox = document.createElement('input');
+                        const label = document.createElement('label');
+                        const span = document.createElement('span');
+                        let dias = resultado.dados[i].dias;
+                        let myDate = new Date(dias).toLocaleString().split(',')[0];
+
+
+                        checkbox.type = 'checkbox';
+                        checkbox.name = myDate;
+                        checkbox.value = resultado.dados[i].pk_dias_indisponiveis;
+                        label.appendChild(document.createTextNode(myDate));
+                        label.style.margin = '3px';
+                        label.classList.add("checkbox-card");
+                        span.classList.add("checkmarkDia");
+                        container.appendChild(label);
+                        label.appendChild(checkbox);
+                        label.appendChild(span);
+                        containerDias.appendChild(label);
+                    }
+                } else {
+                    document.getElementById("texto-desbloquear").innerHTML = "Nenhuma data bloqueada!"
+                    return;
                 }
-            } else {
-                document.getElementById("texto-desbloquear").innerHTML = "Nenhuma data bloqueada!"
-                return;
-            }
-        })
+            })
     } catch (err) {
         return err;
     }
@@ -331,18 +331,18 @@ function onClickBtDesbloquearDia() {
             },
             body: JSON.stringify({ pk_dias_indisponiveis })
         })
-        .then((response) => {
-            return response.json();
-        })
-        .then((resultado) => {
-            if (resultado.excluirDiaBloqueado == true) {
-                alert("Data desbloqueada com sucesso!");
-                onClickBtCarregarDiasBloqueados();
-            } else {
-                alert("Erro ao desbloquear, tente novamente mais tarde!!");
-                return;
-            }
-        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((resultado) => {
+                if (resultado.excluirDiaBloqueado == true) {
+                    alert("Data desbloqueada com sucesso!");
+                    onClickBtCarregarDiasBloqueados();
+                } else {
+                    alert("Erro ao desbloquear, tente novamente mais tarde!!");
+                    return;
+                }
+            })
     } catch (err) {
         return err;
     }

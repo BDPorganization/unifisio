@@ -1,5 +1,6 @@
 const fragment = document.createDocumentFragment();
 const container = document.getElementById('container');
+const tipoPlano = document.getElementById('tipoPlano');
 var dadosPlanos = [];
 
 window.addEventListener("load", () => {
@@ -11,7 +12,7 @@ window.addEventListener("load", () => {
                 return response.json();
             })
             .then((resultado) => {
-                if (resultado) {
+                if (resultado.salas == true) {
                     for (let i = 0; i < resultado.dados.length; i++) {
                         gerarCard(resultado.dados[i]);
                         dadosPlanos.push(resultado.dados[i]);
@@ -24,6 +25,24 @@ window.addEventListener("load", () => {
             })
     } catch (err) {
         return err;
+    }
+});
+
+tipoPlano.addEventListener("change", () => {
+    var duracaoPlano = document.getElementById('duracaoPlano');
+
+    switch (tipoPlano.value) {
+        case "Diário":
+            duracaoPlano.value = 1;
+            break;
+        case "Semanal":
+            duracaoPlano.value = 7;
+            break;
+        case "Mensal":
+            duracaoPlano.value = 31;
+            break;
+        default:
+            break;
     }
 });
 

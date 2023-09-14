@@ -94,7 +94,6 @@ function alugarPlano() {
     const planoSelecionado = document.getElementById("tipo_plano").value;
     const precoPlano = document.getElementById("precoPlano").value;
     const descricaoPlano = document.getElementById("descricaoPlano").value;
-    let diasPermitidos;
 
     if (dataSelecionadaInicio == "") {
         alert("Escolha uma data para continuar");
@@ -122,24 +121,22 @@ function alugarPlano() {
             }
 
             alugarPlanosTipo(paramsSemanal);
-            diasPermitidos = 7;
             break;
         case 'Mensal':
-            diasPermitidos = 31;
+            let paramsMensal = {
+                tipo: planoSelecionado,
+                dtInicio: dataSelecionadaInicio,
+                dtFim: dataSelecionadaFim,
+                preco: precoPlano,
+                descricao: descricaoPlano
+            }
+
+            alugarPlanosTipo(paramsMensal);
             break;
         default:
             diasPermitidos = 0;
             break;
     }
-
-    const diferencaEmMilissegundos = new Date(dataSelecionadaFim) - new Date(dataSelecionadaInicio);
-    const diferencaEmDias = Math.ceil(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
-
-    if (diferencaEmDias <= 0 || diferencaEmDias > diasPermitidos) {
-        alert('Seleção de data inválida para o plano selecionado.');
-        return false;
-    }
-
     return true;
 }
 
@@ -318,6 +315,9 @@ function adcCart(params) {
         }
 
         if (tipo == "Semanal") {
+            const diferencaEmMilissegundos = new Date(dtFim) - new Date(dtInicio);
+            const diferencaEmDias = Math.ceil(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
+            let diasPermitidos = 7;
             let data = {
                 data_agendada: dtInicio,
                 data_agendada_fim: dtFim,
@@ -328,6 +328,12 @@ function adcCart(params) {
                 name_user: document.getElementById("nomeUsuario").innerHTML,
                 horarios: "0"
             };
+        
+            if (diferencaEmDias <= 0 || diferencaEmDias > diasPermitidos) {
+                alert('Seleção de data inválida para o plano selecionado.');
+                return false;
+            }
+        
 
             fetch("/listCart", {
                 method: "GET",
@@ -354,6 +360,107 @@ function adcCart(params) {
                                 itemAlreadyInCart = true;
                                 fecharModal(modalAlugar);
                                 appendAlert('O plano semanal não pode ser incluído, pois já existe um item no carrinho para o mesmo dia!', 'danger');
+                                break;
+                            }
+                        }
+
+                        if (!itemAlreadyInCart) {
+                            fetch("/addCart", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify(data),
+                            })
+                                .then((response) => {
+                                    return response.json();
+                                })
+                                .then((resultado) => {
+                                    if (resultado.adcItemCart == true) {
+                                        fecharModal(modalAlugar);
+                                        appendAlert('Incluso no carrinho!', 'success');
+                                        verificaCart();
+                                    }
+                                })
+                                .catch((err) => {
+                                    alert(`Ocorreu um erro inesperado!, ${err}`);
+                                });
+                        }
+                    } else {
+                        fetch("/addCart", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(data),
+                        })
+                            .then((response) => {
+                                return response.json();
+                            })
+                            .then((resultado) => {
+                                if (resultado.adcItemCart == true) {
+                                    fecharModal(modalAlugar);
+                                    appendAlert('Incluso no carrinho!', 'success');
+                                    verificaCart();
+                                }
+                            })
+                            .catch((err) => {
+                                alert(`Ocorreu um erro inesperado!, ${err}`);
+                            });
+                    }
+                })
+                .catch((err) => {
+                    alert("Ocorreu um erro inesperado!", err);
+                    return err;
+                });
+        }
+
+        if (tipo == "Mensal") {
+            const diferencaEmMilissegundos = new Date(dtFim) - new Date(dtInicio);
+            const diferencaEmDias = Math.ceil(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
+            let diasPermitidos = 31;
+            let data = {
+                data_agendada: dtInicio,
+                data_agendada_fim: dtFim,
+                pk_sala: document.getElementById("pk_sala").value,
+                name_sala: descricao,
+                preco_sala: preco,
+                email_user: document.getElementById("emailUser").value,
+                name_user: document.getElementById("nomeUsuario").innerHTML,
+                horarios: "0"
+            };
+        
+            if (diferencaEmDias <= 0 || diferencaEmDias > diasPermitidos) {
+                alert('Seleção de data inválida para o plano selecionado.');
+                return false;
+            }
+        
+
+            fetch("/listCart", {
+                method: "GET",
+            })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((result) => {
+                    if (result.listCart == true) {
+                        const cartItems = result.itens;
+                        let itemAlreadyInCart = false;
+
+                        for (let i = 0; i < cartItems.length; i++) {
+                            const element = cartItems[i];
+
+                            if (element.pk_sala == data.pk_sala && element.data_agendada == data.data_agendada && element.data_agendada_fim == data.data_agendada_fim && element.horarios == data.horarios) {
+                                itemAlreadyInCart = true;
+                                fecharModal(modalAlugar);
+                                appendAlert('Você não pode incluir itens que já estão no carrinho!', 'danger');
+                                break;
+                            }
+
+                            if (element.pk_sala == data.pk_sala && element.data_agendada == data.data_agendada) {
+                                itemAlreadyInCart = true;
+                                fecharModal(modalAlugar);
+                                appendAlert('O plano mensal não pode ser incluído, pois já existe um item no carrinho para o mesmo dia!', 'danger');
                                 break;
                             }
                         }

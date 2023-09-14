@@ -12,6 +12,10 @@ td {
     border: 1px solid #ccc;
 }
 
+td i {
+    cursor: pointer;
+}
+
 .btTd {
     cursor: pointer;
 }

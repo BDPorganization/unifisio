@@ -47,8 +47,8 @@ function gerarCard(dados) {
         valor.className = "valor-reais";
         detalhes.textContent = "Detalhes";
         detalhes.className = "detalhes-pagamento";
-        dia.textContent = `Dia: ${new Date(dados.datas).toLocaleDateString('pt-BR')}`; 
-        hora.textContent = `Horário: ${dados.hora}`;
+        dia.textContent = `Dia: ${new Date(dados.datas).toLocaleDateString('pt-BR')} ${dados.datas_fim !== null ? ' - ' + new Date(dados.datas_fim).toLocaleDateString('pt-BR') : ""}`; 
+        hora.textContent = `Horário: ${dados.hora == "00:00:00" ? "De acordo com o plano" : dados.hora}`;
         email.textContent = `E-mail: ${dados.email}`;
     
         card.appendChild(pagamento);

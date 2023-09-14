@@ -73,8 +73,8 @@ function gerarCorpo(container, resultado) {
         nome.textContent = resultado.dados[i]["nome_medicos"];
         sala.textContent = resultado.dados[i]["nome_sala"];
         especialidade.textContent = resultado.dados[i]["especialidade"];
-        data.textContent = new Date (resultado.dados[i]["datas"]).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-        horario.textContent = resultado.dados[i]["hora"];
+        data.textContent = `${new Date (resultado.dados[i]["datas"]).toLocaleDateString('pt-BR', { timeZone: 'UTC' })} ${resultado.dados[i]["datas_fim"] !== null ? ' - ' + new Date(resultado.dados[i]["datas_fim"]).toLocaleDateString('pt-BR') : ""}`;
+        horario.textContent =`${resultado.dados[i]["hora"] == "00:00:00" ? "Plano" : resultado.dados[i]["hora"]}`;
         valor.textContent = resultado.dados[i]["valor"].toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",

@@ -85,27 +85,27 @@ function criarPagamento() {
                 }
 
                 //Aguarda que todas as promessas de fetch sejam resolvidas
-                // Promise.all(fetchPromises).then(() => {
-                //     if (continuarPagamento) {
-                //         fetch("/pagamento", {
-                //             method: "POST",
-                //             headers: {
-                //                 "Content-Type": "application/json",
-                //             },
-                //             body: JSON.stringify(dadosPagamento),
-                //         })
-                //             .then((response) => {
-                //                 return response.json();
-                //             })
-                //             .then((pagamento) => {
-                //                 window.location.href = pagamento.init_point;
-                //             })
-                //             .catch((err) => {
-                //                 alert(`Ocorreu um erro inesperado!, ${err}`);
-                //                 return;
-                //             });
-                //     }
-                // });
+                Promise.all(fetchPromises).then(() => {
+                    if (continuarPagamento) {
+                        fetch("/pagamento", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(dadosPagamento),
+                        })
+                            .then((response) => {
+                                return response.json();
+                            })
+                            .then((pagamento) => {
+                                window.location.href = pagamento.init_point;
+                            })
+                            .catch((err) => {
+                                alert(`Ocorreu um erro inesperado!, ${err}`);
+                                return;
+                            });
+                    }
+                });
             });
     } catch (err) {
         return err;
