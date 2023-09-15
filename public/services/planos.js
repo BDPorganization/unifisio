@@ -12,14 +12,14 @@ window.addEventListener("load", () => {
                 return response.json();
             })
             .then((resultado) => {
-                if (resultado) {
+                if (resultado.salas == true) {
                     for (let i = 0; i < resultado.dados.length; i++) {
                         gerarCard(resultado.dados[i]);
                         dadosPlanos.push(resultado.dados[i]);
                     }
                     container.appendChild(fragment);
                 } else {
-                    appendAlert("Nenhum plano encontrado!", 'warning');
+                    appendAlert("Nenhum plano disponibilizado pela empresa!", 'warning');
                     return;
                 }
             })

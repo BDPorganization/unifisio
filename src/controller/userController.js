@@ -363,7 +363,7 @@ module.exports.editarSala = async (req, res) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro ao editar sala');
+        return res.status(401).send('Ocorreu um erro ao editar a sala');
     }
 };
 
@@ -391,7 +391,7 @@ module.exports.editarPlano = async (req, res) => {
                 }
             });
     } catch (err) {
-        return res.status(401).send('Ocorreu um erro ao editar sala');
+        return res.status(401).send('Ocorreu um erro ao editar o plano');
     }
 };
 

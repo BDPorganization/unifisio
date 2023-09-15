@@ -83,7 +83,7 @@ router.get("/cart", (req, res) => {
     res.render('cart');
 });
 
-router.get("/criarPlanos", (req, res) => {
+router.get("/criarPlanos", verificarAutenticacao, (req, res) => {
     res.render('criarPlanos');
 });
 
@@ -92,15 +92,6 @@ router.get("/planos/:id", (req, res) => {
 
     res.render('planos', { postId });
 });
-
-router.get("/verificarLogin", verificaLogin);
-router.get("/desconectar", desconectar);
-router.get("/apagarConta", apagarConta);
-router.get("/checarAgendamentos", agendamentos);
-router.get("/checarSalas", checarSalasAdmin);
-router.get("/checarPlanos", checarPlanosAdmin);
-router.get("/horariosAgendados", horariosAgenda);
-router.get("/checarDiasBloqueados", diasBloqueados);
 
 router.get("/pagAprovado", (req, res) => {
     if (req.query.status == "approved") {
@@ -114,6 +105,15 @@ router.get("/pagReprovado", (req, res) => {
     res.render('pagReprovado');
 });
 
+router.get("/verificarLogin", verificaLogin);
+router.get("/desconectar", desconectar);
+router.get("/apagarConta", apagarConta);
+router.get("/checarAgendamentos", agendamentos);
+router.get("/checarSalas", checarSalasAdmin);
+router.get("/checarPlanos", checarPlanosAdmin);
+router.get("/horariosAgendados", horariosAgenda);
+router.get("/checarDiasBloqueados", diasBloqueados);
+
 router.get('/uploads/:imageName', (req, res) => {
     const imageName = req.params.imageName;
     const imagePath = path.join(process.cwd(), 'uploads', imageName);
@@ -124,7 +124,6 @@ router.get('/uploads/:imageName', (req, res) => {
         res.status(404).send('Imagem não encontrada');
     }
 });
-
 
 router.get('/download', consultaDadosContrato, async (req, res) => {
     try {
