@@ -9,13 +9,12 @@
                             <h3 class="titulo">Incluir Plano</h3>
                             <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Nome do Plano" name="nomePlano" id="nomePlano">
                             <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Descrição" name="descricaoPlano" id="descricaoPlano">
-                            <input class="w-75 form-control m-auto mb-3" type="number" placeholder="Duração em dias" name="duracaoPlano" id="duracaoPlano" readonly="true" value="1">
-                            <select name="tipoPlano" id="tipoPlano" class="w-75 form-control m-auto mb-3">
+                            <input class="w-75 form-control m-auto mb-3" style="background-color: rgb(238, 238, 238);" type="number" placeholder="Duração em dias" name="duracaoPlano" id="duracaoPlano" readonly="true" value="1">
+                            <select name="tipoPlano" id="tipoPlano" class="w-75 form-control m-auto mb-3" style="background-color: rgb(238, 238, 238);">
                                 <option value="Diário">Diário</option>
                                 <option value="Semanal">Semanal</option>
                                 <option value="Mensal">Mensal</option>
                             </select>
-                            <!-- <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Tipo (Diário, Semanal, Mensal)" name="tipoPlano" id="tipoPlano"> -->
                             <input class="w-75 form-control m-auto mb-3" type="text" placeholder="Valor em reais" name="valorPlano" id="valorPlano" onchange="formatarMoeda(0)">
                         </div>
                         <button type="submit" class="btn btn-secondary w-50 mt-2" onclick="onClickBtIncluirPlano()">Adicionar</button>

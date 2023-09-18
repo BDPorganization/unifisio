@@ -1,6 +1,7 @@
 const fragment = document.createDocumentFragment();
 const container = document.getElementById('container');
 const tipoPlano = document.getElementById('tipoPlano');
+const tipo = document.getElementById('tipo');
 var dadosPlanos = [];
 
 window.addEventListener("load", () => {
@@ -32,6 +33,24 @@ tipoPlano.addEventListener("change", () => {
     var duracaoPlano = document.getElementById('duracaoPlano');
 
     switch (tipoPlano.value) {
+        case "Diário":
+            duracaoPlano.value = 1;
+            break;
+        case "Semanal":
+            duracaoPlano.value = 7;
+            break;
+        case "Mensal":
+            duracaoPlano.value = 31;
+            break;
+        default:
+            break;
+    }
+});
+
+tipo.addEventListener("change", () => {
+    var duracaoPlano = document.getElementById('duracaoDias');
+
+    switch (tipo.value) {
         case "Diário":
             duracaoPlano.value = 1;
             break;
