@@ -20,6 +20,117 @@ window.addEventListener("load", ()=> {
     }
 });
 
+const date = document.getElementById('dataInput');
+
+date.addEventListener("change", function() {
+    try {
+        const dateNew = date.value;
+        const sala = document.getElementById('pk_sala').value;
+
+        bloquearDiaEspecifico(dateNew);
+    
+        fetch('/filtroData', {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ dateNew, sala })
+        })
+        .then((response) => {
+            if (response.status == 204) {
+                appendAlert("Nenhum horário encontrado para o dia selecionado!", 'warning');
+                return false;
+            }
+            return response.json();
+        })
+        .then((resultado) => {
+            createCheckboxesFromJSON(resultado.datas);
+            exibirDatasFuturas();
+        });
+    } catch (err) {
+        return err;
+    }
+});
+
+function exibirDatasFuturas() {
+    var dataAtual = new Date();
+
+    date.min = dataAtual.toISOString().split('T')[0];
+}
+
+function bloquearDiaEspecifico(date) {
+    var dataSelecionada = new Date(date);
+    var div_main =  document.getElementById("div-main");
+
+    if (datas_bloqueadas) {
+        for (let i = 0; i < datas_bloqueadas.length; i++) {
+            let diaBloqueado = new Date(datas_bloqueadas[i].dias);
+    
+            if (dataSelecionada.toISOString().split('T')[0] === diaBloqueado.toISOString().split('T')[0]) {
+                date.value = "";
+                appendAlert("O dia selecionado está indisponível!", 'danger');
+                div_main.style.display = "none";
+                document.getElementById("adcCart").style.display = "none";
+                return;
+            } else {
+                div_main.style.display = "";
+                document.getElementById("adcCart").style.display = "";
+            }
+        }
+    }
+
+    if (datas_planos) {
+        for (let i = 0; i < datas_planos.length; i++) {
+            let diaPlanos = new Date(datas_planos[i].datas);
+            let diaPlanosPkSala = datas_planos[i].fk_salas_pk_salas;
+            let salaAlugadaPlano = document.getElementById("pk_sala").value;
+            
+            if (dataSelecionada.toISOString().split('T')[0] === diaPlanos.toISOString().split('T')[0] && salaAlugadaPlano == diaPlanosPkSala) {
+                date.value = "";
+                appendAlert("O dia selecionado está indisponível!", 'warning');
+                div_main.style.display = "none";
+                document.getElementById("adcCart").style.display = "none";
+                return;
+            } else {
+                div_main.style.display = "";
+                document.getElementById("adcCart").style.display = "";
+            }
+        }
+    }
+}
+
+function createCheckboxesFromJSON(jsonData) {
+    try {
+        const container = document.getElementById('containerId');
+        const p = document.getElementById('label-hora');
+      
+        container.innerHTML = '';
+        p.innerHTML = 'Selecione seu horário:';
+        for (let i = 0; i < jsonData.length; i++) {
+            const checkbox = document.createElement('input');
+            const label = document.createElement('label');
+            const span = document.createElement('span');
+            let horarios = jsonData[i].horario_disponivel;
+            let partes = horarios.split(':');
+            let horas = parseInt(partes[0], 10);
+            let minutos = parseInt(partes[1], 10);
+            let horaFormatada = horas < 10 ? "0" + horas : horas;
+            let minutosFormatados = minutos < 10 ? "0" + minutos : minutos;
+            let horaFinal = `${horaFormatada}:${minutosFormatados}`;
+    
+            checkbox.type = 'checkbox';
+            checkbox.name = horaFinal;
+            label.appendChild(document.createTextNode(horaFinal));
+            label.style.margin = '3px';
+            label.classList.add("checkbox-card");
+            span.classList.add("checkmark");
+            container.appendChild(label);
+            label.appendChild(checkbox);
+            label.appendChild(span)
+        }
+    } catch (err) {
+        return err;
+    }
+}
+
 function gerarTabela(resultado) {
     var container = document.getElementById('table');
 
@@ -193,6 +304,37 @@ function cancelarAgendamento() {
 
         if (pk_agendamento) {
             fetch('/excluirAgendamento', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pk_agendamento })
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((resultado) => {
+                if (resultado.excluirAgendamento == true) {
+                    location.reload();
+                } else {
+                    appendAlert("Erro na exclusão do agendamento, tente novamente mais tarde!", 'danger');
+                    return;
+                }
+            });
+        }
+    } catch (err) {
+        alert("Nenhum agendamento selecionado!");
+        return err;
+    }
+}
+
+function reagendarAgendamento() {
+    try {
+        let checkedCheckbox = document.querySelector('input[type="checkbox"]:checked');
+        let pk_agendamento = checkedCheckbox.value;
+
+        if (pk_agendamento) {
+            fetch('/reagendarAgendamento', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'

@@ -80,7 +80,7 @@ function construirTabela(dadosDoBanco) {
     const td4 = document.createElement("td");
     const icon = document.createElement("i");
 
-    td4.style.width = "5%";
+    td4.style.width = "10%";
     td4.style.padding = "40px 0px";
     td4.style.textAlign = "center";
     td4.onclick = () => {
