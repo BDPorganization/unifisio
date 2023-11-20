@@ -7,9 +7,17 @@ body {
     border-collapse: collapse;
     text-align: center;
 }
-td {
-    padding: 5px;
-    border: 1px solid #ccc;
+
+table tr td:first-child {
+    border-left: 1px solid #ccc;
+}
+
+table tr td:last-child {
+    border-right: 1px solid #ccc;
+}
+
+table tr td {
+    border-top: 1px solid #ccc;
 }
 
 td i {
@@ -74,5 +82,17 @@ h4{
     }
     .total {
         padding: 10px;
+    }
+
+    table tr td:first-child {
+        border-left: 1px solid #ccc;
+    }
+    
+    table tr td:last-child {
+        border-right: 1px solid #ccc;
+    }
+    
+    table tr td {
+        border-top: 1px solid #ccc;
     }
 }

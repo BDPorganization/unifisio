@@ -25,7 +25,6 @@ date.addEventListener("change", function() {
     }
 });
 
-
 function createCheckboxesFromJSON(jsonData) {
     try {
         const container = document.getElementById('containerId');

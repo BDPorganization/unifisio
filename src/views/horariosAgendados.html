@@ -42,26 +42,33 @@
 
           <div class="form-search">
             <label for="procura">Procurar: </label>
-            <input id="filtroInput" name="filtroInput" type="text" placeholder="Procurar..." oninput="filtrarTabela()">
+            <input id="filtroInput" name="filtroInput" type="text" placeholder="Digite aqui..."
+              oninput="filtrarTabela()">
           </div>
 
           <div class="botoes">
             <button onclick="filtrarHoje()" type="button"
               style="background-color: #f05e22;border: none;border-radius: 20px;padding: 2px 8px; color:#fff">
               <i class="fa-solid fa-calendar-day"></i>
-              Hoje
+              Filtrar por Hoje
             </button>
 
             <button onclick="filtrarTabela()" type="reset"
               style="background-color: #f05e22;border: none;border-radius: 20px;padding: 2px 8px; color:#fff">
               <i class="fa-solid fa-broom"></i>
-              Limpar
+              Limpar filtro
             </button>
-            
+
             <button data-bs-toggle="modal" data-bs-target="#modalConfCancelamento" type="button"
               style="background-color: #f05e22;border: none;border-radius: 20px;padding: 2px 8px; color:#fff">
               <i class="fa-solid fa-ban"></i>
-              Cancelar Agendamento
+              Cancelar Agend.
+            </button>
+
+            <button data-bs-toggle="modal" data-bs-target="#modalReagendar" type="button"
+              style="background-color: #f05e22;border: none;border-radius: 20px;padding: 2px 8px; color:#fff">
+              <i class="fa-solid fa-calendar"></i>
+              Reagendar Agend.
             </button>
           </div>
 
@@ -72,31 +79,38 @@
 
     <form action="" method="" class="mobile-content">
       <div class="botoes-mobile">
-        <button onclick="filtrarHoje()" type="button"
+        <!-- <button onclick="filtrarHoje()" type="button"
           style="background-color: #f05e22;border: none;border-radius: 20px;color:#fff">
           <i class="fa-solid fa-calendar-day"></i>
           Hoje
-        </button>
-
+        </button> -->
+<!-- 
         <button onclick="filtrarTabela()" type="reset"
           style="background-color: #f05e22;border: none;border-radius: 20px;color:#fff">
           <i class="fa-solid fa-broom"></i>
           Limpar
-        </button>
-        
+        </button> -->
+
         <button data-bs-toggle="modal" data-bs-target="#modalConfCancelamento" type="button"
           style="background-color: #f05e22;border: none;border-radius: 20px;color:#fff">
           <i class="fa-solid fa-ban"></i>
           Cancelar
+        </button>
+
+        <button data-bs-toggle="modal" data-bs-target="#modalReagendar" type="button"
+          style="background-color: #f05e22;border: none;border-radius: 20px;color:#fff">
+          <i class="fa-solid fa-calendar"></i>
+          Reagendar
         </button>
       </div>
       <div class="form-filtros">
         <div class="div-principal">
           <div class="form-search">
             <label for="procura">Procurar: </label>
-            <input id="filtroInputMobile" name="filtroInputMobile" type="text" placeholder="Procurar..." oninput="filtrarTabelaMobile()">
+            <input id="filtroInputMobile" name="filtroInputMobile" type="text" placeholder="Digite aqui..."
+              oninput="filtrarTabelaMobile()">
           </div>
-        </div>        
+        </div>
       </div>
     </form>
 
@@ -107,6 +121,7 @@
 
     <%- include('./includes/modalLogin.html'); %>
     <%- include('./includes/modalConfCancelamento.html'); %>
+    <%- include('./includes/modalReagendar.html'); %>
     <%- include('./includes/modalLogout.html'); %>
     <%- include('./includes/modalAdmin.html'); %>
     <%- include('./includes/modalCadastro.html'); %>

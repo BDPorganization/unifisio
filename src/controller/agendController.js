@@ -191,7 +191,7 @@ module.exports.checaSalasAgendadas = async (req, res) => {
         .catch((err) => {
             return res.status(400).send(`Ocorreu um erro ao trazer agendamentos, ${err}`)
         });
-    }catch(err) {
+    } catch(err) {
         return res.status(400).send('Ocorreu um erro ao checar o agendamento');
     }
 };

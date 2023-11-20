@@ -67,10 +67,15 @@ const appendAlert = (message, type) => {
         `   <div>${message}</div>`,
         '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
         '</div>'
-    ].join('')
+    ].join('');
 
-    alertPlaceholder.append(wrapper)
-}
+    alertPlaceholder.append(wrapper);
+
+    // Remover a mensagem após 3 segundos
+    setTimeout(() => {
+        wrapper.remove();
+    }, 3000);
+};
 
 const getDaysBetweenDates = (startDate, endDate) => {
     const days = [];
@@ -80,6 +85,5 @@ const getDaysBetweenDates = (startDate, endDate) => {
         days.push(new Date(currentDate));
         currentDate.setDate(currentDate.getDate() + 1);
     }
-
     return days;
 }
