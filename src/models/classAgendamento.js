@@ -90,96 +90,63 @@ async function checaSalas(dados) {
     var dias = getDaysBetweenDates(currentDate, endDate);
 
     try {
-        for (let i = 0; i < dias.length; i++) {
-            const sql = `
-          SELECT * FROM datas_agendadas 
-          WHERE (datas = $1 OR datas_fim = $1) 
-            AND fk_salas_pk_salas = $2 
-            AND (hora = $3 OR (hora = '00:00:00' AND $3 = '0:00'))
-        `;
-            const values = [dias[i], dados.pk_salas, dados.horarios];
+        if (dados.horarios == "0:00") {
+            for (let i = 0; i < dias.length; i++) {
+                const sql = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND fk_salas_pk_salas = $2';
+                const values = [dias[i], dados.pk_salas];
+                await client.query(sql, values);
 
-            const result = await client.query(sql, values);
+                const sql2 = 'SELECT * FROM datas_agendadas WHERE datas_fim = $1 AND fk_salas_pk_salas = $2';
+                const values2 = [dias[i], dados.pk_salas];
+                await client.query(sql2, values2);
 
-            if (result.rowCount > 0) {
-                return result;
+                if ((await client.query(sql, values)).rowCount > 0) {
+                    return await client.query(sql, values);
+                }
+
+                if ((await client.query(sql2, values2)).rowCount > 0) {
+                    return await client.query(sql2, values2);;
+                }
             }
-        }
+            return 0;
+        } else {
+            for (let i = 0; i < 1; i++) {
+                const sql = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND fk_salas_pk_salas = $2';
+                const values = [currentDate, dados.pk_salas];
+                await client.query(sql, values);
 
-        return { rowCount: 0, rows: [] };
+                const sql2 = 'SELECT * FROM datas_agendadas WHERE datas_fim = $1 AND fk_salas_pk_salas = $2';
+                const values2 = [currentDate, dados.pk_salas];
+                await client.query(sql2, values2);
+
+                if ((await client.query(sql, values)).rowCount > 0) {
+                    let data_encontrada = (await client.query(sql, values)).rows;
+
+                    if (data_encontrada[0].hora == "00:00:00") {
+                        return await client.query(sql, values);
+                    } else {
+                        const sql3 = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND hora = $2 AND fk_salas_pk_salas = $3';
+                        const values3 = [currentDate, dados.horarios, dados.pk_salas];
+                        await client.query(sql3, values3);
+
+                        if ((await client.query(sql3, values3)).rowCount > 0) {
+                            return await client.query(sql3, values3);
+                        }
+                    }
+                }
+
+                if ((await client.query(sql2, values2)).rowCount > 0) {
+                    return await client.query(sql2, values2);
+                }
+            }
+            return 0;
+        }
     } catch (err) {
-        console.error('Erro na função checaSalas:', err);
-        throw err; 
+        return err;
     } finally {
         client.release();
     }
 }
-
-
-// async function checaSalas(dados) {
-//     const client = await database.connect();
-//     var currentDate = new Date(dados.data);
-//     var endDate = dados.data_fim !== "" ? new Date(dados.data_fim) : adicionarUmMes(new Date(dados.data));
-//     var dias = getDaysBetweenDates(currentDate, endDate);
-
-//     try {
-//         if (dados.horarios == "0:00") {
-//             for (let i = 0; i < dias.length; i++) {
-//                 const sql = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND fk_salas_pk_salas = $2';
-//                 const values = [dias[i], dados.pk_salas];
-//                 await client.query(sql, values);
-
-//                 const sql2 = 'SELECT * FROM datas_agendadas WHERE datas_fim = $1 AND fk_salas_pk_salas = $2';
-//                 const values2 = [dias[i], dados.pk_salas];
-//                 await client.query(sql2, values2);
-
-//                 if ((await client.query(sql, values)).rowCount > 0) {
-//                     return await client.query(sql, values);
-//                 }
-
-//                 if ((await client.query(sql2, values2)).rowCount > 0) {
-//                     return await client.query(sql2, values2);;
-//                 }
-//             }
-//             return 0;
-//         } else {
-//             for (let i = 0; i < dias.length; i++) {
-//                 const sql = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND fk_salas_pk_salas = $2';
-//                 const values = [dias[i], dados.pk_salas];
-//                 await client.query(sql, values);
-
-//                 const sql2 = 'SELECT * FROM datas_agendadas WHERE datas_fim = $1 AND fk_salas_pk_salas = $2';
-//                 const values2 = [dias[i], dados.pk_salas];
-//                 await client.query(sql2, values2);
-
-//                 if ((await client.query(sql, values)).rowCount > 0) {
-//                     let data_encontrada = (await client.query(sql, values)).rows;
-
-//                     if (data_encontrada[0].hora == "00:00:00") {
-//                         return await client.query(sql, values);
-//                     } else {
-//                         const sql3 = 'SELECT * FROM datas_agendadas WHERE datas = $1 AND hora = $2 AND fk_salas_pk_salas = $3';
-//                         const values3 = [dias[i], dados.horarios, dados.pk_salas];
-//                         await client.query(sql3, values3);
-
-//                         if ((await client.query(sql3, values3)).rowCount > 0) {
-//                             return await client.query(sql3, values3);
-//                         }
-//                     }
-//                 }
-
-//                 if ((await client.query(sql2, values2)).rowCount > 0) {
-//                     return await client.query(sql2, values2);
-//                 }
-//             }
-//             return 0;
-//         }
-//     } catch (err) {
-//         return err;
-//     } finally {
-//         client.release();
-//     }
-// }
 
 const getDaysBetweenDates = (startDate, endDate) => {
     const days = [];
