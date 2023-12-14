@@ -103,8 +103,22 @@ function calcTotal(params) {
 
   for (let i = 0; i < params.length; i++) {
     const element = params[i].valor;
-
     total += element;
+  }
+
+  // Aplicar desconto com base na quantidade de itens
+  var quantidadeItens = params.length;
+
+  if (quantidadeItens === 40) {
+    total *= 0.6; // Aplicar 40% de desconto para exatamente 40 itens
+  } else if (quantidadeItens === 20) {
+    total *= 0.8; // Aplicar 20% de desconto para exatamente 20 itens
+  } else if (quantidadeItens === 15) {
+    total *= 0.85; // Aplicar 15% de desconto para exatamente 15 itens
+  } else if (quantidadeItens === 10) {
+    total *= 0.9; // Aplicar 10% de desconto para exatamente 10 itens
+  } else if (quantidadeItens === 5) {
+    total *= 0.95; // Aplicar 5% de desconto para exatamente 5 itens
   }
 
   document.getElementById("valor_total").value = total;
@@ -115,6 +129,7 @@ function calcTotal(params) {
     maximumFractionDigits: 2,
     useGrouping: true
   });
+
   return total;
 }
 
